@@ -19,23 +19,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0g-jf-aq2"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBa-Im-fCv" userLabel="Scroll View Ver">
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0g-jf-aq2"/>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="L0g-jf-aq2" firstAttribute="centerX" secondItem="nBa-Im-fCv" secondAttribute="centerX" id="UQN-zb-kg0"/>
+                                    <constraint firstItem="L0g-jf-aq2" firstAttribute="leading" secondItem="nBa-Im-fCv" secondAttribute="leading" id="Wd4-p8-zv2"/>
+                                    <constraint firstItem="L0g-jf-aq2" firstAttribute="centerY" secondItem="nBa-Im-fCv" secondAttribute="centerY" id="Z6Z-9M-Ove"/>
+                                    <constraint firstAttribute="trailing" secondItem="L0g-jf-aq2" secondAttribute="trailing" id="aT7-gP-oBz"/>
+                                    <constraint firstAttribute="bottom" secondItem="L0g-jf-aq2" secondAttribute="bottom" id="fiC-5g-KiS"/>
+                                    <constraint firstItem="L0g-jf-aq2" firstAttribute="top" secondItem="nBa-Im-fCv" secondAttribute="top" id="l3r-rN-v2E"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L0g-jf-aq2" firstAttribute="leading" secondItem="hBx-4N-6co" secondAttribute="leading" id="45z-Ws-mzJ"/>
-                            <constraint firstItem="L0g-jf-aq2" firstAttribute="top" secondItem="hBx-4N-6co" secondAttribute="top" id="GSe-ax-fJW"/>
-                            <constraint firstAttribute="trailing" secondItem="L0g-jf-aq2" secondAttribute="trailing" id="Xu8-GO-dbF"/>
-                            <constraint firstItem="GBV-f3-aN9" firstAttribute="top" secondItem="L0g-jf-aq2" secondAttribute="bottom" id="crb-6b-Qak"/>
+                            <constraint firstItem="nBa-Im-fCv" firstAttribute="leading" secondItem="hBx-4N-6co" secondAttribute="leading" id="BQ1-Ma-h02"/>
+                            <constraint firstItem="GBV-f3-aN9" firstAttribute="top" secondItem="nBa-Im-fCv" secondAttribute="bottom" id="Ndn-ME-SGW"/>
+                            <constraint firstAttribute="trailing" secondItem="nBa-Im-fCv" secondAttribute="trailing" id="dyG-rj-EHG"/>
+                            <constraint firstItem="nBa-Im-fCv" firstAttribute="top" secondItem="hBx-4N-6co" secondAttribute="top" id="mNY-TL-9Oi"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="L0g-jf-aq2" id="SEn-PR-j0k"/>
+                        <outlet property="scrollViewHor" destination="L0g-jf-aq2" id="YX9-RT-ibG"/>
+                        <outlet property="scrollViewVer" destination="nBa-Im-fCv" id="SdK-79-zLq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbo-7K-OwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8.8000000000000007" y="-708.39580209895053"/>
+        </scene>
+        <!--Main PageVC-->
+        <scene sceneID="mjG-xB-H2M">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="aNJ-IJ-pIU" customClass="MainPageVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doa-J8-890" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="-802"/>
         </scene>
         <!--CameraVC-->
         <scene sceneID="tne-QT-ifu">

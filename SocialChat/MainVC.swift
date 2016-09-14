@@ -8,9 +8,12 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewHor: UIScrollView!
+    @IBOutlet weak var scrollViewVer: UIScrollView!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +32,19 @@ class MainVC: UIViewController {
 //        userViewFrame.origin = CGPoint(x: self.view.frame.width, y: 0)
 //        userView.view.frame = userViewFrame
         
+        
         let cameraView = storyboard?.instantiateViewController(withIdentifier: "CameraVC") as! CameraVC
         addChildViewController(cameraView)
-        self.scrollView.addSubview(cameraView.view)
+        self.scrollViewVer.addSubview(cameraView.view)
         cameraView.didMove(toParentViewController: self)
         
         var cameraFrame : CGRect = cameraView.view.frame
-        cameraFrame.origin = CGPoint(x: self.view.frame.width, y: 0)
+        cameraFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
         cameraView.view.frame = cameraFrame
         
         let storyView : StoryVC = StoryVC(nibName: "StoryVC", bundle: nil)
         self.addChildViewController(storyView)
-        self.scrollView.addSubview(storyView.view)
+        self.scrollViewHor.addSubview(storyView.view)
         storyView.didMove(toParentViewController: self)
         
         var storyViewFrame : CGRect = storyView.view.frame
@@ -50,19 +54,21 @@ class MainVC: UIViewController {
         
         let chatView : ChatVC = ChatVC(nibName: "ChatVC", bundle: nil)
         self.addChildViewController(chatView)
-        self.scrollView.addSubview(chatView.view)
+        self.scrollViewHor.addSubview(chatView.view)
         chatView.didMove(toParentViewController: self)
         
         var chatViewFrame : CGRect = chatView.view.frame
         chatViewFrame.origin = CGPoint(x: 0, y: 0)
         chatView.view.frame = chatViewFrame
 
-     
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width * 3, height: self.view.frame.size.height)
         
-
+//        scrollViewVer.frame = CGRect(x: 0, y: -self.view.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height * 3)
+        scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 3, height: self.view.frame.size.height)
         
-        self.scrollView.contentOffset = CGPoint(x: self.view.frame.size.width, y: 0)
+        scrollViewVer.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 3)
+        
+        self.scrollViewVer.contentOffset = CGPoint(x: 0, y: self.view.frame.size.height)
+        self.scrollViewHor.contentOffset = CGPoint(x: 0, y: 0)
         
         
 }
