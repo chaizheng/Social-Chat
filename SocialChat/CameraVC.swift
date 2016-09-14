@@ -15,8 +15,8 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
 
     @IBOutlet weak var cameraView: UIView!
 
-    @IBOutlet weak var tempingimageView: UIImageView!
-    
+    @IBOutlet weak var goMemBtn: UIButton!
+    @IBOutlet weak var logoBtn: UIButton!
     @IBOutlet weak var flashBtn: UIButton!
     @IBOutlet weak var recordBtn: UIButton!
     
@@ -30,8 +30,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
    
     
     override func viewDidLoad() {        
-//        delegate = self
-//        _previewView = previewView
         super.viewDidLoad()
     }
     
@@ -43,16 +41,16 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //performSegue(withIdentifier: "LoginVC", sender: nil)
+//        performSegue(withIdentifier: "LoginVC", sender: nil)
         guard FIRAuth.auth()?.currentUser != nil else {
             performSegue(withIdentifier: "LoginVC", sender: nil)
             return
         }
         reloadCamera()
-//        super.viewWillAppear(animated)
+
         }
     
-    
+    // Create camera view
     func reloadCamera(){
         
         captureSession?.stopRunning()
@@ -89,7 +87,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                     previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
                     previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
-                    print(previewLayer?.frame.size)
                     cameraView.layer.addSublayer(previewLayer!)
                     previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 
@@ -128,10 +125,7 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
         }
     }
     
-   
-    
     func didPressTakePhoto(){
-        
         toggleFlash()
         if let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo){
             videoConnection.videoOrientation = AVCaptureVideoOrientation.portrait
@@ -142,8 +136,8 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                    self.tempingimageView.image = image
-                    self.tempingimageView.isHidden = false
+//                    self.tempingimageView.image = image
+//                    self.tempingimageView.isHidden = false
                 }
             })
         }
@@ -151,20 +145,17 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     
     var didTakePhoto = Bool()
     
-    func didPressTakeAnother(){
-        if didTakePhoto == true{
-            tempingimageView.isHidden = true
-            didTakePhoto = false
-        }
-        else{
-            captureSession?.startRunning()
-            didTakePhoto = true
-            didPressTakePhoto()
-        }
-    }
-    
-    
-    
+//    func didPressTakeAnother(){
+//        if didTakePhoto == true{
+//            tempingimageView.isHidden = true
+//            didTakePhoto = false
+//        }
+//        else{
+//            captureSession?.startRunning()
+//            didTakePhoto = true
+//            didPressTakePhoto()
+//        }
+//    }
     
     @IBAction func flashBtnPressed(_ sender: AnyObject) {
         
@@ -183,23 +174,21 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     }
 
     @IBAction func changeCamBtnPressed(_ sender: AnyObject) {
-        //changeCamera()
         isBackCamera = !isBackCamera
         reloadCamera()
-        print("111")
+        
     }
-    func shouldEnableCameraUI(_ enable: Bool) {
-        recordBtn.isEnabled = enable
+    
+    @IBAction func logoBtnPressed(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logoBtnPressed"), object: nil)
+
     }
-    func shouldEnableRecordUI(_ enable: Bool) {
-        recordBtn.isEnabled = enable
+    
+    @IBAction func goMemBtnPressed(_ sender: AnyObject) {
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goMemBtnPressed"), object: nil)
     }
-    func recordingHasStarted() {
-        print ("Recording has started")
-    }
-    func canStartRecording() {
-        print ("Can start recording")
-    }
+    
+    
 
 }
 

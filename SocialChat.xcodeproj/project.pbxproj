@@ -11,11 +11,7 @@
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
 		1F61143A1D86836100504735 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114381D86836100504735 /* StoryVC.swift */; };
-		1F61143B1D86836100504735 /* StoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6114391D86836100504735 /* StoryVC.xib */; };
 		1F61146A1D86E75700504735 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114681D86E75700504735 /* ChatVC.swift */; };
-		1F61146B1D86E75700504735 /* ChatVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6114691D86E75700504735 /* ChatVC.xib */; };
-		1F61146E1D87896A00504735 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61146C1D87896A00504735 /* UserVC.swift */; };
-		1F61146F1D87896A00504735 /* UserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F61146D1D87896A00504735 /* UserVC.xib */; };
 		1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */; };
 		1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B61D83A7CD00DA6701 /* CameraVC.swift */; };
 		1F6757BA1D83A7CD00DA6701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757B81D83A7CD00DA6701 /* Main.storyboard */; };
@@ -28,9 +24,11 @@
 		1F6758001D8426ED00DA6701 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FF1D8426ED00DA6701 /* LoginVC.swift */; };
 		1F6758031D8433F800DA6701 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6758021D8433F800DA6701 /* AuthService.swift */; };
 		1F736D521D862F6E0035F976 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F736D511D862F6E0035F976 /* DataService.swift */; };
+		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
+		1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B391D898897004C688C /* MemoryVC.swift */; };
+		1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B3B1D898958004C688C /* DiscoverVC.swift */; };
 		1FF928C31D88E3A000DDD55D /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928C21D88E3A000DDD55D /* EditVC.swift */; };
-		1FF928E31D8909F300DDD55D /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E21D8909F300DDD55D /* MainPageVC.swift */; };
-		1FF928E51D8913D700DDD55D /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF928E41D8913D700DDD55D /* test.storyboard */; };
+		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,11 +38,7 @@
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		1F6114381D86836100504735 /* StoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
-		1F6114391D86836100504735 /* StoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryVC.xib; sourceTree = "<group>"; };
 		1F6114681D86E75700504735 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		1F6114691D86E75700504735 /* ChatVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatVC.xib; sourceTree = "<group>"; };
-		1F61146C1D87896A00504735 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
-		1F61146D1D87896A00504735 /* UserVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVC.xib; sourceTree = "<group>"; };
 		1F6757B11D83A7CD00DA6701 /* SocialChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6757B61D83A7CD00DA6701 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
@@ -60,9 +54,11 @@
 		1F6757FF1D8426ED00DA6701 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1F6758021D8433F800DA6701 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1F736D511D862F6E0035F976 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		1FBB3B391D898897004C688C /* MemoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryVC.swift; sourceTree = "<group>"; };
+		1FBB3B3B1D898958004C688C /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		1FF928C21D88E3A000DDD55D /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
-		1FF928E21D8909F300DDD55D /* MainPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
-		1FF928E41D8913D700DDD55D /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
+		1FF928E81D892C0600DDD55D /* VerticalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalVC.swift; sourceTree = "<group>"; };
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,7 +101,6 @@
 				1F6757CD1D83A98900DA6701 /* View */,
 				1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */,
 				1F6757B81D83A7CD00DA6701 /* Main.storyboard */,
-				1FF928E41D8913D700DDD55D /* test.storyboard */,
 				1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */,
 				1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */,
 				1F6757C01D83A7CD00DA6701 /* Info.plist */,
@@ -130,17 +125,16 @@
 			isa = PBXGroup;
 			children = (
 				1F6114321D86808100504735 /* MainVC.swift */,
+				1FF928E81D892C0600DDD55D /* VerticalVC.swift */,
+				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
 				1F6757B61D83A7CD00DA6701 /* CameraVC.swift */,
+				1FBB3B3B1D898958004C688C /* DiscoverVC.swift */,
 				1F6757FF1D8426ED00DA6701 /* LoginVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1F6114381D86836100504735 /* StoryVC.swift */,
+				1FBB3B391D898897004C688C /* MemoryVC.swift */,
 				1FF928C21D88E3A000DDD55D /* EditVC.swift */,
 				1F6114681D86E75700504735 /* ChatVC.swift */,
-				1F6114691D86E75700504735 /* ChatVC.xib */,
-				1F6114391D86836100504735 /* StoryVC.xib */,
-				1F61146C1D87896A00504735 /* UserVC.swift */,
-				1F61146D1D87896A00504735 /* UserVC.xib */,
-				1FF928E21D8909F300DDD55D /* MainPageVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -237,12 +231,8 @@
 			files = (
 				1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */,
 				1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */,
-				1F61143B1D86836100504735 /* StoryVC.xib in Resources */,
 				1F6757BC1D83A7CD00DA6701 /* Assets.xcassets in Resources */,
-				1F61146B1D86E75700504735 /* ChatVC.xib in Resources */,
 				1F6757BA1D83A7CD00DA6701 /* Main.storyboard in Resources */,
-				1FF928E51D8913D700DDD55D /* test.storyboard in Resources */,
-				1F61146F1D87896A00504735 /* UserVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,14 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F736D521D862F6E0035F976 /* DataService.swift in Sources */,
-				1F61146E1D87896A00504735 /* UserVC.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
 				1F6758001D8426ED00DA6701 /* LoginVC.swift in Sources */,
-				1FF928E31D8909F300DDD55D /* MainPageVC.swift in Sources */,
+				1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
+				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F61146A1D86E75700504735 /* ChatVC.swift in Sources */,
 				1FF928C31D88E3A000DDD55D /* EditVC.swift in Sources */,
@@ -317,6 +307,8 @@
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
 				1F6758031D8433F800DA6701 /* AuthService.swift in Sources */,
+				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
+				1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  MainPageVC.swift
+//  UserInfoVC.swift
 //  SocialChat
 //
 //  Created by ZhangJeff on 9/14/16.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MainPageVC: UIPageViewController {
+class UserInfoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

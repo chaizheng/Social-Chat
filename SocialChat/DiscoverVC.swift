@@ -1,14 +1,14 @@
 //
-//  UserVC.swift
+//  DiscoverVC.swift
 //  SocialChat
 //
-//  Created by ZhangJeff on 9/13/16.
+//  Created by ZhangJeff on 9/14/16.
 //  Copyright © 2016 Social Media Coders. All rights reserved.
 //
 
 import UIKit
 
-class UserVC: UIViewController {
+class DiscoverVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

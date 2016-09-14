@@ -8,41 +8,48 @@
 
 import UIKit
 
-class MainVC: UIViewController, UIScrollViewDelegate {
+class MainVC: UIViewController {
     
     @IBOutlet weak var scrollViewHor: UIScrollView!
-    @IBOutlet weak var scrollViewVer: UIScrollView!
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-}
-
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.disableScroll), name: NSNotification.Name(rawValue: "Disable"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.enableScroll), name: NSNotification.Name(rawValue: "Enable"), object: nil)
+    }
+    
+    func enableScroll() {
+        scrollViewHor.isScrollEnabled = true
+    }
+    
+    func disableScroll() {
+        scrollViewHor.isScrollEnabled = false
+    }
     
     override func viewDidAppear(_ animated: Bool) {
-
-//        let userView = UserVC(nibName: "UserVC", bundle: nil)
-//        self.addChildViewController(userView)
-//        self.scrollView.addSubview(userView.view)
-//        userView.didMove(toParentViewController: self)
+        
+        
+        let chatView = storyboard?.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        self.addChildViewController(chatView)
+        self.scrollViewHor.addSubview(chatView.view)
+        chatView.didMove(toParentViewController: self)
+        
+//        var chatViewFrame : CGRect = chatView.view.frame
+//        chatViewFrame.origin = CGPoint(x: 0, y: 0)
+//        chatView.view.frame = chatViewFrame
 //        
-//        var userViewFrame = userView.view.frame
-//        userViewFrame.origin = CGPoint(x: self.view.frame.width, y: 0)
-//        userView.view.frame = userViewFrame
+
+        let verticalView = storyboard?.instantiateViewController(withIdentifier: "VerticalVC") as! VerticalVC
+        addChildViewController(verticalView)
+        self.scrollViewHor.addSubview(verticalView.view)
+        verticalView.didMove(toParentViewController: self)
+        
+        var verticalFrame : CGRect = verticalView.view.frame
+        verticalFrame.origin = CGPoint(x: self.view.frame.width, y: 0)
+        verticalView.view.frame = verticalFrame
         
         
-        let cameraView = storyboard?.instantiateViewController(withIdentifier: "CameraVC") as! CameraVC
-        addChildViewController(cameraView)
-        self.scrollViewVer.addSubview(cameraView.view)
-        cameraView.didMove(toParentViewController: self)
-        
-        var cameraFrame : CGRect = cameraView.view.frame
-        cameraFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
-        cameraView.view.frame = cameraFrame
-        
-        let storyView : StoryVC = StoryVC(nibName: "StoryVC", bundle: nil)
+        let storyView = storyboard?.instantiateViewController(withIdentifier: "StoryVC") as! StoryVC
         self.addChildViewController(storyView)
         self.scrollViewHor.addSubview(storyView.view)
         storyView.didMove(toParentViewController: self)
@@ -51,29 +58,25 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         storyViewFrame.origin = CGPoint(x: self.view.frame.width * 2, y: 0)
         storyView.view.frame = storyViewFrame
         
+        let discoverView = storyboard?.instantiateViewController(withIdentifier: "DiscoverVC") as! DiscoverVC
+        self.addChildViewController(discoverView)
+        self.scrollViewHor.addSubview(discoverView.view)
+        discoverView.didMove(toParentViewController: self)
         
-        let chatView : ChatVC = ChatVC(nibName: "ChatVC", bundle: nil)
-        self.addChildViewController(chatView)
-        self.scrollViewHor.addSubview(chatView.view)
-        chatView.didMove(toParentViewController: self)
+        var discoverViewFrame : CGRect = discoverView.view.frame
+        discoverViewFrame.origin = CGPoint(x: self.view.frame.width * 3, y: 0)
+        discoverView.view.frame = discoverViewFrame
         
-        var chatViewFrame : CGRect = chatView.view.frame
-        chatViewFrame.origin = CGPoint(x: 0, y: 0)
-        chatView.view.frame = chatViewFrame
 
         
-//        scrollViewVer.frame = CGRect(x: 0, y: -self.view.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height * 3)
-        scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 3, height: self.view.frame.size.height)
         
-        scrollViewVer.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 3)
         
-        self.scrollViewVer.contentOffset = CGPoint(x: 0, y: self.view.frame.size.height)
-        self.scrollViewHor.contentOffset = CGPoint(x: 0, y: 0)
+        
+        scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 4, height: self.view.frame.size.height)
+        self.scrollViewHor.contentOffset = CGPoint(x: self.view.frame.width, y: 0)
         
         
 }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
