@@ -1,0 +1,6 @@
+framework module Pods_SocialChat {
+  umbrella header "Pods-SocialChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

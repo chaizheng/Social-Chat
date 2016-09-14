@@ -1,0 +1,205 @@
+//
+//  ViewController.swift
+//  SocialChat
+//
+//  Created by ZhangJeff on 9/10/16.
+//  Copyright © 2016 Social Media Coders. All rights reserved.
+//
+
+import UIKit
+import FirebaseAuth
+import AVFoundation
+import ImageIO
+
+class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    @IBOutlet weak var cameraView: UIView!
+
+    @IBOutlet weak var tempingimageView: UIImageView!
+    
+    @IBOutlet weak var flashBtn: UIButton!
+    @IBOutlet weak var recordBtn: UIButton!
+    
+    @IBOutlet weak var changeCamBtn: UIButton!
+    
+    var captureSession : AVCaptureSession?
+    var stillImageOutput : AVCaptureStillImageOutput?
+    var previewLayer : AVCaptureVideoPreviewLayer?
+    var isBackCamera : Bool = true
+    var isFlash : Bool = false
+   
+    
+    override func viewDidLoad() {        
+//        delegate = self
+//        _previewView = previewView
+        super.viewDidLoad()
+    }
+    
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //performSegue(withIdentifier: "LoginVC", sender: nil)
+        guard FIRAuth.auth()?.currentUser != nil else {
+            performSegue(withIdentifier: "LoginVC", sender: nil)
+            return
+        }
+        reloadCamera()
+//        super.viewWillAppear(animated)
+        }
+    
+    
+    func reloadCamera(){
+        
+        captureSession?.stopRunning()
+        
+        captureSession = AVCaptureSession()
+        captureSession?.sessionPreset = AVCaptureSessionPresetHigh
+        
+        var captureDevice:AVCaptureDevice! = nil
+        
+        if isBackCamera == false {
+            
+            let videoDevices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+            for device in videoDevices!{
+                let device = device as! AVCaptureDevice
+                if device.position == AVCaptureDevicePosition.front {
+                    captureDevice = device
+            }
+            }
+        } else{
+            captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        }
+        
+        do{
+            let input = try AVCaptureDeviceInput(device: captureDevice)
+            
+            if (captureSession?.canAddInput(input))!{
+                captureSession?.addInput(input)
+                stillImageOutput = AVCaptureStillImageOutput()
+                stillImageOutput?.outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
+                
+                if (captureSession?.canAddOutput(stillImageOutput))!{
+                    captureSession?.addOutput(stillImageOutput)
+                    
+                    previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                    previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
+                    previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
+                    print(previewLayer?.frame.size)
+                    cameraView.layer.addSublayer(previewLayer!)
+                    previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+                    captureSession?.startRunning()
+                }
+            }
+        }
+        catch{
+            
+        }
+
+    }
+    // turn on flashlight for backcamera
+    func toggleFlash(){
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if (device?.hasFlash)!{
+            if isFlash {
+                do {
+                    try device?.lockForConfiguration()
+                    device?.flashMode = AVCaptureFlashMode.on
+                    device?.unlockForConfiguration()
+                    
+                } catch{
+                    
+                }
+            } else {
+                do {
+                    try device?.lockForConfiguration()
+                    device?.flashMode = AVCaptureFlashMode.off
+                    device?.unlockForConfiguration()
+                    
+                } catch{
+                    
+                }
+            }
+        }
+    }
+    
+   
+    
+    func didPressTakePhoto(){
+        
+        toggleFlash()
+        if let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo){
+            videoConnection.videoOrientation = AVCaptureVideoOrientation.portrait
+            stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) in
+                if sampleBuffer != nil {
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                    let dataProvider = CGDataProvider(data: imageData as! CFData)
+                    let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
+                    
+                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                    self.tempingimageView.image = image
+                    self.tempingimageView.isHidden = false
+                }
+            })
+        }
+    }
+    
+    var didTakePhoto = Bool()
+    
+    func didPressTakeAnother(){
+        if didTakePhoto == true{
+            tempingimageView.isHidden = true
+            didTakePhoto = false
+        }
+        else{
+            captureSession?.startRunning()
+            didTakePhoto = true
+            didPressTakePhoto()
+        }
+    }
+    
+    
+    
+    
+    @IBAction func flashBtnPressed(_ sender: AnyObject) {
+        
+        if isFlash{
+            flashBtn.setImage(#imageLiteral(resourceName: "flashoff_Btn"), for: UIControlState.normal)
+            isFlash = false
+        } else{
+            flashBtn.setImage(#imageLiteral(resourceName: "flash_Btn"), for: UIControlState.normal)
+            isFlash = true
+        }
+        }
+    
+    @IBAction func recordBtnPressed(_ sender: AnyObject) {
+        didPressTakePhoto()
+        
+    }
+
+    @IBAction func changeCamBtnPressed(_ sender: AnyObject) {
+        //changeCamera()
+        isBackCamera = !isBackCamera
+        reloadCamera()
+        print("111")
+    }
+    func shouldEnableCameraUI(_ enable: Bool) {
+        recordBtn.isEnabled = enable
+    }
+    func shouldEnableRecordUI(_ enable: Bool) {
+        recordBtn.isEnabled = enable
+    }
+    func recordingHasStarted() {
+        print ("Recording has started")
+    }
+    func canStartRecording() {
+        print ("Can start recording")
+    }
+
+}
+
