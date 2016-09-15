@@ -8,11 +8,12 @@
 
 import UIKit
 
-class VerticalVC: UIViewController,UIScrollViewDelegate {
+class VerticalVC: UIViewController,MainScrollVCDelegate{
 
     @IBOutlet weak var scrollViewVer: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(VerticalVC.logoBtnPressed), name: NSNotification.Name(rawValue: "logoBtnPressed"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(VerticalVC.goMemBtnPressed), name: NSNotification.Name(rawValue: "goMemBtnPressed"), object: nil)
     }
@@ -28,18 +29,7 @@ class VerticalVC: UIViewController,UIScrollViewDelegate {
         }
     }
     
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            if scrollViewVer.contentOffset.y == 0 || scrollViewVer.contentOffset.y == 2 * self.view.frame.size.height{
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Disable"), object: nil)
-            }
-            if scrollViewVer.contentOffset.y == self.view.frame.size.height {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Enable"), object: nil)
-            }
-        }
-//
     override func viewDidAppear(_ animated: Bool) {
-        scrollViewVer.delegate = self
         self.scrollViewVer.translatesAutoresizingMaskIntoConstraints = true
         
         
@@ -71,8 +61,13 @@ class VerticalVC: UIViewController,UIScrollViewDelegate {
         
     }
 
-    
-    
+    func verScrollEnable() -> Bool{
+        if scrollViewVer.contentOffset.y == 0 || scrollViewVer.contentOffset.y == 2 * self.view.frame.size.height{
+            return false
+        } else {
+            return true
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

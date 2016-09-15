@@ -8,14 +8,32 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+protocol MainScrollVCDelegate {
+    func verScrollEnable() -> Bool
+}
+
+class MainVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollViewHor: UIScrollView!
+    var delegate:MainScrollVCDelegate?
+    var initialContenOffset = CGPoint()
+    var firstTimeSettingOffset = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.disableScroll), name: NSNotification.Name(rawValue: "Disable"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.enableScroll), name: NSNotification.Name(rawValue: "Enable"), object: nil)
+        scrollViewHor.delegate = self
+
+    }
+    
+    // Horizontal scrolling disabled in top and bottom
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        initialContenOffset = scrollViewHor.contentOffset
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (delegate != nil && delegate?.verScrollEnable() == false && firstTimeSettingOffset != true){
+            scrollViewHor.setContentOffset(initialContenOffset, animated: false)
+        }
     }
     
     func enableScroll() {
@@ -33,11 +51,6 @@ class MainVC: UIViewController {
         self.addChildViewController(chatView)
         self.scrollViewHor.addSubview(chatView.view)
         chatView.didMove(toParentViewController: self)
-        
-//        var chatViewFrame : CGRect = chatView.view.frame
-//        chatViewFrame.origin = CGPoint(x: 0, y: 0)
-//        chatView.view.frame = chatViewFrame
-//        
 
         let verticalView = storyboard?.instantiateViewController(withIdentifier: "VerticalVC") as! VerticalVC
         addChildViewController(verticalView)
@@ -67,13 +80,11 @@ class MainVC: UIViewController {
         discoverViewFrame.origin = CGPoint(x: self.view.frame.width * 3, y: 0)
         discoverView.view.frame = discoverViewFrame
         
-
-        
-        
-        
+        delegate = verticalView
         
         scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 4, height: self.view.frame.size.height)
         self.scrollViewHor.contentOffset = CGPoint(x: self.view.frame.width, y: 0)
+        firstTimeSettingOffset = false
         
         
 }
