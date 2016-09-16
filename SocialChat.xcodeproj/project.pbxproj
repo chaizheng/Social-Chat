@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
@@ -27,13 +28,13 @@
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
 		1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B391D898897004C688C /* MemoryVC.swift */; };
 		1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B3B1D898958004C688C /* DiscoverVC.swift */; };
-		1FF928C31D88E3A000DDD55D /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928C21D88E3A000DDD55D /* EditVC.swift */; };
 		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B70BADA4323BF8C9DA136B6 /* Pods-SocialChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.debug.xcconfig"; sourceTree = "<group>"; };
+		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		1FBB3B391D898897004C688C /* MemoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryVC.swift; sourceTree = "<group>"; };
 		1FBB3B3B1D898958004C688C /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
-		1FF928C21D88E3A000DDD55D /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1FF928E81D892C0600DDD55D /* VerticalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalVC.swift; sourceTree = "<group>"; };
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6114321D86808100504735 /* MainVC.swift */,
+				1F2A87D01D8AC24100DA90B4 /* EditVC.swift */,
 				1FF928E81D892C0600DDD55D /* VerticalVC.swift */,
 				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
 				1F6757B61D83A7CD00DA6701 /* CameraVC.swift */,
@@ -133,7 +134,6 @@
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1F6114381D86836100504735 /* StoryVC.swift */,
 				1FBB3B391D898897004C688C /* MemoryVC.swift */,
-				1FF928C21D88E3A000DDD55D /* EditVC.swift */,
 				1F6114681D86E75700504735 /* ChatVC.swift */,
 			);
 			name = Controller;
@@ -301,8 +301,8 @@
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
+				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
 				1F61146A1D86E75700504735 /* ChatVC.swift in Sources */,
-				1FF928C31D88E3A000DDD55D /* EditVC.swift in Sources */,
 				1F6757CC1D83A7EE00DA6701 /* AAPLPreviewView.m in Sources */,
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,

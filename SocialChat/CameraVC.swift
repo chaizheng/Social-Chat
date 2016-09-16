@@ -27,7 +27,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     var previewLayer : AVCaptureVideoPreviewLayer?
     var isBackCamera : Bool = true
     var isFlash : Bool = false
-   
     
     override func viewDidLoad() {        
         super.viewDidLoad()
@@ -135,27 +134,37 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     let dataProvider = CGDataProvider(data: imageData as! CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     
-                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-//                    self.tempingimageView.image = image
-//                    self.tempingimageView.isHidden = false
+                    let tookPhoto = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                    self.performSegue(withIdentifier: "editImage", sender: tookPhoto)
                 }
             })
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EditVC{
+            if let photo = sender as? UIImage {
+                destination.selectedImage = photo             }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     var didTakePhoto = Bool()
     
-//    func didPressTakeAnother(){
-//        if didTakePhoto == true{
-//            tempingimageView.isHidden = true
-//            didTakePhoto = false
-//        }
-//        else{
-//            captureSession?.startRunning()
-//            didTakePhoto = true
-//            didPressTakePhoto()
-//        }
-//    }
+    //    func didPressTakeAnother(){
+    //        if didTakePhoto == true{
+    //            tempingimageView.isHidden = true
+    //            didTakePhoto = false
+    //        }
+    //        else{
+    //            captureSession?.startRunning()
+    //            didTakePhoto = true
+    //            didPressTakePhoto()
+    //        }
+    //    }
     
     @IBAction func flashBtnPressed(_ sender: AnyObject) {
         
@@ -166,13 +175,12 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             flashBtn.setImage(#imageLiteral(resourceName: "flash_Btn"), for: UIControlState.normal)
             isFlash = true
         }
-        }
+    }
     
     @IBAction func recordBtnPressed(_ sender: AnyObject) {
         didPressTakePhoto()
-        
     }
-
+    
     @IBAction func changeCamBtnPressed(_ sender: AnyObject) {
         isBackCamera = !isBackCamera
         reloadCamera()

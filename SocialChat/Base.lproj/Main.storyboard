@@ -245,7 +245,7 @@
                         <outlet property="logoBtn" destination="iqx-6h-hoS" id="TL9-V0-ojb"/>
                         <outlet property="recordBtn" destination="YFk-3R-Gks" id="Fa4-hs-T9I"/>
                         <segue destination="EmC-hy-zex" kind="presentation" identifier="LoginVC" id="fpd-JY-UPm"/>
-                        <segue destination="X9j-cG-l30" kind="showDetail" id="iNw-tJ-a8s"/>
+                        <segue destination="X9j-cG-l30" kind="presentation" identifier="editImage" animates="NO" id="iNw-tJ-a8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -450,22 +450,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XhK-lk-NBV"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfL-8N-0ha">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Mys-8g-kjW"/>
+                                    <constraint firstAttribute="width" constant="43" id="bLn-BW-Y9d"/>
+                                </constraints>
+                                <state key="normal" image="cancel_Btn"/>
+                                <connections>
+                                    <action selector="cancelBtnPressed:" destination="X9j-cG-l30" eventType="touchUpInside" id="UeQ-Lo-Lun"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XhK-lk-NBV" secondAttribute="trailing" id="DAd-r1-kPG"/>
                             <constraint firstItem="XhK-lk-NBV" firstAttribute="top" secondItem="l4k-Ed-rbP" secondAttribute="top" id="GRT-32-zeD"/>
+                            <constraint firstItem="XfL-8N-0ha" firstAttribute="top" secondItem="Yen-RR-m6t" secondAttribute="bottom" constant="8" id="cec-rF-MC0"/>
+                            <constraint firstItem="XfL-8N-0ha" firstAttribute="leading" secondItem="l4k-Ed-rbP" secondAttribute="leadingMargin" id="lWr-2Z-Qjf"/>
                             <constraint firstItem="XhK-lk-NBV" firstAttribute="leading" secondItem="l4k-Ed-rbP" secondAttribute="leading" id="tnX-wm-pDu"/>
                             <constraint firstItem="Ima-tz-Pnw" firstAttribute="top" secondItem="XhK-lk-NBV" secondAttribute="bottom" id="zRl-OM-ocr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="XfL-8N-0ha" id="LNy-RB-n9a"/>
+                        <outlet property="editingImage" destination="XhK-lk-NBV" id="6Vf-pt-aES"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qen-nh-hhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9" y="-2108"/>
+            <point key="canvasLocation" x="8.8000000000000007" y="-2108.095952023988"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cancel_Btn" width="28" height="28"/>
         <image name="changeCam_btn" width="52" height="52"/>
         <image name="flashoff_Btn" width="24" height="37"/>
         <image name="goMemory_Btn" width="24" height="24"/>
