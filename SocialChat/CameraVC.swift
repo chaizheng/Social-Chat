@@ -11,6 +11,14 @@ import FirebaseAuth
 import AVFoundation
 import ImageIO
 
+// global variables
+var firstLoad: Bool = true
+var isBackCamera : Bool = true
+var isFlash : Bool = false
+var captureSession : AVCaptureSession?
+var stillImageOutput : AVCaptureStillImageOutput?
+var previewLayer : AVCaptureVideoPreviewLayer?
+
 class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var cameraView: UIView!
@@ -22,14 +30,9 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     
     @IBOutlet weak var changeCamBtn: UIButton!
     
-    var captureSession : AVCaptureSession?
-    var stillImageOutput : AVCaptureStillImageOutput?
-    var previewLayer : AVCaptureVideoPreviewLayer?
-    var isBackCamera : Bool = true
-    var isFlash : Bool = false
-    
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -45,18 +48,17 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             performSegue(withIdentifier: "LoginVC", sender: nil)
             return
         }
-        reloadCamera()
+      
 
         }
     
     // Create camera view
     func reloadCamera(){
         
-        captureSession?.stopRunning()
+            captureSession = AVCaptureSession()
+            captureSession?.sessionPreset = AVCaptureSessionPresetHigh
         
-        captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = AVCaptureSessionPresetHigh
-        
+      
         var captureDevice:AVCaptureDevice! = nil
         
         if isBackCamera == false {
@@ -90,6 +92,7 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 
                     captureSession?.startRunning()
+                    firstLoad = false
                 }
             }
         }
@@ -149,6 +152,15 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if firstLoad{
+            reloadCamera()
+        } else {
+            //keep camera seesion running otherwise lag
+            isFlash ? flashBtn.setImage(#imageLiteral(resourceName: "flash_Btn"), for: UIControlState.normal) : flashBtn.setImage(#imageLiteral(resourceName: "flashoff_Btn"), for: UIControlState.normal)
+            cameraView.layer.addSublayer(previewLayer!)
+            previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        }
+        
         
     }
     
@@ -183,6 +195,7 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     
     @IBAction func changeCamBtnPressed(_ sender: AnyObject) {
         isBackCamera = !isBackCamera
+        captureSession?.stopRunning()
         reloadCamera()
         
     }
