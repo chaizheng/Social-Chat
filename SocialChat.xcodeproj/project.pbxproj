@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */; };
+		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
@@ -36,6 +37,7 @@
 		0B70BADA4323BF8C9DA136B6 /* Pods-SocialChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.debug.xcconfig"; sourceTree = "<group>"; };
 		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
+		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				1F6757B61D83A7CD00DA6701 /* CameraVC.swift */,
 				1FBB3B3B1D898958004C688C /* DiscoverVC.swift */,
 				1F6757FF1D8426ED00DA6701 /* LoginVC.swift */,
+				1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1F6114381D86836100504735 /* StoryVC.swift */,
 				1FBB3B391D898897004C688C /* MemoryVC.swift */,
@@ -298,6 +301,7 @@
 				1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
+				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,

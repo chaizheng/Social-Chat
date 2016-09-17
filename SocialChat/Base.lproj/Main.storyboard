@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vh0-bj-Dyg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WLk-p0-wTs">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -321,6 +321,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve4-fE-egy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2008.8" y="-708.39580209895053"/>
+        </scene>
+        <!--WebVC-->
+        <scene sceneID="2OP-3w-rBk">
+            <objects>
+                <viewController id="WLk-p0-wTs" customClass="WebVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DQK-VU-WMz"/>
+                        <viewControllerLayoutGuide type="bottom" id="BGE-nK-9Wr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I1Z-V0-rTl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqi-bn-LOZ">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4n-cb-k36">
+                                <items>
+                                    <barButtonItem title="Item" systemItem="rewind" id="Z67-DN-SXF">
+                                        <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="goBack" destination="Gqi-bn-LOZ" id="Fdd-V3-zS3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Zvd-ai-ffD"/>
+                                    <barButtonItem title="Item" systemItem="fastForward" id="fAg-xq-6ii">
+                                        <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="goForward" destination="Gqi-bn-LOZ" id="Vh5-s8-Lmy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0Rb-ZG-2JY"/>
+                                    <barButtonItem systemItem="refresh" id="hgy-iu-Dib">
+                                        <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="reload" destination="Gqi-bn-LOZ" id="gKP-Iw-nZV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UzE-Vx-V0I"/>
+                                    <barButtonItem systemItem="stop" id="5Z3-AF-Kly">
+                                        <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="stopLoading" destination="Gqi-bn-LOZ" id="HmN-vv-4PE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuA-Dj-E5Z" userLabel="Navigation View">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L99-Xa-yUK">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="IGJ-pg-yKK"/>
+                                            <constraint firstAttribute="height" constant="30" id="WKS-tb-pCy"/>
+                                        </constraints>
+                                        <state key="normal" image="back_item"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNy-Fw-VdC">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="303" id="PBs-Sq-M6m"/>
+                                            <constraint firstAttribute="height" constant="33" id="h7l-3L-1Qj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nNy-Fw-VdC" firstAttribute="top" secondItem="fuA-Dj-E5Z" secondAttribute="top" constant="23" id="3N6-Wm-JGo"/>
+                                    <constraint firstAttribute="trailing" secondItem="nNy-Fw-VdC" secondAttribute="trailing" constant="36" id="6fE-eP-JMZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="L99-Xa-yUK" secondAttribute="bottom" constant="8" id="ORP-J9-dek"/>
+                                    <constraint firstAttribute="height" constant="64" id="iaO-A8-CFb"/>
+                                    <constraint firstItem="L99-Xa-yUK" firstAttribute="top" secondItem="fuA-Dj-E5Z" secondAttribute="top" constant="26" id="prm-6Q-SPj"/>
+                                    <constraint firstItem="L99-Xa-yUK" firstAttribute="leading" secondItem="fuA-Dj-E5Z" secondAttribute="leading" constant="8" id="u99-Bl-Vf6"/>
+                                    <constraint firstAttribute="bottom" secondItem="nNy-Fw-VdC" secondAttribute="bottom" constant="8" id="zGd-bc-goc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r4n-cb-k36" firstAttribute="top" secondItem="Gqi-bn-LOZ" secondAttribute="bottom" id="0oP-FT-aW7"/>
+                            <constraint firstItem="Gqi-bn-LOZ" firstAttribute="top" secondItem="I1Z-V0-rTl" secondAttribute="top" id="N9N-CA-Fnk"/>
+                            <constraint firstItem="r4n-cb-k36" firstAttribute="leading" secondItem="I1Z-V0-rTl" secondAttribute="leading" id="PQ4-sR-bT2"/>
+                            <constraint firstAttribute="trailing" secondItem="Gqi-bn-LOZ" secondAttribute="trailing" id="QCz-f5-92w"/>
+                            <constraint firstAttribute="trailing" secondItem="r4n-cb-k36" secondAttribute="trailing" id="YxO-zZ-qDN"/>
+                            <constraint firstItem="fuA-Dj-E5Z" firstAttribute="leading" secondItem="I1Z-V0-rTl" secondAttribute="leading" id="gyw-X0-UUL"/>
+                            <constraint firstItem="fuA-Dj-E5Z" firstAttribute="top" secondItem="I1Z-V0-rTl" secondAttribute="top" id="h6d-Bz-AX0"/>
+                            <constraint firstAttribute="trailing" secondItem="fuA-Dj-E5Z" secondAttribute="trailing" id="ki7-03-rWa"/>
+                            <constraint firstItem="Gqi-bn-LOZ" firstAttribute="leading" secondItem="I1Z-V0-rTl" secondAttribute="leading" id="n3v-Z1-iuk"/>
+                            <constraint firstItem="BGE-nK-9Wr" firstAttribute="top" secondItem="r4n-cb-k36" secondAttribute="bottom" id="wGw-Mg-TbM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barTitleLbl" destination="nNy-Fw-VdC" id="jPj-ne-6h3"/>
+                        <outlet property="discoverWeb" destination="Gqi-bn-LOZ" id="3wf-0D-s2t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YlO-y2-lSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2813.5999999999999" y="-754.27286356821594"/>
         </scene>
         <!--User InfoVC-->
         <scene sceneID="jW2-u2-NWK">
@@ -680,6 +780,6 @@
         <image name="logo_Btn" width="24" height="26"/>
         <image name="record_btn" width="74" height="74"/>
         <image name="socialChatlogo" width="283" height="47"/>
-        <image name="testWebImage" width="800" height="965"/>
+        <image name="testWebImage" width="640" height="721"/>
     </resources>
 </document>
