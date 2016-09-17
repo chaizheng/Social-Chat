@@ -160,23 +160,7 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             cameraView.layer.addSublayer(previewLayer!)
             previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
-        
-        
     }
-    
-    var didTakePhoto = Bool()
-    
-    //    func didPressTakeAnother(){
-    //        if didTakePhoto == true{
-    //            tempingimageView.isHidden = true
-    //            didTakePhoto = false
-    //        }
-    //        else{
-    //            captureSession?.startRunning()
-    //            didTakePhoto = true
-    //            didPressTakePhoto()
-    //        }
-    //    }
     
     @IBAction func flashBtnPressed(_ sender: AnyObject) {
         
@@ -208,8 +192,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     @IBAction func goMemBtnPressed(_ sender: AnyObject) {
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goMemBtnPressed"), object: nil)
     }
-    
-    
 
 }
 

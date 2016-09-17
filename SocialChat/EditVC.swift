@@ -22,7 +22,6 @@ class EditVC: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         editingImage.image = _selectedImage
@@ -35,9 +34,6 @@ class EditVC: UIViewController {
     }
     
     @IBAction func cancelBtnPressed(_ sender: AnyObject) {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
-    //    present(mainVC, animated: false, completion: nil)
         dismiss(animated: false, completion: nil)
     }
 

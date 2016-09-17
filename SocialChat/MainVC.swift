@@ -22,8 +22,16 @@ class MainVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollViewHor.delegate = self
-
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.goLeft), name: NSNotification.Name(rawValue: "goLeft"), object: nil)
     }
+    
+    //Swipe left
+    func goLeft() {
+        UIView.animate(withDuration: 0.2) {
+            self.scrollViewHor.contentOffset.x -= self.view.frame.width
+        }
+    }
+    
     
     // Horizontal scrolling disabled in top and bottom
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

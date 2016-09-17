@@ -11,6 +11,7 @@ import UIKit
 class VerticalVC: UIViewController,MainScrollVCDelegate{
 
     @IBOutlet weak var scrollViewVer: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
