@@ -568,6 +568,14 @@
             </objects>
             <point key="canvasLocation" x="2813.5999999999999" y="-754.27286356821594"/>
         </scene>
+        <!--Edit-->
+        <scene sceneID="f5I-yy-U0A">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Edit" id="XDo-Ge-O2q" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQY-QZ-jCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="219" y="-1862"/>
+        </scene>
         <!--CameraVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -659,7 +667,7 @@
                         <outlet property="logoBtn" destination="iqx-6h-hoS" id="TL9-V0-ojb"/>
                         <outlet property="recordBtn" destination="YFk-3R-Gks" id="Fa4-hs-T9I"/>
                         <segue destination="EmC-hy-zex" kind="presentation" identifier="LoginVC" id="fpd-JY-UPm"/>
-                        <segue destination="X9j-cG-l30" kind="presentation" identifier="editImage" animates="NO" id="iNw-tJ-a8s"/>
+                        <segue destination="XDo-Ge-O2q" kind="presentation" identifier="editImage" animates="NO" id="2aS-AE-cRn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -852,55 +860,11 @@
             </objects>
             <point key="canvasLocation" x="1682.4000000000001" y="30.134932533733135"/>
         </scene>
-        <!--EditVC-->
-        <scene sceneID="jRw-Q7-OoN">
-            <objects>
-                <viewController id="X9j-cG-l30" customClass="EditVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Yen-RR-m6t"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ima-tz-Pnw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="l4k-Ed-rbP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XhK-lk-NBV"/>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfL-8N-0ha">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="Mys-8g-kjW"/>
-                                    <constraint firstAttribute="width" constant="43" id="bLn-BW-Y9d"/>
-                                </constraints>
-                                <state key="normal" image="cancel_Btn"/>
-                                <connections>
-                                    <action selector="cancelBtnPressed:" destination="X9j-cG-l30" eventType="touchUpInside" id="UeQ-Lo-Lun"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XhK-lk-NBV" secondAttribute="trailing" id="DAd-r1-kPG"/>
-                            <constraint firstItem="XhK-lk-NBV" firstAttribute="top" secondItem="l4k-Ed-rbP" secondAttribute="top" id="GRT-32-zeD"/>
-                            <constraint firstItem="XfL-8N-0ha" firstAttribute="top" secondItem="Yen-RR-m6t" secondAttribute="bottom" constant="8" id="cec-rF-MC0"/>
-                            <constraint firstItem="XfL-8N-0ha" firstAttribute="leading" secondItem="l4k-Ed-rbP" secondAttribute="leadingMargin" id="lWr-2Z-Qjf"/>
-                            <constraint firstItem="XhK-lk-NBV" firstAttribute="leading" secondItem="l4k-Ed-rbP" secondAttribute="leading" id="tnX-wm-pDu"/>
-                            <constraint firstItem="Ima-tz-Pnw" firstAttribute="top" secondItem="XhK-lk-NBV" secondAttribute="bottom" id="zRl-OM-ocr"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="cancelBtn" destination="XfL-8N-0ha" id="LNy-RB-n9a"/>
-                        <outlet property="editingImage" destination="XhK-lk-NBV" id="6Vf-pt-aES"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qen-nh-hhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8.8000000000000007" y="-2108.095952023988"/>
-        </scene>
     </scenes>
     <resources>
         <image name="add_Btn" width="19" height="19"/>
         <image name="back_item" width="12" height="20"/>
         <image name="camera_Btn" width="30" height="25"/>
-        <image name="cancel_Btn" width="28" height="28"/>
         <image name="changeCam_btn" width="52" height="52"/>
         <image name="discover_Btn" width="26" height="26"/>
         <image name="flashoff_Btn" width="24" height="37"/>

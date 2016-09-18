@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--EditVC-->
+        <scene sceneID="7AX-bl-eyV">
+            <objects>
+                <viewController id="vhJ-n9-H1k" customClass="EditVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yIk-pp-J1X"/>
+                        <viewControllerLayoutGuide type="bottom" id="3IO-gb-CUb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mim-sF-g3r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-d0-pGp"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="rSJ-1h-aHw"/>
+                                    <constraint firstAttribute="width" constant="43" id="tj5-3O-Owb"/>
+                                </constraints>
+                                <state key="normal" image="cancel_Btn"/>
+                                <connections>
+                                    <action selector="cancelBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="f2f-pm-rGw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leadingMargin" id="2fV-ew-gDk"/>
+                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="BS3-d0-pGp" secondAttribute="bottom" id="6JA-gt-DTT"/>
+                            <constraint firstItem="BS3-d0-pGp" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" id="P7Y-pb-3JN"/>
+                            <constraint firstItem="BS3-d0-pGp" firstAttribute="top" secondItem="mim-sF-g3r" secondAttribute="top" id="a9C-XS-GMW"/>
+                            <constraint firstAttribute="trailing" secondItem="BS3-d0-pGp" secondAttribute="trailing" id="fsG-ip-zcQ"/>
+                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="8" id="wXb-Kb-XqD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="CG8-Zr-9r5" id="7Yy-C9-rkw"/>
+                        <outlet property="editingImage" destination="BS3-d0-pGp" id="Unm-Gd-aYG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8.8000000000000007" y="-2108.095952023988"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancel_Btn" width="28" height="28"/>
+    </resources>
+</document>

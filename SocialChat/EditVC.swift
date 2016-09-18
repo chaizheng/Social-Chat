@@ -25,7 +25,7 @@ class EditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         editingImage.image = _selectedImage
-        // Do any additional setup after loading the view.
+      
     }
 
     override func didReceiveMemoryWarning() {
