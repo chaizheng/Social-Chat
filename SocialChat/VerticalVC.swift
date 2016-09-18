@@ -33,13 +33,12 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
     override func viewDidAppear(_ animated: Bool) {
         self.scrollViewVer.translatesAutoresizingMaskIntoConstraints = true
         
-        
-        let userInfoView = storyboard?.instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
+        let userInfoView = userStoryboard.instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
         addChildViewController(userInfoView)
         self.scrollViewVer.addSubview(userInfoView.view)
         userInfoView.didMove(toParentViewController: self)
         
-        let cameraView = storyboard?.instantiateViewController(withIdentifier: "CameraVC") as! CameraVC
+        let cameraView = mainStoryboard.instantiateViewController(withIdentifier: "CameraVC") as! CameraVC
         addChildViewController(cameraView)
         self.scrollViewVer.addSubview(cameraView.view)
         cameraView.didMove(toParentViewController: self)
@@ -48,7 +47,7 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
         cameraFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
         cameraView.view.frame = cameraFrame
         
-        let memoryView = storyboard?.instantiateViewController(withIdentifier: "MemoryVC") as! MemoryVC
+        let memoryView = mainStoryboard.instantiateViewController(withIdentifier: "MemoryVC") as! MemoryVC
         addChildViewController(memoryView)
         self.scrollViewVer.addSubview(memoryView.view)
         memoryView.didMove(toParentViewController: self)

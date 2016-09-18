@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var backBtnPressed: UIButton!
+class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+
+    @IBOutlet weak var backToStory: UIButton!
   
     @IBOutlet weak var discoverCollection: UICollectionView!
     
@@ -24,8 +25,16 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         discoverCollection.collectionViewLayout = layout
-        
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(discoverCollection.contentOffset)
+//    }
+//    //useless when animated is false
+//    override func viewDidAppear(_ animated: Bool) {
+//        discoverCollection.setContentOffset(CGPoint(x:0,y:800), animated: false)
+//    }
+  
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -39,8 +48,17 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? WebVC{
+            if let index = sender as? Int {
+                destination.selectedUrl = index
+            }
+        }
+    }
+ 
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "showwebview", sender: indexPath.row)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -69,6 +87,11 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             return CGSize(width: width, height: height)
         }
         
+    }
+    
+    
+    @IBAction func backToStoryBtnPressed(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goLeft"), object: nil)
     }
     
     

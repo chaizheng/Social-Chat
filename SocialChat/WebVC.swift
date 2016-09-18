@@ -13,21 +13,41 @@ class WebVC: UIViewController,UIWebViewDelegate {
     @IBOutlet var discoverWeb: UIWebView!
     @IBOutlet weak var barTitleLbl: UILabel!
     
+    @IBOutlet weak var backBtn: UIButton!
+    
+    private var _selectedUrl: Int!
+    
+    var selectedUrl: Int{
+        get{
+            return _selectedUrl
+        }
+        set{
+            _selectedUrl = newValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         discoverWeb.delegate = self
-        let url = URL(string: "http://www.google.com")
-        let request = URLRequest(url: url!)
+        let url:URL!
+        if _selectedUrl == 1 {
+            url = URL(string: "http://www.google.com")
+        } else {
+            url = URL(string: "http://www.qq.com")
+        }
+        let request = URLRequest(url: url)
         discoverWeb.loadRequest(request)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         let titleText = discoverWeb.stringByEvaluatingJavaScript(from: "document.title")
-        print("Title is \(titleText)")
         barTitleLbl.text = titleText
     }
     
 
+    @IBAction func backBtnPressed(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
+    }
     
     
     

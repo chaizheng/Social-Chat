@@ -19,8 +19,15 @@ class DiscoverCell: UICollectionViewCell {
     }
     
     func configureCell(id: Int){
-        titleLbl.text = ""
+        titleLbl.text = "Sport"
+        /*
+        if let url = URL(string: "http://img1.gtimg.com/17/1756/175638/17563899_980x1200_0.jpg"){
+            if let data = NSData(contentsOf: url){
+                webImage.image = UIImage(data: data as Data)
+            }
+        }
+ */
         webImage.image = UIImage(named: "testWebImage")
-        typeLbl.text = ""
+        typeLbl.text = "Sport"
     }
 }

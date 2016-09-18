@@ -10,6 +10,7 @@ import UIKit
 
 class ChatVC: UIViewController {
 
+    @IBOutlet weak var backToCameraBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +22,9 @@ class ChatVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func backToCameraBtnPressed(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goRight"), object: nil)
+    }
 
     /*
     // MARK: - Navigation

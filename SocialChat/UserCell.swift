@@ -10,7 +10,7 @@ import UIKit
 
 class UserCell: UITableViewCell {
 
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var firstNameLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +20,10 @@ class UserCell: UITableViewCell {
     func setCheckmark(selected: Bool) {
         let imageStr = selected ? "checkedBox" : "checkBox"
         self.accessoryView = UIImageView(image: UIImage(named: imageStr))
+    }
+    
+    func updateUI(user: User){
+        firstNameLbl.text = user.firstName
     }
     
 
