@@ -40,7 +40,7 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCell", for: indexPath) as? DiscoverCell{
             
-            cell.configureCell(id:indexPath.row)
+            cell.configureCell(id:indexPath.row + 1)
             return cell
             
         } else{

@@ -27,7 +27,7 @@ class DiscoverCell: UICollectionViewCell {
             }
         }
  */
-        webImage.image = UIImage(named: "testWebImage")
+        webImage.image = UIImage(named: "\(id).jpg")
         typeLbl.text = "Sport"
     }
 }
