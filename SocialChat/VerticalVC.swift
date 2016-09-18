@@ -47,7 +47,7 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
         cameraFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
         cameraView.view.frame = cameraFrame
         
-        let memoryView = mainStoryboard.instantiateViewController(withIdentifier: "MemoryVC") as! MemoryVC
+        let memoryView = editStoryboard.instantiateViewController(withIdentifier: "MemoryVC") as! MemoryVC
         addChildViewController(memoryView)
         self.scrollViewVer.addSubview(memoryView.view)
         memoryView.didMove(toParentViewController: self)

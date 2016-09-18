@@ -14,7 +14,7 @@ class StoryVC: UIViewController {
     @IBOutlet weak var backToCameraBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 

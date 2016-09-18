@@ -14,6 +14,7 @@ protocol MainScrollVCDelegate {
 
 let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
 let userStoryboard = UIStoryboard.init(name: "User", bundle: nil)
+let editStoryboard = UIStoryboard.init(name: "Edit", bundle: nil)
 
 class MainVC: UIViewController, UIScrollViewDelegate {
     
