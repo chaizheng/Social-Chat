@@ -15,6 +15,8 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
   
     @IBOutlet weak var discoverCollection: UICollectionView!
     
+    var webdiscover = [Webdiscover]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +27,7 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         discoverCollection.collectionViewLayout = layout
+        parseWebsiteCSV()
     }
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -34,13 +37,33 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
 //    override func viewDidAppear(_ animated: Bool) {
 //        discoverCollection.setContentOffset(CGPoint(x:0,y:800), animated: false)
 //    }
-  
+    
+    func parseWebsiteCSV(){
+        let path = Bundle.main.path(forResource: "website", ofType: "csv")!
+        do{
+            let csv = try CSV.init(contentsOfURL: path)
+            let rows = csv.rows
+            
+            for row in rows{
+                let type = row["Type"]
+                let title = row["Title"]
+                let url = row["Url"]
+                
+                let web = Webdiscover(url: url!, type: type!, title: title!)
+                webdiscover.append(web)
+            }
+            
+        } catch let err as NSError{
+            print(err.debugDescription)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCell", for: indexPath) as? DiscoverCell{
             
-            cell.configureCell(id:indexPath.row + 1)
+            cell.configureCell(web:webdiscover[indexPath.row], id: indexPath.row+1)
             return cell
             
         } else{
@@ -51,7 +74,7 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? WebVC{
             if let index = sender as? Int {
-                destination.selectedUrl = index
+                destination.selectedUrl = webdiscover[index].url
             }
         }
     }

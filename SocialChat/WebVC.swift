@@ -15,9 +15,9 @@ class WebVC: UIViewController,UIWebViewDelegate {
     
     @IBOutlet weak var backBtn: UIButton!
     
-    private var _selectedUrl: Int!
+    private var _selectedUrl: String!
     
-    var selectedUrl: Int{
+    var selectedUrl: String{
         get{
             return _selectedUrl
         }
@@ -30,11 +30,7 @@ class WebVC: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
         discoverWeb.delegate = self
         let url:URL!
-        if _selectedUrl == 1 {
-            url = URL(string: "http://www.google.com")
-        } else {
-            url = URL(string: "http://www.qq.com")
-        }
+        url = URL(string: selectedUrl)
         let request = URLRequest(url: url)
         discoverWeb.loadRequest(request)
     }

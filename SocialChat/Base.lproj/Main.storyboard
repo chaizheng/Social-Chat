@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eab-ky-u6I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vh0-bj-Dyg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -404,33 +404,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="124" height="172"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testWebImage" translatesAutoresizingMaskIntoConstraints="NO" id="72M-ZS-5Sk" userLabel="cellImage"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u8-87-5de" userLabel="Type Lbl">
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="26"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="72M-ZS-5Sk" userLabel="cellImage"/>
+                                                <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOZ-qc-xFv">
+                                                    <color key="backgroundColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-QP-yD6">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-QP-yD6">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="104" id="IHC-6X-gLx"/>
-                                                        <constraint firstAttribute="height" constant="44" id="Jy4-x5-Zox"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u8-87-5de" userLabel="Type Lbl">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="26"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VOZ-qc-xFv" secondAttribute="bottom" id="AmE-ae-bEG"/>
                                             <constraint firstItem="72M-ZS-5Sk" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" id="EGA-1F-hpl"/>
-                                            <constraint firstItem="0u8-87-5de" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leadingMargin" id="T2R-Mh-hPN"/>
+                                            <constraint firstAttribute="trailing" secondItem="gw6-QP-yD6" secondAttribute="trailing" constant="8" id="Fgm-ov-W9a"/>
+                                            <constraint firstItem="VOZ-qc-xFv" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" id="JEy-FF-8TM"/>
+                                            <constraint firstItem="VOZ-qc-xFv" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" id="PE1-Oq-umh"/>
                                             <constraint firstAttribute="bottom" secondItem="72M-ZS-5Sk" secondAttribute="bottom" id="cRf-IZ-D1f"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="0u8-87-5de" secondAttribute="trailing" id="e8m-7M-y9D"/>
-                                            <constraint firstItem="gw6-QP-yD6" firstAttribute="bottom" secondItem="RJZ-o1-8jC" secondAttribute="bottomMargin" constant="3" id="l40-uI-fJS"/>
+                                            <constraint firstItem="0u8-87-5de" firstAttribute="centerX" secondItem="RJZ-o1-8jC" secondAttribute="centerX" id="dun-FK-K9a"/>
+                                            <constraint firstItem="gw6-QP-yD6" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" constant="8" id="lf2-gk-VrV"/>
+                                            <constraint firstItem="0u8-87-5de" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" constant="12" id="n0g-E1-8OQ"/>
                                             <constraint firstAttribute="trailing" secondItem="72M-ZS-5Sk" secondAttribute="trailing" id="nuQ-lA-frF"/>
                                             <constraint firstItem="72M-ZS-5Sk" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" id="o1N-x8-p1z"/>
-                                            <constraint firstItem="0u8-87-5de" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="topMargin" constant="4" id="vE6-qT-2yz"/>
-                                            <constraint firstItem="gw6-QP-yD6" firstAttribute="trailing" secondItem="RJZ-o1-8jC" secondAttribute="trailingMargin" id="vOx-pp-S84"/>
+                                            <constraint firstAttribute="trailing" secondItem="VOZ-qc-xFv" secondAttribute="trailing" id="sEw-f7-UsI"/>
+                                            <constraint firstItem="gw6-QP-yD6" firstAttribute="bottom" secondItem="RJZ-o1-8jC" secondAttribute="bottomMargin" constant="4" id="vuz-BJ-Fo2"/>
                                         </constraints>
                                         <size key="customSize" width="124" height="172"/>
                                         <connections>
@@ -873,6 +876,5 @@
         <image name="logo_Btn" width="24" height="26"/>
         <image name="record_btn" width="74" height="74"/>
         <image name="socialChatlogo" width="283" height="47"/>
-        <image name="testWebImage" width="800" height="965"/>
     </resources>
 </document>

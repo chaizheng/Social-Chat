@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DiscoverVC.swift"
-            timestampString = "495858588.217991"
+            timestampString = "495987001.730982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DiscoverVC.swift"
-            timestampString = "495865385.712316"
+            timestampString = "495987001.730982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "DiscoverVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DiscoverVC.swift"
-            timestampString = "495865385.712316"
+            timestampString = "495987001.730982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DiscoverVC.swift"
-            timestampString = "495865385.712316"
+            timestampString = "495987001.730982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,12 +186,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/csv.swift"
-            timestampString = "495900966.151392"
+            timestampString = "495978679.917755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "parseRows(fromLines:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/csv.swift"
+            timestampString = "495980082.090677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "init(contentsOfURL:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

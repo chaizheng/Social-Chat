@@ -96,8 +96,8 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                 }
             }
         }
-        catch{
-            
+        catch let err as NSError{
+            print(err.debugDescription)
         }
 
     }
@@ -111,8 +111,8 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     device?.flashMode = AVCaptureFlashMode.on
                     device?.unlockForConfiguration()
                     
-                } catch{
-                    
+                } catch let err as NSError{
+                    print(err.debugDescription)
                 }
             } else {
                 do {
@@ -120,8 +120,8 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                     device?.flashMode = AVCaptureFlashMode.off
                     device?.unlockForConfiguration()
                     
-                } catch{
-                    
+                } catch let err as NSError{
+                    print(err.debugDescription)
                 }
             }
         }

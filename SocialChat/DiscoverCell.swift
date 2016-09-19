@@ -18,16 +18,11 @@ class DiscoverCell: UICollectionViewCell {
       //  layer.cornerRadius = 5.0
     }
     
-    func configureCell(id: Int){
-        titleLbl.text = "Sport"
-        /*
-        if let url = URL(string: "http://img1.gtimg.com/17/1756/175638/17563899_980x1200_0.jpg"){
-            if let data = NSData(contentsOf: url){
-                webImage.image = UIImage(data: data as Data)
-            }
-        }
- */
+        
+    func configureCell(web:Webdiscover, id:Int){
+        
+        titleLbl.text = web.title
         webImage.image = UIImage(named: "\(id).jpg")
-        typeLbl.text = "Sport"
+        typeLbl.text = web.type
     }
 }

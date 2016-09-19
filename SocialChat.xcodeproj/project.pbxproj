@@ -26,6 +26,7 @@
 		1F6758001D8426ED00DA6701 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FF1D8426ED00DA6701 /* LoginVC.swift */; };
 		1F6758031D8433F800DA6701 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6758021D8433F800DA6701 /* AuthService.swift */; };
 		1F736D521D862F6E0035F976 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F736D511D862F6E0035F976 /* DataService.swift */; };
+		1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4B3431D90252200089438 /* Webdiscover.swift */; };
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
 		1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B391D898897004C688C /* MemoryVC.swift */; };
 		1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B3B1D898958004C688C /* DiscoverVC.swift */; };
@@ -61,6 +62,7 @@
 		1F6757FF1D8426ED00DA6701 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1F6758021D8433F800DA6701 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1F736D511D862F6E0035F976 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		1FA4B3431D90252200089438 /* Webdiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webdiscover.swift; sourceTree = "<group>"; };
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		1FBB3B391D898897004C688C /* MemoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryVC.swift; sourceTree = "<group>"; };
 		1FBB3B3B1D898958004C688C /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
@@ -113,8 +115,8 @@
 				1FCA8BA41D8E849C004E5F76 /* storyboard */,
 				1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */,
 				1FCA8BAA1D8ED953004E5F76 /* util */,
-				1FCA8BAB1D8ED96F004E5F76 /* Resources */,
 				1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */,
+				1FCA8BA61D8E9A91004E5F76 /* website.csv */,
 				1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */,
 				1F6757C01D83A7CD00DA6701 /* Info.plist */,
 				1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */,
@@ -199,17 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				1FCA8B9C1D8E6EE2004E5F76 /* User.swift */,
+				1FA4B3431D90252200089438 /* Webdiscover.swift */,
 				1FCA8BA81D8ED4DE004E5F76 /* csv.swift */,
 			);
 			name = util;
-			sourceTree = "<group>";
-		};
-		1FCA8BAB1D8ED96F004E5F76 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1FCA8BA61D8E9A91004E5F76 /* website.csv */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		BCAA695AA9EADE6C0F3DB985 /* Frameworks */ = {
@@ -377,6 +372,7 @@
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
 				1F6758031D8433F800DA6701 /* AuthService.swift in Sources */,
+				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
 				1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */,
 			);

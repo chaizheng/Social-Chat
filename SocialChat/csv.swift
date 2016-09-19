@@ -2,20 +2,20 @@
 
 import Foundation
 
-public class CSV {
-    public var headers: [String] = []
-    public var rows: [Dictionary<String, String>] = []
-    public var columns = Dictionary<String, [String]>()
+open class CSV {
+    open var headers: [String] = []
+    open var rows: [Dictionary<String, String>] = []
+    open var columns = Dictionary<String, [String]>()
     var delimiter = CharacterSet(charactersIn: ",")
-    
     
     public init(content: String?, delimiter: CharacterSet, encoding: UInt) throws{
         if let csvStringToParse = content{
             self.delimiter = delimiter
             
-            let newline = NSCharacterSet.newlines
+            let newline = CharacterSet.newlines
             var lines: [String] = []
-            csvStringToParse.trimmingCharacters(in: newline).enumerateLines(invoking: { (line, stop) in lines.append(line)})
+            csvStringToParse.trimmingCharacters(in: newline).enumerateLines { line, stop in lines.append(line) }
+            
             self.headers = self.parseHeaders(fromLines: lines)
             self.rows = self.parseRows(fromLines: lines)
             self.columns = self.parseColumns(fromLines: lines)
@@ -36,7 +36,6 @@ public class CSV {
     
     func parseHeaders(fromLines lines: [String]) -> [String] {
         return lines[0].components(separatedBy: self.delimiter)
-        
     }
     
     func parseRows(fromLines lines: [String]) -> [Dictionary<String, String>] {
