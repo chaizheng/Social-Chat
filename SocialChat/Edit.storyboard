@@ -30,25 +30,43 @@
                                     <action selector="cancelBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="f2f-pm-rGw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOX-W0-68U">
+                                <state key="normal" image="circle_send"/>
+                                <connections>
+                                    <action selector="sendToBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="qM6-pI-rCT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CG8-Zr-9r5" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leadingMargin" id="2fV-ew-gDk"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="BS3-d0-pGp" secondAttribute="bottom" id="6JA-gt-DTT"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" id="P7Y-pb-3JN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iOX-W0-68U" secondAttribute="trailing" id="WPl-er-7Ay"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="top" secondItem="mim-sF-g3r" secondAttribute="top" id="a9C-XS-GMW"/>
                             <constraint firstAttribute="trailing" secondItem="BS3-d0-pGp" secondAttribute="trailing" id="fsG-ip-zcQ"/>
+                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="iOX-W0-68U" secondAttribute="bottom" constant="20" id="mgV-iP-Ghj"/>
                             <constraint firstItem="CG8-Zr-9r5" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="8" id="wXb-Kb-XqD"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelBtn" destination="CG8-Zr-9r5" id="7Yy-C9-rkw"/>
                         <outlet property="editingImage" destination="BS3-d0-pGp" id="Unm-Gd-aYG"/>
+                        <outlet property="sendToBtn" destination="iOX-W0-68U" id="0yj-cL-ACF"/>
+                        <segue destination="qRx-qF-NPK" kind="show" identifier="toUsersVC" id="dCR-tA-sru"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8.8000000000000007" y="-2108.095952023988"/>
+            <point key="canvasLocation" x="-28" y="-2133"/>
+        </scene>
+        <!--UsersVC-->
+        <scene sceneID="7zb-bM-k7x">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UsersVC" id="qRx-qF-NPK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UHY-vz-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282" y="-1675"/>
         </scene>
         <!--MemoryVC-->
         <scene sceneID="PTS-7A-RaB">
@@ -71,5 +89,6 @@
     </scenes>
     <resources>
         <image name="cancel_Btn" width="28" height="28"/>
+        <image name="circle_send" width="59" height="59"/>
     </resources>
 </document>

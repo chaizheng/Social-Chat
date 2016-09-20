@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vh0-bj-Dyg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eab-ky-u6I">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -408,7 +408,7 @@
                                                 <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOZ-qc-xFv">
                                                     <color key="backgroundColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-QP-yD6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-QP-yD6">
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -426,13 +426,14 @@
                                             <constraint firstAttribute="trailing" secondItem="gw6-QP-yD6" secondAttribute="trailing" constant="8" id="Fgm-ov-W9a"/>
                                             <constraint firstItem="VOZ-qc-xFv" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" id="JEy-FF-8TM"/>
                                             <constraint firstItem="VOZ-qc-xFv" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" id="PE1-Oq-umh"/>
+                                            <constraint firstAttribute="trailing" secondItem="0u8-87-5de" secondAttribute="trailing" id="aY0-0x-dRv"/>
                                             <constraint firstAttribute="bottom" secondItem="72M-ZS-5Sk" secondAttribute="bottom" id="cRf-IZ-D1f"/>
-                                            <constraint firstItem="0u8-87-5de" firstAttribute="centerX" secondItem="RJZ-o1-8jC" secondAttribute="centerX" id="dun-FK-K9a"/>
                                             <constraint firstItem="gw6-QP-yD6" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" constant="8" id="lf2-gk-VrV"/>
                                             <constraint firstItem="0u8-87-5de" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" constant="12" id="n0g-E1-8OQ"/>
                                             <constraint firstAttribute="trailing" secondItem="72M-ZS-5Sk" secondAttribute="trailing" id="nuQ-lA-frF"/>
                                             <constraint firstItem="72M-ZS-5Sk" firstAttribute="top" secondItem="RJZ-o1-8jC" secondAttribute="top" id="o1N-x8-p1z"/>
                                             <constraint firstAttribute="trailing" secondItem="VOZ-qc-xFv" secondAttribute="trailing" id="sEw-f7-UsI"/>
+                                            <constraint firstItem="0u8-87-5de" firstAttribute="leading" secondItem="RJZ-o1-8jC" secondAttribute="leading" id="til-eF-qRc"/>
                                             <constraint firstItem="gw6-QP-yD6" firstAttribute="bottom" secondItem="RJZ-o1-8jC" secondAttribute="bottomMargin" constant="4" id="vuz-BJ-Fo2"/>
                                         </constraints>
                                         <size key="customSize" width="124" height="172"/>
@@ -798,7 +799,7 @@
         <!--UsersVC-->
         <scene sceneID="J4z-qa-JwM">
             <objects>
-                <viewController id="XqQ-Sn-wFw" customClass="UsersVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsersVC" id="XqQ-Sn-wFw" customClass="UsersVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xd1-8k-b4x"/>
                         <viewControllerLayoutGuide type="bottom" id="xqk-uh-S7r"/>
@@ -807,6 +808,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cGY-g7-6UW">
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgp-0C-OrS">
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                                    <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Send To..." id="Z8N-Qp-8mq">
+                                        <barButtonItem key="rightBarButtonItem" image="send_item" id="ndS-jW-14R">
+                                            <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="sendBtnPressed:" destination="XqQ-Sn-wFw" id="nFO-kl-l8b"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pft-LN-3bT">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -834,34 +855,33 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="firstNameLbl" destination="Oai-01-VIN" id="IKl-ZJ-eMn"/>
-                                            <outlet property="userNameLabel" destination="Oai-01-VIN" id="bzz-gt-Uga"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cGY-g7-6UW">
-                                <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Pft-LN-3bT" secondAttribute="trailing" id="8GR-Gj-5GJ"/>
                             <constraint firstItem="Pft-LN-3bT" firstAttribute="top" secondItem="cGY-g7-6UW" secondAttribute="bottom" id="Edo-ta-0KV"/>
                             <constraint firstAttribute="trailing" secondItem="cGY-g7-6UW" secondAttribute="trailing" id="IMn-5P-7dx"/>
+                            <constraint firstAttribute="trailing" secondItem="Bgp-0C-OrS" secondAttribute="trailing" id="InF-Ca-lmf"/>
                             <constraint firstItem="Pft-LN-3bT" firstAttribute="leading" secondItem="9cC-e1-L4Z" secondAttribute="leading" id="RVj-2l-VLm"/>
                             <constraint firstItem="xqk-uh-S7r" firstAttribute="top" secondItem="Pft-LN-3bT" secondAttribute="bottom" id="bC6-ON-8Tr"/>
-                            <constraint firstItem="cGY-g7-6UW" firstAttribute="top" secondItem="9cC-e1-L4Z" secondAttribute="top" id="lsb-t3-srn"/>
+                            <constraint firstItem="Bgp-0C-OrS" firstAttribute="top" secondItem="xd1-8k-b4x" secondAttribute="bottom" id="gjs-c3-yTr"/>
+                            <constraint firstItem="cGY-g7-6UW" firstAttribute="top" secondItem="9cC-e1-L4Z" secondAttribute="top" constant="64" id="lsb-t3-srn"/>
                             <constraint firstItem="cGY-g7-6UW" firstAttribute="leading" secondItem="9cC-e1-L4Z" secondAttribute="leading" id="ocl-nP-n1L"/>
+                            <constraint firstItem="Bgp-0C-OrS" firstAttribute="leading" secondItem="9cC-e1-L4Z" secondAttribute="leading" id="wZQ-6v-y5a"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="send_Btn" destination="ndS-jW-14R" id="7vd-ym-60z"/>
                         <outlet property="tableView" destination="Pft-LN-3bT" id="hBH-jG-SaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0Z-NV-QKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682.4000000000001" y="30.134932533733135"/>
+            <point key="canvasLocation" x="2036" y="29"/>
         </scene>
     </scenes>
     <resources>
@@ -875,6 +895,7 @@
         <image name="login_background" width="1732" height="1155"/>
         <image name="logo_Btn" width="24" height="26"/>
         <image name="record_btn" width="74" height="74"/>
+        <image name="send_item" width="27" height="26"/>
         <image name="socialChatlogo" width="283" height="47"/>
     </resources>
 </document>

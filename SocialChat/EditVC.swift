@@ -13,6 +13,8 @@ class EditVC: UIViewController {
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
     
+    @IBOutlet weak var sendToBtn: UIButton!
+    
     private var _selectedImage: UIImage!
     var selectedImage: UIImage {
         get {
@@ -37,5 +39,18 @@ class EditVC: UIViewController {
         dismiss(animated: false, completion: nil)
     }
 
+    @IBAction func sendToBtnPressed(_ sender: AnyObject) {
+        performSegue(withIdentifier: "toUsersVC", sender: selectedImage)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? UsersVC{
+            if let image = sender as? UIImage{
+                print("In loop")
+                destination.image = image
+            }
+            
+        }
+    }
     
 }
