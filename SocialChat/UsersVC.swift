@@ -19,6 +19,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var users = [User]()
     private var selectedUsers = Dictionary<String, User>()
     private var _image: UIImage?
+    var imgVisibleTime:Int = 5
     
     var image:UIImage?{
         get{
@@ -36,8 +37,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
-        
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        send_Btn.isEnabled = false
         
         DataService.instance.usersRef.observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
             if let users = snapshot.value as? Dictionary<String, Any>{
@@ -66,7 +66,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationItem.rightBarButtonItem?.isEnabled = true
+        send_Btn.isEnabled = true
         let cell = tableView.cellForRow(at: indexPath) as! UserCell
         cell.setCheckmark(selected: true)
         let user = users[indexPath.row]
@@ -79,7 +79,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let user = users[indexPath.row]
         selectedUsers[user.uid] = nil
         if selectedUsers.count < 1{
-            navigationItem.rightBarButtonItem?.isEnabled = false
+            send_Btn.isEnabled = false
         }
     }
     
@@ -96,13 +96,13 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let image = _image{
             let imageName = "\(NSUUID().uuidString).jpg"
             let ref = DataService.instance.imageStorageRef.child(imageName)
-            let imageData:Data = UIImageJPEGRepresentation(image, CGFloat(1.0))!
+            let imageData:Data = UIImageJPEGRepresentation(image, CGFloat(0.5))!
             _ = ref.put(imageData, metadata: nil, completion: { (meta:FIRStorageMetadata?, err:Error?) in
                 if err != nil{
                     print("Error uploading image: \(err?.localizedDescription)")
                 } else {
                     let downloadURL = meta!.downloadURL()
-                    DataService.instance.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectedUsers, mediaURL: downloadURL!, textSnippet: "Finally sending to you~")
+                    DataService.instance.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectedUsers, mediaURL: downloadURL!, visibleTime: self.imgVisibleTime)
                     
                 }
             })

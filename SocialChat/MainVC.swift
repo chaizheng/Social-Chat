@@ -12,6 +12,9 @@ protocol MainScrollVCDelegate {
     func verScrollEnable() -> Bool
 }
 
+//avoid apear again
+var firstTimeAppear = true
+
 let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
 let userStoryboard = UIStoryboard.init(name: "User", bundle: nil)
 let editStoryboard = UIStoryboard.init(name: "Edit", bundle: nil)
@@ -43,8 +46,6 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    
-    
     // Horizontal scrolling disabled in top and bottom
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         initialContenOffset = scrollViewHor.contentOffset
@@ -56,17 +57,11 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func enableScroll() {
-        scrollViewHor.isScrollEnabled = true
-    }
-    
-    func disableScroll() {
-        scrollViewHor.isScrollEnabled = false
-    }
+ 
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
+        if firstTimeAppear{
         let chatView = mainStoryboard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
         self.addChildViewController(chatView)
         self.scrollViewHor.addSubview(chatView.view)
@@ -80,8 +75,6 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         var verticalFrame : CGRect = verticalView.view.frame
         verticalFrame.origin = CGPoint(x: self.view.frame.width, y: 0)
         verticalView.view.frame = verticalFrame
-        
-
         
         let storyView = mainStoryboard.instantiateViewController(withIdentifier: "StoryVC") as! StoryVC
         self.addChildViewController(storyView)
@@ -106,8 +99,8 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 4, height: self.view.frame.size.height)
         self.scrollViewHor.contentOffset = CGPoint(x: self.view.frame.width, y: 0)
         firstTimeSettingOffset = false
-        
-        
+        firstTimeAppear = false
+        }
 }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

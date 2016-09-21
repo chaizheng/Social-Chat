@@ -40,15 +40,10 @@ class WebVC: UIViewController,UIWebViewDelegate {
         barTitleLbl.text = titleText
     }
     
-
     @IBAction func backBtnPressed(_ sender: AnyObject) {
         dismiss(animated: false, completion: nil)
     }
-    
-    
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

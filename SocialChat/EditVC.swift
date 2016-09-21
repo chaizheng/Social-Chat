@@ -46,7 +46,6 @@ class EditVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UsersVC{
             if let image = sender as? UIImage{
-                print("In loop")
                 destination.image = image
             }
             

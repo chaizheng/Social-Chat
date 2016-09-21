@@ -40,14 +40,16 @@ class DataService {
         mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
     }
     
-    func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>, mediaURL: URL, textSnippet: String? = nil) {
+    func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>, mediaURL: URL, visibleTime: Int /*textSnippet: String? = nil*/) {
         
         var uids = [String]()
         for uid in sendingTo.keys{
             uids.append(uid)
         }
-        let userIds = sendingTo.keys
-        var pr: Dictionary<String, Any> = ["mediaURL":mediaURL.absoluteString,"userID":senderUID,"openTime":2, "receivers": uids]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd 'at' HH:mm"
+        let sendTime = dateFormatter.string(from: Date())
+        let pr: Dictionary<String, Any> = ["mediaURL":mediaURL.absoluteString,"senderID":senderUID,"receiversID": uids,"visibleTime": visibleTime,"sendTime": sendTime]
         
         mainRef.child("pullRequests").childByAutoId().setValue(pr)
         
