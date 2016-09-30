@@ -769,7 +769,7 @@
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -792,39 +792,64 @@
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4v-2b-MTW" customClass="RoundButton" customModule="SocialChat" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="252" id="Q3S-JT-gUu"/>
+                                    <constraint firstAttribute="width" constant="120" id="Q3S-JT-gUu"/>
                                     <constraint firstAttribute="height" constant="42" id="Zw1-Vz-3Le"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Log In">
-                                    <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginBtnPressed:" destination="EmC-hy-zex" eventType="touchUpInside" id="PNE-SA-tQ9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Zi-vdO" customClass="RoundButton" customModule="SocialChat" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="t2f-sG-QK1"/>
+                                    <constraint firstAttribute="height" constant="42" id="w3S-b3-JJH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="EmC-hy-zex" eventType="touchUpInside" id="Ca5-oB-a6l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CFi-ed-k1x" firstAttribute="leading" secondItem="RZh-m4-a7b" secondAttribute="leading" id="5ql-gU-ucE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gz2-Zi-vdO" secondAttribute="trailing" constant="47" id="6Dw-rh-89s"/>
                             <constraint firstItem="Hzp-ua-q5i" firstAttribute="centerX" secondItem="RZh-m4-a7b" secondAttribute="centerX" id="8Uf-dB-v3X"/>
                             <constraint firstItem="eNG-EZ-6TX" firstAttribute="top" secondItem="Neo-SN-Rg5" secondAttribute="bottom" id="9Qg-gt-4XR"/>
-                            <constraint firstItem="P4v-2b-MTW" firstAttribute="top" secondItem="Qfa-b8-6DK" secondAttribute="bottom" constant="19" id="A7D-3U-2eK"/>
+                            <constraint firstItem="P4v-2b-MTW" firstAttribute="top" secondItem="Qfa-b8-6DK" secondAttribute="bottom" constant="49" id="A7D-3U-2eK"/>
                             <constraint firstAttribute="trailing" secondItem="Neo-SN-Rg5" secondAttribute="trailing" id="Ec8-pU-s49"/>
+                            <constraint firstItem="P4v-2b-MTW" firstAttribute="leading" secondItem="RZh-m4-a7b" secondAttribute="leadingMargin" constant="46" id="Fa2-d1-mQB"/>
                             <constraint firstItem="Hzp-ua-q5i" firstAttribute="top" secondItem="Nib-qL-c8J" secondAttribute="bottom" constant="42" id="Pj4-3L-JRu"/>
+                            <constraint firstItem="Gz2-Zi-vdO" firstAttribute="top" secondItem="Qfa-b8-6DK" secondAttribute="bottom" constant="49" id="S4d-aH-RDS"/>
                             <constraint firstItem="Nib-qL-c8J" firstAttribute="centerX" secondItem="RZh-m4-a7b" secondAttribute="centerX" id="WHB-Mh-3wb"/>
                             <constraint firstAttribute="trailing" secondItem="CFi-ed-k1x" secondAttribute="trailing" id="Y1e-oO-p8H"/>
                             <constraint firstItem="Nib-qL-c8J" firstAttribute="top" secondItem="08a-G1-BWL" secondAttribute="bottom" constant="120" id="amp-9l-VoP"/>
@@ -832,7 +857,6 @@
                             <constraint firstItem="eNG-EZ-6TX" firstAttribute="top" secondItem="CFi-ed-k1x" secondAttribute="bottom" id="fY0-ka-OD0"/>
                             <constraint firstItem="CFi-ed-k1x" firstAttribute="top" secondItem="RZh-m4-a7b" secondAttribute="top" id="fqJ-1O-chQ"/>
                             <constraint firstItem="Neo-SN-Rg5" firstAttribute="leading" secondItem="RZh-m4-a7b" secondAttribute="leading" id="kKn-EG-Tpr"/>
-                            <constraint firstItem="P4v-2b-MTW" firstAttribute="centerX" secondItem="RZh-m4-a7b" secondAttribute="centerX" id="tXP-vQ-Y2z"/>
                             <constraint firstItem="Qfa-b8-6DK" firstAttribute="centerX" secondItem="RZh-m4-a7b" secondAttribute="centerX" id="vMA-1t-PBv"/>
                             <constraint firstItem="Qfa-b8-6DK" firstAttribute="top" secondItem="Hzp-ua-q5i" secondAttribute="bottom" constant="19" id="xgF-U2-2Pf"/>
                         </constraints>
@@ -844,7 +868,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkg-7b-ZXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1882" y="-1422"/>
+            <point key="canvasLocation" x="-1882.4000000000001" y="-1422.6386806596702"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="J4z-qa-JwM">
@@ -882,10 +906,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="k4z-qG-aGm" customClass="UserCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4z-qG-aGm" id="fX8-Fm-FQ8">
-                                            <frame key="frameInset" width="1000" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-01-VIN">
