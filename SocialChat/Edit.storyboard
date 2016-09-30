@@ -42,7 +42,7 @@
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
-                                    <segue destination="eTt-Av-csv" kind="show" id="AZg-bQ-5fO"/>
+                                    <segue destination="eTt-Av-csv" kind="show" id="QpN-Sf-s2b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -69,26 +69,26 @@
             </objects>
             <point key="canvasLocation" x="-199.19999999999999" y="-1936.2818590704649"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Memory-->
         <scene sceneID="AEG-SJ-gNf">
             <objects>
-                <collectionViewController id="eTt-Av-csv" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
+                <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rau-0q-B2O">
-                            <size key="itemSize" width="179" height="150"/>
+                            <size key="itemSize" width="109" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ZYl-7j-76A" customClass="CollectionViewCell" customModule="SocialChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="179" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="109" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="179" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="109" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2y0-t5-nTQ"/>
@@ -122,6 +122,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHY-vz-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-1675"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PfF-Re-jQG">
+            <objects>
+                <viewController id="OxW-MU-GbA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gnZ-Zd-a6p"/>
+                        <viewControllerLayoutGuide type="bottom" id="3FT-L5-ybT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hm0-WF-3bI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXr-Mr-W0f">
+                                <frame key="frameInset" minX="177" minY="288" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nKI-Rf-cYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="-1314"/>
         </scene>
         <!--MemoryVC-->
         <scene sceneID="PTS-7A-RaB">
