@@ -63,12 +63,70 @@
                     <view key="view" contentMode="scaleToFill" id="Zez-px-Sml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Facebook" translatesAutoresizingMaskIntoConstraints="NO" id="DLb-Ut-RsM">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="Svw-V7-Orl"/>
+                                    <constraint firstAttribute="height" constant="78" id="kgI-Fr-AmY"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-Yx-m3K">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4Wr-fn-V6e"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDU-ou-yej">
+                                <frame key="frameInset" minX="36" minY="250" width="303" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="A59-70-DbB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW1-PJ-5bq">
+                                <frame key="frameInset" minX="128" minY="439" width="122" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="469-E2-IqW"/>
+                                    <constraint firstAttribute="width" constant="122" id="yDQ-uZ-Mnj"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gfg-Ws-BJS">
+                                <frame key="frameInset" minX="36" minY="345" width="303" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7r5-v9-DKO"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Upload your profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qa-m7-jro">
+                                <frame key="frameInset" minX="166" minY="64" width="153" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K2f-Yx-m3K" firstAttribute="top" secondItem="DLb-Ut-RsM" secondAttribute="bottom" constant="35" id="0gO-bC-eYt"/>
+                            <constraint firstItem="6Qa-m7-jro" firstAttribute="centerY" secondItem="DLb-Ut-RsM" secondAttribute="centerY" id="4Nd-Hf-iPe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K2f-Yx-m3K" secondAttribute="trailing" constant="20" id="BKm-wc-sJg"/>
+                            <constraint firstItem="K2f-Yx-m3K" firstAttribute="leading" secondItem="Zez-px-Sml" secondAttribute="leadingMargin" constant="20" id="Gf5-uD-7zy"/>
+                            <constraint firstItem="yW1-PJ-5bq" firstAttribute="leading" secondItem="Zez-px-Sml" secondAttribute="leadingMargin" constant="112" id="l2T-w2-hFg"/>
+                            <constraint firstItem="DLb-Ut-RsM" firstAttribute="leading" secondItem="Zez-px-Sml" secondAttribute="leadingMargin" constant="20" id="lyg-Wf-n0C"/>
+                            <constraint firstItem="DLb-Ut-RsM" firstAttribute="top" secondItem="iwd-FX-s42" secondAttribute="bottom" constant="20" id="s1G-EZ-xpO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yW1-PJ-5bq" secondAttribute="trailing" constant="109" id="s1m-g9-b3Z"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="025-Qm-hC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635" y="-809"/>
+            <point key="canvasLocation" x="634.39999999999998" y="-809.14542728635683"/>
         </scene>
         <!--User InfoVC-->
         <scene sceneID="0qT-g6-hpG">
@@ -338,4 +396,7 @@
             <point key="canvasLocation" x="1833" y="630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Facebook" width="325" height="325"/>
+    </resources>
 </document>
