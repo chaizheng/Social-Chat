@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eab-ky-u6I">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eab-ky-u6I">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,6 +7,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SendVC-->
+        <scene sceneID="rdv-AU-2DY">
+            <objects>
+                <viewController id="zHp-GS-cx1" customClass="SendVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lSc-qd-NJJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="4OV-TX-17P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EKM-eL-avU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yR-7B-jFS">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P00-vG-l88">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="OB7-HC-1bE"/>
+                                            <constraint firstAttribute="width" constant="36" id="fWh-97-FhD"/>
+                                        </constraints>
+                                        <state key="normal" image="back_item"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p08-ju-BRk">
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="P00-vG-l88" firstAttribute="leading" secondItem="5yR-7B-jFS" secondAttribute="leading" constant="14" id="JyM-nt-llo"/>
+                                    <constraint firstItem="P00-vG-l88" firstAttribute="top" secondItem="5yR-7B-jFS" secondAttribute="top" constant="26" id="SxC-ZZ-Fzg"/>
+                                    <constraint firstAttribute="height" constant="64" id="Tmn-Ei-aMU"/>
+                                    <constraint firstItem="p08-ju-BRk" firstAttribute="centerX" secondItem="5yR-7B-jFS" secondAttribute="centerX" id="VwY-aG-wLX"/>
+                                    <constraint firstAttribute="bottom" secondItem="P00-vG-l88" secondAttribute="bottom" constant="8" id="riZ-P7-cEG"/>
+                                    <constraint firstItem="p08-ju-BRk" firstAttribute="top" secondItem="5yR-7B-jFS" secondAttribute="top" constant="28" id="tcL-gc-vFJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5yR-7B-jFS" secondAttribute="trailing" id="0WT-cS-EII"/>
+                            <constraint firstItem="5yR-7B-jFS" firstAttribute="top" secondItem="EKM-eL-avU" secondAttribute="top" id="7fU-w1-TXu"/>
+                            <constraint firstItem="5yR-7B-jFS" firstAttribute="leading" secondItem="EKM-eL-avU" secondAttribute="leading" id="AmP-IA-rzn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ve6-nd-neS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1548" y="-705.69715142428788"/>
+        </scene>
         <!--ChatVC-->
         <scene sceneID="6SK-Uf-Zah">
             <objects>
@@ -832,10 +882,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="k4z-qG-aGm" customClass="UserCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4z-qG-aGm" id="fX8-Fm-FQ8">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="1000" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-01-VIN">
