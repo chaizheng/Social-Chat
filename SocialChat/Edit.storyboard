@@ -42,7 +42,7 @@
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
-                                    <segue destination="eTt-Av-csv" kind="show" id="QpN-Sf-s2b"/>
+                                    <segue destination="1JX-MT-kO3" kind="show" id="QpN-Sf-s2b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,7 +73,7 @@
         <scene sceneID="AEG-SJ-gNf">
             <objects>
                 <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,10 +110,70 @@
                             <outlet property="delegate" destination="eTt-Av-csv" id="AbT-31-VbG"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="Xfm-Yt-5dO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bxu-Px-Z8l"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE0-y3-5ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1936.2818590704649"/>
+            <point key="canvasLocation" x="1735.2" y="-1936.2818590704649"/>
+        </scene>
+        <!--AddVC-->
+        <scene sceneID="qlk-1D-VTY">
+            <objects>
+                <viewController id="luC-Wx-C52" customClass="AddVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lk4-lC-Bmc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ule-Iu-rXZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BfJ-F2-fl8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qx-DY-qOa">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XBq-7X-wSd"/>
+                                    <constraint firstAttribute="width" constant="249" id="ZSK-P3-ECv"/>
+                                </constraints>
+                                <state key="normal" title="From camera"/>
+                                <connections>
+                                    <action selector="fromDevice:" destination="luC-Wx-C52" eventType="touchUpInside" id="2PQ-Ud-BIQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWo-eR-4gr">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="qU8-49-esI"/>
+                                </constraints>
+                                <state key="normal" title="From library"/>
+                                <connections>
+                                    <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
+                                    <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8qx-DY-qOa" firstAttribute="top" secondItem="lk4-lC-Bmc" secondAttribute="bottom" constant="64" id="Jhf-Kw-wmV"/>
+                            <constraint firstItem="8qx-DY-qOa" firstAttribute="leading" secondItem="BfJ-F2-fl8" secondAttribute="leadingMargin" constant="47" id="T30-Q8-ESF"/>
+                            <constraint firstItem="IWo-eR-4gr" firstAttribute="centerX" secondItem="8qx-DY-qOa" secondAttribute="centerX" id="W3q-S1-sIf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8qx-DY-qOa" secondAttribute="trailing" constant="47" id="d7I-JI-RKS"/>
+                            <constraint firstItem="ule-Iu-rXZ" firstAttribute="top" secondItem="cFH-ZL-5BC" secondAttribute="bottom" constant="124" id="dqb-45-xvc"/>
+                            <constraint firstItem="IWo-eR-4gr" firstAttribute="top" secondItem="8qx-DY-qOa" secondAttribute="bottom" constant="35" id="fVZ-2W-cBS"/>
+                            <constraint firstItem="cFH-ZL-5BC" firstAttribute="centerX" secondItem="BfJ-F2-fl8" secondAttribute="centerX" id="tf1-Mf-jJZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="cFH-ZL-5BC" id="Wbh-Lu-HSE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2636" y="-1915.5922038980511"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="7zb-bM-k7x">
@@ -122,31 +182,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHY-vz-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-1675"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PfF-Re-jQG">
-            <objects>
-                <viewController id="OxW-MU-GbA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gnZ-Zd-a6p"/>
-                        <viewControllerLayoutGuide type="bottom" id="3FT-L5-ybT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hm0-WF-3bI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXr-Mr-W0f">
-                                <frame key="frameInset" minX="177" minY="288" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nKI-Rf-cYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="790" y="-1314"/>
         </scene>
         <!--MemoryVC-->
         <scene sceneID="PTS-7A-RaB">
@@ -165,6 +200,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KeT-BN-6QE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="-2668"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1sO-B3-tNF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1JX-MT-kO3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CJk-iE-rFk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eTt-Av-csv" kind="relationship" relationship="rootViewController" id="wTI-9R-Mu5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIE-xM-tCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-1936.2818590704649"/>
         </scene>
     </scenes>
     <resources>
