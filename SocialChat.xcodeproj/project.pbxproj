@@ -35,6 +35,7 @@
 		1FCA8BA31D8E8490004E5F76 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCA8BA21D8E8490004E5F76 /* Edit.storyboard */; };
 		1FCA8BA71D8E9A91004E5F76 /* website.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1FCA8BA61D8E9A91004E5F76 /* website.csv */; };
 		1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA8BA81D8ED4DE004E5F76 /* csv.swift */; };
+		1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD464501D9CA5CA00AF970A /* SendVC.swift */; };
 		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
 		C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
@@ -72,6 +73,7 @@
 		1FCA8BA21D8E8490004E5F76 /* Edit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		1FCA8BA61D8E9A91004E5F76 /* website.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = website.csv; sourceTree = "<group>"; };
 		1FCA8BA81D8ED4DE004E5F76 /* csv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = csv.swift; sourceTree = "<group>"; };
+		1FD464501D9CA5CA00AF970A /* SendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendVC.swift; sourceTree = "<group>"; };
 		1FF928E81D892C0600DDD55D /* VerticalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalVC.swift; sourceTree = "<group>"; };
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 				1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1F6114681D86E75700504735 /* ChatVC.swift */,
+				1FD464501D9CA5CA00AF970A /* SendVC.swift */,
 				1F6114381D86836100504735 /* StoryVC.swift */,
 			);
 			name = MainControllers;
@@ -361,6 +364,7 @@
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
+				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
 				1F6758001D8426ED00DA6701 /* LoginVC.swift in Sources */,
 				C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */,
 				1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */,
