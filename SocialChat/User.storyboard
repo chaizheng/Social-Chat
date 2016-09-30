@@ -52,6 +52,24 @@
             </objects>
             <point key="canvasLocation" x="4593" y="-630"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="SWf-Di-aNX">
+            <objects>
+                <viewController id="2Ph-vt-gMa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iwd-FX-s42"/>
+                        <viewControllerLayoutGuide type="bottom" id="q6u-dW-SNk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zez-px-Sml">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="025-Qm-hC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="-809"/>
+        </scene>
         <!--User InfoVC-->
         <scene sceneID="0qT-g6-hpG">
             <objects>
@@ -190,6 +208,9 @@
                                     <state key="normal" title="Log out">
                                         <color key="titleColor" red="1" green="0.3268892907" blue="0.27469741399999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="exit:" destination="6tj-Zu-icg" eventType="touchUpInside" id="hkn-K2-k3c"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

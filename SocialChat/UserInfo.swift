@@ -10,6 +10,8 @@ import UIKit
 
 class UserInfo: UITableViewController {
 
+    @IBAction func exit(_ sender: AnyObject) {
+    }
     @IBAction func cancell(_ sender: AnyObject) {
         dismiss(animated: false, completion: nil)
         
