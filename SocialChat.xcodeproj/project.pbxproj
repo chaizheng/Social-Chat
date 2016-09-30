@@ -38,6 +38,9 @@
 		1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD464501D9CA5CA00AF970A /* SendVC.swift */; };
 		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
 		C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */; };
+		C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEA1D9E293500BEE0BC /* Memory.swift */; };
+		C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */; };
+		C2EB3DF21D9E322400BEE0BC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EB3DF11D9E322400BEE0BC /* CoreData.framework */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,9 @@
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		C2EB3DEA1D9E293500BEE0BC /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C2EB3DF11D9E322400BEE0BC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2EB3DF21D9E322400BEE0BC /* CoreData.framework in Frameworks */,
 				D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +131,7 @@
 				1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */,
 				1F6757C01D83A7CD00DA6701 /* Info.plist */,
 				1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */,
+				C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */,
 			);
 			path = SocialChat;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 			children = (
 				1FBB3B391D898897004C688C /* MemoryVC.swift */,
 				1F2A87D01D8AC24100DA90B4 /* EditVC.swift */,
+				C2EB3DEA1D9E293500BEE0BC /* Memory.swift */,
 			);
 			name = EditController;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 		BCAA695AA9EADE6C0F3DB985 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2EB3DF11D9E322400BEE0BC /* CoreData.framework */,
 				BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */,
 			);
 			name = Frameworks;
@@ -370,8 +380,10 @@
 				1FBB3B3A1D898897004C688C /* MemoryVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
 				1FCA8B9D1D8E6EE2004E5F76 /* User.swift in Sources */,
+				C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */,
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
 				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
+				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
@@ -554,6 +566,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */,
+			);
+			currentVersion = C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F6757A91D83A7CD00DA6701 /* Project object */;
 }
