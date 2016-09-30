@@ -36,6 +36,15 @@
                                     <action selector="sendToBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="qM6-pI-rCT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtF-vZ-ddV">
+                                <frame key="frameInset" minX="29" minY="617" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
+                                    <segue destination="eTt-Av-csv" kind="show" id="AZg-bQ-5fO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -58,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-198" y="-1936"/>
+            <point key="canvasLocation" x="-199.19999999999999" y="-1936.2818590704649"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="AEG-SJ-gNf">
@@ -69,19 +78,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rau-0q-B2O">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="179" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZYl-7j-76A">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ZYl-7j-76A" customClass="CollectionViewCell" customModule="SocialChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="179" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2y0-t5-nTQ"/>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2y0-t5-nTQ" secondAttribute="bottom" id="3kW-0C-T4y"/>
+                                    <constraint firstAttribute="trailing" secondItem="2y0-t5-nTQ" secondAttribute="trailing" id="Lfp-Dy-mw5"/>
+                                    <constraint firstItem="2y0-t5-nTQ" firstAttribute="top" secondItem="ZYl-7j-76A" secondAttribute="top" id="dMZ-Yx-XRe"/>
+                                    <constraint firstItem="2y0-t5-nTQ" firstAttribute="leading" secondItem="ZYl-7j-76A" secondAttribute="leading" id="mBl-jC-aJu"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="img" destination="2y0-t5-nTQ" id="ZoA-uO-ADS"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -92,7 +113,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE0-y3-5ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1936"/>
+            <point key="canvasLocation" x="796" y="-1936.2818590704649"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="7zb-bM-k7x">

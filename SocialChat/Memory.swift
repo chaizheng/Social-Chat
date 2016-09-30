@@ -7,10 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
-class Memory: UICollectionViewController {
+class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
+    
+     var frc : NSFetchedResultsController<Item> = NSFetchedResultsController()
+    
+    func fetchRequest() -> NSFetchRequest<Item>{
+        
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "created", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return fetchRequest
+    }
+    
+    func getFRC() -> NSFetchedResultsController<Item> {
+        
+        frc = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return frc
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +39,34 @@ class Memory: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        frc = getFRC()
+        frc.delegate = self
+        
+        do{
+            try frc.performFetch()
+        } catch {
+            print("Failed to perform initial fetch")
+            return
+        }
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
+         self.collectionView!.reloadData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        frc = getFRC()
+        frc.delegate = self
+        
+        do{
+            try frc.performFetch()
+        } catch {
+            print("Failed to perform initial fetch")
+            return
+        }
+        
+        self.collectionView?.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,52 +88,35 @@ class Memory: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        if let sections = frc.sections{
+            
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        
         return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
     
         // Configure the cell
+        let item = frc.object(at: indexPath)
+        //cell.imageView?.image = UIImage(data: (item.image)! as Data)
+        if let photo = item.image{
+            cell.img?.image = UIImage(data: photo as Data)
     
+        
+        }
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
+   
 
 }

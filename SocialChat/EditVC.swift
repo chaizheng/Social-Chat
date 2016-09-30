@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class EditVC: UIViewController {
 
+    
+    @IBAction func save(_ sender: AnyObject) {
+        createNewItem()
+    }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -50,6 +55,26 @@ class EditVC: UIViewController {
             }
             
         }
+    }
+    
+    func createNewItem(){
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc)
+        
+        let item = Item(entity: entityDescription!, insertInto: moc)
+        
+        
+        item.image = UIImagePNGRepresentation(editingImage.image!) as NSData?
+        
+        
+        do{
+            try moc.save()
+        } catch {
+            return
+        }
+        
+        
+        
     }
     
 }

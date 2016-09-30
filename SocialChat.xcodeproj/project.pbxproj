@@ -41,6 +41,9 @@
 		C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEA1D9E293500BEE0BC /* Memory.swift */; };
 		C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */; };
 		C2EB3DF21D9E322400BEE0BC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EB3DF11D9E322400BEE0BC /* CoreData.framework */; };
+		C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03D9E1D9E7B57009CF578 /* Item+CoreDataClass.swift */; };
+		C2F03DA11D9E7B57009CF578 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03D9F1D9E7B57009CF578 /* Item+CoreDataProperties.swift */; };
+		C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +87,9 @@
 		C2EB3DEA1D9E293500BEE0BC /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C2EB3DF11D9E322400BEE0BC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2F03D9E1D9E7B57009CF578 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C2F03D9F1D9E7B57009CF578 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 		1F6757B31D83A7CD00DA6701 /* SocialChat */ = {
 			isa = PBXGroup;
 			children = (
+				C2F03D9D1D9E7B44009CF578 /* Model */,
 				1F6758011D8433E000DA6701 /* Services */,
 				1F6757CE1D83A9A300DA6701 /* Controller */,
 				1F6757CD1D83A98900DA6701 /* View */,
@@ -143,6 +150,7 @@
 				1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */,
 				1F6757FD1D84169000DA6701 /* RoundButton.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
+				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -229,6 +237,15 @@
 				BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2F03D9D1D9E7B44009CF578 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2F03D9E1D9E7B57009CF578 /* Item+CoreDataClass.swift */,
+				C2F03D9F1D9E7B57009CF578 /* Item+CoreDataProperties.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E523E6BB495237758DB46BEA /* Pods */ = {
@@ -372,6 +389,7 @@
 				1F736D521D862F6E0035F976 /* DataService.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
+				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
@@ -382,9 +400,11 @@
 				1FCA8B9D1D8E6EE2004E5F76 /* User.swift in Sources */,
 				C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */,
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
+				C2F03DA11D9E7B57009CF578 /* Item+CoreDataProperties.swift in Sources */,
 				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
 				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
+				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
 				1F61146A1D86E75700504735 /* ChatVC.swift in Sources */,
@@ -519,7 +539,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XRYH9M2JN7;
 				INFOPLIST_FILE = SocialChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMC.SocialChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -536,7 +556,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XRYH9M2JN7;
 				INFOPLIST_FILE = SocialChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMC.SocialChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
