@@ -116,6 +116,17 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
         }
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+        if segue.identifier == "Edit"{
+            let cell = sender as! CollectionViewCell
+            let indexPath = collectionView?.indexPath(for: cell)
+            let itemController : EditVC = segue.destination as! EditVC
+            let item : Item = frc.object(at: indexPath!)
+            itemController.itemToEdit = item
+        }
+    }
 
    
 

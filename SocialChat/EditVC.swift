@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class EditVC: UIViewController {
+    
+    var itemToEdit : Item?
 
     
     @IBAction func save(_ sender: AnyObject) {
@@ -31,7 +33,12 @@ class EditVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editingImage.image = _selectedImage
+        if itemToEdit != nil{
+            editingImage.image = UIImage(data: (itemToEdit?.image) as! Data )
+        } else{
+            editingImage.image = _selectedImage
+        }
+        
       
     }
 

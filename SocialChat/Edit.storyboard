@@ -73,7 +73,7 @@
         <scene sceneID="AEG-SJ-gNf">
             <objects>
                 <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,6 +102,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="img" destination="2y0-t5-nTQ" id="ZoA-uO-ADS"/>
+                                    <segue destination="vhJ-n9-H1k" kind="show" identifier="Edit" id="Yye-fN-pJ5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -155,6 +156,19 @@
                                     <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
                                 </constraints>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6p-sU-9WY">
+                                <frame key="frameInset" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add" id="rw9-7N-IQw">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="p3T-pr-OyD">
+                                            <connections>
+                                                <segue destination="eTt-Av-csv" kind="show" id="Ycg-Tn-cGF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -224,4 +238,7 @@
         <image name="cancel_Btn" width="28" height="28"/>
         <image name="circle_send" width="59" height="59"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ycg-Tn-cGF"/>
+    </inferredMetricsTieBreakers>
 </document>
