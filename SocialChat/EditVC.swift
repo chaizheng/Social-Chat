@@ -17,6 +17,10 @@ class EditVC: UIViewController {
     @IBAction func save(_ sender: AnyObject) {
         createNewItem()
     }
+    
+    @IBAction func deleteItem(_ sender: AnyObject) {
+        deleteItem()
+    }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -84,4 +88,19 @@ class EditVC: UIViewController {
         
     }
     
+    func deleteItem(){
+        if itemToEdit != nil{
+            moc.delete(itemToEdit!)
+            
+        }
+        do {
+            try moc.save()
+        } catch {
+            print("Failed to save")
+            return
+        }
+        dismiss(animated: false, completion: nil)
+    }
 }
+
+
