@@ -205,28 +205,10 @@
             </objects>
             <point key="canvasLocation" x="282" y="-1675"/>
         </scene>
-        <!--MemoryVC-->
-        <scene sceneID="PTS-7A-RaB">
-            <objects>
-                <viewController storyboardIdentifier="MemoryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PLn-tX-Kc3" customClass="MemoryVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iJs-7I-Xpd"/>
-                        <viewControllerLayoutGuide type="bottom" id="cWf-WB-u39"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xGs-GF-aqG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KeT-BN-6QE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1057" y="-2668"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1sO-B3-tNF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1JX-MT-kO3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Memory" automaticallyAdjustsScrollViewInsets="NO" id="1JX-MT-kO3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CJk-iE-rFk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -247,6 +229,6 @@
         <image name="circle_send" width="59" height="59"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ycg-Tn-cGF"/>
+        <segue reference="wTI-9R-Mu5"/>
     </inferredMetricsTieBreakers>
 </document>
