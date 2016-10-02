@@ -42,15 +42,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
- //       performSegue(withIdentifier: "LoginVC", sender: nil)
-        guard FIRAuth.auth()?.currentUser != nil else {
-            performSegue(withIdentifier: "LoginVC", sender: nil)
-            return
-        }
-      
-
-        }
     
     // Create camera view
     func reloadCamera(){

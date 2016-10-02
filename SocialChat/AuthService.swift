@@ -19,9 +19,9 @@ class AuthService {
         return _instance
     }
     
-    func login(email: String, password: String, onCompelte: Completion?){
+    
+    func signup(email: String, password: String, firstName: String, lastName: String, username: String, data: Data, onCompelte: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            
             if error != nil{
                 if let errorCode = FIRAuthErrorCode(rawValue: error!._code) {
                     if errorCode == .errorCodeUserNotFound {
@@ -31,7 +31,7 @@ class AuthService {
                             } else {
                                 if user?.uid != nil {
                                     //Sign in
-                                    DataService.instance.saveUser(uid: user!.uid)
+                                    DataService.instance.saveUser(uid: user!.uid, username: username, firstName: firstName, lastName: lastName, data: data)
                                     FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                                         if error != nil{
                                             //Show error to user
@@ -56,6 +56,18 @@ class AuthService {
         })
     }
     
+    
+    func login(email: String, password: String, onCompelte: Completion?){
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            if error != nil{
+                self.handleFirebaseError(error: error!, onComplete: onCompelte)
+
+            } else {
+                onCompelte?(nil,user)
+            }
+        })
+    }
+    
     func handleFirebaseError(error:Error, onComplete:Completion?){
         print(error.localizedDescription)
         if let errorCode = FIRAuthErrorCode(rawValue: error._code){
@@ -63,8 +75,8 @@ class AuthService {
             case .errorCodeInvalidEmail:
                 onComplete?("Invalid email address", nil)
                 break
-            case .errorCodeWrongPassword:
-                onComplete?("Invalid password", nil)
+            case .errorCodeUserNotFound, .errorCodeWrongPassword:
+                onComplete?("Invalid email address or password", nil)
                 break
             case .errorCodeEmailAlreadyInUse, .errorCodeAccountExistsWithDifferentCredential:
                 onComplete?("Could not create account. Email already in use.", nil)

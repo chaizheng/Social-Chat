@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class UserInfo: UITableViewController {
 
     @IBAction func exit(_ sender: AnyObject) {
+        try! FIRAuth.auth()!.signOut()
+        present(mainStoryboard.instantiateViewController(withIdentifier: "LoginVC"), animated: false, completion: nil)
     }
     @IBAction func cancell(_ sender: AnyObject) {
         dismiss(animated: false, completion: nil)

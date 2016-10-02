@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,UITextFieldDelegate {
 
     
     @IBOutlet weak var emailField: RoundTextField!
@@ -18,13 +18,43 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailField.delegate = self
+        passwordField.delegate = self
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? SignupVC{
+            if let emailAndPass = sender as? [String]{
+                destination.setEmail(email: emailAndPass[0])
+                destination.setPass(pass: emailAndPass[1])
+            }
+        }
+    }
+    
+    
+    
+    
+    @IBAction func signupBtnPressed(_ sender: AnyObject) {
+        if let email = emailField.text, let pass = passwordField.text, (self.isValidEmail(testStr: email) && pass.characters.count > 0) {
+            let emailAndPass = [email,pass]
+            performSegue(withIdentifier: "SignupVC", sender: emailAndPass)
+        } else {
+            let alert = UIAlertController(title: "Invalid Username or Password", message: "You must enter vaild username and password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func loginBtnPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pass = passwordField.text, (email.characters.count > 0 && pass.characters.count > 0) {
+        if let email = emailField.text, let pass = passwordField.text, (self.isValidEmail(testStr: email) && pass.characters.count > 0) {
             
             //Call the login service
-            
             AuthService.instance.login(email: email, password: pass, onCompelte: { (errMsg, data) in
                 guard errMsg == nil else {
                     let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
@@ -33,14 +63,23 @@ class LoginVC: UIViewController {
                     return
                 }
                 
-                self.dismiss(animated: true, completion: nil)
+                let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.login()
             })
             
         } else {
-            let alert = UIAlertController(title: "Username and Password Required", message: "You must enter your username and password", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Invalid Username or Password", message: "You must enter vaild username and password", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
    
