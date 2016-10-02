@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Item+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Item+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:SocialChat.xcodeproj">
    </FileRef>
    <FileRef
