@@ -7,29 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class UserInfoVC: UIViewController {
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var fullname: UILabel!
+    let userID = FIRAuth.auth()?.currentUser?.uid
 
+    override func viewDidAppear(_ animated: Bool) {
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        DataService.instance.usersRef.child(userID!).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+        let value = snapshot.value as? Dictionary<String, Any>
+        let firstname = value?["firstName"] as! String
+        let lastname = value?["lastName"] as! String
+        self.fullname.text = firstname + " " + lastname
+        self.username.text = value?["username"] as? String
+//        self.profileImage.image = value?["imageUrl"] as? UIImage
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class SignupVC: UIViewController, UITextFieldDelegate {
     
@@ -80,11 +81,13 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Invalid profile photo", message: "You must upload your profile photo", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 present(alert, animated: true, completion: nil)
+                
             } else{
-                //Call the login service
                 
                 var data = Data()
                 data = UIImageJPEGRepresentation(profileImage.image!, 0.1)!
+                
+
                 
                 AuthService.instance.signup(email: _email, password: _password, firstName: firstName, lastName: lastName, username: username, data: data, onCompelte: { (errMsg, data) in
                     guard errMsg == nil else {
@@ -95,6 +98,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                     }
                     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.login()
+                    self.dismiss(animated: false, completion: nil)
                 })
 
             }

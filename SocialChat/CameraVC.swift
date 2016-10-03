@@ -92,6 +92,7 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
         }
 
     }
+
     // turn on flashlight for backcamera
     func toggleFlash(){
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -184,5 +185,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goMemBtnPressed"), object: nil)
     }
 
+    
 }
 

@@ -44,13 +44,14 @@ class DataService {
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        mainStorageRef.child(filePath).put(data, metadata: metadata) { (metadata, error) in
+        _ = mainStorageRef.child(filePath).put(data, metadata: metadata) { (metadata, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
             self.fileUrl = metadata?.downloadURLs![0].absoluteString
         }
+        
     }
     
     func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>, mediaURL: URL, visibleTime: Int /*textSnippet: String? = nil*/) {
