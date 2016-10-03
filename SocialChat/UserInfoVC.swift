@@ -17,10 +17,12 @@ class UserInfoVC: UIViewController {
     @IBOutlet weak var fullname: UILabel!
     let userID = FIRAuth.auth()?.currentUser?.uid
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
-//        profileImage.clipsToBounds = true
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        profileImage.layer.cornerRadius = 90
+        profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor(red: 35/255, green: 187/255, blue: 245/255, alpha: 1).cgColor
+        profileImage.clipsToBounds = true
+    }
     
     
     override func viewDidLoad() {
