@@ -34,11 +34,8 @@ class DataService {
         return mainStorageRef.child("images")
     }
     
-    var fileUrl: String!
     
     func saveUser(uid: String, username: String, firstName: String, lastName: String, data: Data) {
-        let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName]
-        mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
         
         let filePath = "profileImage/\(uid)"
         let metadata = FIRStorageMetadata()
@@ -49,9 +46,11 @@ class DataService {
                 print(error.localizedDescription)
                 return
             }
-            self.fileUrl = metadata?.downloadURLs![0].absoluteString
+            let imageUrl = metadata?.downloadURLs![0].absoluteString
+            print(imageUrl)
+            let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl!]
+            self.mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
         }
-        
     }
     
     func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>, mediaURL: URL, visibleTime: Int /*textSnippet: String? = nil*/) {

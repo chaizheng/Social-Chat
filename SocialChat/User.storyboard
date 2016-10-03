@@ -70,7 +70,7 @@
                                     <segue destination="5T2-fi-WCJ" kind="show" id="7ak-zI-wCy"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPb-pN-tu1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPb-pN-tu1">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="24v-YQ-i2f"/>
                                     <constraint firstAttribute="width" constant="180" id="W5N-O2-Ge6"/>
@@ -79,9 +79,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsV-48-eQc">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="Qgl-fQ-Xs7"/>
-                                    <constraint firstAttribute="height" constant="21" id="Tqa-sZ-wdc"/>
+                                    <constraint firstAttribute="height" constant="30" id="Tqa-sZ-wdc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -90,7 +90,7 @@
                                     <constraint firstAttribute="height" constant="21" id="Asl-66-Eix"/>
                                     <constraint firstAttribute="width" constant="180" id="eMf-Gt-gZB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -160,7 +160,7 @@
                             <constraint firstItem="4eJ-ib-MIj" firstAttribute="top" secondItem="Nlx-Tm-MT0" secondAttribute="bottom" constant="35" id="Ppb-be-8jJ"/>
                             <constraint firstItem="ME6-0i-Hbp" firstAttribute="centerX" secondItem="2Nz-5u-N5v" secondAttribute="centerX" id="QVC-Ng-WkH"/>
                             <constraint firstItem="4eJ-ib-MIj" firstAttribute="centerX" secondItem="2Nz-5u-N5v" secondAttribute="centerX" id="RRC-tf-lOB"/>
-                            <constraint firstItem="fI8-CZ-TvA" firstAttribute="top" secondItem="wsV-48-eQc" secondAttribute="bottom" constant="8" id="SBL-ER-HOf"/>
+                            <constraint firstItem="fI8-CZ-TvA" firstAttribute="top" secondItem="wsV-48-eQc" secondAttribute="bottom" constant="4" id="SBL-ER-HOf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sQk-VC-fXE" secondAttribute="trailing" constant="5" id="XxE-Yw-nRh"/>
                             <constraint firstItem="fI8-CZ-TvA" firstAttribute="centerX" secondItem="2Nz-5u-N5v" secondAttribute="centerX" id="ch5-Fb-PDO"/>
                             <constraint firstItem="wsV-48-eQc" firstAttribute="top" secondItem="hPb-pN-tu1" secondAttribute="bottom" constant="20" id="hHZ-kI-IoZ"/>
