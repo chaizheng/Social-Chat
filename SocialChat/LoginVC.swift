@@ -42,8 +42,14 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func signupBtnPressed(_ sender: AnyObject) {
         if let email = emailField.text, let pass = passwordField.text, (self.isValidEmail(testStr: email) && pass.characters.count > 0) {
-            let emailAndPass = [email,pass]
-            performSegue(withIdentifier: "SignupVC", sender: emailAndPass)
+            if pass.characters.count >= 6 {
+                let emailAndPass = [email,pass]
+                performSegue(withIdentifier: "SignupVC", sender: emailAndPass)
+            } else{
+                let alert = UIAlertController(title: "Invalid Password", message: "Password length must greater than 6.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "Invalid Username or Password", message: "You must enter vaild username and password", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
