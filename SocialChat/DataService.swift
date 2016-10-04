@@ -26,9 +26,6 @@ class DataService {
         return mainRef.child(FIR_CHILD_USERS)
     }
     
-    var profileRef: FIRDatabaseReference{
-        return usersRef.child("profile")
-    }
     
     var mainStorageRef: FIRStorageReference{
         return FIRStorage.storage().reference(forURL: "gs://socialchat-b831e.appspot.com")

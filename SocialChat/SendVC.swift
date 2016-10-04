@@ -28,7 +28,19 @@ class SendVC: JSQMessagesViewController{
         self.senderId = currentUser?.uid
         title = "ChatChat"
         
-        self.senderDisplayName = ""
+        DataService.instance.usersRef.child(senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+            let value = snapshot.value as? Dictionary<String, Any>
+            let username = value?["username"]
+            self.senderDisplayName = username as! String!
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        self.senderDisplayName = "  "
+        
+        
         
         setupBubbles()
         messageRef = DataService.instance.mainRef.child("messages")
@@ -43,8 +55,6 @@ class SendVC: JSQMessagesViewController{
                 let mediaType = value["MediaType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
-                
-                
                 if mediaType == "TEXT" {
                     let text = value["text"] as! String
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))

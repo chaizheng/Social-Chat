@@ -30,25 +30,26 @@ class UserInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.instance.usersRef.child(userID!).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
-        let value = snapshot.value as? Dictionary<String, Any>
-        let firstname = value?["firstName"] as! String
-        let lastname = value?["lastName"] as! String
-        self.fullname.text = firstname + " " + lastname
-        self.username.text = value?["username"] as? String
-        if let url = URL(string: value?["imageUrl"] as! String) {
-            do {
-              let data = try Data(contentsOf: url)
-              self.profileImage.image = UIImage(data: data)
-            }
-            catch{
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                let firstname = value["firstName"] as! String
+                let lastname = value["lastName"] as! String
+                self.fullname.text = firstname + " " + lastname
+                self.username.text = value["username"] as? String
+                if let url = URL(string: value["imageUrl"] as! String) {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        self.profileImage.image = UIImage(data: data)
+                    }
+                    catch{
+                        print(error.localizedDescription)
+                    }
+                }
+                
+            }}) { (error) in
                 print(error.localizedDescription)
             }
-        }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
