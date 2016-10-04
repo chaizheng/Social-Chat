@@ -22,26 +22,25 @@ class SendVC: JSQMessagesViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         createOptionMenu()
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
         title = "ChatChat"
-        
-        DataService.instance.usersRef.child(senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
-            let value = snapshot.value as? Dictionary<String, Any>
-            let username = value?["username"]
-            self.senderDisplayName = username as! String!
-            
-        }) { (error) in
-            print(error.localizedDescription)
+        self.senderDisplayName = ""
+        DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+            if let value = snapshot.value as? Dictionary<String, Any>{
+                let username = value["username"]
+                self.senderDisplayName = username as? String
+            } else{
+                print("error displayname")
+                self.senderDisplayName = "error"
+            }}) { (error) in
+                print(error.localizedDescription)
         }
         
-        
-        self.senderDisplayName = "  "
-        
-        
-        
+        print(self.senderDisplayName)
         setupBubbles()
         messageRef = DataService.instance.mainRef.child("messages")
         observeMessages()
