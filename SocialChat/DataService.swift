@@ -26,6 +26,10 @@ class DataService {
         return mainRef.child(FIR_CHILD_USERS)
     }
     
+    var profileRef: FIRDatabaseReference{
+        return usersRef.child("profile")
+    }
+    
     var mainStorageRef: FIRStorageReference{
         return FIRStorage.storage().reference(forURL: "gs://socialchat-b831e.appspot.com")
     }
@@ -47,7 +51,6 @@ class DataService {
                 return
             }
             let imageUrl = metadata?.downloadURLs![0].absoluteString
-            print(imageUrl)
             let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl!]
             self.mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
         }

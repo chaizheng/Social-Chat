@@ -10,4 +10,5 @@ target 'SocialChat' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'JSQMessagesViewController'
 end

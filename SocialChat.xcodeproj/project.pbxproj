@@ -179,8 +179,8 @@
 		1FCA8BA01D8E79CC004E5F76 /* UserController */ = {
 			isa = PBXGroup;
 			children = (
-				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
 				C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */,
+				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
 			);
 			name = UserController;
 			sourceTree = "<group>";

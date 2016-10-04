@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+let DEFAULT_BLUE: UIColor = UIColor(red: 35/255, green: 187/255, blue: 245/255, alpha: 1)
+
 class UserInfoVC: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -20,7 +22,7 @@ class UserInfoVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         profileImage.layer.cornerRadius = 90
         profileImage.layer.borderWidth = 2
-        profileImage.layer.borderColor = UIColor(red: 35/255, green: 187/255, blue: 245/255, alpha: 1).cgColor
+        profileImage.layer.borderColor = DEFAULT_BLUE.cgColor
         profileImage.clipsToBounds = true
     }
     
