@@ -19,6 +19,17 @@ class SendVC: JSQMessagesViewController{
     let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
     private var _receiverId: String?
+    private var _receiverName: String?
+    
+    var receiverName: String? {
+        get{
+            return _receiverName
+        }
+        set{
+            _receiverName = newValue
+        }
+    }
+    
     var receiverId: String? {
         get{
             return _receiverId
@@ -39,18 +50,37 @@ class SendVC: JSQMessagesViewController{
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
         
-        if let receiver = receiverId{
-           title = receiver
+        //testttttttt
+        self.receiverId = "HQOvsRpexfeC76jB5WP4AmCOBEg2"
+        self.receiverName = "test1"
+        
+        if let name = receiverName{
+           title = name
         } else{
             title = "ERROR RECEIVER"
         }
         //set default value unless error
         self.senderDisplayName = ""
-      //  observeUsers()
+        observeUsers()
         
         setupBubbles()
         messageRef = DataService.instance.mainRef.child("messages")
         observeMessages()
+    }
+    
+    // get DisplayName
+    private func observeUsers(){
+        DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+            if let value = snapshot.value as? Dictionary<String, Any>{
+                let username = value["username"]
+                self.senderDisplayName = username as? String
+            } else{
+                print("error displayname")
+                self.senderDisplayName = "error"
+            }}) { (error) in
+                print(error.localizedDescription)
+        }
+        
     }
     
     // Avatar not used now
@@ -81,6 +111,9 @@ class SendVC: JSQMessagesViewController{
     
     
     private func observeMessages() {
+        
+        
+        
         let messagesQuery = messageRef.queryLimited(toLast: 25)
         messagesQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
             if let value = snapshot.value as? Dictionary<String, Any>{
@@ -187,20 +220,11 @@ class SendVC: JSQMessagesViewController{
 //        }
 //    }
     
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-//        cell.textView.font = UIFont(name: "Avenir Next Medium", size: 17)
-//        return cell
-//    }
-    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        let itemRef = messageRef.childByAutoId()
-        let messageItem:Dictionary<String, Any> = ["text": text,"senderId": senderId,"senderName": senderDisplayName, "MediaType": "TEXT"]
-        itemRef.setValue(messageItem)
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
-        
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -231,21 +255,17 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                let itemRef = self.messageRef.childByAutoId()
-                let messageItem:Dictionary<String, Any> = ["imageUrl": imageUrl,"senderId": self.senderId,"senderName": self.senderDisplayName, "MediaType": "PHOTO"]
-                itemRef.setValue(messageItem)
-                }
-        }
-    
-    
-    
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!)
+                JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                self.finishSendingMessage()
+            }
+    }
     
 }
+
 extension SendVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            let photo = JSQPhotoMediaItem(image: picture)
-//            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
             sendMedia(picture: picture)
         }
         

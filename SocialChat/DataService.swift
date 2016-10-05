@@ -68,4 +68,24 @@ class DataService {
         
     }
     
+    // send message to sepecific receivers
+    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, visibleTime: String? = nil){
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY MMM dd 'at' HH:mm:ss"
+        let sendTime = dateFormatter.string(from: Date())
+        let refName = "\(senderId)-\(receiverId)-\(sendTime)"
+        let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)
+        let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
+        
+        let sendMessageItem:Dictionary<String, Any> = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId]
+        let receiveMessageItem:Dictionary<String, Any> = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime]
+        
+        senderRef.setValue(sendMessageItem)
+        receiverRef.setValue(receiveMessageItem)
+        
+    }
+    
+    
+    
 }

@@ -93,21 +93,27 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func sendBtnPressed(_ sender: AnyObject) {
-        if let image = _image{
-            let imageName = "\(NSUUID().uuidString).jpg"
-            let ref = DataService.instance.imageStorageRef.child(imageName)
-            let imageData:Data = UIImageJPEGRepresentation(image, CGFloat(0.5))!
-            _ = ref.put(imageData, metadata: nil, completion: { (meta:FIRStorageMetadata?, err:Error?) in
-                if err != nil{
-                    print("Error uploading image: \(err?.localizedDescription)")
-                } else {
-                    let downloadURL = meta!.downloadURL()
-                    DataService.instance.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectedUsers, mediaURL: downloadURL!, visibleTime: self.imgVisibleTime)
-                    
-                }
-            })
-            let resultViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-            self.present(resultViewController, animated: false, completion: nil)
+//        if let image = _image{
+//            let imageName = "\(NSUUID().uuidString).jpg"
+//            let ref = DataService.instance.imageStorageRef.child(imageName)
+//            let imageData:Data = UIImageJPEGRepresentation(image, CGFloat(0.5))!
+//            _ = ref.put(imageData, metadata: nil, completion: { (meta:FIRStorageMetadata?, err:Error?) in
+//                if err != nil{
+//                    print("Error uploading image: \(err?.localizedDescription)")
+//                } else {
+//                    
+//                    let downloadURL = meta!.downloadURLs[0].absoluteString
+//                    for receiver in self.selectedUsers{
+//                        DataService.instance.sendMessage(messageType: "PHOTO", content: downloadURL, senderId: FIRAuth.auth()!.currentUser!.uid, senderName: <#T##String#>, receiverId: receiver.key)
+//                    }
+//                    let downloadURL = meta!.downloadURL()
+//                    DataService.instance.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectedUsers, mediaURL: downloadURL!, visibleTime: self.imgVisibleTime)
+//                    let downloadURL = meta!.downloadURLs[0].absoluteString
+//                    DataService.instance.sendMessage(messageType: "PHOTO", content: downloadURL, senderId: <#T##String#>, senderName: <#T##String#>, receiverId: <#T##String#>)
+//                }
+//            })
+//            let resultViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+//            self.present(resultViewController, animated: false, completion: nil)
         }
         
         
@@ -121,8 +127,5 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         
-    }
-    
-    
-    
 }
+
