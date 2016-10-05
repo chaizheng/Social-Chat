@@ -53,7 +53,7 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
         memoryView.didMove(toParentViewController: self)
         
         var memoryFrame : CGRect = memoryView.view.frame
-        memoryFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height * 2)
+        memoryFrame.origin = CGPoint(x: 0, y: self.view.frame.size.height * 2 + UIApplication.shared.statusBarFrame.size.height)
         memoryView.view.frame = memoryFrame
         
         scrollViewVer.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 3)

@@ -44,6 +44,7 @@ class SendVC: JSQMessagesViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         createOptionMenu()
@@ -53,7 +54,6 @@ class SendVC: JSQMessagesViewController{
         //testttttttt
         self.receiverId = "HQOvsRpexfeC76jB5WP4AmCOBEg2"
         self.receiverName = "test1"
-        
         if let name = receiverName{
            title = name
         } else{
@@ -62,10 +62,9 @@ class SendVC: JSQMessagesViewController{
         //set default value unless error
         self.senderDisplayName = ""
         observeUsers()
-        
         setupBubbles()
         messageRef = DataService.instance.mainRef.child("messages")
-        observeMessages()
+        newobserveMessages()
     }
     
     // get DisplayName
@@ -110,47 +109,62 @@ class SendVC: JSQMessagesViewController{
 //    }
     
     
-    private func observeMessages() {
+    private func newobserveMessages(){
         
+        let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId!)
         
-        
-        let messagesQuery = messageRef.queryLimited(toLast: 25)
-        messagesQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+        senderQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+            
             if let value = snapshot.value as? Dictionary<String, Any>{
-                let mediaType = value["MediaType"] as! String
+                let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
-                if mediaType == "TEXT" {
-                    let text = value["text"] as! String
+                if contentType == "TEXT" {
+                    let text = value["content"] as! String
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-                } else if mediaType == "PHOTO" {
+                } else if contentType == "PHOTO" {
                     do{
-                        let imageUrl = value["imageUrl"] as! String
+                        let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
                         let data = try Data(contentsOf: url!)
                         let picture = UIImage(data: data)
                         let photo = JSQPhotoMediaItem(image: picture)
                         self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                        
-                        if self.senderId == senderId{
-                            photo?.appliesMediaViewMaskAsOutgoing = true
-                        } else{
-                            photo?.appliesMediaViewMaskAsOutgoing = false
-                        }
-                        
                     } catch {
                         print(error.localizedDescription)
                     }
-                    
-                } else {
-                    print("Unknown data type")
                 }
-                
-                self.finishReceivingMessage()
             }
         }
+        
+        let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId!)
+        
+        receiverQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+            
+            if let value = snapshot.value as? Dictionary<String, Any>{
+                let contentType = value["contentType"] as! String
+                let senderId = value["senderId"] as! String
+                let senderName = value["senderName"] as! String
+                if contentType == "TEXT" {
+                    let text = value["content"] as! String
+                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                } else if contentType == "PHOTO" {
+                    do{
+                        let imageUrl = value["content"] as! String
+                        let url = URL(string: imageUrl)
+                        let data = try Data(contentsOf: url!)
+                        let picture = UIImage(data: data)
+                        let photo = JSQPhotoMediaItem(image: picture)
+                        photo?.appliesMediaViewMaskAsOutgoing = false
+                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        self.finishReceivingMessage()
     }
-
     
     private func createOptionMenu() {
         
