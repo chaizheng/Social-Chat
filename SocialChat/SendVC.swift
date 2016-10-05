@@ -13,12 +13,23 @@ import JSQMessagesViewController
 class SendVC: JSQMessagesViewController{
     
     var messageRef: FIRDatabaseReference!
-    
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
+    private var _receiverId: String?
+    var receiverId: String? {
+        get{
+            return _receiverId
+        }
+        set{
+            _receiverId = newValue
+        }
+    }
+    
+ //   var senderAvatar:JSQMessagesAvatarImage!
+//    var usersAvatars:Dictionary<String, JSQMessagesAvatarImage>
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,24 +38,46 @@ class SendVC: JSQMessagesViewController{
         createOptionMenu()
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
-        title = "ChatChat"
-        self.senderDisplayName = ""
-        DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
-            if let value = snapshot.value as? Dictionary<String, Any>{
-                let username = value["username"]
-                self.senderDisplayName = username as? String
-            } else{
-                print("error displayname")
-                self.senderDisplayName = "error"
-            }}) { (error) in
-                print(error.localizedDescription)
-        }
         
-        print(self.senderDisplayName)
+        if let receiver = receiverId{
+           title = receiver
+        } else{
+            title = "ERROR RECEIVER"
+        }
+        //set default value unless error
+        self.senderDisplayName = ""
+      //  observeUsers()
+        
         setupBubbles()
         messageRef = DataService.instance.mainRef.child("messages")
         observeMessages()
     }
+    
+    // Avatar not used now
+//    private func observeUsers(){
+//        DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+//            if let value = snapshot.value as? Dictionary<String, Any>{
+//                let username = value["username"]
+//                self.senderDisplayName = username as? String
+//                do{
+//                    let imageUrl = value["imageUrl"] as! String
+//                    let url = URL(string: imageUrl)
+//                    let data = try Data(contentsOf: url!)
+//                    let picture = UIImage(data: data)
+//                    self.senderAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: picture, diameter: 30)
+//                    
+//                } catch{
+//                    print(error.localizedDescription)
+//                }
+//                
+//            } else{
+//                print("error displayname")
+//                self.senderDisplayName = "error"
+//            }}) { (error) in
+//                print(error.localizedDescription)
+//        }
+//
+//    }
     
     
     private func observeMessages() {
@@ -133,6 +166,12 @@ class SendVC: JSQMessagesViewController{
     
     // profile image add later!!!!!!!!!!
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+//        let message = messages[indexPath.row]
+//        if message.senderId == senderId{
+//            return senderAvatar
+//        } else{
+//            return nil
+//        }
         return nil
     }
     
