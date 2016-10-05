@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
-class ChatVC: UIViewController {
 
+class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var backToCameraBtn: UIButton!
+    
+    private var senders = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
 
-        // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            let userId = FIRAuth.auth()!.currentUser?.uid
+            DataService.instance.usersRef.child(userId!).child("receivedMessage").observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+                if let receivedMsg = snapshot.value as? Dictionary<String, Any>{
+                    
+                    let uid = receivedMsg["senderId"] as? String
+                    let name = receivedMsg["senderName"] as? String
+                    print(name)
+                    let user = User(uid: uid!, firstName: name!)
+                    self.senders.append(user)
+                    
+                    self.tableView.reloadData()
+                }}}
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -25,15 +50,20 @@ class ChatVC: UIViewController {
     @IBAction func backToCameraBtnPressed(_ sender: AnyObject) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goRight"), object: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        return senders.count
     }
-    */
-
+    //传头像需要改结构
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        print("chai")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
+        let friend = senders[indexPath.row]
+        print("chai2")
+        cell.updateUI(user: friend)
+        return cell
+    }
+    
+    
 }

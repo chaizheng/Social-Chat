@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sNm-fe-tq0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EmC-hy-zex">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -46,80 +46,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve6-nd-neS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2234" y="-570"/>
-        </scene>
-        <!--ChatVC-->
-        <scene sceneID="6SK-Uf-Zah">
-            <objects>
-                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0OH-9V-tBa" customClass="ChatVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XKH-Gu-AU4"/>
-                        <viewControllerLayoutGuide type="bottom" id="aeV-Ur-XwL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NNZ-hg-Pb5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsD-LS-jhv">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-yY-5cY">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="e9o-SB-3XZ"/>
-                                            <constraint firstAttribute="height" constant="30" id="eO8-Fh-y5d"/>
-                                        </constraints>
-                                        <state key="normal" image="add_Btn"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlI-gN-Bg3">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="C8P-Fo-4fF"/>
-                                            <constraint firstAttribute="height" constant="30" id="rhT-Uf-vls"/>
-                                        </constraints>
-                                        <state key="normal" image="camera_Btn"/>
-                                        <connections>
-                                            <action selector="backToCameraBtnPressed:" destination="0OH-9V-tBa" eventType="touchUpInside" id="4GC-hL-pOD"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fws-AR-Q9f">
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="3b9-I8-zuT"/>
-                                    <constraint firstAttribute="height" constant="64" id="5JK-Zq-Za9"/>
-                                    <constraint firstItem="XlI-gN-Bg3" firstAttribute="top" secondItem="ZsD-LS-jhv" secondAttribute="top" constant="26" id="YLE-gU-GoV"/>
-                                    <constraint firstAttribute="trailing" secondItem="XlI-gN-Bg3" secondAttribute="trailing" constant="16" id="YvE-aK-WG8"/>
-                                    <constraint firstItem="fws-AR-Q9f" firstAttribute="top" secondItem="ZsD-LS-jhv" secondAttribute="top" constant="28" id="ac0-en-ZFK"/>
-                                    <constraint firstAttribute="bottom" secondItem="tgp-yY-5cY" secondAttribute="bottom" constant="8" id="b8A-cJ-PhU"/>
-                                    <constraint firstAttribute="bottom" secondItem="XlI-gN-Bg3" secondAttribute="bottom" constant="8" id="fUk-gd-fGj"/>
-                                    <constraint firstItem="tgp-yY-5cY" firstAttribute="leading" secondItem="ZsD-LS-jhv" secondAttribute="leading" constant="14" id="mbG-fO-7eS"/>
-                                    <constraint firstItem="fws-AR-Q9f" firstAttribute="centerX" secondItem="ZsD-LS-jhv" secondAttribute="centerX" id="rki-bY-V1d"/>
-                                    <constraint firstItem="tgp-yY-5cY" firstAttribute="top" secondItem="ZsD-LS-jhv" secondAttribute="top" constant="26" id="t4w-no-QZ2"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v3k-8o-6rD">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="aeV-Ur-XwL" firstAttribute="top" secondItem="v3k-8o-6rD" secondAttribute="bottom" id="0fD-r9-znO"/>
-                            <constraint firstItem="ZsD-LS-jhv" firstAttribute="leading" secondItem="NNZ-hg-Pb5" secondAttribute="leading" id="FUK-y1-2Wz"/>
-                            <constraint firstAttribute="trailing" secondItem="v3k-8o-6rD" secondAttribute="trailing" id="UXB-vp-C2f"/>
-                            <constraint firstItem="v3k-8o-6rD" firstAttribute="top" secondItem="ZsD-LS-jhv" secondAttribute="bottom" id="fEu-QH-06L"/>
-                            <constraint firstAttribute="trailing" secondItem="ZsD-LS-jhv" secondAttribute="trailing" id="h9F-Ge-EAV"/>
-                            <constraint firstItem="ZsD-LS-jhv" firstAttribute="top" secondItem="NNZ-hg-Pb5" secondAttribute="top" id="no9-tS-fXT"/>
-                            <constraint firstItem="v3k-8o-6rD" firstAttribute="leading" secondItem="NNZ-hg-Pb5" secondAttribute="leading" id="oRe-8q-ny8"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="backToCameraBtn" destination="XlI-gN-Bg3" id="Yix-ZB-sBN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B5C-F7-bpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-727.20000000000005" y="-707.49625187406298"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="FwT-lY-jac">
@@ -1143,7 +1069,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add_Btn" width="19" height="19"/>
         <image name="back_item" width="12" height="20"/>
         <image name="camera_Btn" width="30" height="25"/>
         <image name="changeCam_btn" width="52" height="52"/>

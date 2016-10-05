@@ -62,7 +62,7 @@ class MainVC: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         if firstTimeAppear{
-        let chatView = mainStoryboard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        let chatView = userStoryboard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
         self.addChildViewController(chatView)
         self.scrollViewHor.addSubview(chatView.view)
         chatView.didMove(toParentViewController: self)

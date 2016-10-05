@@ -22,6 +22,7 @@
 		1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */; };
 		1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FB1D840D6D00DA6701 /* RoundTextField.swift */; };
 		1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FD1D84169000DA6701 /* RoundButton.swift */; };
+		1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F690F511DA50C75002CA867 /* ChatCell.swift */; };
 		1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4B3431D90252200089438 /* Webdiscover.swift */; };
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
 		1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B3B1D898958004C688C /* DiscoverVC.swift */; };
@@ -69,6 +70,7 @@
 		1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6757FB1D840D6D00DA6701 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		1F6757FD1D84169000DA6701 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		1F690F511DA50C75002CA867 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		1FA4B3431D90252200089438 /* Webdiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webdiscover.swift; sourceTree = "<group>"; };
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		1FBB3B3B1D898958004C688C /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */,
 				1F6757FD1D84169000DA6701 /* RoundButton.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
+				1F690F511DA50C75002CA867 /* ChatCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
 			);
 			name = View;
@@ -397,6 +400,7 @@
 			files = (
 				C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
+				1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */,
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,

@@ -476,8 +476,109 @@
             </objects>
             <point key="canvasLocation" x="1833" y="630"/>
         </scene>
+        <!--ChatVC-->
+        <scene sceneID="Fdx-S0-z4Q">
+            <objects>
+                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Df7-dj-4cl" customClass="ChatVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2mx-Jb-fE9"/>
+                        <viewControllerLayoutGuide type="bottom" id="snI-kq-udh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bgh-Cj-0Qe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpu-wd-Uma">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeY-18-F2q">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="X6s-eS-uHV"/>
+                                            <constraint firstAttribute="width" constant="36" id="dh9-9j-5j8"/>
+                                        </constraints>
+                                        <state key="normal" image="add_Btn"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HmS-S3-fcn">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6Na-tF-fs4"/>
+                                            <constraint firstAttribute="width" constant="36" id="Q0D-l6-LHl"/>
+                                        </constraints>
+                                        <state key="normal" image="camera_Btn"/>
+                                        <connections>
+                                            <action selector="backToCameraBtnPressed:" destination="Df7-dj-4cl" eventType="touchUpInside" id="VUQ-iV-N3c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dee-q5-UC0">
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="HmS-S3-fcn" firstAttribute="top" secondItem="fpu-wd-Uma" secondAttribute="top" constant="26" id="36g-PR-N82"/>
+                                    <constraint firstAttribute="bottom" secondItem="FeY-18-F2q" secondAttribute="bottom" constant="8" id="AZr-Hh-vcr"/>
+                                    <constraint firstAttribute="height" constant="64" id="P9J-Oj-12S"/>
+                                    <constraint firstAttribute="trailing" secondItem="HmS-S3-fcn" secondAttribute="trailing" constant="16" id="T7N-H1-otJ"/>
+                                    <constraint firstItem="dee-q5-UC0" firstAttribute="top" secondItem="fpu-wd-Uma" secondAttribute="top" constant="28" id="X4D-4F-q1e"/>
+                                    <constraint firstItem="FeY-18-F2q" firstAttribute="top" secondItem="fpu-wd-Uma" secondAttribute="top" constant="26" id="XJH-NH-woo"/>
+                                    <constraint firstAttribute="bottom" secondItem="HmS-S3-fcn" secondAttribute="bottom" constant="8" id="a6V-cZ-ZWO"/>
+                                    <constraint firstItem="FeY-18-F2q" firstAttribute="leading" secondItem="fpu-wd-Uma" secondAttribute="leading" constant="14" id="bOV-QO-8lc"/>
+                                    <constraint firstItem="dee-q5-UC0" firstAttribute="centerX" secondItem="fpu-wd-Uma" secondAttribute="centerX" id="h5n-NY-F5y"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="xfQ-50-7KH"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cge-co-zpd">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" id="LF5-Ly-G5i" customClass="ChatCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LF5-Ly-G5i" id="L1U-RV-ZlV">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mK-aK-Gdq">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3mK-aK-Gdq" firstAttribute="centerX" secondItem="L1U-RV-ZlV" secondAttribute="centerX" id="EHc-YR-HLU"/>
+                                                <constraint firstItem="3mK-aK-Gdq" firstAttribute="centerY" secondItem="L1U-RV-ZlV" secondAttribute="centerY" id="HUw-br-CgH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="3mK-aK-Gdq" id="pPK-PY-hdf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="snI-kq-udh" firstAttribute="top" secondItem="Cge-co-zpd" secondAttribute="bottom" id="BZ5-GO-I2w"/>
+                            <constraint firstItem="Cge-co-zpd" firstAttribute="leading" secondItem="bgh-Cj-0Qe" secondAttribute="leading" id="H88-g6-bte"/>
+                            <constraint firstItem="fpu-wd-Uma" firstAttribute="top" secondItem="bgh-Cj-0Qe" secondAttribute="top" id="ITN-dD-uu9"/>
+                            <constraint firstAttribute="trailing" secondItem="fpu-wd-Uma" secondAttribute="trailing" id="KYI-cL-ShQ"/>
+                            <constraint firstItem="Cge-co-zpd" firstAttribute="top" secondItem="fpu-wd-Uma" secondAttribute="bottom" id="Mbf-1t-vdk"/>
+                            <constraint firstAttribute="trailing" secondItem="Cge-co-zpd" secondAttribute="trailing" id="UbM-wu-qxm"/>
+                            <constraint firstItem="fpu-wd-Uma" firstAttribute="leading" secondItem="bgh-Cj-0Qe" secondAttribute="leading" id="xpJ-XG-6bF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backToCameraBtn" destination="HmS-S3-fcn" id="Ei9-uW-SXC"/>
+                        <outlet property="tableView" destination="Cge-co-zpd" id="mm9-NL-cyR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8f-lK-zhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="-321"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="add_Btn" width="19" height="19"/>
+        <image name="camera_Btn" width="30" height="25"/>
         <image name="setting_Btn" width="35" height="35"/>
     </resources>
 </document>
