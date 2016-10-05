@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Pods-SocialChat.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,7 +22,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1ED4DFAAD25E1999D0244868457A351E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>59CDDB315DD2B098E0CD9ED56B026F4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>86D26957D96673E43BBD7BEFE901487E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD61A7C8B066856769B69FC35462DDD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
