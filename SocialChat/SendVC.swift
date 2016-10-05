@@ -52,8 +52,8 @@ class SendVC: JSQMessagesViewController{
         self.senderId = currentUser?.uid
         
         //testttttttt
-        self.receiverId = "HQOvsRpexfeC76jB5WP4AmCOBEg2"
-        self.receiverName = "test1"
+        self.receiverId = "qmZ3KIxXzzULsCYV9lwc50t8Iju2"
+        self.receiverName = "test2"
         if let name = receiverName{
            title = name
         } else{
@@ -63,7 +63,6 @@ class SendVC: JSQMessagesViewController{
         self.senderDisplayName = ""
         observeUsers()
         setupBubbles()
-        messageRef = DataService.instance.mainRef.child("messages")
         newobserveMessages()
     }
     
@@ -135,6 +134,7 @@ class SendVC: JSQMessagesViewController{
                     }
                 }
             }
+            self.finishReceivingMessage()
         }
         
         let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId!)
@@ -162,8 +162,8 @@ class SendVC: JSQMessagesViewController{
                     }
                 }
             }
+            self.finishReceivingMessage()
         }
-        self.finishReceivingMessage()
     }
     
     private func createOptionMenu() {
