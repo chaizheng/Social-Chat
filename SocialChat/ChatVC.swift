@@ -16,28 +16,83 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var backToCameraBtn: UIButton!
     
     private var senders = [User]()
+    private var uid = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.reloadData()
+        
+        for user in (self.senders){
+            print("ss2"+user.firstName)
+        }
+
 
     }
+
+    
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
+        var receivIndex = -1
+        var sentIndex = -1
+        
+        DispatchQueue.main.async{
             let userId = FIRAuth.auth()!.currentUser?.uid
             DataService.instance.usersRef.child(userId!).child("receivedMessage").observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
                 if let receivedMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    let uid = receivedMsg["senderId"] as? String
+                    
+                    let newUid = receivedMsg["senderId"] as! String
                     let name = receivedMsg["senderName"] as? String
-                    print(name)
-                    let user = User(uid: uid!, firstName: name!)
-                    self.senders.append(user)
+                    print("receive"+name!)
+                    let newUser = User(uid: newUid, firstName: name!)
+                    
+                    
+                    if self.uid.contains(newUid){
+                        self.senders.remove(at: receivIndex)
+                        self.senders.insert(newUser, at: 0)
+                        
+                    } else{
+                        self.senders.append(newUser)
+                        self.uid.append(newUid)
+                        
+                        receivIndex = self.uid.index(of: newUid)!
+                    }
+                    
+                    
+                }
+                //self.tableView.reloadData()
+                
+            }
+            DataService.instance.usersRef.child(userId!).child("sentMessage").observe(.childAdded){ (snapshot: FIRDataSnapshot!) in
+                if let sentMsg = snapshot.value as? Dictionary<String, Any>{
+                    
+                    let newUid = sentMsg["senderId"] as? String
+                    let name = sentMsg["senderName"] as? String
+                    print("sent"+name!)
+                    let newUser = User(uid: newUid!, firstName: name!)
+                    
+                    if self.uid.contains(newUid!){
+                        self.senders.remove(at: sentIndex)
+                        self.senders.insert(newUser, at: 0)
+                    } else{
+                        self.senders.append(newUser)
+                        self.uid.append(newUid!)
+                        sentIndex = self.uid.index(of: newUid!)!
+
+                    }
+
                     
                     self.tableView.reloadData()
-                }}}
+                }
+                
+                           }
+
+        }
+        
+        
+       
+        
     }
     
     
@@ -57,11 +112,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     //传头像需要改结构
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        print("chai")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
+        
+      
+         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
         let friend = senders[indexPath.row]
-        print("chai2")
+       
         cell.updateUI(user: friend)
+
         return cell
     }
     

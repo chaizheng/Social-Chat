@@ -72,7 +72,7 @@ class DataService {
     func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, visibleTime: String? = nil){
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY MMM dd 'at' HH:mm:ss"
+        dateFormatter.dateFormat = "YY MM dd 'at' HH:mm:ss"
         let sendTime = dateFormatter.string(from: Date())
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
         let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)

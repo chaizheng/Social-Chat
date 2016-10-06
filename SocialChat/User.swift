@@ -24,4 +24,13 @@ struct User {
         _uid = uid
         _firstName = firstName
     }
+    
+    func equal(user: User) -> Bool{
+        if  self.uid == user.uid{
+            
+            return true
+        }else{
+            return false
+        }
+    }
 }
