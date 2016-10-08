@@ -39,7 +39,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func signupBtnPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pass = passwordField.text, (RegEx.isValidEmail(testStr: email) && pass.characters.count > 0) {
+        if let email = emailField.text, let pass = passwordField.text, (Util.isValidEmail(testStr: email) && pass.characters.count > 0) {
             if pass.characters.count >= 6 {
                 
                 let emailAndPass = [email,pass]
@@ -57,7 +57,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func loginBtnPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pass = passwordField.text, (RegEx.isValidEmail(testStr: email) && pass.characters.count > 0) {
+        if let email = emailField.text, let pass = passwordField.text, (Util.isValidEmail(testStr: email) && pass.characters.count > 0) {
             
             //Call the login service
             AuthService.instance.login(email: email, password: pass, onCompelte: { (errMsg, data) in

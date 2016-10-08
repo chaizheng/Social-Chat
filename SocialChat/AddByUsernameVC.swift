@@ -18,6 +18,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    var friendId: String?
     
     
     override func viewDidLoad() {
@@ -48,17 +49,17 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchBtnPressed(_ sender: AnyObject) {
-        print(myusername)
+        
         usernameField.resignFirstResponder()
         self.foundView.isHidden = true
         self.notFoundView.isHidden = true
         if let username = usernameField.text, username.characters.count > 0{
-            if username == myusername{
-                let alert = UIAlertController(title: "Invalid Username", message: "This is your username", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                present(alert, animated: true, completion: nil)
-                return
-            }
+//            if username == myusername{
+//                let alert = UIAlertController(title: "Invalid Username", message: "This is your username", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                present(alert, animated: true, completion: nil)
+//                return
+//            }
             DataService.instance.mainRef.child("Username").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
                     if let value = snapshot.value as? Dictionary<String, Any> {
                         var findItem = false
@@ -71,6 +72,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
                                         let lastName = userValue["lastName"] as? String
                                         self.fullNameLabel.text = firstName! + " " + lastName!
                                         self.usernameLabel.text = item.value as? String
+                                        self.friendId = item.key
                                         if let url = URL(string: userValue["imageUrl"] as! String) {
                                             do {
                                                 let data = try Data(contentsOf: url)
@@ -104,6 +106,16 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func addFriendBtnPressed(_ sender: AnyObject) {
+        if let friendId = self.friendId{
+            if myfirstName != nil && mylastName != nil && myusername != nil && myId != nil{
+                let fullname = myfirstName! + " " + mylastName!
+                DataService.instance.sendFriendRequest(senderId: myId!, senderUsername: myusername!, senderFullname: fullname, receiverId: friendId)
+            }
+        }
+        let alert = UIAlertController(title: "Send Request Successfully", message: "Tell your friend you've already sent the friend request!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Nice", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        self.foundView.isHidden = true
+        return
     }
-
 }

@@ -647,7 +647,6 @@
         <!--SignupVC-->
         <scene sceneID="53j-Om-6Gj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YZV-MA-IZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="vB1-8N-Pi9" customClass="SignupVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yPf-3y-EY5"/>
@@ -904,6 +903,7 @@
                         <outlet property="usernameField" destination="xGR-70-mkF" id="UlE-Mz-hUe"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZV-MA-IZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2956" y="-1423"/>
         </scene>

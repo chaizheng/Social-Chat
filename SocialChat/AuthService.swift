@@ -17,6 +17,7 @@ var myfirstName: String?
 var mylastName: String?
 var myphoneNumber: String?
 var myimageUrl: String?
+var myId: String?
 
 
 class AuthService {
@@ -27,6 +28,7 @@ class AuthService {
     }
     
     func firstLoadSet(){
+        myId = FIRAuth.auth()?.currentUser?.uid
         DataService.instance.profileRef.observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let userValue = snapshot.value as? Dictionary<String, Any> {
                 myfirstName = userValue["firstName"] as? String

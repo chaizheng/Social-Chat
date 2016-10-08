@@ -1,14 +1,14 @@
 //
-//  RegEx.swift
+//  Util.swift
 //  SocialChat
 //
-//  Created by ZhangJeff on 08/10/2016.
+//  Created by ZhangJeff on 09/10/2016.
 //  Copyright © 2016 Social Media Coders. All rights reserved.
 //
 
 import Foundation
 
-open class RegEx{
+open class Util{
     
     class func isValidEmail(testStr:String) -> Bool {
         
@@ -23,5 +23,11 @@ open class RegEx{
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return phoneTest.evaluate(with: testStr)
     }
+    
+    class func getCurrentTime() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY MM dd 'at' HH:mm:ss"
+        return dateFormatter.string(from: Date())
+    }
+    
 }
-

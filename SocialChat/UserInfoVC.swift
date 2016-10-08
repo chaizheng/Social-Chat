@@ -17,6 +17,8 @@ class UserInfoVC: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var fullname: UILabel!
+    @IBOutlet weak var newReminder: UIImageView!
+    
     let userID = FIRAuth.auth()?.currentUser?.uid
 
     override func viewDidAppear(_ animated: Bool) {
@@ -29,9 +31,8 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // check but not entering now
         if myusername != nil && mylastName != nil && myfirstName != nil && myimageUrl != nil{
-            print("here")
             self.fullname.text = myfirstName! + " " + mylastName!
             self.username.text = myusername
             let url = URL(string: myimageUrl!)
@@ -62,10 +63,17 @@ class UserInfoVC: UIViewController {
                 }}) { (error) in
                     print(error.localizedDescription)
             }
- 
+            DataService.instance.selfRef.child("receivedFriendRequest").observe(.childAdded, with: {(snapshot) in
+                self.newReminder.isHidden = false
+            })
         }
         
     }
+    
+    @IBAction func addedMeBtnPressed(_ sender: AnyObject) {
+        self.newReminder.isHidden = true
+    }
+    
     
 
     override func didReceiveMemoryWarning() {

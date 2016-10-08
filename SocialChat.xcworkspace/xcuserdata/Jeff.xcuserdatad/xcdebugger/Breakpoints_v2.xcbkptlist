@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/UserInfoVC.swift"
-            timestampString = "497242982.359275"
+            timestampString = "497635269.250951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -198,7 +198,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/SignupVC.swift"
@@ -211,14 +211,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SocialChat.SignupVC.signupBtnPressed (Swift.AnyObject) -&gt; ()"
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
-                  timestampString = "497632196.052179"
+                  timestampString = "497633610.774883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -226,14 +226,14 @@
                   offsetFromSymbolStart = "4244">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SocialChat.SignupVC.(signupBtnPressed (Swift.AnyObject) -&gt; ()).(closure #1)"
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
-                  timestampString = "497632196.054921"
+                  timestampString = "497633610.777413"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -246,7 +246,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/SignupVC.swift"
@@ -320,6 +320,22 @@
                   offsetFromSymbolStart = "8">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/DataService.swift"
+            timestampString = "497633609.576107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "sendFriendRequest(senderId:senderUsername:senderFullname:receiverId:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

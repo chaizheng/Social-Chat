@@ -86,7 +86,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
     @IBAction func signupBtnPressed(_ sender: AnyObject) {
         if let firstName = firstnameField.text, let lastName = lastnameField.text, let username = usernameField.text, let phoneNumber = phoneField.text,(firstName.characters.count > 0 && lastName.characters.count > 0 && username.characters.count > 0 && phoneNumber.characters.count > 0 ) {
             
-            if !RegEx.isValidPhone(testStr: phoneNumber){
+            if !Util.isValidPhone(testStr: phoneNumber){
                 let alert = UIAlertController(title: "Invalid Phone Number", message: "You must enter vaild Australia 10 digits phone number", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 present(alert, animated: true, completion: nil)

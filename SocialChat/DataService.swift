@@ -79,12 +79,24 @@ class DataService {
         
     }
     
+    func sendFriendRequest(senderId: String, senderUsername: String, senderFullname: String, receiverId: String){
+        
+        let sendTime = Util.getCurrentTime()
+        let senderSaveData:Dictionary<String, Any> = ["receiverId": receiverId, "sendTime": sendTime]
+        let receiverSaveData:Dictionary<String, Any> = ["senderId": senderId, "senderUsername": senderUsername, "senderFullname": senderFullname, "sendTime": sendTime]
+        
+        let senderRef = usersRef.child(senderId).child("sentFriendRequest")
+        let receiverRef = usersRef.child(receiverId).child("receivedFriendRequest")
+        
+        senderRef.setValue(senderSaveData)
+        receiverRef.setValue(receiverSaveData)
+    }
+    
+    
     // send message to sepecific receivers
     func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, visibleTime: String? = nil){
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY MM dd 'at' HH:mm:ss"
-        let sendTime = dateFormatter.string(from: Date())
+        let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
         let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)
         let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
@@ -96,7 +108,5 @@ class DataService {
         receiverRef.setValue(receiveMessageItem)
         
     }
-    
-    
     
 }

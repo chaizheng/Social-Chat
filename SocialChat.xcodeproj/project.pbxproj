@@ -10,7 +10,8 @@
 		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
 		1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */; };
 		1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */; };
-		1F1723021DA8DA65000F55F9 /* RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1723011DA8DA65000F55F9 /* RegEx.swift */; };
+		1F1723041DA949C7000F55F9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1723031DA949C7000F55F9 /* Util.swift */; };
+		1F1723061DA9566B000F55F9 /* AcceptRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */; };
 		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */; };
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
@@ -57,7 +58,8 @@
 		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByUsernameVC.swift; sourceTree = "<group>"; };
 		1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
-		1F1723011DA8DA65000F55F9 /* RegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
+		1F1723031DA949C7000F55F9 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptRequestCell.swift; sourceTree = "<group>"; };
 		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				1F6757FB1D840D6D00DA6701 /* RoundTextField.swift */,
 				1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */,
 				1F6757FD1D84169000DA6701 /* RoundButton.swift */,
+				1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
 				1F690F511DA50C75002CA867 /* ChatCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
@@ -240,7 +243,7 @@
 				1FCA8B9C1D8E6EE2004E5F76 /* User.swift */,
 				1FA4B3431D90252200089438 /* Webdiscover.swift */,
 				1FCA8BA81D8ED4DE004E5F76 /* csv.swift */,
-				1F1723011DA8DA65000F55F9 /* RegEx.swift */,
+				1F1723031DA949C7000F55F9 /* Util.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -412,8 +415,8 @@
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
 				1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */,
 				C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */,
-				1F1723021DA8DA65000F55F9 /* RegEx.swift in Sources */,
 				C222F2091DA0C86D008B019A /* DataService.swift in Sources */,
+				1F1723061DA9566B000F55F9 /* AcceptRequestCell.swift in Sources */,
 				1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
 				1FCA8B9D1D8E6EE2004E5F76 /* User.swift in Sources */,
@@ -425,6 +428,7 @@
 				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,
+				1F1723041DA949C7000F55F9 /* Util.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
 				1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */,
