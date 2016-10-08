@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
+		1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */; };
+		1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */; };
 		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */; };
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
@@ -38,8 +40,6 @@
 		C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20A1DA0C87E008B019A /* SignupVC.swift */; };
 		C222F20D1DA0C8A9008B019A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C222F20C1DA0C8A9008B019A /* Main.storyboard */; };
 		C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20E1DA0CA87008B019A /* LoginVC.swift */; };
-		C22772141DA49BD300BE8D7B /* addFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22772131DA49BD300BE8D7B /* addFriend.swift */; };
-		C22772161DA49C9500BE8D7B /* AddFriendByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22772151DA49C9500BE8D7B /* AddFriendByName.swift */; };
 		C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */; };
 		C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEA1D9E293500BEE0BC /* Memory.swift */; };
 		C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */; };
@@ -54,6 +54,8 @@
 /* Begin PBXFileReference section */
 		0B70BADA4323BF8C9DA136B6 /* Pods-SocialChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.debug.xcconfig"; sourceTree = "<group>"; };
 		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByUsernameVC.swift; sourceTree = "<group>"; };
+		1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
 		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
@@ -88,8 +90,6 @@
 		C222F20A1DA0C87E008B019A /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		C222F20C1DA0C8A9008B019A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C222F20E1DA0CA87008B019A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		C22772131DA49BD300BE8D7B /* addFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addFriend.swift; sourceTree = "<group>"; };
-		C22772151DA49C9500BE8D7B /* AddFriendByName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendByName.swift; sourceTree = "<group>"; };
 		C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C2EB3DEA1D9E293500BEE0BC /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 			children = (
 				C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */,
 				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
-				C22772131DA49BD300BE8D7B /* addFriend.swift */,
-				C22772151DA49C9500BE8D7B /* AddFriendByName.swift */,
+				1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */,
+				1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */,
 			);
 			name = UserController;
 			sourceTree = "<group>";
@@ -407,13 +407,14 @@
 				1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
+				1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */,
 				C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */,
 				C222F2091DA0C86D008B019A /* DataService.swift in Sources */,
+				1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
 				1FCA8B9D1D8E6EE2004E5F76 /* User.swift in Sources */,
 				C222F2071DA0C867008B019A /* AuthService.swift in Sources */,
 				C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */,
-				C22772161DA49C9500BE8D7B /* AddFriendByName.swift in Sources */,
 				1F61142F1D86374800504735 /* UsersVC.swift in Sources */,
 				C2F03DA11D9E7B57009CF578 /* Item+CoreDataProperties.swift in Sources */,
 				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
@@ -429,7 +430,6 @@
 				C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */,
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
-				C22772141DA49BD300BE8D7B /* addFriend.swift in Sources */,
 				1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
