@@ -24,6 +24,8 @@ class AddByUsernameVC: UIViewController {
     }
     
     @IBAction func searchBtnPressed(_ sender: AnyObject) {
+        
+        
     }
 
 }

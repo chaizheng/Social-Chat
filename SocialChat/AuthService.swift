@@ -20,7 +20,7 @@ class AuthService {
     }
     
     
-    func signup(email: String, password: String, firstName: String, lastName: String, username: String, data: Data, onCompelte: Completion?){
+    func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil{
                 if let errorCode = FIRAuthErrorCode(rawValue: error!._code) {
@@ -31,7 +31,7 @@ class AuthService {
                             } else {
                                 if user?.uid != nil {
                                     //Sign in
-                                    DataService.instance.saveUser(uid: user!.uid, username: username, firstName: firstName, lastName: lastName, data: data)
+                                    DataService.instance.saveUser(uid: user!.uid, username: username, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, data: data)
                                     FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                                         if error != nil{
                                             //Show error to user

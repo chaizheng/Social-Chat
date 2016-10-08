@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "saveUser(uid:username:firstName:lastName:data:)"
+            landmarkName = "saveUser(uid:username:firstName:lastName:phoneNumber:data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DataService.swift"
-            timestampString = "497291197.962019"
+            timestampString = "497614132.102358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "saveUser(uid:username:firstName:lastName:data:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "saveUser(uid:username:firstName:lastName:phoneNumber:data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -193,6 +193,70 @@
             endingLineNumber = "38"
             landmarkName = "SendVC"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/SignupVC.swift"
+            timestampString = "497614382.519694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "signupBtnPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialChat.SignupVC.signupBtnPressed (Swift.AnyObject) -&gt; ()"
+                  moduleName = "SocialChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
+                  timestampString = "497614937.082087"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "4244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialChat.SignupVC.(signupBtnPressed (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "SocialChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
+                  timestampString = "497614937.084773"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/SignupVC.swift"
+            timestampString = "497614751.479941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "signupBtnPressed(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

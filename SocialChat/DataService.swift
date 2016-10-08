@@ -36,7 +36,7 @@ class DataService {
     }
     
     
-    func saveUser(uid: String, username: String, firstName: String, lastName: String, data: Data) {
+    func saveUser(uid: String, username: String, firstName: String, lastName: String, phoneNumber: String, data: Data) {
         
         let filePath = "profileImage/\(uid)"
         let metadata = FIRStorageMetadata()
@@ -48,8 +48,12 @@ class DataService {
                 return
             }
             let imageUrl = metadata?.downloadURLs![0].absoluteString
-            let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl!]
+            let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "phoneNumber": phoneNumber, "imageUrl": imageUrl!]
+            let usernameDict: Dictionary<String, Any> = [uid:username]
+            let phoneDict: Dictionary<String, Any> = [uid:phoneNumber]
             self.mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
+            self.mainRef.child("Username").setValue(usernameDict)
+            self.mainRef.child("PhoneNumber").setValue(phoneDict)
         }
     }
     
