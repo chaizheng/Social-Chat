@@ -49,14 +49,23 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     
                     if self.uid.contains(newUid){
+                        receivIndex = self.uid.index(of: newUid)!
+                        
                         self.senders.remove(at: receivIndex)
+                        self.uid.remove(at: receivIndex)
+                        
                         self.senders.insert(newUser, at: 0)
+                        self.uid.insert(newUid, at: 0)
                         
                     } else{
-                        self.senders.append(newUser)
-                        self.uid.append(newUid)
+                        //self.senders.append(newUser)
                         
-                        receivIndex = self.uid.index(of: newUid)!
+                        self.senders.insert(newUser, at: 0)
+                        self.uid.insert(newUid, at: 0)
+                        //receivIndex = self.uid.index(of: newUid)!
+                    
+                        
+                        
                     }
                     
                     
@@ -73,12 +82,18 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let newUser = User(uid: newUid!, firstName: name!)
                     
                     if self.uid.contains(newUid!){
-                        self.senders.remove(at: sentIndex)
-                        self.senders.insert(newUser, at: 0)
-                    } else{
-                        self.senders.append(newUser)
-                        self.uid.append(newUid!)
                         sentIndex = self.uid.index(of: newUid!)!
+                        self.senders.remove(at: sentIndex)
+                        self.uid.remove(at: sentIndex)
+                        self.senders.insert(newUser, at: 0)
+                        self.uid.insert(newUid!, at: 0)
+                    } else{
+                        //self.senders.append(newUser)
+                        self.senders.insert(newUser, at: 0)
+                        //sentIndex = self.uid.index(of: newUid!)!
+                        self.uid.insert(newUid!, at: 0)
+
+                        
 
                     }
 

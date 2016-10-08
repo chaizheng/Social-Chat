@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
 		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */; };
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
@@ -14,7 +15,6 @@
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
 		1F61143A1D86836100504735 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114381D86836100504735 /* StoryVC.swift */; };
-		1F61146A1D86E75700504735 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114681D86E75700504735 /* ChatVC.swift */; };
 		1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */; };
 		1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B61D83A7CD00DA6701 /* CameraVC.swift */; };
 		1F6757BC1D83A7CD00DA6701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */; };
@@ -53,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0B70BADA4323BF8C9DA136B6 /* Pods-SocialChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.debug.xcconfig"; sourceTree = "<group>"; };
+		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		1F6114381D86836100504735 /* StoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
-		1F6114681D86E75700504735 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F6757B11D83A7CD00DA6701 /* SocialChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6757B61D83A7CD00DA6701 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
@@ -222,10 +222,10 @@
 				1F6114321D86808100504735 /* MainVC.swift */,
 				1FF928E81D892C0600DDD55D /* VerticalVC.swift */,
 				1F6757B61D83A7CD00DA6701 /* CameraVC.swift */,
+				1F1722F71DA87634000F55F9 /* ChatVC.swift */,
 				1FBB3B3B1D898958004C688C /* DiscoverVC.swift */,
 				1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
-				1F6114681D86E75700504735 /* ChatVC.swift */,
 				1FD464501D9CA5CA00AF970A /* SendVC.swift */,
 				1F6114381D86836100504735 /* StoryVC.swift */,
 			);
@@ -404,6 +404,7 @@
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
+				1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
 				C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */,
@@ -421,7 +422,6 @@
 				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
-				1F61146A1D86E75700504735 /* ChatVC.swift in Sources */,
 				1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */,
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,
