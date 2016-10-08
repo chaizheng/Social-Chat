@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class AddByUsernameVC: UIViewController {
+class AddByUsernameVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameField: RoundTextField!
     
@@ -17,9 +18,12 @@ class AddByUsernameVC: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = DEFAULT_BLUE
+        usernameField.delegate = self
         
     }
     
@@ -33,15 +37,28 @@ class AddByUsernameVC: UIViewController {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func searchBtnPressed(_ sender: AnyObject) {
+        print(myusername)
+        usernameField.resignFirstResponder()
         self.foundView.isHidden = true
         self.notFoundView.isHidden = true
         if let username = usernameField.text, username.characters.count > 0{
+            if username == myusername{
+                let alert = UIAlertController(title: "Invalid Username", message: "This is your username", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alert, animated: true, completion: nil)
+                return
+            }
             DataService.instance.mainRef.child("Username").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
                     if let value = snapshot.value as? Dictionary<String, Any> {
                         var findItem = false

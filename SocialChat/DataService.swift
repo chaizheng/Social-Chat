@@ -11,6 +11,7 @@ let FIR_CHILD_USERS = "users"
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class DataService {
     private static let _instance = DataService()
@@ -26,6 +27,13 @@ class DataService {
         return mainRef.child(FIR_CHILD_USERS)
     }
     
+    var selfRef: FIRDatabaseReference{
+        return usersRef.child((FIRAuth.auth()?.currentUser?.uid)!)
+    }
+    
+    var profileRef: FIRDatabaseReference{
+        return selfRef.child("profile")
+    }
     
     var mainStorageRef: FIRStorageReference{
         return FIRStorage.storage().reference(forURL: "gs://socialchat-b831e.appspot.com")
@@ -34,7 +42,6 @@ class DataService {
     var imageStorageRef:FIRStorageReference{
         return mainStorageRef.child("images")
     }
-    
     
     func saveUser(uid: String, username: String, firstName: String, lastName: String, phoneNumber: String, data: Data) {
         

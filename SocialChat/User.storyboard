@@ -312,7 +312,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="9"/>
@@ -404,9 +404,9 @@
                                     <constraint firstItem="GAN-Tp-SkP" firstAttribute="centerY" secondItem="qj6-nc-dkB" secondAttribute="centerY" id="HH6-un-ait"/>
                                     <constraint firstAttribute="height" constant="150" id="Kfa-lU-0ya"/>
                                     <constraint firstItem="rS7-ku-Rh6" firstAttribute="leading" secondItem="GAN-Tp-SkP" secondAttribute="trailing" constant="35" id="LAK-Uz-G3s"/>
-                                    <constraint firstItem="5bY-3K-GwP" firstAttribute="top" secondItem="rS7-ku-Rh6" secondAttribute="bottom" constant="15" id="PHr-HV-hzw"/>
+                                    <constraint firstItem="5bY-3K-GwP" firstAttribute="top" secondItem="rS7-ku-Rh6" secondAttribute="bottom" constant="8" id="PHr-HV-hzw"/>
                                     <constraint firstItem="rS7-ku-Rh6" firstAttribute="top" secondItem="qj6-nc-dkB" secondAttribute="top" constant="15" id="QVS-MT-kxG"/>
-                                    <constraint firstItem="bx7-oZ-k1Y" firstAttribute="top" secondItem="5bY-3K-GwP" secondAttribute="bottom" constant="13" id="ge5-mE-Fpp"/>
+                                    <constraint firstItem="bx7-oZ-k1Y" firstAttribute="top" secondItem="5bY-3K-GwP" secondAttribute="bottom" constant="20" id="ge5-mE-Fpp"/>
                                     <constraint firstAttribute="trailing" secondItem="5bY-3K-GwP" secondAttribute="trailing" constant="28" id="n6u-ZW-w09"/>
                                     <constraint firstItem="GAN-Tp-SkP" firstAttribute="leading" secondItem="qj6-nc-dkB" secondAttribute="leading" constant="23" id="uGG-c8-3C2"/>
                                     <constraint firstAttribute="trailing" secondItem="rS7-ku-Rh6" secondAttribute="trailing" constant="28" id="uuj-Ae-KTl"/>

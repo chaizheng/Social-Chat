@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func login() {
         if FIRAuth.auth()?.currentUser != nil{
+            AuthService.instance.firstLoadSet()
             window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
         }
     }

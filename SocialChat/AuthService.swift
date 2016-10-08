@@ -12,12 +12,32 @@ import FirebaseAuth
 typealias Completion = (String?, AnyObject?) -> Void
 
 
+var myusername: String?
+var myfirstName: String?
+var mylastName: String?
+var myphoneNumber: String?
+var myimageUrl: String?
+
+
 class AuthService {
     private static let _instance = AuthService()
     
     static var instance: AuthService{
         return _instance
     }
+    
+    func firstLoadSet(){
+        DataService.instance.profileRef.observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let userValue = snapshot.value as? Dictionary<String, Any> {
+                myfirstName = userValue["firstName"] as? String
+                mylastName = userValue["lastName"] as? String
+                myphoneNumber = userValue["phoneNumber"] as? String
+                myimageUrl = userValue["imageUrl"] as? String
+                myusername = userValue["username"] as? String
+            }
+        })
+    }
+    
     
     
     func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){

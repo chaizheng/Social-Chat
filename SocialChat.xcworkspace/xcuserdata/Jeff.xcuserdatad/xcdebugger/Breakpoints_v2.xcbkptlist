@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DataService.swift"
-            timestampString = "497291217.219282"
+            timestampString = "497631581.232508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "saveUser(uid:username:firstName:lastName:phoneNumber:data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DataService.swift"
-            timestampString = "497614132.102358"
+            timestampString = "497631581.232508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "saveUser(uid:username:firstName:lastName:phoneNumber:data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
-                  timestampString = "497614937.082087"
+                  timestampString = "497632196.052179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -233,7 +233,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/SignupVC.swift"
-                  timestampString = "497614937.084773"
+                  timestampString = "497632196.054921"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -257,6 +257,69 @@
             endingLineNumber = "103"
             landmarkName = "signupBtnPressed(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/DataService.swift"
+            timestampString = "497631581.232508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "DataService"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialChat.DataService.isSelf (username : Swift.Optional&lt;Swift.String&gt;, phoneNumber : Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Bool"
+                  moduleName = "SocialChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/DataService.swift"
+                  timestampString = "497628814.891865"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialChat.DataService.(isSelf (username : Swift.Optional&lt;Swift.String&gt;, phoneNumber : Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Bool).(default argument 0)"
+                  moduleName = "SocialChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/DataService.swift"
+                  timestampString = "497628814.893279"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialChat.DataService.(isSelf (username : Swift.Optional&lt;Swift.String&gt;, phoneNumber : Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Bool).(default argument 1)"
+                  moduleName = "SocialChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jeff/Desktop/mobile/SocialChat/SocialChat/DataService.swift"
+                  timestampString = "497628814.894748"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
