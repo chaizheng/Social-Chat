@@ -12,8 +12,9 @@ import Firebase
 class UserInfo: UITableViewController {
 
     @IBAction func exit(_ sender: AnyObject) {
-        try! FIRAuth.auth()!.signOut()
-        present(mainStoryboard.instantiateViewController(withIdentifier: "LoginVC"), animated: false, completion: nil)
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.logout()
         
     }
     @IBAction func cancell(_ sender: AnyObject) {

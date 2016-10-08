@@ -47,6 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func logout() {
+        try! FIRAuth.auth()!.signOut()
+        firstLoad = true
+        firstTimeAppear = true
+        window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC")
+    }
+    
+    
     
     @available(iOS 10.0, *)
 //    func applicationWillTerminate(_ application: UIApplication) {

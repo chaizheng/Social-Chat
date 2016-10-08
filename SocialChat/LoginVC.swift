@@ -70,8 +70,9 @@ class LoginVC: UIViewController,UITextFieldDelegate {
                 }
                 
                 let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.login()
                 self.dismiss(animated: false, completion: nil)
+                appDelegate.login()
+                
             })
             
         } else {
