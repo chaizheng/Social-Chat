@@ -229,6 +229,14 @@
             </objects>
             <point key="canvasLocation" x="796" y="-1936.2818590704649"/>
         </scene>
+        <!--SendVC-->
+        <scene sceneID="VB9-Ql-QAe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SendVC" id="lBf-dD-oGo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lcn-Rf-gks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1661" y="-1953"/>
+        </scene>
         <!--ChatVC-->
         <scene sceneID="EVf-A2-vah">
             <objects>
@@ -322,11 +330,12 @@
                     <connections>
                         <outlet property="backToCameraBtn" destination="fSb-ju-maU" id="PFK-xG-5Ui"/>
                         <outlet property="tableView" destination="0fy-es-9T1" id="qxI-a5-cVS"/>
+                        <segue destination="lBf-dD-oGo" kind="show" identifier="SendVC" id="p3B-Yu-TB9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpm-g9-heq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1345" y="-1963"/>
+            <point key="canvasLocation" x="-1121" y="-1963"/>
         </scene>
     </scenes>
     <resources>
