@@ -54,12 +54,13 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
         self.foundView.isHidden = true
         self.notFoundView.isHidden = true
         if let username = usernameField.text, username.characters.count > 0{
-//            if username == myusername{
-//                let alert = UIAlertController(title: "Invalid Username", message: "This is your username", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                present(alert, animated: true, completion: nil)
-//                return
-//            }
+            if username == myusername{
+                let alert = UIAlertController(title: "Invalid Username", message: "This is your username", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alert, animated: true, completion: nil)
+                return
+            }
+            
             DataService.instance.mainRef.child("Username").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
                     if let value = snapshot.value as? Dictionary<String, Any> {
                         var findItem = false

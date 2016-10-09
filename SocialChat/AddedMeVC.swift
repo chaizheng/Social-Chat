@@ -19,6 +19,7 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         
         DataService.instance.selfRef.child("receivedFriendRequest").observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
             for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot]{
@@ -46,6 +47,10 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 120.0;
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
