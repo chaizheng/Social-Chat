@@ -45,7 +45,7 @@ class AuthService {
                 friendsList = value
             }
         })
-        DataService.instance.selfRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+        DataService.instance.mainRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let value = snapshot.value as? Dictionary<String, Any> {
                 allPhoneList = value
             }

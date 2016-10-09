@@ -12,15 +12,14 @@ class StoryVC: UIViewController {
 
     @IBOutlet weak var goToDisBtn: UIButton!
     @IBOutlet weak var backToCameraBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func goToDisBtnPressed(_ sender: AnyObject) {

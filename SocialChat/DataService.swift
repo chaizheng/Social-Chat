@@ -59,8 +59,8 @@ class DataService {
             let usernameDict: Dictionary<String, Any> = [uid:username]
             let phoneDict: Dictionary<String, Any> = [uid:phoneNumber]
             self.mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
-            self.mainRef.child("Username").setValue(usernameDict)
-            self.mainRef.child("PhoneNumber").setValue(phoneDict)
+            self.mainRef.child("Username").updateChildValues(usernameDict)
+            self.mainRef.child("PhoneNumber").updateChildValues(phoneDict)
         }
     }
     
@@ -85,7 +85,7 @@ class DataService {
         let senderSaveData:Dictionary<String, Any> = ["receiverId": receiverId, "sendTime": sendTime]
         let receiverSaveData:Dictionary<String, Any> = ["senderId": senderId, "senderUsername": senderUsername, "senderFullname": senderFullname, "sendTime": sendTime, "senderImageUrl": senderImageUrl]
         
-        let refName = "\(senderId)-\(receiverId)-\(sendTime)"
+        let refName = "\(senderId)-\(receiverId)"
         let senderRef = usersRef.child(senderId).child("sentFriendRequest").child(refName)
         let receiverRef = usersRef.child(receiverId).child("receivedFriendRequest").child(refName)
         

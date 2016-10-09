@@ -39,6 +39,8 @@ class AcceptRequestCell: UITableViewCell{
     }
 
     @IBAction func acceptBtnPressed(_ sender: AnyObject) {
-        
+        //Delete sender request in sender data and add friend in his list
+        DataService.instance.usersRef.child(senderId!).child("sendFriendRequest").child("\(senderId)-\(myId!)").removeValue()
+
     }
 }
