@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15140C1DA9E5F700F0CCF3 /* AddedMeVC.swift */; };
+		1F15140F1DAA080000F0CCF3 /* SenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15140E1DAA080000F0CCF3 /* SenderInfo.swift */; };
 		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
 		1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */; };
 		1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		0B70BADA4323BF8C9DA136B6 /* Pods-SocialChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.debug.xcconfig"; sourceTree = "<group>"; };
+		1F15140C1DA9E5F700F0CCF3 /* AddedMeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddedMeVC.swift; sourceTree = "<group>"; };
+		1F15140E1DAA080000F0CCF3 /* SenderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderInfo.swift; sourceTree = "<group>"; };
 		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByUsernameVC.swift; sourceTree = "<group>"; };
 		1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */,
+				1F15140C1DA9E5F700F0CCF3 /* AddedMeVC.swift */,
 				1FBB3B371D898718004C688C /* UserInfoVC.swift */,
 				1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */,
 				1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */,
@@ -245,6 +250,7 @@
 			children = (
 				1FCA8B9C1D8E6EE2004E5F76 /* User.swift */,
 				1FA4B3431D90252200089438 /* Webdiscover.swift */,
+				1F15140E1DAA080000F0CCF3 /* SenderInfo.swift */,
 				1FCA8BA81D8ED4DE004E5F76 /* csv.swift */,
 				1F1723031DA949C7000F55F9 /* Util.swift */,
 			);
@@ -407,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F15140F1DAA080000F0CCF3 /* SenderInfo.swift in Sources */,
 				C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
 				1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */,
@@ -438,6 +445,7 @@
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
+				1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */,
 				C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */,
 				C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */,
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,

@@ -79,14 +79,15 @@ class DataService {
         
     }
     
-    func sendFriendRequest(senderId: String, senderUsername: String, senderFullname: String, receiverId: String){
+    func sendFriendRequest(senderId: String, senderUsername: String, senderFullname: String, receiverId: String, senderImageUrl: String){
         
         let sendTime = Util.getCurrentTime()
         let senderSaveData:Dictionary<String, Any> = ["receiverId": receiverId, "sendTime": sendTime]
-        let receiverSaveData:Dictionary<String, Any> = ["senderId": senderId, "senderUsername": senderUsername, "senderFullname": senderFullname, "sendTime": sendTime]
+        let receiverSaveData:Dictionary<String, Any> = ["senderId": senderId, "senderUsername": senderUsername, "senderFullname": senderFullname, "sendTime": sendTime, "senderImageUrl": senderImageUrl]
         
-        let senderRef = usersRef.child(senderId).child("sentFriendRequest")
-        let receiverRef = usersRef.child(receiverId).child("receivedFriendRequest")
+        let refName = "\(senderId)-\(receiverId)-\(sendTime)"
+        let senderRef = usersRef.child(senderId).child("sentFriendRequest").child(refName)
+        let receiverRef = usersRef.child(receiverId).child("receivedFriendRequest").child(refName)
         
         senderRef.setValue(senderSaveData)
         receiverRef.setValue(receiverSaveData)
@@ -94,7 +95,7 @@ class DataService {
     
     
     // send message to sepecific receivers
-    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, visibleTime: String? = nil){
+    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, senderImageUrl: String, visibleTime: String? = nil){
         
         let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
@@ -102,7 +103,7 @@ class DataService {
         let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
         
         let sendMessageItem:Dictionary<String, Any> = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId]
-        let receiveMessageItem:Dictionary<String, Any> = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime]
+        let receiveMessageItem:Dictionary<String, Any> = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime, "senderImageUrl": senderImageUrl]
         
         senderRef.setValue(sendMessageItem)
         receiverRef.setValue(receiveMessageItem)

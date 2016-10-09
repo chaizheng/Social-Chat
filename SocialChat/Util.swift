@@ -26,7 +26,7 @@ open class Util{
     
     class func getCurrentTime() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY MM dd 'at' HH:mm:ss"
+        dateFormatter.dateFormat = "YY-MM-dd 'at' HH:mm:ss"
         return dateFormatter.string(from: Date())
     }
     
