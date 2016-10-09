@@ -11,11 +11,13 @@ import FirebaseStorage
 
 class SignupVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var didchangeimage = false
     @IBOutlet weak var lastnameField: UITextField!
     @IBOutlet weak var firstnameField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var phoneField: UITextField!
     
     private var _email:String!
     private var _password:String!
@@ -36,12 +38,11 @@ class SignupVC: UIViewController, UITextFieldDelegate {
         lastnameField.delegate = self
         firstnameField.delegate = self
         usernameField.delegate = self
+        phoneField.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SignupVC.selectPhoto(tap:)))
         tap.numberOfTapsRequired = 1
         profileImage.addGestureRecognizer(tap)
-        
-     
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +53,16 @@ class SignupVC: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        scrollView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+         scrollView.setContentOffset(CGPoint.init(x: 0, y: 200), animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -70,13 +80,18 @@ class SignupVC: UIViewController, UITextFieldDelegate {
         }
         
         self.present(imagePicker, animated: true, completion: nil)
-        
     }
     
     
     @IBAction func signupBtnPressed(_ sender: AnyObject) {
-        if let firstName = firstnameField.text, let lastName = lastnameField.text, let username = usernameField.text, (firstName.characters.count > 0 && lastName.characters.count > 0 && username.characters.count > 0) {
+        if let firstName = firstnameField.text, let lastName = lastnameField.text, let username = usernameField.text, let phoneNumber = phoneField.text,(firstName.characters.count > 0 && lastName.characters.count > 0 && username.characters.count > 0 && phoneNumber.characters.count > 0 ) {
             
+            if !Util.isValidPhone(testStr: phoneNumber){
+                let alert = UIAlertController(title: "Invalid Phone Number", message: "You must enter vaild Australia 10 digits phone number", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alert, animated: true, completion: nil)
+                return
+            }
             if didchangeimage == false {
                 let alert = UIAlertController(title: "Invalid profile photo", message: "You must upload your profile photo", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -87,9 +102,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                 var data = Data()
                 data = UIImageJPEGRepresentation(profileImage.image!, 0.1)!
                 
-
-                
-                AuthService.instance.signup(email: _email, password: _password, firstName: firstName, lastName: lastName, username: username, data: data, onCompelte: { (errMsg, data) in
+                AuthService.instance.signup(email: _email, password: _password, firstName: firstName, lastName: lastName, username: username, phoneNumber: phoneNumber, data: data, onCompelte: { (errMsg, data) in
                     guard errMsg == nil else {
                         let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -104,7 +117,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
             }
             
         } else {
-            let alert = UIAlertController(title: "Invalid Username or Password", message: "You must enter vaild username and password", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Invalid Information", message: "You must enter username, password or phone number", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }

@@ -17,6 +17,8 @@ class UserInfoVC: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var fullname: UILabel!
+    @IBOutlet weak var newReminder: UIImageView!
+    
     let userID = FIRAuth.auth()?.currentUser?.uid
 
     override func viewDidAppear(_ animated: Bool) {
@@ -29,26 +31,49 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.usersRef.child(userID!).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
-            if let value = snapshot.value as? Dictionary<String, Any> {
-                let firstname = value["firstName"] as! String
-                let lastname = value["lastName"] as! String
-                self.fullname.text = firstname + " " + lastname
-                self.username.text = value["username"] as? String
-                if let url = URL(string: value["imageUrl"] as! String) {
-                    do {
-                        let data = try Data(contentsOf: url)
-                        self.profileImage.image = UIImage(data: data)
-                    }
-                    catch{
-                        print(error.localizedDescription)
-                    }
+        // check but not entering now
+        if myusername != nil && mylastName != nil && myfirstName != nil && myimageUrl != nil{
+            self.fullname.text = myfirstName! + " " + mylastName!
+            self.username.text = myusername
+            let url = URL(string: myimageUrl!)
+                do {
+                    let data = try Data(contentsOf: url!)
+                    self.profileImage.image = UIImage(data: data)
                 }
-                
-            }}) { (error) in
-                print(error.localizedDescription)
+                catch{
+                    print(error.localizedDescription)
+                }
+        }
+        else{
+            DataService.instance.usersRef.child(userID!).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+                if let value = snapshot.value as? Dictionary<String, Any> {
+                    let firstname = value["firstName"] as! String
+                    let lastname = value["lastName"] as! String
+                    self.fullname.text = firstname + " " + lastname
+                    self.username.text = value["username"] as? String
+                    if let url = URL(string: value["imageUrl"] as! String) {
+                        do {
+                            let data = try Data(contentsOf: url)
+                            self.profileImage.image = UIImage(data: data)
+                        }
+                        catch{
+                            print(error.localizedDescription)
+                        }
+                    }
+                }}) { (error) in
+                    print(error.localizedDescription)
             }
+            DataService.instance.selfRef.child("receivedFriendRequest").observe(.childAdded, with: {(snapshot) in
+                self.newReminder.isHidden = false
+            })
+        }
+        
     }
+    
+    @IBAction func addedMeBtnPressed(_ sender: AnyObject) {
+        self.newReminder.isHidden = true
+    }
+    
     
 
     override func didReceiveMemoryWarning() {

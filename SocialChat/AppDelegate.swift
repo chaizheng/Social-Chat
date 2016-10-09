@@ -43,9 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func login() {
         if FIRAuth.auth()?.currentUser != nil{
+            AuthService.instance.firstLoadSet()
             window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
         }
     }
+    
+    func logout() {
+        try! FIRAuth.auth()!.signOut()
+        firstLoad = true
+        firstTimeAppear = true
+        window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC")
+    }
+    
     
     
     @available(iOS 10.0, *)

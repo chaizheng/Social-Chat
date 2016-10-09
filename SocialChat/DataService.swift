@@ -11,6 +11,7 @@ let FIR_CHILD_USERS = "users"
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class DataService {
     private static let _instance = DataService()
@@ -26,6 +27,13 @@ class DataService {
         return mainRef.child(FIR_CHILD_USERS)
     }
     
+    var selfRef: FIRDatabaseReference{
+        return usersRef.child((FIRAuth.auth()?.currentUser?.uid)!)
+    }
+    
+    var profileRef: FIRDatabaseReference{
+        return selfRef.child("profile")
+    }
     
     var mainStorageRef: FIRStorageReference{
         return FIRStorage.storage().reference(forURL: "gs://socialchat-b831e.appspot.com")
@@ -35,8 +43,7 @@ class DataService {
         return mainStorageRef.child("images")
     }
     
-    
-    func saveUser(uid: String, username: String, firstName: String, lastName: String, data: Data) {
+    func saveUser(uid: String, username: String, firstName: String, lastName: String, phoneNumber: String, data: Data) {
         
         let filePath = "profileImage/\(uid)"
         let metadata = FIRStorageMetadata()
@@ -48,8 +55,12 @@ class DataService {
                 return
             }
             let imageUrl = metadata?.downloadURLs![0].absoluteString
-            let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl!]
+            let profile: Dictionary<String, Any> = ["username": username, "firstName": firstName, "lastName": lastName, "phoneNumber": phoneNumber, "imageUrl": imageUrl!]
+            let usernameDict: Dictionary<String, Any> = [uid:username]
+            let phoneDict: Dictionary<String, Any> = [uid:phoneNumber]
             self.mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
+            self.mainRef.child("Username").setValue(usernameDict)
+            self.mainRef.child("PhoneNumber").setValue(phoneDict)
         }
     }
     
@@ -68,12 +79,24 @@ class DataService {
         
     }
     
+    func sendFriendRequest(senderId: String, senderUsername: String, senderFullname: String, receiverId: String){
+        
+        let sendTime = Util.getCurrentTime()
+        let senderSaveData:Dictionary<String, Any> = ["receiverId": receiverId, "sendTime": sendTime]
+        let receiverSaveData:Dictionary<String, Any> = ["senderId": senderId, "senderUsername": senderUsername, "senderFullname": senderFullname, "sendTime": sendTime]
+        
+        let senderRef = usersRef.child(senderId).child("sentFriendRequest")
+        let receiverRef = usersRef.child(receiverId).child("receivedFriendRequest")
+        
+        senderRef.setValue(senderSaveData)
+        receiverRef.setValue(receiverSaveData)
+    }
+    
+    
     // send message to sepecific receivers
     func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, visibleTime: String? = nil){
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY MM dd 'at' HH:mm:ss"
-        let sendTime = dateFormatter.string(from: Date())
+        let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
         let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)
         let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
@@ -85,7 +108,5 @@ class DataService {
         receiverRef.setValue(receiveMessageItem)
         
     }
-    
-    
     
 }
