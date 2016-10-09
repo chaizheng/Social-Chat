@@ -67,7 +67,6 @@ class UserInfoVC: UIViewController {
                 self.newReminder.isHidden = false
             })
         }
-        
     }
     
     @IBAction func addedMeBtnPressed(_ sender: AnyObject) {

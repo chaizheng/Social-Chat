@@ -16,6 +16,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var send_Btn: UIBarButtonItem!
+    
     private var users = [User]()
     private var selectedUsers = Dictionary<String, User>()
     private var _image: UIImage?

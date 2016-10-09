@@ -109,7 +109,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
         if let friendId = self.friendId{
             if myfirstName != nil && mylastName != nil && myusername != nil && myId != nil{
                 let fullname = myfirstName! + " " + mylastName!
-                DataService.instance.sendFriendRequest(senderId: myId!, senderUsername: myusername!, senderFullname: fullname, receiverId: friendId)
+                DataService.instance.sendFriendRequest(senderId: myId!, senderUsername: myusername!, senderFullname: fullname, receiverId: friendId, senderImageUrl: myimageUrl!)
             }
         }
         let alert = UIAlertController(title: "Send Request Successfully", message: "Tell your friend you've already sent the friend request!", preferredStyle: .alert)

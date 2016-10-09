@@ -20,6 +20,7 @@ class SendVC: JSQMessagesViewController{
     
     private var _receiverId: String?
     private var _receiverName: String?
+    private var imageUrl: String?
     
     var receiverName: String? {
         get{
@@ -71,6 +72,8 @@ class SendVC: JSQMessagesViewController{
         DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
             if let value = snapshot.value as? Dictionary<String, Any>{
                 let username = value["username"]
+                let senderImageUrl = value["imageUrl"]
+                self.imageUrl = senderImageUrl as? String
                 self.senderDisplayName = username as? String
             } else{
                 print("error displayname")
@@ -236,7 +239,7 @@ class SendVC: JSQMessagesViewController{
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!)
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!, senderImageUrl: self.imageUrl!)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
     }
@@ -269,7 +272,7 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!)
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!,senderImageUrl: self.imageUrl!)
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }
