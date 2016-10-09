@@ -22,7 +22,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+        print(allPhoneList)
         findContacts()
 
            }
@@ -58,6 +58,8 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    //func phoneUser（[String],
+    
     func findContacts() -> [CNContact] {
         marrContactsNumber.removeAll()
         marrContactsName.removeAll()
@@ -82,7 +84,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(marrContactsNumber)
         print(allPhoneList)
         
-        
+       
         return contacts
     }
 
