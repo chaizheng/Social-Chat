@@ -15,6 +15,7 @@ class AcceptRequestCell: UITableViewCell{
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     private var senderId: String?
+    private var senderFullName: String?
     
     
     func updateUI(sender: SenderInfo){
@@ -26,6 +27,7 @@ class AcceptRequestCell: UITableViewCell{
         userNameLabel.text = sender.username
         timeLabel.text = sender.sendTime
         self.senderId = sender.uid
+        self.senderFullName = sender.fullName
         if let url = URL(string: sender.imageUrl) {
             do {
                 let data = try Data(contentsOf: url)
@@ -35,12 +37,23 @@ class AcceptRequestCell: UITableViewCell{
                 print(error.localizedDescription)
             }
         }
-        
     }
 
     @IBAction func acceptBtnPressed(_ sender: AnyObject) {
-        //Delete sender request in sender data and add friend in his list
-        DataService.instance.usersRef.child(senderId!).child("sendFriendRequest").child("\(senderId)-\(myId!)").removeValue()
-
+        let requestRef = "\(senderId!)-\(myId!)"
+        let myfullName = myfirstName! + " " + mylastName!
+        let senderInfo: Dictionary<String, Any> = [senderId!:senderFullName!]
+        let receiverInfo: Dictionary<String, Any> = [myId!:myfullName]
+        
+        //Delete sender request in sender database and add "ME" in his friends list
+        DataService.instance.usersRef.child(senderId!).child("sentFriendRequest").child(requestRef).setValue(nil)
+        DataService.instance.usersRef.child(senderId!).child("friends").updateChildValues(receiverInfo)
+        
+        //Delete my received request in my database and add "HIM" in my friends list
+        DataService.instance.usersRef.child(myId!).child("receivedFriendRequest").child(requestRef).setValue(nil)
+        DataService.instance.usersRef.child(myId!).child("friends").updateChildValues(senderInfo)
+        
+        //update myfriends list
+        AuthService.instance.updateLocalFriendsList()
     }
 }

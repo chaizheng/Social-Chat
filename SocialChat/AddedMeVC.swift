@@ -33,7 +33,6 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
                     let sender = SenderInfo(uid: senderId, fullName: senderFullName, sendTime: sendTime, imageUrl: senderImageUrl, username: senderUsername)
                     self.senders.append(sender)
             }
-        
         }
             self.tableView.reloadData()
         }
@@ -61,6 +60,9 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
         return senders.count
     }
 
+    @IBAction func backBtnPressed(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

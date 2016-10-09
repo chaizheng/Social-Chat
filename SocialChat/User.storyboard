@@ -77,6 +77,9 @@
                                             <constraint firstAttribute="width" constant="33" id="bQB-lS-csN"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="back_item"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="SKn-Lb-tnC" eventType="touchUpInside" id="AOJ-aB-3fx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,7 +101,7 @@
                                             <frame key="frameInset" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-2O-oFM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-2O-oFM">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="GKf-hB-75j"/>
                                                         <constraint firstAttribute="width" constant="70" id="wwY-eX-c39"/>
@@ -146,10 +149,10 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcT-NK-sOn">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="147" id="2R5-py-Lqr"/>
+                                                        <constraint firstAttribute="width" constant="160" id="2R5-py-Lqr"/>
                                                         <constraint firstAttribute="height" constant="21" id="KN5-9x-6Hp"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -297,7 +300,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="addedMeBtnPressed:" destination="n5i-A8-xsI" eventType="touchUpInside" id="XfC-zk-kV0"/>
                                             <segue destination="SKn-Lb-tnC" kind="show" id="1Zl-Rj-NhY"/>
                                         </connections>
                                     </button>

@@ -40,11 +40,8 @@ class AuthService {
                 myusername = userValue["username"] as? String
             }
         })
-        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
-            if let value = snapshot.value as? Dictionary<String, Any> {
-                friendsList = value
-            }
-        })
+        updateLocalFriendsList()
+        
         DataService.instance.mainRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let value = snapshot.value as? Dictionary<String, Any> {
                 allPhoneList = value
@@ -52,7 +49,13 @@ class AuthService {
         })
     }
     
-    
+    func updateLocalFriendsList(){
+        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                friendsList = value
+            }
+        })
+    }
     
     func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
