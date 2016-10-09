@@ -18,10 +18,20 @@ class SendVC: JSQMessagesViewController{
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
-    private var _receiverId: String?
-    private var _receiverName: String?
+    private var _receiverId: String!
+    private var _receiverName: String!
     
-    var receiverName: String? {
+    var receiverId: String{
+        get{
+            return _receiverId
+        }
+        
+        set{
+            _receiverId = newValue
+        }
+    }
+    
+    var recieverName: String{
         get{
             return _receiverName
         }
@@ -30,16 +40,8 @@ class SendVC: JSQMessagesViewController{
         }
     }
     
-    var receiverId: String? {
-        get{
-            return _receiverId
-        }
-        set{
-            _receiverId = newValue
-        }
-    }
     
- //   var senderAvatar:JSQMessagesAvatarImage!
+     //   var senderAvatar:JSQMessagesAvatarImage!
 //    var usersAvatars:Dictionary<String, JSQMessagesAvatarImage>
     
     override func viewDidLoad() {
@@ -51,14 +53,8 @@ class SendVC: JSQMessagesViewController{
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
         
-        //testttttttt
-        self.receiverId = "qmZ3KIxXzzULsCYV9lwc50t8Iju2"
-        self.receiverName = "test2"
-        if let name = receiverName{
-           title = name
-        } else{
-            title = "ERROR RECEIVER"
-        }
+        self.title = recieverName
+        
         //set default value unless error
         self.senderDisplayName = ""
         observeUsers()
@@ -110,7 +106,7 @@ class SendVC: JSQMessagesViewController{
     
     private func newobserveMessages(){
         
-        let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId!)
+        let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId)
         
         senderQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
             
@@ -137,7 +133,7 @@ class SendVC: JSQMessagesViewController{
             self.finishReceivingMessage()
         }
         
-        let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId!)
+        let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId)
         
         receiverQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
             
@@ -236,7 +232,7 @@ class SendVC: JSQMessagesViewController{
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!)
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
     }
@@ -269,7 +265,7 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!)
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId)
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }
