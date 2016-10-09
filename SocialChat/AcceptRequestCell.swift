@@ -19,7 +19,7 @@ class AcceptRequestCell: UITableViewCell{
     
     func updateUI(sender: SenderInfo){
         
-        self.profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+        self.profileImage.layer.cornerRadius = 35
         self.profileImage.clipsToBounds = true
         
         fullNameLabel.text = sender.fullName

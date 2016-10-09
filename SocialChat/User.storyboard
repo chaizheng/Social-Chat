@@ -91,11 +91,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2E9-tB-qit">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AcceptRequestCell" rowHeight="80" id="HLf-6f-v77" customClass="AcceptRequestCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AcceptRequestCell" rowHeight="120" id="HLf-6f-v77" customClass="AcceptRequestCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HLf-6f-v77" id="hOk-5N-3di">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-2O-oFM">
@@ -125,7 +125,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="358-04-aXc" customClass="RoundButton" customModule="SocialChat" customModuleProvider="target">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="jdG-p7-I0V"/>
-                                                        <constraint firstAttribute="width" constant="80" id="w3s-st-SxL"/>
+                                                        <constraint firstAttribute="width" constant="70" id="w3s-st-SxL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <state key="normal" title="accept">
@@ -136,7 +136,7 @@
                                                             <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
+                                                            <real key="value" value="13"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -155,15 +155,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ww9-Dv-gEq" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="14" id="BTh-Sg-OPX"/>
+                                                <constraint firstItem="ww9-Dv-gEq" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="30" id="BTh-Sg-OPX"/>
                                                 <constraint firstItem="H56-dg-yif" firstAttribute="top" secondItem="ww9-Dv-gEq" secondAttribute="bottom" constant="5" id="Bf8-gi-Xl9"/>
-                                                <constraint firstItem="KcT-NK-sOn" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="14" id="Deh-J8-L8V"/>
+                                                <constraint firstItem="KcT-NK-sOn" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="31" id="Deh-J8-L8V"/>
                                                 <constraint firstItem="358-04-aXc" firstAttribute="centerY" secondItem="hOk-5N-3di" secondAttribute="centerY" id="GQl-mq-Ez2"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="358-04-aXc" secondAttribute="trailing" constant="8" id="Ihg-79-YFu"/>
-                                                <constraint firstItem="H56-dg-yif" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="14" id="NLV-nc-KLj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="358-04-aXc" secondAttribute="trailing" constant="10" id="Ihg-79-YFu"/>
+                                                <constraint firstItem="H56-dg-yif" firstAttribute="leading" secondItem="uvN-2O-oFM" secondAttribute="trailing" constant="30" id="NLV-nc-KLj"/>
                                                 <constraint firstItem="uvN-2O-oFM" firstAttribute="leading" secondItem="hOk-5N-3di" secondAttribute="leading" constant="19" id="P8f-z7-if2"/>
                                                 <constraint firstItem="uvN-2O-oFM" firstAttribute="centerY" secondItem="hOk-5N-3di" secondAttribute="centerY" id="Z10-i0-MdF"/>
-                                                <constraint firstItem="ww9-Dv-gEq" firstAttribute="top" secondItem="hOk-5N-3di" secondAttribute="top" constant="5" id="eo3-mc-36A"/>
+                                                <constraint firstItem="ww9-Dv-gEq" firstAttribute="top" secondItem="hOk-5N-3di" secondAttribute="top" constant="25" id="eo3-mc-36A"/>
                                                 <constraint firstItem="KcT-NK-sOn" firstAttribute="top" secondItem="H56-dg-yif" secondAttribute="bottom" constant="3" id="kZO-gz-50D"/>
                                             </constraints>
                                         </tableViewCellContentView>
