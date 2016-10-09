@@ -43,6 +43,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     
                     let newUid = receivedMsg["senderId"] as! String
+                    print(newUid)
                     let name = receivedMsg["senderName"] as? String
                     print("receive"+name!)
                     let newUser = User(uid: newUid, firstName: name!)
@@ -56,7 +57,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid, at: 0)
-                        
+                        print("1")
                     } else{
                         //self.senders.append(newUser)
                         
@@ -64,10 +65,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.uid.insert(newUid, at: 0)
                         //receivIndex = self.uid.index(of: newUid)!
                     
-                        
+                        print("2")
                         
                     }
-                    
+                    self.tableView.reloadData()
                     
                 }
                 //self.tableView.reloadData()
@@ -87,11 +88,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.uid.remove(at: sentIndex)
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid!, at: 0)
+                        print("3")
                     } else{
                         //self.senders.append(newUser)
                         self.senders.insert(newUser, at: 0)
                         //sentIndex = self.uid.index(of: newUid!)!
                         self.uid.insert(newUid!, at: 0)
+                        print("4")
 
                         
 
@@ -131,10 +134,30 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
       
          let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
         let friend = senders[indexPath.row]
-       
+        print(senders)
+        print(senders.count)
+       print("oooo"+friend.firstName)
         cell.updateUI(user: friend)
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = senders[indexPath.row]
+        performSegue(withIdentifier: "SendVC", sender: user )
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SendVC" {
+            let navigController = segue.destination as! UINavigationController
+            let sendVC = navigController.topViewController as! SendVC
+            if let receiverInfo = sender as? User{
+                sendVC.receiverId = receiverInfo.uid
+                sendVC.recieverName = receiverInfo.firstName
+            }
+            
+        }
     }
     
     

@@ -18,11 +18,15 @@ class SendVC: JSQMessagesViewController{
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
-
+<<<<<<< HEAD
+    private var _receiverId: String?
+    private var _receiverName: String?
+    private var imageUrl: String?
+=======
     private var _receiverId: String!
     private var _receiverName: String!
-    private var imageUrl: String?
-
+>>>>>>> 354582de624034d8cd480aa08f5ac69416796344
+    
     var receiverId: String{
         get{
             return _receiverId
@@ -236,8 +240,11 @@ class SendVC: JSQMessagesViewController{
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId, senderImageUrl: self.imageUrl!)
-
+<<<<<<< HEAD
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!, senderImageUrl: self.imageUrl!)
+=======
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId)
+>>>>>>> 354582de624034d8cd480aa08f5ac69416796344
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
     }
@@ -270,8 +277,11 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId,senderImageUrl: self.imageUrl!)
-
+<<<<<<< HEAD
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!,senderImageUrl: self.imageUrl!)
+=======
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId)
+>>>>>>> 354582de624034d8cd480aa08f5ac69416796344
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }
