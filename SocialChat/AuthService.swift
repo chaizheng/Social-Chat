@@ -18,6 +18,8 @@ var mylastName: String?
 var myphoneNumber: String?
 var myimageUrl: String?
 var myId: String?
+var friendsList: Dictionary<String, Any>?
+var allPhoneList: Dictionary<String, Any>?
 
 
 class AuthService {
@@ -36,6 +38,16 @@ class AuthService {
                 myphoneNumber = userValue["phoneNumber"] as? String
                 myimageUrl = userValue["imageUrl"] as? String
                 myusername = userValue["username"] as? String
+            }
+        })
+        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                friendsList = value
+            }
+        })
+        DataService.instance.selfRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                allPhoneList = value
             }
         })
     }
