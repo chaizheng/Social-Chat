@@ -236,7 +236,7 @@ class SendVC: JSQMessagesViewController{
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId, senderImageUrl: self.imageUrl!)
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId, receiverName: self.recieverName, senderImageUrl: self.imageUrl!)
 
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
@@ -270,7 +270,8 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId,senderImageUrl: self.imageUrl!)
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId,receiverName: self.recieverName,senderImageUrl: self.imageUrl!)
+                
 
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
