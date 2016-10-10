@@ -36,10 +36,9 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate, Cu
         }
             self.tableView.reloadData()
         }
-        if senders.count == 0{
-            tableView.isHidden = true
-        }
-        
+//        if senders.count == 0{
+//            tableView.isHidden = true
+//        }
     }
     
     
@@ -55,7 +54,7 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate, Cu
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 120.0;
+        return 120.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

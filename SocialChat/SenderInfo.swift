@@ -9,6 +9,7 @@
 import Foundation
 
 struct SenderInfo {
+    
     private var _fullName: String
     private var _uid: String
     private var _sendTime: String
