@@ -95,14 +95,14 @@ class DataService {
     
     
     // send message to sepecific receivers
-    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, senderImageUrl: String, visibleTime: String? = nil){
+    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, receiverName: String, senderImageUrl: String, visibleTime: String? = nil){
         
         let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
         let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)
         let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
         
-        let sendMessageItem:Dictionary<String, Any> = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId]
+        let sendMessageItem:Dictionary<String, Any> = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName]
         let receiveMessageItem:Dictionary<String, Any> = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime, "senderImageUrl": senderImageUrl]
         
         senderRef.setValue(sendMessageItem)

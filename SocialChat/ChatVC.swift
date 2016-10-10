@@ -77,11 +77,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             DataService.instance.usersRef.child(userId!).child("sentMessage").observe(.childAdded){ (snapshot: FIRDataSnapshot!) in
                 if let sentMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    let newUid = sentMsg["senderId"] as? String
-                    let name = sentMsg["senderName"] as? String
-                    let receive = sentMsg["receiverName"] as! String
+                    //let newUid = sentMsg["senderId"] as? String
+                    //let name = sentMsg["senderName"] as? String
+
+                    let name = sentMsg["receiverName"] as? String
+                    let newUid = sentMsg["receiverId"] as? String
+
+                    print("chai")
                     print("sent"+name!)
-                    let newUser = User(uid: newUid!, firstName: name!)
+                    
+                    let newUser = User(uid: newUid! , firstName: name!)
                     
                     if self.uid.contains(newUid!){
                         sentIndex = self.uid.index(of: newUid!)!
@@ -95,6 +100,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.senders.insert(newUser, at: 0)
                         //sentIndex = self.uid.index(of: newUid!)!
                         self.uid.insert(newUid!, at: 0)
+                        
                        
                         
 
