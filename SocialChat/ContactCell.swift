@@ -10,19 +10,39 @@ import UIKit
 
 class ContactCell: UITableViewCell {
 
-    @IBAction func AddFriend(_ sender: AnyObject) {
+    var added : [Bool]?
+    var indexrow: Int?
+    
+    var friendId: String?
+    
+    @IBAction func addFriend(_ sender: AnyObject) {
+        if friendId != nil{
+            if myfirstName != nil && mylastName != nil && myusername != nil && myId != nil{
+                let fullname = myfirstName! + " " + mylastName!
+                DataService.instance.sendFriendRequest(senderId: myId!, senderUsername: myusername!, senderFullname: fullname, receiverId: friendId!, senderImageUrl: myimageUrl!)
+            }
+
+        }
+        let alert = UIAlertController(title: "Send Request Successfully", message: "Tell your friend you've already sent the friend request!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Nice", style: .cancel, handler: nil))
+        //present(alert, animated: true, completion: nil)
+        
+        
+        self.addFriend.isEnabled = false
+        
+
+        
     }
+    @IBOutlet var addFriend: UIButton!
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+       
     }
+    
+    
 
 }

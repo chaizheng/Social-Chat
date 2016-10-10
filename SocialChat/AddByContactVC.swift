@@ -18,30 +18,42 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var marrContactsNumber = [String]()
     var marrContactsName = [String]()
     
+    var num = [Bool]()
+    var friendId: String?
+    var selectIndex :Int?
+    
+    
+    func getfriendId() -> String{
+        return friendId!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        print(allPhoneList)
         findContacts()
+        phoneUser()
+        
+        tableView.reloadData()
 
            }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func alreadyAdd(){
+        for v in (allPhoneList?.values)!{
+            
+        }
     }
-    */
+
+    func findKeyforValue(phoneNum: String, dic: Dictionary<String, Any> ) -> String{
+        for (key, value) in dic{
+            if value as! String == phoneNum{
+                return key
+            }
+        }
+        return "no key matched"
+    }
+
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -53,12 +65,45 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.nameLabel.text = marrContactsName[indexPath.row]
         
         cell.phoneLabel.text = marrContactsNumber[indexPath.row]
-        return cell
+        
+        if num[indexPath.row] == true {
+            cell.addFriend.isHidden = false
+            
+        } else{
+            cell.addFriend.isHidden = true
+        }
+        
+        cell.friendId = findKeyforValue(phoneNum: marrContactsNumber[indexPath.row], dic: allPhoneList!)
+        
+              return cell
         
         
     }
     
-    //func phoneUser（[String],
+    func phoneUser() -> [Bool] {
+    
+        
+        for v in (allPhoneList?.values)!{
+            
+            while num.count < marrContactsNumber.count {
+                num.append(false)
+            }
+            
+
+            
+            if marrContactsNumber.contains(v as! String){
+                let index = marrContactsNumber.index(of: v as! String)
+               
+                num[index!] = true
+                
+                
+            }
+           
+        
+               }
+        
+        return num
+    }
     
     func findContacts() -> [CNContact] {
         marrContactsNumber.removeAll()
@@ -83,6 +128,9 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(marrContactsName)
         print(marrContactsNumber)
         print(allPhoneList)
+        print(allPhoneList?.keys)
+        print(allPhoneList?.values)
+        //print(allPhoneList.)
         
        
         return contacts

@@ -102,6 +102,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Invalid Username", message: "You must enter username", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
+            
  
         }
         
@@ -117,6 +118,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Nice", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
         self.foundView.isHidden = true
+    
         return
     }
 }

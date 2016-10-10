@@ -92,10 +92,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AcceptRequestCell" rowHeight="120" id="HLf-6f-v77" customClass="AcceptRequestCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HLf-6f-v77" id="hOk-5N-3di">
-                                            <frame key="frameInset" width="375" height="119.5"/>
+                                            <frame key="frameInset" width="1000" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-2O-oFM">
@@ -480,7 +480,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="AddFriend:" destination="oY4-aV-bLy" eventType="touchUpInside" id="uUT-c6-1K3"/>
+                                                        <action selector="addFriend:" destination="oY4-aV-bLy" eventType="touchUpInside" id="mX6-Gg-0x5"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usy-QJ-Oxg">
@@ -493,6 +493,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addFriend" destination="RNv-zE-X8q" id="ZCT-K2-kS3"/>
                                             <outlet property="nameLabel" destination="7H4-H4-FyZ" id="c7D-oi-mI8"/>
                                             <outlet property="phoneLabel" destination="usy-QJ-Oxg" id="ePe-w1-AnI"/>
                                         </connections>
@@ -673,7 +674,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrw-yn-Tsz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="a3k-Nd-3xL"/>
             </objects>
-            <point key="canvasLocation" x="1200.8" y="-919.79010494752629"/>
+            <point key="canvasLocation" x="865" y="-957"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qUX-fd-ehP">
+            <objects>
+                <viewController id="IJS-ij-eNr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AiG-fg-v0S"/>
+                        <viewControllerLayoutGuide type="bottom" id="rTo-xY-DL6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5SL-Nn-j5n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Facebook" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-tc-5m1">
+                                <frame key="frameInset" minX="99" minY="162" width="177" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adt-ih-8rE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701.5999999999999" y="-957.57121439280365"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DrP-QY-DbG">
@@ -936,6 +961,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Facebook" width="325" height="325"/>
         <image name="back_item" width="12" height="20"/>
         <image name="new_icon" width="40" height="25"/>
         <image name="setting_Btn" width="35" height="35"/>
