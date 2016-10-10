@@ -329,11 +329,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/AcceptRequestCell.swift"
-            timestampString = "497709349.836271"
+            timestampString = "497766324.263253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "AcceptRequestCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -345,11 +345,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/AcceptRequestCell.swift"
-            timestampString = "497709349.836271"
+            timestampString = "497766324.263253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "acceptBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol CustomCellCallsDelegate{
+    func showAlertAndReload(tag: Int, name: String)
+}
+
 class AcceptRequestCell: UITableViewCell{
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -16,9 +21,10 @@ class AcceptRequestCell: UITableViewCell{
     @IBOutlet weak var timeLabel: UILabel!
     private var senderId: String?
     private var senderFullName: String?
+    var delegate: CustomCellCallsDelegate?
     
     
-    func updateUI(sender: SenderInfo){
+    func updateCell(sender: SenderInfo){
         
         self.profileImage.layer.cornerRadius = 35
         self.profileImage.clipsToBounds = true
@@ -52,6 +58,8 @@ class AcceptRequestCell: UITableViewCell{
         //Delete my received request in my database and add "HIM" in my friends list
         DataService.instance.usersRef.child(myId!).child("receivedFriendRequest").child(requestRef).setValue(nil)
         DataService.instance.usersRef.child(myId!).child("friends").updateChildValues(senderInfo)
+        
+        self.delegate?.showAlertAndReload(tag: self.tag, name: senderFullName!)
         
         //update myfriends list
         AuthService.instance.updateLocalFriendsList()
