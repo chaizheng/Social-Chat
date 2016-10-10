@@ -79,7 +79,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     let newUid = sentMsg["senderId"] as? String
                     let name = sentMsg["senderName"] as? String
-                    let receive
+                    let receive = sentMsg["receiverName"] as! String
                     print("sent"+name!)
                     let newUser = User(uid: newUid!, firstName: name!)
                     
