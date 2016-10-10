@@ -69,7 +69,8 @@ class UserInfoVC: UIViewController {
         }
     }
     
-    @IBAction func addedMeBtnPressed(_ sender: AnyObject) {
+
+    override func viewDidDisappear(_ animated: Bool) {
         self.newReminder.isHidden = true
     }
     

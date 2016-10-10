@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -237,6 +237,14 @@
             </objects>
             <point key="canvasLocation" x="-1661" y="-1953"/>
         </scene>
+        <!--FriendsVC-->
+        <scene sceneID="hJz-BE-p5V">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="FriendsVC" id="gTN-xV-gnG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZm-vl-D91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1237" y="-2398"/>
+        </scene>
         <!--ChatVC-->
         <scene sceneID="EVf-A2-vah">
             <objects>
@@ -257,6 +265,9 @@
                                             <constraint firstAttribute="height" constant="30" id="vvz-w0-XUR"/>
                                         </constraints>
                                         <state key="normal" image="add_Btn"/>
+                                        <connections>
+                                            <segue destination="gTN-xV-gnG" kind="show" id="5d4-Nx-gWt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSb-ju-maU">
                                         <constraints>

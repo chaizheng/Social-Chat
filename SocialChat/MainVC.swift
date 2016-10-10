@@ -13,7 +13,7 @@ protocol MainScrollVCDelegate {
 }
 
 //avoid apear again
-var firstTimeAppear = true
+var firstTimeMainVCAppear = true
 
 let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
 let userStoryboard = UIStoryboard.init(name: "User", bundle: nil)
@@ -61,7 +61,7 @@ class MainVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if firstTimeAppear{
+        if firstTimeMainVCAppear{
         let chatView = editStoryboard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
         self.addChildViewController(chatView)
         self.scrollViewHor.addSubview(chatView.view)
@@ -99,7 +99,7 @@ class MainVC: UIViewController, UIScrollViewDelegate {
         scrollViewHor.contentSize = CGSize(width: self.view.frame.size.width * 4, height: self.view.frame.size.height)
         self.scrollViewHor.contentOffset = CGPoint(x: self.view.frame.width, y: 0)
         firstTimeSettingOffset = false
-        firstTimeAppear = false
+        firstTimeMainVCAppear = false
         }
 }
     override func didReceiveMemoryWarning() {

@@ -277,6 +277,11 @@ class SendVC: JSQMessagesViewController{
             }
     }
     
+    
+    @IBAction func backButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
+    }
+    
 }
 
 extension SendVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

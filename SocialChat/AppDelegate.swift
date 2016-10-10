@@ -51,7 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func logout() {
         try! FIRAuth.auth()!.signOut()
         firstLoad = true
-        firstTimeAppear = true
+        firstTimeMainVCAppear = true
+        firstTimeVerticalVCAppear = true
         window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC")
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import UIKit
 
 typealias Completion = (String?, AnyObject?) -> Void
 
@@ -18,13 +19,12 @@ var mylastName: String?
 var myphoneNumber: String?
 var myimageUrl: String?
 var myId: String?
-var friendsList: Dictionary<String, Any>?
 var allPhoneList: Dictionary<String, Any>?
-
+var allFriendsInfo = [FriendInfo]()
 
 class AuthService {
-    private static let _instance = AuthService()
     
+    private static let _instance = AuthService()
     static var instance: AuthService{
         return _instance
     }
@@ -40,11 +40,8 @@ class AuthService {
                 myusername = userValue["username"] as? String
             }
         })
-        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
-            if let value = snapshot.value as? Dictionary<String, Any> {
-                friendsList = value
-            }
-        })
+        updateLocalFriendsList()
+        
         DataService.instance.mainRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let value = snapshot.value as? Dictionary<String, Any> {
                 allPhoneList = value
@@ -55,7 +52,35 @@ class AuthService {
         })
     }
     
-    
+    func updateLocalFriendsList(){
+        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                //friendsList = value
+                for item in value{
+                    let friendId = item.key
+                    print(friendId)
+                    DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
+                        if let childValue = childSnapshot.value as? Dictionary<String, Any> {
+                            let firstName = childValue["firstName"] as? String
+                            let lastName = childValue["lastName"] as? String
+                            let fullName = firstName! + " " + lastName!
+                            if let url = URL(string: childValue["imageUrl"] as! String) {
+                                do {
+                                    let data = try Data(contentsOf: url)
+                                    let profileImage = UIImage(data: data)
+                                    let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
+                                    allFriendsInfo.append(friend)
+                                }
+                                catch{
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
+            })
+                }
+            }
+        })
+    }
     
     func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
