@@ -17,10 +17,29 @@ class StoryVC: UIViewController {
         super.viewDidLoad()
         
     }
-
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func goToDisBtnPressed(_ sender: AnyObject) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goRight"), object: nil)
