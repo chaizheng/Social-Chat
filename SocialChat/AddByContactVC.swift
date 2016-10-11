@@ -17,8 +17,11 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var marrContactsNumber = [String]()
     var marrContactsName = [String]()
-    
+    //compare the of element in addressbook similar to database
     var num = [Bool]()
+    //compare whether the user have already in the database
+    var added = [Bool]()
+    
     var friendId: String?
     var selectIndex :Int?
     
@@ -26,6 +29,8 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getfriendId() -> String{
         return friendId!
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +40,12 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         phoneUser()
         
         tableView.reloadData()
+        print(allFriendsInfo)
 
            }
     
     
-    func alreadyAdd(){
-        for v in (allPhoneList?.values)!{
-            
-        }
-    }
-
+    
     func findKeyforValue(phoneNum: String, dic: Dictionary<String, Any> ) -> String{
         for (key, value) in dic{
             if value as! String == phoneNum{
@@ -125,12 +126,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             print(error.localizedDescription)
         }
         
-        print(marrContactsName)
-        print(marrContactsNumber)
-        print(allPhoneList)
-        print(allPhoneList?.keys)
-        print(allPhoneList?.values)
-        //print(allPhoneList.)
+      
         
        
         return contacts

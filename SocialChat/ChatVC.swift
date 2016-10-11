@@ -51,7 +51,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     if self.uid.contains(newUid){
                         receivIndex = self.uid.index(of: newUid)!
-                        
+                       
                         self.senders.remove(at: receivIndex)
                         self.uid.remove(at: receivIndex)
                         
