@@ -9,13 +9,13 @@
 import UIKit
 
 
-class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+
+class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var backToStory: UIButton!
   
     @IBOutlet weak var discoverCollection: UICollectionView!
     
-    var webdiscover = [Webdiscover]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +27,49 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         discoverCollection.collectionViewLayout = layout
-        parseWebsiteCSV()
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        self.discoverCollection.addGestureRecognizer(lpgr)
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(discoverCollection.contentOffset)
-//    }
-//    //useless when animated is false
-//    override func viewDidAppear(_ animated: Bool) {
-//        discoverCollection.setContentOffset(CGPoint(x:0,y:800), animated: false)
-//    }
-    
-    func parseWebsiteCSV(){
-        let path = Bundle.main.path(forResource: "website", ofType: "csv")!
-        do{
-            let csv = try CSV.init(contentsOfURL: path)
-            let rows = csv.rows
+    //Subscription part
+    func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        
+        if gestureReconizer.state == .began{
+            let position = gestureReconizer.location(in: self.discoverCollection)
+            let indexPath = self.discoverCollection.indexPathForItem(at: position)
             
-            for row in rows{
-                let type = row["Type"]
-                let title = row["Title"]
-                let url = row["Url"]
+            if let index = indexPath {
+//                let cell = self.discoverCollection.cellForItem(at: index) as! DiscoverCell
+//                
+//                UIView.animate(withDuration: 1, animations: { () -> Void in
+//                    cell.holdingView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//                    })
                 
-                let web = Webdiscover(url: url!, type: type!, title: title!)
-                webdiscover.append(web)
+                
+                let channel = webdiscover[index.row].type
+                let alert = UIAlertController(title: "\(channel) Channel", message: "Do you want to subscribe this channel?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                return
+                //
+                //            UIView.animate(withDuration: 0.01, animations: { () -> Void in
+                //                cell.holdingView.transform = CGAffineTransform(scaleX: 1, y: 1)})
+                //            
+                //            
+            } else {
+                print("Could not find index path")
             }
-            
-        } catch let err as NSError{
-            print(err.debugDescription)
         }
+        
+     
     }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -64,12 +64,21 @@ class AuthService {
                             let firstName = childValue["firstName"] as? String
                             let lastName = childValue["lastName"] as? String
                             let fullName = firstName! + " " + lastName!
+                            let phoneNumber = childValue["phoneNumber"] as? String
                             if let url = URL(string: childValue["imageUrl"] as! String) {
                                 do {
                                     let data = try Data(contentsOf: url)
                                     let profileImage = UIImage(data: data)
-                                    let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
-                                    allFriendsInfo.append(friend)
+                                    
+                                    //No phone number in some previous test accounts 
+                                    if let number = phoneNumber{
+                                        let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
+                                        allFriendsInfo.append(friend)
+                                    } else{
+                                        let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
+                                        allFriendsInfo.append(friend)
+                                    }
+                                    
                                 }
                                 catch{
                                     print(error.localizedDescription)

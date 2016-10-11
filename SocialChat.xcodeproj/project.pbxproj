@@ -12,6 +12,7 @@
 		1F1514131DAB5E6000F0CCF3 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514121DAB5E6000F0CCF3 /* FriendsVC.swift */; };
 		1F1514151DAB688D00F0CCF3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514141DAB688D00F0CCF3 /* FriendCell.swift */; };
 		1F1514171DAB820600F0CCF3 /* FriendInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514161DAB820600F0CCF3 /* FriendInfo.swift */; };
+		1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */; };
 		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
 		1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */; };
 		1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */; };
@@ -67,6 +68,7 @@
 		1F1514121DAB5E6000F0CCF3 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		1F1514141DAB688D00F0CCF3 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		1F1514161DAB820600F0CCF3 /* FriendInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
+		1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
 		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByUsernameVC.swift; sourceTree = "<group>"; };
 		1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1F6757FD1D84169000DA6701 /* RoundButton.swift */,
 				1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */,
 				1F1514141DAB688D00F0CCF3 /* FriendCell.swift */,
+				1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
 				1F690F511DA50C75002CA867 /* ChatCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
@@ -462,6 +465,7 @@
 				1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */,
 				C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */,
 				C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */,
+				1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */,
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
 				1F1514151DAB688D00F0CCF3 /* FriendCell.swift in Sources */,
