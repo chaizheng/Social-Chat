@@ -15,9 +15,19 @@ struct FriendInfo {
     private var _firstName: String
     private var _uid: String
     private var _image: UIImage
+    private var _phoneNumber: String?
     
     var uid: String{
         return _uid
+    }
+    
+    var phoneNumber: String?{
+        if _phoneNumber != nil{
+            return _phoneNumber!
+        } else {
+            print("phoneNumber is nil\n")
+            return nil
+        }
     }
     
     var fullName: String{
@@ -32,10 +42,14 @@ struct FriendInfo {
         return _image
     }
     
-    init(uid: String, fullName: String, firstName: String, image: UIImage){
+    init(uid: String, fullName: String, firstName: String, image: UIImage, phoneNumber: String? = nil){
         _uid = uid
         _fullName = fullName
         _image = image
         _firstName = firstName
+        if phoneNumber != nil{
+           _phoneNumber = phoneNumber!
+        }
+        
     }
 }

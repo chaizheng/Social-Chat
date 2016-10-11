@@ -8,6 +8,8 @@
 
 import Foundation
 
+var webdiscover = [Webdiscover]()
+
 open class Util{
     
     class func isValidEmail(testStr:String) -> Bool {
@@ -29,5 +31,26 @@ open class Util{
         dateFormatter.dateFormat = "YY-MM-dd 'at' HH:mm:ss"
         return dateFormatter.string(from: Date())
     }
+    
+    class func parseWebsiteCSV(){
+        let path = Bundle.main.path(forResource: "website", ofType: "csv")!
+        do{
+            let csv = try CSV.init(contentsOfURL: path)
+            let rows = csv.rows
+            
+            for row in rows{
+                let type = row["Type"]
+                let title = row["Title"]
+                let url = row["Url"]
+                
+                let web = Webdiscover(url: url!, type: type!, title: title!)
+                webdiscover.append(web)
+            }
+            
+        } catch let err as NSError{
+            print(err.debugDescription)
+        }
+    }
+
     
 }
