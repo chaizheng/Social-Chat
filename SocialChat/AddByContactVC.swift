@@ -29,6 +29,28 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getfriendId() -> String{
         return friendId!
     }
+    //give value to added
+    func addedInDatabase(marrContactsNumber: [String])->[Bool]{
+        print("nmb")
+        for v in marrContactsNumber{
+            
+            let h = havePhoneNumber(phoneNum: v, friends: allFriendsInfo)
+            added.append(h)
+        }
+        
+        return added
+    }
+    // if the array have the phone number
+    func havePhoneNumber(phoneNum:String, friends: [FriendInfo])->Bool{
+        print("hh")
+        for v in friends{
+            print("hh2")
+            if phoneNum == v.phoneNumber{
+                return true
+            }
+        }
+        return false
+    }
     
     
     
@@ -38,6 +60,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.dataSource = self
         findContacts()
         phoneUser()
+        addedInDatabase(marrContactsNumber: marrContactsNumber)
         
         tableView.reloadData()
         print(allFriendsInfo)
@@ -68,7 +91,13 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.phoneLabel.text = marrContactsNumber[indexPath.row]
         
         if num[indexPath.row] == true {
-            cell.addFriend.isHidden = false
+            if added[indexPath.row] == true{
+                cell.addFriend.isEnabled = false
+            }
+            else{
+                 cell.addFriend.isHidden = false
+            }
+           
             
         } else{
             cell.addFriend.isHidden = true
