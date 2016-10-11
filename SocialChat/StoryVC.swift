@@ -8,7 +8,9 @@
 
 import UIKit
 
-class StoryVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+var subscriptionList: [String]?
+
+class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var goToDisBtn: UIButton!
     @IBOutlet weak var backToCameraBtn: UIButton!
@@ -20,12 +22,72 @@ class StoryVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
+        storyTableView.delegate = self
+        storyTableView.dataSource = self
         
-
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell") as! SubscriptionCell
+            //cell.updateCell(friend: friend)
+            return cell
+        } else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        
+        if section == 0{
+            return "Subsription"
+        } else{
+            return "Friend Stories"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "AvenirNext-Medium", size: 15)!
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.textAlignment = NSTextAlignment.center
+        header.contentView.backgroundColor = DEFAULT_BLUE
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 70.0
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return 2
+//            if let list = subscriptionList{
+//                return list.count
+//            } else{
+//                return 0
+//            }
+        } else{
+            // not finished story receive
+            return 3
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showwebview", sender: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,15 +101,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         }
 
     }
-    
-//     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-//        let width = collectionView.frame.width / 3
-//        let height = collectionView.frame.height
-//        self.minimumLineSpacing = 10000.0f;
-//        return CGSize(width: width, height: height)
-//    }
-//    
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -57,6 +111,15 @@ class StoryVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         
         return 50
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? WebVC{
+            if let index = sender as? Int {
+                destination.selectedUrl = webdiscover[index].url
+            }
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
