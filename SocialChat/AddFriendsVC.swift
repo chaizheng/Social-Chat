@@ -10,6 +10,16 @@ import UIKit
 
 class AddFriendsVC: UITableViewController {
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        let string = "hello, my username is " + myusername!
+        if indexPath.row == 2{
+            print("258")
+            let vc = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+            
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
