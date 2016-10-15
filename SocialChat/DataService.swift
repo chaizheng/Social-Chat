@@ -64,20 +64,6 @@ class DataService {
         }
     }
     
-    func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>, mediaURL: URL, visibleTime: Int /*textSnippet: String? = nil*/) {
-        
-        var uids = [String]()
-        for uid in sendingTo.keys{
-            uids.append(uid)
-        }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd 'at' HH:mm"
-        let sendTime = dateFormatter.string(from: Date())
-        let pr: Dictionary<String, Any> = ["mediaURL":mediaURL.absoluteString,"senderID":senderUID,"receiversID": uids,"visibleTime": visibleTime,"sendTime": sendTime]
-        
-        mainRef.child("pullRequests").childByAutoId().setValue(pr)
-        
-    }
     
     func sendFriendRequest(senderId: String, senderUsername: String, senderFullname: String, receiverId: String, senderImageUrl: String){
         
@@ -92,22 +78,61 @@ class DataService {
         senderRef.setValue(senderSaveData)
         receiverRef.setValue(receiverSaveData)
     }
-    
+
     
     // send message to sepecific receivers
-    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, receiverName: String, senderImageUrl: String, visibleTime: String? = nil){
+    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, receiverName: String, senderImageUrl: String, visibleTime: Int? = nil){
         
         let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
         let senderRef = usersRef.child(senderId).child("sentMessage").child(refName)
         let receiverRef = usersRef.child(receiverId).child("receivedMessage").child(refName)
+        let sendMessageItem:Dictionary<String, Any>!
+        let receiveMessageItem:Dictionary<String, Any>!
         
-        let sendMessageItem:Dictionary<String, Any> = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName]
-        let receiveMessageItem:Dictionary<String, Any> = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime, "senderImageUrl": senderImageUrl]
+        sendMessageItem = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName]
+        
+        //Normal image or text
+        if visibleTime == nil{
+            receiveMessageItem = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime, "senderImageUrl": senderImageUrl]
+        }
+        //Image set visible time
+        else{
+            receiveMessageItem = ["content": content,"senderId": senderId,"senderName": senderName, "contentType": messageType, "ReceivedTime": sendTime, "senderImageUrl": senderImageUrl, "visibleTime": visibleTime!]
+        }
         
         senderRef.setValue(sendMessageItem)
         receiverRef.setValue(receiveMessageItem)
         
     }
     
+    
+    
+    // share story to all friends
+    func shareStories(storyUrl: String, senderId: String, senderName: String, senderImageUrl: String, visibleTime: Int){
+        
+        let sendTime = Util.getCurrentTime()
+        let refName = "\(senderId)-\(sendTime)"
+        var receiverIds = [String]()
+        
+        // no friends then do nothing
+        if allFriendsInfo.count == 0{
+            return
+        }
+        
+        for friend in allFriendsInfo{
+            receiverIds.append(friend.uid)
+        }
+        
+        // only save data in receivers' database
+        let receiverItem:Dictionary<String, Any> = ["storyUrl": storyUrl,"senderId": senderId,"senderName": senderName,  "sendTime": sendTime, "senderImageUrl": senderImageUrl, "visibleTime": visibleTime]
+        
+        for receiverId in receiverIds{
+            let receiverRef = usersRef.child(receiverId).child("receivedStories").child(refName)
+            receiverRef.setValue(receiverItem)
+        }
+    }
+    
+    
+
 }

@@ -367,30 +367,36 @@
                                             <outlet property="timeLabel" destination="Tan-VP-3Cp" id="4ZF-bi-exx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nilValueCell" id="hW9-wm-5rq" customClass="nilValueCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nilValueCell" rowHeight="70" id="hW9-wm-5rq" customClass="nilValueCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW9-wm-5rq" id="LVV-Jw-dYw">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpd-cT-px6">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="26" id="iUr-so-OmB"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull to reload data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MP-tx-G7s">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="11"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="dpd-cT-px6" firstAttribute="centerX" secondItem="LVV-Jw-dYw" secondAttribute="centerX" id="0s4-ya-xMi"/>
+                                                <constraint firstItem="5MP-tx-G7s" firstAttribute="centerX" secondItem="LVV-Jw-dYw" secondAttribute="centerX" id="5ue-xa-BDa"/>
                                                 <constraint firstItem="dpd-cT-px6" firstAttribute="centerY" secondItem="LVV-Jw-dYw" secondAttribute="centerY" id="gRC-m3-QxS"/>
+                                                <constraint firstAttribute="bottom" secondItem="5MP-tx-G7s" secondAttribute="bottom" constant="1" id="ihM-sM-TsT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="noticeLabel" destination="dpd-cT-px6" id="BDV-Sc-AoE"/>
+                                            <outlet property="reloadLabel" destination="5MP-tx-G7s" id="heQ-Ec-gP1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1294,12 +1300,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgp-0C-OrS">
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
                                     <color key="textColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Send To..." id="Z8N-Qp-8mq">
+                                        <barButtonItem key="leftBarButtonItem" image="cancel_Btn" id="NSu-NN-fnF">
+                                            <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelBtnPressed:" destination="XqQ-Sn-wFw" id="YBk-ZP-L01"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="send_item" id="ndS-jW-14R">
                                             <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1368,6 +1381,7 @@
     <resources>
         <image name="back_item" width="12" height="20"/>
         <image name="camera_Btn" width="30" height="25"/>
+        <image name="cancel_Btn" width="24" height="24"/>
         <image name="changeCam_btn" width="52" height="52"/>
         <image name="chat_icon" width="32" height="28"/>
         <image name="default_user" width="480" height="480"/>
@@ -1381,6 +1395,6 @@
         <image name="socialChatlogo" width="283" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bX2-tF-z18"/>
+        <segue reference="LpS-ph-njw"/>
     </inferredMetricsTieBreakers>
 </document>

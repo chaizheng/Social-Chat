@@ -47,8 +47,6 @@ class AuthService {
                 allPhoneList = value
                
             }
-           
-
         })
     }
     
