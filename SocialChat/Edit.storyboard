@@ -20,8 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-d0-pGp"/>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
-                                <frame key="frameInset" minX="16" minY="72" width="43" height="42"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="43" id="UJU-Jd-aNM"/>
                                     <constraint firstAttribute="height" constant="42" id="php-si-pgs"/>
@@ -49,7 +48,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="5TB-QP-kXN"/>
                                 </constraints>
-                                <state key="normal" title="delete"/>
+                                <state key="normal" title="delete">
+                                    <color key="titleColor" red="1" green="0.075500735961595455" blue="0.029842234175011639" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="deleteItem:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="26M-4E-vnD"/>
                                 </connections>
@@ -413,7 +414,7 @@
     <resources>
         <image name="add_Btn" width="19" height="19"/>
         <image name="camera_Btn" width="30" height="25"/>
-        <image name="cancel_Btn" width="28" height="28"/>
+        <image name="cancel_Btn" width="24" height="24"/>
         <image name="circle_send" width="59" height="59"/>
         <image name="profile" width="188" height="188"/>
     </resources>
