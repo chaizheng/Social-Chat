@@ -16,6 +16,13 @@ class UserInfo: UITableViewController {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.logout()
         
+//        var rootVC = UIApplication.shared.keyWindow?.rootViewController
+//            
+//        while rootVC?.presentedViewController != nil {
+//            rootVC = rootVC?.presentedViewController
+//        }
+        
+        
     }
     @IBAction func cancell(_ sender: AnyObject) {
         dismiss(animated: false, completion: nil)

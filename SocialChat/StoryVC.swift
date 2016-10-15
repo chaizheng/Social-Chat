@@ -8,7 +8,7 @@
 
 import UIKit
 
-var subscriptionList: [String]?
+var subscriptionSet = Set<String>()
 
 class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource {
 
@@ -16,7 +16,8 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     @IBOutlet weak var backToCameraBtn: UIButton!
     @IBOutlet weak var storyCollectionView: UICollectionView!
     @IBOutlet weak var storyTableView: UITableView!
-    
+    var refreshControl: UIRefreshControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +25,18 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         storyCollectionView.dataSource = self
         storyTableView.delegate = self
         storyTableView.dataSource = self
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
+        refreshControl.addTarget(self, action: #selector(StoryVC.Refresh), for: UIControlEvents.valueChanged)
+        storyTableView.addSubview(refreshControl)
         
     }
+    
+    func Refresh(){
+        storyTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -33,8 +44,13 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            if subscriptionSet.count == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "nilValueCell") as! nilValueCell
+                cell.updateCell(from: "StorySubscription")
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell") as! SubscriptionCell
-            //cell.updateCell(friend: friend)
+            cell.updateCell(index: indexPath.row)
             return cell
         } else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
@@ -73,12 +89,11 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return 2
-//            if let list = subscriptionList{
-//                return list.count
-//            } else{
-//                return 0
-//            }
+            if subscriptionSet.count == 0{
+                return 1
+            } else{
+              return subscriptionSet.count
+            }
         } else{
             // not finished story receive
             return 3

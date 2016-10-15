@@ -33,6 +33,7 @@
 		1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FD1D84169000DA6701 /* RoundButton.swift */; };
 		1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F690F511DA50C75002CA867 /* ChatCell.swift */; };
 		1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4B3431D90252200089438 /* Webdiscover.swift */; };
+		1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C61DB1A45A009088EB /* nilValueCell.swift */; };
 		1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */; };
 		1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */; };
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
@@ -92,6 +93,7 @@
 		1F6757FD1D84169000DA6701 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		1F690F511DA50C75002CA867 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		1FA4B3431D90252200089438 /* Webdiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webdiscover.swift; sourceTree = "<group>"; };
+		1FA876C61DB1A45A009088EB /* nilValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nilValueCell.swift; sourceTree = "<group>"; };
 		1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableCell.swift; sourceTree = "<group>"; };
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */,
 				1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */,
 				1F1514141DAB688D00F0CCF3 /* FriendCell.swift */,
+				1FA876C61DB1A45A009088EB /* nilValueCell.swift */,
 				1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */,
 				1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
@@ -473,6 +476,7 @@
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
 				1F1514151DAB688D00F0CCF3 /* FriendCell.swift in Sources */,
+				1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */,
 				1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */,
 				1F1514171DAB820600F0CCF3 /* FriendInfo.swift in Sources */,
 			);

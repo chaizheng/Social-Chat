@@ -8,15 +8,34 @@
 
 import UIKit
 
+
 class SubscriptionCell: UITableViewCell {
 
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var channelImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
+    
+    func updateCell(index: Int){
+        
+        var i = 0
+        for channel in subscriptionSet{
+            if i == index{
+                self.channelName.text = channel
+                
+                break
+            }
+            else{
+                i += 1
+            }
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

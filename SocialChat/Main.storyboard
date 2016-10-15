@@ -291,6 +291,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-hl-Fz7">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubscriptionCell" rowHeight="60" id="YvJ-Su-T0t" customClass="SubscriptionCell" customModule="SocialChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -299,13 +300,14 @@
                                             <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-6d-aLe"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-6d-aLe"/>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEb-jE-HBs">
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="gEb-jE-HBs" firstAttribute="leading" secondItem="fuT-P4-o83" secondAttribute="leadingMargin" constant="8" id="VOC-GW-Q5B"/>
                                                 <constraint firstItem="ntf-6d-aLe" firstAttribute="leading" secondItem="fuT-P4-o83" secondAttribute="leading" id="b0g-DD-13D"/>
@@ -327,7 +329,7 @@
                                             <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="joC-4G-hiD">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="joC-4G-hiD">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="eLA-a3-Pjf"/>
                                                         <constraint firstAttribute="width" constant="50" id="p4m-po-efb"/>
@@ -349,6 +351,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="joC-4G-hiD" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="4Df-jj-DdH"/>
                                                 <constraint firstItem="nQd-hS-Np4" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="I9R-lh-cqS"/>
@@ -362,6 +365,32 @@
                                             <outlet property="fullNameLabel" destination="nQd-hS-Np4" id="Eq8-wV-bzc"/>
                                             <outlet property="profileImage" destination="joC-4G-hiD" id="wEE-o6-brr"/>
                                             <outlet property="timeLabel" destination="Tan-VP-3Cp" id="4ZF-bi-exx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nilValueCell" id="hW9-wm-5rq" customClass="nilValueCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW9-wm-5rq" id="LVV-Jw-dYw">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpd-cT-px6">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="iUr-so-OmB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="dpd-cT-px6" firstAttribute="centerX" secondItem="LVV-Jw-dYw" secondAttribute="centerX" id="0s4-ya-xMi"/>
+                                                <constraint firstItem="dpd-cT-px6" firstAttribute="centerY" secondItem="LVV-Jw-dYw" secondAttribute="centerY" id="gRC-m3-QxS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noticeLabel" destination="dpd-cT-px6" id="BDV-Sc-AoE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
