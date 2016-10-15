@@ -27,7 +27,6 @@
 		1F61143A1D86836100504735 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114381D86836100504735 /* StoryVC.swift */; };
 		1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */; };
 		1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B61D83A7CD00DA6701 /* CameraVC.swift */; };
-		1F6757BC1D83A7CD00DA6701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */; };
 		1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */; };
 		1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */; };
 		1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FB1D840D6D00DA6701 /* RoundTextField.swift */; };
@@ -86,7 +85,6 @@
 		1F6757B11D83A7CD00DA6701 /* SocialChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6757B61D83A7CD00DA6701 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
-		1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F6757BE1D83A7CD00DA6701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F6757C01D83A7CD00DA6701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				1F6757CE1D83A9A300DA6701 /* Controller */,
 				1F6757CD1D83A98900DA6701 /* View */,
 				1FCA8BA41D8E849C004E5F76 /* storyboard */,
-				1F6757BB1D83A7CD00DA6701 /* Assets.xcassets */,
 				1FCA8BAA1D8ED953004E5F76 /* util */,
 				1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */,
 				1FCA8BA61D8E9A91004E5F76 /* website.csv */,
@@ -373,7 +370,6 @@
 				1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */,
 				1FCA8B9F1D8E794C004E5F76 /* User.storyboard in Resources */,
 				1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */,
-				1F6757BC1D83A7CD00DA6701 /* Assets.xcassets in Resources */,
 				1FCA8BA31D8E8490004E5F76 /* Edit.storyboard in Resources */,
 				1FCA8BA71D8E9A91004E5F76 /* website.csv in Resources */,
 			);

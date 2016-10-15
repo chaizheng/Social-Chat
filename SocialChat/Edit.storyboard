@@ -39,7 +39,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtF-vZ-ddV">
                                 <frame key="frameInset" minX="29" minY="617" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="save"/>
+                                <state key="normal" backgroundImage="Save"/>
                                 <connections>
                                     <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
                                     <segue destination="1JX-MT-kO3" kind="show" id="QpN-Sf-s2b"/>
@@ -350,6 +350,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Save" width="128" height="128"/>
         <image name="add_Btn" width="19" height="19"/>
         <image name="camera_Btn" width="30" height="25"/>
         <image name="cancel_Btn" width="28" height="28"/>
