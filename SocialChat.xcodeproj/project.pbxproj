@@ -34,6 +34,7 @@
 		1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F690F511DA50C75002CA867 /* ChatCell.swift */; };
 		1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4B3431D90252200089438 /* Webdiscover.swift */; };
 		1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C61DB1A45A009088EB /* nilValueCell.swift */; };
+		1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C81DB20A64009088EB /* StoryInfo.swift */; };
 		1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */; };
 		1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */; };
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
@@ -97,6 +98,7 @@
 		1F690F511DA50C75002CA867 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		1FA4B3431D90252200089438 /* Webdiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webdiscover.swift; sourceTree = "<group>"; };
 		1FA876C61DB1A45A009088EB /* nilValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nilValueCell.swift; sourceTree = "<group>"; };
+		1FA876C81DB20A64009088EB /* StoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryInfo.swift; sourceTree = "<group>"; };
 		1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableCell.swift; sourceTree = "<group>"; };
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -164,7 +166,6 @@
 		1F6757B31D83A7CD00DA6701 /* SocialChat */ = {
 			isa = PBXGroup;
 			children = (
-				C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */,
 				C2F03D9D1D9E7B44009CF578 /* Model */,
 				1F6758011D8433E000DA6701 /* Services */,
 				1F6757CE1D83A9A300DA6701 /* Controller */,
@@ -175,6 +176,7 @@
 				1FCA8BA61D8E9A91004E5F76 /* website.csv */,
 				1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */,
 				1F6757C01D83A7CD00DA6701 /* Info.plist */,
+				C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */,
 				1F6757D31D83DC7E00DA6701 /* GoogleService-Info.plist */,
 				C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */,
 			);
@@ -280,6 +282,7 @@
 				1FCA8B9C1D8E6EE2004E5F76 /* User.swift */,
 				1FA4B3431D90252200089438 /* Webdiscover.swift */,
 				1F15140E1DAA080000F0CCF3 /* SenderInfo.swift */,
+				1FA876C81DB20A64009088EB /* StoryInfo.swift */,
 				1F1514161DAB820600F0CCF3 /* FriendInfo.swift */,
 				1FCA8BA81D8ED4DE004E5F76 /* csv.swift */,
 				1F1723031DA949C7000F55F9 /* Util.swift */,
@@ -472,6 +475,7 @@
 				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
 				C2006EB61DB1BEC8008A5DD5 /* CircleButton.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
+				1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */,
 				1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */,
 				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,
 				1F1723041DA949C7000F55F9 /* Util.swift in Sources */,

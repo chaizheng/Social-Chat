@@ -120,7 +120,7 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpg"
         
-        ref.put(data!, metadata: metadata) { (metadata, error) in
+        _ = ref.put(data!, metadata: metadata) { (metadata, error) in
             if error != nil{
                 print(error?.localizedDescription)
                 return
@@ -129,10 +129,13 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             for friend in self.selectedFriends{
                 DataService.instance.sendMessage(messageType: "VISIIMAGE", content: imageUrl, senderId: myId!, senderName: myfirstName!, receiverId: friend.key,receiverName: friend.value.firstName,senderImageUrl: myimageUrl!,visibleTime: self.visibleTime)
-    
             }
         }
-        dismiss(animated: false, completion: nil)
+            let alert = UIAlertController(title: "Share Successfully", message: "Your friends can watch it now!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Great", style: .cancel, handler: { (UIAlertAction) in
+            self.dismiss(animated: false, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
         
 }

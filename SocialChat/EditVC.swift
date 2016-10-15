@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class EditVC: UIViewController {
     
@@ -23,7 +24,7 @@ class EditVC: UIViewController {
     }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
-    
+    private var visibleTime = 5
     @IBOutlet weak var sendToBtn: UIButton!
     
     private var _selectedImage: UIImage!
@@ -50,8 +51,6 @@ class EditVC: UIViewController {
         
       
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -92,8 +91,6 @@ class EditVC: UIViewController {
             return
         }
         
-        
-        
     }
     
     func deleteItem(){
@@ -109,6 +106,33 @@ class EditVC: UIViewController {
         }
         dismiss(animated: false, completion: nil)
     }
+    
+    
+    @IBAction func shareToStoryBtnPressed(_ sender: AnyObject) {
+        
+        let filePath = "\(myId!)/\(Date.timeIntervalSinceReferenceDate)"
+        let ref = DataService.instance.imageStorageRef.child(filePath)
+        
+        let data = UIImageJPEGRepresentation(selectedImage, 0.5)
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        _ = ref.put(data!, metadata: metadata) { (metadata, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                return
+            }
+            let storyUrl = metadata!.downloadURLs![0].absoluteString
+            DataService.instance.shareStories(storyUrl: storyUrl, senderId: myId!, senderName: myfirstName!, senderImageUrl: myimageUrl!, visibleTime: self.visibleTime)
+        }
+        
+        let alert = UIAlertController(title: "Share Successfully", message: "Now your friends can watch it!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Great", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
 }
 
 

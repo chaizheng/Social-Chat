@@ -17,6 +17,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     @IBOutlet weak var backToCameraBtn: UIButton!
     @IBOutlet weak var storyCollectionView: UICollectionView!
     @IBOutlet weak var storyTableView: UITableView!
+    
     var refreshControl: UIRefreshControl!
     var receivedStories = [Dictionary<String, Any>]()
 
@@ -82,6 +83,9 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
+            let story = receivedStories[indexPath.row]
+            cell.updateCell(firstName: story["senderName"] as! String , time: story["sendTime"] as! String, profileImageUrl: story["senderImageUrl"] as! String)
+            
             return cell
         }
     }
