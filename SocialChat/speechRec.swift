@@ -22,10 +22,8 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             button.isEnabled = false
-            button.setTitle("Start Recording", for: .normal)
         } else {
             startRecording()
-            button.setTitle("Stop Recording", for: .normal)
         }
 
     }
@@ -106,6 +104,7 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
             if result != nil {
                 
                 self.text.text = result?.bestTranscription.formattedString  //9
+
                 isFinal = (result?.isFinal)!
             }
             
@@ -134,6 +133,7 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
         }
         
         text.text = "Say something, I'm listening!"
+        button.backgroundColor = UIColor.green
         
     }
     
@@ -144,5 +144,11 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
             button.isEnabled = false
         }
     }
+    
+    @IBAction func backBtnPressed(_ sender: AnyObject) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    
 
 }

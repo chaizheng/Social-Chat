@@ -18,7 +18,8 @@ class SendVC: JSQMessagesViewController{
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
-
+    
+    
     private var _receiverId: String!
     private var _receiverName: String!
     private var imageUrl: String?
@@ -272,7 +273,6 @@ class SendVC: JSQMessagesViewController{
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
                 DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId,receiverName: self.recieverName,senderImageUrl: self.imageUrl!)
                 
-
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }

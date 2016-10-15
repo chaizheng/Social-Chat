@@ -24,6 +24,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
         storyTableView.delegate = self
@@ -35,17 +36,18 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         storyTableView.addSubview(refreshControl)
         
         storyTableView.tableFooterView = UIView()
-        retrieveStories()
-        
     }
     
+    
     func retrieveStories(){
+        var downloadedStories = [Dictionary<String, Any>]()
         DataService.instance.selfRef.child("receivedStories").observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
             for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot]{
                 if let value = childSnapshot.value as? Dictionary<String, Any> {
-                    self.receivedStories.append(value)
+                    downloadedStories.append(value)
                 }
             }
+            self.receivedStories = downloadedStories
             self.storyTableView.reloadData()
         }
 
@@ -53,7 +55,9 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func Refresh(){
+        
         retrieveStories()
+//        reloadProfileImage()
         refreshControl.endRefreshing()
     }
     
@@ -81,18 +85,25 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 let cell = tableView.dequeueReusableCell(withIdentifier: "nilValueCell") as! nilValueCell
                 cell.updateCell(from: "FriendStory")
                 return cell
+            } else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
+                let story = receivedStories[indexPath.row]
+                
+                var profileImage: UIImage!
+                
+                for friend in allFriendsInfo{
+                    if friend.uid == story["senderId"] as! String{
+                        profileImage = friend.image
+                    }
+                }
+                cell.updateCell(firstName: story["senderName"] as! String , time: story["sendTime"] as! String, profileImage: profileImage)
+                return cell
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
-            let story = receivedStories[indexPath.row]
-            cell.updateCell(firstName: story["senderName"] as! String , time: story["sendTime"] as! String, profileImageUrl: story["senderImageUrl"] as! String)
-            
-            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        
         if section == 0{
             return "Subsription"
         } else{

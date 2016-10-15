@@ -25,16 +25,12 @@ class StoryTableCell: UITableViewCell {
 
     }
     
-    func updateCell(firstName: String, time: String, profileImageUrl: String){
-        if let url = URL(string: profileImageUrl) {
-            do {
-                let data = try Data(contentsOf: url)
-                self.profileImage.image = UIImage(data: data)
-            }
-            catch{
-                print(error.localizedDescription)
-            }
-        }
+    func updateCell(firstName: String, time: String, profileImage: UIImage){
+        
+        self.profileImage.layer.cornerRadius = 25
+        self.profileImage.clipsToBounds = true
+        
+        self.profileImage.image = profileImage
         self.firstNameLabel.text = firstName
         self.timeLabel.text = time
     }

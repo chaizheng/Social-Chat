@@ -48,11 +48,25 @@
                                 <action selector="backButtonPressed:" destination="zHp-GS-cx1" id="nbe-xt-sDF"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="microphone_item" id="U5S-v7-EaI">
+                            <color key="tintColor" red="0.13725490200000001" green="0.73333333329999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="VSf-t6-Hu6" kind="show" id="Ykw-nv-0W3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve6-nd-neS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2234" y="-570"/>
+        </scene>
+        <!--speechRec-->
+        <scene sceneID="IqS-03-2zR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="speechRec" storyboardName="Edit" referencedIdentifier="speechRec" id="VSf-t6-Hu6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gz-yR-Z6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1705" y="-688"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="FwT-lY-jac">
@@ -184,7 +198,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoryCollectionCell" id="gKJ-5x-QGs" customClass="StoryCollectionCell" customModule="SocialChat" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="3" width="90" height="144"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="144"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="144"/>
@@ -294,10 +308,10 @@
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubscriptionCell" rowHeight="60" id="YvJ-Su-T0t" customClass="SubscriptionCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YvJ-Su-T0t" id="fuT-P4-o83">
-                                            <frame key="frameInset" width="375" height="59"/>
+                                            <frame key="frameInset" width="1000" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-6d-aLe"/>
@@ -323,10 +337,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryTableCell" rowHeight="60" id="BUu-pZ-fea" customClass="StoryTableCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="88" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUu-pZ-fea" id="uIX-b1-mqM">
-                                            <frame key="frameInset" width="375" height="59"/>
+                                            <frame key="frameInset" width="1000" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="joC-4G-hiD">
@@ -365,10 +379,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nilValueCell" rowHeight="70" id="hW9-wm-5rq" customClass="nilValueCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="148" width="1000" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW9-wm-5rq" id="LVV-Jw-dYw">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="1000" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpd-cT-px6">
@@ -1323,10 +1337,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="k4z-qG-aGm" customClass="UserCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4z-qG-aGm" id="fX8-Fm-FQ8">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="1000" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-01-VIN">
@@ -1387,6 +1401,7 @@
         <image name="goMemory_Btn" width="24" height="24"/>
         <image name="login_background" width="1732" height="1155"/>
         <image name="logo_Btn" width="24" height="26"/>
+        <image name="microphone_item" width="30" height="30"/>
         <image name="record_btn" width="74" height="74"/>
         <image name="send_item" width="27" height="26"/>
         <image name="socialChatlogo" width="283" height="47"/>
