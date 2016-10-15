@@ -41,11 +41,12 @@ class EditVC: UIViewController {
         if itemToEdit != nil{
             var myImage = UIImage(data: (itemToEdit?.image) as! Data)
             
-            myImage = Util.rotateImage(image: myImage!)
+           // myImage = Util.rotateImage(image: myImage!)
             editingImage.image =  myImage
             
         } else{
-            editingImage.image = _selectedImage
+            var img = Util.rotateImage(image: _selectedImage)
+            editingImage.image = img
         }
         
       
@@ -80,7 +81,8 @@ class EditVC: UIViewController {
         let item = Item(entity: entityDescription!, insertInto: moc)
         
         
-        item.image = UIImagePNGRepresentation(editingImage.image!) as NSData?
+        //item.image = UIImagePNGRepresentation(editingImage.image!) as NSData?
+         item.image = UIImageJPEGRepresentation(Util.rotateImage(image: editingImage.image!), 1.0) as NSData?
         
         
         do{

@@ -37,10 +37,7 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+        
         frc = getFRC()
         frc.delegate = self
         
@@ -50,12 +47,22 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
             print("Failed to perform initial fetch")
             return
         }
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-         self.collectionView!.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    
+          self.collectionView!.reloadData()
+           }
+//    override func viewWillAppear(_ animated: Bool) {
+//        frc = getFRC()
+//        frc.delegate = self
+//        
+//        do{
+//            try frc.performFetch()
+//        } catch {
+//            print("Failed to perform initial fetch")
+//            return
+//        }
+//        
+//        self.collectionView?.reloadData()
+//
+//    }
     override func viewDidAppear(_ animated: Bool) {
         frc = getFRC()
         frc.delegate = self
@@ -73,7 +80,7 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
 
     
@@ -101,10 +108,10 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
         // Configure the cell
         let item = frc.object(at: indexPath)
         if let photo = item.image{
-            var myImage = UIImage(data: photo as Data)
+             image = UIImage(data: photo as Data)!
            
-            myImage = Util.rotateImage(image: myImage!)
-            cell.img?.image =  myImage
+           // myImage = Util.rotateImage(image: myImage!)
+            cell.img?.image =  image
             
         
         }
@@ -131,16 +138,16 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
         pickerController.allowsEditing = true
         
         self.present(pickerController, animated: true, completion: nil)
-        createNewItem()
+       
 
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let myImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//         image = UIImage(cgImage: myImage, scale: 1.0, orientation: UIImageOrientation.right)
-        
-        
+         image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //image = Util.rotateImage(image: image)
+
+         createNewItem()
         dismiss(animated:true, completion: nil)
         
       
@@ -154,7 +161,8 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UI
         let item = Item(entity: entityDescription!, insertInto: moc)
         
         
-        item.image = UIImagePNGRepresentation(image) as NSData?
+//        item.image = UIImagePNGRepresentation(Util.rotateImage(image: image)) as NSData?
+        item.image = UIImageJPEGRepresentation(image, 1.0) as NSData?
         
         
         do{

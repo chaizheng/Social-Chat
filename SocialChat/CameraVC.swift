@@ -126,10 +126,11 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) in
                 if sampleBuffer != nil {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                    
                     let dataProvider = CGDataProvider(data: imageData as! CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     
-                    let tookPhoto = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                    let tookPhoto = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.up)
                     self.performSegue(withIdentifier: "editImage", sender: tookPhoto)
                 }
             })
