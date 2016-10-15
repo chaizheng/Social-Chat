@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,66 +19,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-d0-pGp"/>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="UJU-Jd-aNM"/>
-                                    <constraint firstAttribute="height" constant="42" id="php-si-pgs"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-d0-pGp">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
+                                <frame key="frameInset" minX="16" minY="28" width="43" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="cancel_Btn"/>
                                 <connections>
                                     <action selector="cancelBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="f2f-pm-rGw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOX-W0-68U">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="eHm-qd-aJ2"/>
+                                    <constraint firstAttribute="height" constant="59" id="eXM-Ig-1Gc"/>
+                                </constraints>
                                 <state key="normal" image="circle_send"/>
                                 <connections>
                                     <action selector="sendToBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="qM6-pI-rCT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtF-vZ-ddV">
-                                <frame key="frameInset" minX="70" minY="625" width="46" height="30"/>
-                                <state key="normal" title="save"/>
-                                <connections>
-                                    <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
-                                    <segue destination="1JX-MT-kO3" kind="show" id="QpN-Sf-s2b"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4j-Aw-Xfe">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="IyK-Ye-nbT">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtF-vZ-ddV">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="cM5-pj-pJI"/>
+                                            <constraint firstAttribute="height" constant="40" id="t39-7Z-Zb3"/>
+                                        </constraints>
+                                        <state key="normal" image="Download-50"/>
+                                        <connections>
+                                            <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
+                                            <segue destination="1JX-MT-kO3" kind="show" id="QpN-Sf-s2b"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPL-dy-ETG">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="8c6-vJ-8Y9"/>
+                                            <constraint firstAttribute="height" constant="40" id="T8K-7z-gIa"/>
+                                        </constraints>
+                                        <state key="normal" image="shareStories_icon"/>
+                                        <connections>
+                                            <action selector="shareToStoryBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="NrX-Wn-SE6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOo-6Y-7ms">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="amy-kS-Uc2"/>
+                                            <constraint firstAttribute="height" constant="40" id="iFt-5D-Xm3"/>
+                                        </constraints>
+                                        <state key="normal" image="Pencil Filled-50"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Fc-qNH">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="5TB-QP-kXN"/>
+                                    <constraint firstAttribute="height" constant="40" id="dEj-fI-0rg"/>
+                                    <constraint firstAttribute="width" constant="40" id="vWQ-Nr-oc1"/>
                                 </constraints>
-                                <state key="normal" title="delete">
-                                    <color key="titleColor" red="1" green="0.075500735961595455" blue="0.029842234175011639" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteItem:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="26M-4E-vnD"/>
-                                </connections>
+                                <state key="normal" image="Lock Filled-50"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPL-dy-ETG">
-                                <frame key="frameInset" minX="115" minY="556" width="43" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="shareStories_icon"/>
-                                <connections>
-                                    <action selector="shareToStoryBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="NrX-Wn-SE6"/>
-                                </connections>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tep-ql-c05">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="3fA-HV-H8R"/>
+                                    <constraint firstAttribute="height" constant="40" id="ttp-v6-3gb"/>
+                                </constraints>
+                                <state key="normal" image="Delete Filled-50"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iOX-W0-68U" firstAttribute="leading" secondItem="p4j-Aw-Xfe" secondAttribute="trailing" constant="78" id="6Ds-vA-t1X"/>
-                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="8" symbolic="YES" id="7pK-g8-gTM"/>
-                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leadingMargin" id="90s-i5-ffj"/>
-                            <constraint firstItem="iOX-W0-68U" firstAttribute="trailing" secondItem="mim-sF-g3r" secondAttribute="trailingMargin" id="AtT-ce-Ja5"/>
-                            <constraint firstItem="BS3-d0-pGp" firstAttribute="top" secondItem="mim-sF-g3r" secondAttribute="top" id="D0K-Eh-t8R"/>
-                            <constraint firstAttribute="trailing" secondItem="BS3-d0-pGp" secondAttribute="trailing" id="Gee-Vs-1Vw"/>
-                            <constraint firstItem="p4j-Aw-Xfe" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="605" id="LW7-is-5rt"/>
-                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="p4j-Aw-Xfe" secondAttribute="bottom" constant="12" id="Nqh-bB-IlH"/>
-                            <constraint firstItem="p4j-Aw-Xfe" firstAttribute="top" secondItem="VtF-vZ-ddV" secondAttribute="top" id="SbM-qg-yxT"/>
-                            <constraint firstItem="BS3-d0-pGp" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" id="avu-AQ-Utg"/>
-                            <constraint firstItem="p4j-Aw-Xfe" firstAttribute="leading" secondItem="VtF-vZ-ddV" secondAttribute="trailing" constant="16" id="hai-VZ-Jp0"/>
-                            <constraint firstAttribute="bottom" secondItem="iOX-W0-68U" secondAttribute="bottom" constant="20" symbolic="YES" id="iI4-I6-VNC"/>
-                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="BS3-d0-pGp" secondAttribute="bottom" id="xcE-Rx-oLt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yLL-Fc-qNH" secondAttribute="trailing" constant="15" id="13E-ec-Jfo"/>
+                            <constraint firstItem="yLL-Fc-qNH" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="45" id="Brc-Wp-6Xo"/>
+                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="IyK-Ye-nbT" secondAttribute="bottom" constant="20" id="RoE-Ed-lQl"/>
+                            <constraint firstItem="tep-ql-c05" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="48" id="SqZ-5h-Hyf"/>
+                            <constraint firstItem="IyK-Ye-nbT" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" constant="15" id="eHz-Xk-TKA"/>
+                            <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="iOX-W0-68U" secondAttribute="bottom" constant="20" id="eqU-YP-jmB"/>
+                            <constraint firstItem="yLL-Fc-qNH" firstAttribute="leading" secondItem="tep-ql-c05" secondAttribute="trailing" constant="32" id="iK4-uF-QuY"/>
+                            <constraint firstItem="iOX-W0-68U" firstAttribute="leading" secondItem="IyK-Ye-nbT" secondAttribute="trailing" constant="55" id="p6O-qr-pn7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,7 +115,7 @@
         <scene sceneID="AEG-SJ-gNf">
             <objects>
                 <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -420,6 +439,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Delete Filled-50" width="50" height="50"/>
+        <image name="Download-50" width="50" height="50"/>
+        <image name="Lock Filled-50" width="50" height="50"/>
+        <image name="Pencil Filled-50" width="50" height="50"/>
         <image name="add_Btn" width="19" height="19"/>
         <image name="camera_Btn" width="30" height="25"/>
         <image name="cancel_Btn" width="24" height="24"/>
