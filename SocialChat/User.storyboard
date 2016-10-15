@@ -82,10 +82,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AcceptRequestCell" rowHeight="120" id="HLf-6f-v77" customClass="AcceptRequestCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HLf-6f-v77" id="hOk-5N-3di">
-                                            <frame key="frameInset" width="375" height="119"/>
+                                            <frame key="frameInset" width="1000" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-2O-oFM">
@@ -502,9 +502,10 @@
                                             <frame key="frameInset" width="375" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7H4-H4-FyZ">
-                                                    <frame key="frameInset" minX="38" minY="35" width="68" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7H4-H4-FyZ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="211" id="McN-tR-PcK"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -512,19 +513,25 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNv-zE-X8q">
                                                     <frame key="frameInset" minX="286" minY="57" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" title="Add"/>
                                                     <connections>
                                                         <action selector="addFriend:" destination="oY4-aV-bLy" eventType="touchUpInside" id="mX6-Gg-0x5"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usy-QJ-Oxg">
-                                                    <frame key="frameInset" minX="45" minY="96" width="61" height="67"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usy-QJ-Oxg">
+                                                    <frame key="frameInset" minX="38" minY="81" width="211" height="67"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="usy-QJ-Oxg" firstAttribute="top" secondItem="7H4-H4-FyZ" secondAttribute="bottom" constant="25" id="GvR-Sw-169"/>
+                                                <constraint firstItem="usy-QJ-Oxg" firstAttribute="centerX" secondItem="7H4-H4-FyZ" secondAttribute="centerX" id="Uua-Py-aqa"/>
+                                                <constraint firstItem="7H4-H4-FyZ" firstAttribute="leading" secondItem="usy-QJ-Oxg" secondAttribute="leading" id="sNj-EY-ubj"/>
+                                                <constraint firstItem="7H4-H4-FyZ" firstAttribute="top" secondItem="88d-Ka-M6R" secondAttribute="topMargin" constant="27" id="shy-Yg-QIW"/>
+                                                <constraint firstItem="7H4-H4-FyZ" firstAttribute="leading" secondItem="88d-Ka-M6R" secondAttribute="leadingMargin" constant="30" id="w4d-gH-efS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addFriend" destination="RNv-zE-X8q" id="ZCT-K2-kS3"/>

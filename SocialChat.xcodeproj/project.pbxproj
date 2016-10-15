@@ -45,6 +45,7 @@
 		1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA8BA81D8ED4DE004E5F76 /* csv.swift */; };
 		1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD464501D9CA5CA00AF970A /* SendVC.swift */; };
 		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
+		C2006EB01DB1ABB0008A5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */; };
 		C222F2071DA0C867008B019A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F2061DA0C867008B019A /* AuthService.swift */; };
 		C222F2091DA0C86D008B019A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F2081DA0C86D008B019A /* DataService.swift */; };
 		C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20A1DA0C87E008B019A /* SignupVC.swift */; };
@@ -107,6 +108,7 @@
 		1FF928E81D892C0600DDD55D /* VerticalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalVC.swift; sourceTree = "<group>"; };
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C222F2061DA0C867008B019A /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C222F2081DA0C86D008B019A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C222F20A1DA0C87E008B019A /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		1F6757B31D83A7CD00DA6701 /* SocialChat */ = {
 			isa = PBXGroup;
 			children = (
+				C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */,
 				C2F03D9D1D9E7B44009CF578 /* Model */,
 				1F6758011D8433E000DA6701 /* Services */,
 				1F6757CE1D83A9A300DA6701 /* Controller */,
@@ -373,6 +376,7 @@
 				1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */,
 				1FCA8B9F1D8E794C004E5F76 /* User.storyboard in Resources */,
 				1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */,
+				C2006EB01DB1ABB0008A5DD5 /* Assets.xcassets in Resources */,
 				1FCA8BA31D8E8490004E5F76 /* Edit.storyboard in Resources */,
 				1FCA8BA71D8E9A91004E5F76 /* website.csv in Resources */,
 			);

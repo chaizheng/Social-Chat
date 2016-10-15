@@ -21,6 +21,7 @@ var myimageUrl: String?
 var myId: String?
 var allPhoneList: Dictionary<String, Any>?
 var allFriendsInfo = [FriendInfo]()
+var sentFriendRequest: Dictionary<String, Bool>?
 
 class AuthService {
     

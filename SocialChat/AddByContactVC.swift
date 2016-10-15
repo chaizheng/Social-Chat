@@ -31,7 +31,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //give value to added
     func addedInDatabase(marrContactsNumber: [String])->[Bool]{
-        print("nmb")
+        
         for v in marrContactsNumber{
             
             let h = havePhoneNumber(phoneNum: v, friends: allFriendsInfo)
@@ -92,7 +92,8 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if num[indexPath.row] == true {
             if added[indexPath.row] == true{
-                cell.addFriend.isEnabled = false
+                //cell.addFriend.isEnabled = false
+                cell.addFriend.setTitle("added", for: .disabled)
             }
             else{
                  cell.addFriend.isHidden = false

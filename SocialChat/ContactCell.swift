@@ -27,8 +27,8 @@ class ContactCell: UITableViewCell {
         alert.addAction(UIAlertAction(title: "Nice", style: .cancel, handler: nil))
         //present(alert, animated: true, completion: nil)
         
-        
         self.addFriend.isEnabled = false
+        self.addFriend.setTitle("added", for: .disabled)
         
 
         
