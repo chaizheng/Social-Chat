@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var backToStory: UIButton!
@@ -51,14 +50,33 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 
                 
                 let channel = webdiscover[index.row].type
-                let alert = UIAlertController(title: "\(channel) Channel", message: "Do you want to subscribe this channel?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
-                return
+                
+                if subscriptionSet.contains(channel){
+                    let alert = UIAlertController(title: "\(channel) Channel Subscribed", message: "Do you want to unsubscrible this channel?", preferredStyle: .alert)
+                    let yesAction = UIAlertAction(title: "Yes", style: .default) {
+                        UIAlertAction in
+                        subscriptionSet.remove(channel)
+                    }
+                    alert.addAction(yesAction)
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                    return
+                } else{
+                    let alert = UIAlertController(title: "\(channel) Channel", message: "Do you want to subscribe this channel?", preferredStyle: .alert)
+                    let yesAction = UIAlertAction(title: "Yes", style: .default) {
+                        UIAlertAction in
+                        subscriptionSet.insert(channel)
+                    }
+                    alert.addAction(yesAction)
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                    return
+                }
+                
+                
                 //
                 //            UIView.animate(withDuration: 0.01, animations: { () -> Void in
-                //                cell.holdingView.transform = CGAffineTransform(scaleX: 1, y: 1)})
+                //             cell.holdingView.transform = CGAffineTransform(scaleX: 1, y: 1)})
                 //            
                 //            
             } else {
@@ -66,7 +84,6 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             }
         }
         
-     
     }
     
     
