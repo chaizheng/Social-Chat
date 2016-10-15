@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 var subscriptionSet = Set<String>()
 
@@ -17,6 +18,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     @IBOutlet weak var storyCollectionView: UICollectionView!
     @IBOutlet weak var storyTableView: UITableView!
     var refreshControl: UIRefreshControl!
+    var receivedStories = [Dictionary<String, Any>]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +30,29 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
         refreshControl.addTarget(self, action: #selector(StoryVC.Refresh), for: UIControlEvents.valueChanged)
+        refreshControl.backgroundColor = UIColor.white
         storyTableView.addSubview(refreshControl)
+        
+        storyTableView.tableFooterView = UIView()
+        retrieveStories()
         
     }
     
+    func retrieveStories(){
+        DataService.instance.selfRef.child("receivedStories").observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
+            for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot]{
+                if let value = childSnapshot.value as? Dictionary<String, Any> {
+                    self.receivedStories.append(value)
+                }
+            }
+            self.storyTableView.reloadData()
+        }
+
+    }
+    
+    
     func Refresh(){
-        storyTableView.reloadData()
+        retrieveStories()
         refreshControl.endRefreshing()
     }
     
@@ -43,6 +62,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Subscription part
         if indexPath.section == 0 {
             if subscriptionSet.count == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "nilValueCell") as! nilValueCell
@@ -52,7 +72,15 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell") as! SubscriptionCell
             cell.updateCell(index: indexPath.row)
             return cell
-        } else{
+            
+        }
+        // Story part
+        else{
+            if receivedStories.count == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "nilValueCell") as! nilValueCell
+                cell.updateCell(from: "FriendStory")
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableCell") as! StoryTableCell
             return cell
         }
@@ -91,12 +119,14 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         if section == 0{
             if subscriptionSet.count == 0{
                 return 1
-            } else{
-              return subscriptionSet.count
             }
+            return subscriptionSet.count
+            
         } else{
-            // not finished story receive
-            return 3
+            if receivedStories.count == 0{
+                return 1
+            }
+            return receivedStories.count
         }
     }
     

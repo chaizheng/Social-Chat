@@ -23,8 +23,8 @@ class UserCell: UITableViewCell {
         self.accessoryView = UIImageView(image: UIImage(named: imageStr))
     }
     
-    func updateUI(user: User){
-        firstNameLbl.text = user.firstName
+    func updateUI(friend: FriendInfo){
+        firstNameLbl.text = friend.firstName
     }
     
 

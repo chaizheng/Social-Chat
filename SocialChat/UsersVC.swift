@@ -17,12 +17,21 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var send_Btn: UIBarButtonItem!
     
-    private var users = [User]()
-    private var selectedUsers = Dictionary<String, User>()
-    private var _image: UIImage?
-    var imgVisibleTime:Int = 5
+    private var selectedFriends = Dictionary<String, FriendInfo>()
     
-    var image:UIImage?{
+    private var _image: UIImage!
+    private var _visibleTime = 5
+    
+    
+    var visibleTime:Int{
+        get{
+            return _visibleTime
+        } set{
+            _visibleTime = newValue
+        }
+    }
+    
+    var image:UIImage{
         get{
             return _image
         } set{
@@ -37,32 +46,14 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
-        // Do any additional setup after loading the view.
         send_Btn.isEnabled = false
-        
-        DataService.instance.usersRef.observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
-            if let users = snapshot.value as? Dictionary<String, Any>{
-                for(key, value) in users{
-                    if let dict = value as? Dictionary<String, Any> {
-                        if let profile = dict["profile"] as? Dictionary<String, Any> {
-                            if let firstName = profile["firstName"] as? String{
-                                let uid = key
-                                let user = User(uid: uid, firstName: firstName)
-                                self.users.append(user)
-                            }
-                        }
-                    }}
-            }
-            
-            self.tableView.reloadData()
-        }
-        
+    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
-        let user = users[indexPath.row]
-        cell.updateUI(user: user)
+        let friend = allFriendsInfo[indexPath.row]
+        cell.updateUI(friend: friend)
         return cell
     }
     
@@ -70,18 +61,38 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         send_Btn.isEnabled = true
         let cell = tableView.cellForRow(at: indexPath) as! UserCell
         cell.setCheckmark(selected: true)
-        let user = users[indexPath.row]
-        selectedUsers[user.uid] = user
+        let friend = allFriendsInfo[indexPath.row]
+        selectedFriends[friend.uid] = friend
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! UserCell
         cell.setCheckmark(selected: false)
-        let user = users[indexPath.row]
-        selectedUsers[user.uid] = nil
-        if selectedUsers.count < 1{
+        let friend = allFriendsInfo[indexPath.row]
+        selectedFriends[friend.uid] = nil
+        
+        if selectedFriends.count < 1{
             send_Btn.isEnabled = false
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        return "Friends"
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "AvenirNext-Medium", size: 15)!
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.textAlignment = NSTextAlignment.center
+        header.contentView.backgroundColor = DEFAULT_BLUE
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,43 +101,39 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        
+        return allFriendsInfo.count
     }
     
+    
+    @IBAction func cancelBtnPressed(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
     @IBAction func sendBtnPressed(_ sender: AnyObject) {
-//        if let image = _image{
-//            let imageName = "\(NSUUID().uuidString).jpg"
-//            let ref = DataService.instance.imageStorageRef.child(imageName)
-//            let imageData:Data = UIImageJPEGRepresentation(image, CGFloat(0.5))!
-//            _ = ref.put(imageData, metadata: nil, completion: { (meta:FIRStorageMetadata?, err:Error?) in
-//                if err != nil{
-//                    print("Error uploading image: \(err?.localizedDescription)")
-//                } else {
-//                    
-//                    let downloadURL = meta!.downloadURLs[0].absoluteString
-//                    for receiver in self.selectedUsers{
-//                        DataService.instance.sendMessage(messageType: "PHOTO", content: downloadURL, senderId: FIRAuth.auth()!.currentUser!.uid, senderName: <#T##String#>, receiverId: receiver.key)
-//                    }
-//                    let downloadURL = meta!.downloadURL()
-//                    DataService.instance.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectedUsers, mediaURL: downloadURL!, visibleTime: self.imgVisibleTime)
-//                    let downloadURL = meta!.downloadURLs[0].absoluteString
-//                    DataService.instance.sendMessage(messageType: "PHOTO", content: downloadURL, senderId: <#T##String#>, senderName: <#T##String#>, receiverId: <#T##String#>)
-//                }
-//            })
-//            let resultViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-//            self.present(resultViewController, animated: false, completion: nil)
+        
+        let filePath = "\(myId!)/\(Date.timeIntervalSinceReferenceDate)"
+        let ref = DataService.instance.imageStorageRef.child(filePath)
+        
+        let data = UIImageJPEGRepresentation(image, 0.5)
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        ref.put(data!, metadata: metadata) { (metadata, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                return
+            }
+            let imageUrl = metadata!.downloadURLs![0].absoluteString
+            
+            for friend in self.selectedFriends{
+                DataService.instance.sendMessage(messageType: "VISIIMAGE", content: imageUrl, senderId: myId!, senderName: myfirstName!, receiverId: friend.key,receiverName: friend.value.firstName,senderImageUrl: myimageUrl!,visibleTime: self.visibleTime)
+    
+            }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        dismiss(animated: false, completion: nil)
+    }
         
 }
 
