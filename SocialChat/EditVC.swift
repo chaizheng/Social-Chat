@@ -38,14 +38,20 @@ class EditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if itemToEdit != nil{
-            editingImage.image = UIImage(data: (itemToEdit?.image) as! Data )
+            var myImage = UIImage(data: (itemToEdit?.image) as! Data)
+            
+            myImage = Util.rotateImage(image: myImage!)
+            editingImage.image =  myImage
+            
         } else{
             editingImage.image = _selectedImage
         }
         
       
     }
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

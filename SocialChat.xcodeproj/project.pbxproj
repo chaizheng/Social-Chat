@@ -46,6 +46,8 @@
 		1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD464501D9CA5CA00AF970A /* SendVC.swift */; };
 		1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF928E81D892C0600DDD55D /* VerticalVC.swift */; };
 		C2006EB01DB1ABB0008A5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */; };
+		C2006EB41DB1BDB1008A5DD5 /* speechRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2006EB31DB1BDB1008A5DD5 /* speechRec.swift */; };
+		C2006EB61DB1BEC8008A5DD5 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2006EB51DB1BEC8008A5DD5 /* CircleButton.swift */; };
 		C222F2071DA0C867008B019A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F2061DA0C867008B019A /* AuthService.swift */; };
 		C222F2091DA0C86D008B019A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F2081DA0C86D008B019A /* DataService.swift */; };
 		C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20A1DA0C87E008B019A /* SignupVC.swift */; };
@@ -109,6 +111,8 @@
 		B5DCD28D5618FC931F667A30 /* Pods-SocialChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialChat/Pods-SocialChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2006EB31DB1BDB1008A5DD5 /* speechRec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = speechRec.swift; sourceTree = "<group>"; };
+		C2006EB51DB1BEC8008A5DD5 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		C222F2061DA0C867008B019A /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C222F2081DA0C86D008B019A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C222F20A1DA0C87E008B019A /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				1F690F511DA50C75002CA867 /* ChatCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
 				C2707A701DAA3C1D007C53BA /* ContactCell.swift */,
+				C2006EB51DB1BEC8008A5DD5 /* CircleButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				1F2A87D01D8AC24100DA90B4 /* EditVC.swift */,
 				C2EB3DEA1D9E293500BEE0BC /* Memory.swift */,
 				C2F03DA41D9E89D1009CF578 /* AddVC.swift */,
+				C2006EB31DB1BDB1008A5DD5 /* speechRec.swift */,
 			);
 			name = EditController;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F15140F1DAA080000F0CCF3 /* SenderInfo.swift in Sources */,
+				C2006EB41DB1BDB1008A5DD5 /* speechRec.swift in Sources */,
 				C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
 				C2707A711DAA3C1D007C53BA /* ContactCell.swift in Sources */,
@@ -463,6 +470,7 @@
 				C2F03DA11D9E7B57009CF578 /* Item+CoreDataProperties.swift in Sources */,
 				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
 				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
+				C2006EB61DB1BEC8008A5DD5 /* CircleButton.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */,
 				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,

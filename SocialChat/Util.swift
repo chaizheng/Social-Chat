@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 var webdiscover = [Webdiscover]()
 
@@ -51,6 +52,27 @@ open class Util{
             print(err.debugDescription)
         }
     }
+    
+    class func rotateImage(image:UIImage)->UIImage
+    {
+        var rotatedImage = UIImage();
+        switch image.imageOrientation
+        {
+        case UIImageOrientation.right:
+            rotatedImage = UIImage(cgImage:image.cgImage!, scale: 1, orientation:UIImageOrientation.down);
+            
+        case UIImageOrientation.down:
+            rotatedImage = UIImage(cgImage:image.cgImage!, scale: 1, orientation:UIImageOrientation.left);
+            
+        case UIImageOrientation.left:
+            rotatedImage = UIImage(cgImage:image.cgImage!, scale: 1, orientation:UIImageOrientation.up);
+            
+        default:
+            rotatedImage = UIImage(cgImage:image.cgImage!, scale: 1, orientation:UIImageOrientation.right);
+        }
+        return rotatedImage;
+    }
+
 
     
 }

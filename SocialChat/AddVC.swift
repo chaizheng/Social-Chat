@@ -18,15 +18,7 @@ class AddVC: UIViewController,UIImagePickerControllerDelegate,UINavigationContro
         
         self.present(pickerController, animated: true, completion: nil)
     }
-    @IBAction func fromDevice(_ sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.camera
-        pickerController.allowsEditing = true
-        
-        self.present(pickerController, animated: true, completion: nil)
-    }
-    
+   
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var  image = UIImage()
         image = info[UIImagePickerControllerOriginalImage] as! UIImage //2

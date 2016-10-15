@@ -11,7 +11,9 @@ import CoreData
 
 private let reuseIdentifier = "Cell"
 
-class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
+class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var  image = UIImage()
     
      var frc : NSFetchedResultsController<Item> = NSFetchedResultsController()
     
@@ -74,17 +76,7 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
+    
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -108,15 +100,18 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
     
         // Configure the cell
         let item = frc.object(at: indexPath)
-        //cell.imageView?.image = UIImage(data: (item.image)! as Data)
         if let photo = item.image{
-            cell.img?.image = UIImage(data: photo as Data)
-    
+            var myImage = UIImage(data: photo as Data)
+           
+            myImage = Util.rotateImage(image: myImage!)
+            cell.img?.image =  myImage
+            
         
         }
         return cell
     }
     
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       
         if segue.identifier == "Edit"{
@@ -128,6 +123,49 @@ class Memory: UICollectionViewController, NSFetchedResultsControllerDelegate {
         }
     }
 
+    @IBAction func addFromDevice(_ sender: AnyObject) {
+        
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        pickerController.allowsEditing = true
+        
+        self.present(pickerController, animated: true, completion: nil)
+        createNewItem()
+
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let myImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//         image = UIImage(cgImage: myImage, scale: 1.0, orientation: UIImageOrientation.right)
+        
+        
+        dismiss(animated:true, completion: nil)
+        
+      
+    }
+
+    
+    func createNewItem(){
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc)
+        
+        let item = Item(entity: entityDescription!, insertInto: moc)
+        
+        
+        item.image = UIImagePNGRepresentation(image) as NSData?
+        
+        
+        do{
+            try moc.save()
+        } catch {
+            return
+        }
+        
+        
+        
+    }
    
 
 }
