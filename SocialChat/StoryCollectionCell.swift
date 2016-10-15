@@ -27,5 +27,4 @@ class StoryCollectionCell: UICollectionViewCell {
         webImage.layer.cornerRadius = 4
         webImage.clipsToBounds = true
     }
-
 }

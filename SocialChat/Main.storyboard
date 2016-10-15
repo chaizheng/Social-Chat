@@ -335,7 +335,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="p4m-po-efb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-hS-Np4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-hS-Np4">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="v2z-5v-jkC"/>
                                                     </constraints>
@@ -343,9 +343,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tan-VP-3Cp">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="26" id="jAp-Ao-6He"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -354,15 +351,15 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="joC-4G-hiD" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="4Df-jj-DdH"/>
-                                                <constraint firstItem="nQd-hS-Np4" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="I9R-lh-cqS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Tan-VP-3Cp" secondAttribute="trailing" constant="70" id="McQ-7Y-6JV"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tan-VP-3Cp" secondAttribute="bottom" id="QFW-Dw-7rZ"/>
+                                                <constraint firstItem="nQd-hS-Np4" firstAttribute="top" secondItem="uIX-b1-mqM" secondAttribute="topMargin" constant="5" id="fG1-A4-6n8"/>
                                                 <constraint firstItem="nQd-hS-Np4" firstAttribute="leading" secondItem="joC-4G-hiD" secondAttribute="trailing" constant="22" id="gCF-lT-NbK"/>
+                                                <constraint firstItem="Tan-VP-3Cp" firstAttribute="leading" secondItem="joC-4G-hiD" secondAttribute="trailing" constant="22" id="jPN-r0-FdN"/>
                                                 <constraint firstItem="joC-4G-hiD" firstAttribute="leading" secondItem="uIX-b1-mqM" secondAttribute="leading" constant="8" id="taF-RI-oVR"/>
-                                                <constraint firstItem="Tan-VP-3Cp" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="vm4-QD-jCb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="fullNameLabel" destination="nQd-hS-Np4" id="Eq8-wV-bzc"/>
+                                            <outlet property="firstNameLabel" destination="nQd-hS-Np4" id="CTQ-5M-hn3"/>
                                             <outlet property="profileImage" destination="joC-4G-hiD" id="wEE-o6-brr"/>
                                             <outlet property="timeLabel" destination="Tan-VP-3Cp" id="4ZF-bi-exx"/>
                                         </connections>
@@ -1395,6 +1392,6 @@
         <image name="socialChatlogo" width="283" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LpS-ph-njw"/>
+        <segue reference="bX2-tF-z18"/>
     </inferredMetricsTieBreakers>
 </document>

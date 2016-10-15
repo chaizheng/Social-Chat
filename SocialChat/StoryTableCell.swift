@@ -11,9 +11,10 @@ import UIKit
 class StoryTableCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     
-    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
     
     @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +23,20 @@ class StoryTableCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func updateCell(firstName: String, time: String, profileImageUrl: String){
+        if let url = URL(string: profileImageUrl) {
+            do {
+                let data = try Data(contentsOf: url)
+                self.profileImage.image = UIImage(data: data)
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+        }
+        self.firstNameLabel.text = firstName
+        self.timeLabel.text = time
     }
 
 }
