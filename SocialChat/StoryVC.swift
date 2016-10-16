@@ -20,6 +20,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     var refreshControl: UIRefreshControl!
     var receivedStories = [Dictionary<String, Any>]()
+    var storiesImage = [UIImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,25 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func Refresh(){
-        
-        retrieveStories()
-        refreshControl.endRefreshing()
+        let serialQueue = DispatchQueue(label: "queuename")
+        serialQueue.sync {
+            retrieveStories()
+            for story in receivedStories{
+                let storyUrl = story["storyUrl"] as! String
+                
+                if let url = URL(string: storyUrl) {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        let storyimage = UIImage(data: data)
+                        storiesImage.append(storyimage!)
+                    }
+                    catch{
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            refreshControl.endRefreshing()
+        }
     }
     
     
@@ -66,7 +83,9 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
             
         }else if indexPath.section == 1{
-
+            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
+            let info: Dictionary<String, Any> = ["visibleTime":currentCell.visibleTime,"StoryImage":storiesImage[indexPath.row]]
+            performSegue(withIdentifier: "PresentImageVC", sender: info)
             
         }else{
             performSegue(withIdentifier: "showwebview", sender: "Live")
@@ -108,9 +127,8 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 let senderName = story["senderName"] as! String
                 let sendTime = story["sendTime"] as! String
                 let visibleTime = story["visibleTime"] as! Int
-                let storyUrl = story["storyUrl"] as! String
                 
-                let storyInfo = StoryInfo(uid: senderId, firstName: senderName, sendTime: sendTime, storyUrl: storyUrl, visibleTime: visibleTime)
+                let storyInfo = StoryInfo(uid: senderId, firstName: senderName, sendTime: sendTime, visibleTime: visibleTime)
                 cell.updateCell(info: storyInfo, profileImage: profileImage)
                 return cell
             }
@@ -225,6 +243,14 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 }
             }
         }
+        
+        if let destination = segue.destination as? PresentImageVC{
+            if let info = sender as? Dictionary<String, Any>{
+                destination.imageView.image = info["StoryImage"] as! UIImage?
+                destination.visibleTime = info["visibleTime"] as! Int
+            }
+        }
+        
     }
     
     

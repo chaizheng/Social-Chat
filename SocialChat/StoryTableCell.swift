@@ -17,7 +17,6 @@ class StoryTableCell: UITableViewCell {
     
     var visibleTime: Int!
     var senderId: String!
-    var storyUrl: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +38,7 @@ class StoryTableCell: UITableViewCell {
         self.timeLabel.text = info.sendTime
         self.visibleTime = info.visibleTime
         self.senderId = info.uid
-        self.storyUrl = info.storyUrl
+        
     }
 
 }

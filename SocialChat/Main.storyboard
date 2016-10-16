@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EmC-hy-zex">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FTt-c0-EwV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -130,7 +130,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G15-WV-LNy"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G15-WV-LNy"/>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="EGX-zP-KgQ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Oni-bk-HEm"/>
@@ -143,7 +143,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="EGX-zP-KgQ" secondAttribute="trailing" constant="14" id="1Nt-ch-inc"/>
                             <constraint firstItem="G15-WV-LNy" firstAttribute="leading" secondItem="Q31-Z5-CkE" secondAttribute="leading" id="Bao-ng-ECm"/>
@@ -180,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYh-mV-Qmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="678" y="-33"/>
+            <point key="canvasLocation" x="678" y="242"/>
         </scene>
         <!--VerticalVC-->
         <scene sceneID="o3L-r6-bYy">
@@ -520,6 +519,7 @@
                         <outlet property="storyCollectionView" destination="u3r-e4-h0L" id="7Q7-lx-ZBU"/>
                         <outlet property="storyTableView" destination="bHB-hl-Fz7" id="ExJ-wl-Idx"/>
                         <segue destination="WLk-p0-wTs" kind="show" identifier="showwebview" id="bX2-tF-z18"/>
+                        <segue destination="FTt-c0-EwV" kind="presentation" identifier="PresentImageVC" modalTransitionStyle="crossDissolve" id="Pw4-gu-lZs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePC-Qz-L2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
