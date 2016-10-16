@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -48,7 +48,6 @@
                                         <state key="normal" image="Download-50"/>
                                         <connections>
                                             <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
-                                            <segue destination="1JX-MT-kO3" kind="show" id="QpN-Sf-s2b"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPL-dy-ETG">
@@ -67,6 +66,9 @@
                                             <constraint firstAttribute="height" constant="40" id="iFt-5D-Xm3"/>
                                         </constraints>
                                         <state key="normal" image="Pencil Filled-50"/>
+                                        <connections>
+                                            <action selector="EditBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="gDd-d2-nVP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -121,6 +123,7 @@
                         <outlet property="lockButton" destination="yLL-Fc-qNH" id="ThW-td-t1L"/>
                         <outlet property="sendToBtn" destination="iOX-W0-68U" id="0yj-cL-ACF"/>
                         <segue destination="qRx-qF-NPK" kind="show" identifier="toUsersVC" id="dCR-tA-sru"/>
+                        <segue destination="zNA-Oh-3pg" kind="presentation" identifier="PictureViewController" animates="NO" id="l5h-Qd-4Rl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,7 +134,7 @@
         <scene sceneID="AEG-SJ-gNf">
             <objects>
                 <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -160,7 +163,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="img" destination="2y0-t5-nTQ" id="ZoA-uO-ADS"/>
-                                    <segue destination="vhJ-n9-H1k" kind="show" identifier="Edit" id="Yye-fN-pJ5"/>
+                                    <segue destination="vhJ-n9-H1k" kind="presentation" identifier="Edit" id="Yye-fN-pJ5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -185,6 +188,7 @@
         <!--AddVC-->
         <scene sceneID="qlk-1D-VTY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="luC-Wx-C52" customClass="AddVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lk4-lC-Bmc"/>
@@ -203,7 +207,7 @@
                                     <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
                                     <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
@@ -236,7 +240,6 @@
                         <outlet property="imageView" destination="cFH-ZL-5BC" id="Wbh-Lu-HSE"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="-1915.5922038980511"/>
         </scene>
@@ -247,6 +250,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHY-vz-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-1675"/>
+        </scene>
+        <!--EditImage-->
+        <scene sceneID="xNs-rX-EYU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditImage" id="zNA-Oh-3pg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grk-hY-qcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-194" y="-1474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1sO-B3-tNF">
@@ -487,6 +498,22 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" width="188" height="188">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
+GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
+V05TQ29sb3KAAoAMEiTAAACAA4AKWnsxODgsIDE4OH3SFQoWGFpOUy5vYmplY3RzoReABIAJ0hUKGhii
+GxyABYAGgAkQBdMgCiEiIyRXTlMuYmFzZVtOUy5yZWxhdGl2ZYAAgAiAB18QfGZpbGU6Ly8vQXBwbGlj
+YXRpb25zL1hjb2RlLmFwcC9Db250ZW50cy9QbHVnSW5zL0lERUludGVyZmFjZUJ1aWxkZXJLaXQuaWRl
+cGx1Z2luL0NvbnRlbnRzL1Jlc291cmNlcy9JQk1pc3NpbmdJbWFnZUdseXBoLnRpZmbSJygpKlokY2xh
+c3NuYW1lWCRjbGFzc2VzVU5TVVJMoikrWE5TT2JqZWN00icoLS5XTlNBcnJheaItK9MwMQoyMzRXTlNX
+aGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAvSJyg2N1dOU0NvbG9yojYr0icoOTpXTlNJbWFnZaI5K18Q
+D05TS2V5ZWRBcmNoaXZlctE9PlRyb290gAEACAARABoAIwAtADIANwBFAEsAVgBdAGQAcQB4AIAAggCE
+AIkAiwCNAJgAnQCoAKoArACuALMAtgC4ALoAvAC+AMUAzQDZANsA3QDfAV4BYwFuAXcBfQGAAYkBjgGW
+AZkBoAGoAbUBugG8Ab4BwwHLAc4B0wHbAd4B8AHzAfgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
+AAAB+g
+</mutableData>
+        </image>
         <image name="Delete Filled-50" width="50" height="50"/>
         <image name="Download-50" width="50" height="50"/>
         <image name="Lock Filled-50" width="50" height="50"/>
@@ -496,10 +523,9 @@
         <image name="camera_Btn" width="30" height="25"/>
         <image name="cancel_Btn" width="24" height="24"/>
         <image name="circle_send" width="59" height="59"/>
-        <image name="profile" width="188" height="188"/>
         <image name="shareStories_icon" width="27" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ycg-Tn-cGF"/>
+        <segue reference="wTI-9R-Mu5"/>
     </inferredMetricsTieBreakers>
 </document>

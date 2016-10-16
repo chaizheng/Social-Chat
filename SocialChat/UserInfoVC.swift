@@ -75,34 +75,20 @@ class UserInfoVC: UIViewController {
             })
         }
     }
-    
 
     override func viewDidDisappear(_ animated: Bool) {
         self.newReminder.isHidden = true
     }
     
     func asyn(url: URL){
-        //let fileUrl = dict["fileUrl"] as String
         let downloader = SDWebImageDownloader.shared()
         downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
             (image,data,error,finished) in
             print(Thread.current)
             DispatchQueue.main.async {
-                //let image = UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, 1.0)
                 self.profileImage.image = image
-                //reloaddota
             }
-
         })
-//        downloader?.downloadImage(with: NSURL(string: fileUrl!), options: [], progress: nil, completed: {
-//            (image,data,error,finished) in
-//            print(Thread.current())
-//            DispatchQueue.main.async {
-//                
-//                photo.image = image
-//                //reloaddota
-//            }
-//        })
     }
 
 }
