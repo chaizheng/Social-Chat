@@ -48,7 +48,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 }
             }
             self.receivedStories = downloadedStories
-            self.storyTableView.reloadData()
         }
     }
     
@@ -71,7 +70,9 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                     }
                 }
             }
+            self.storyTableView.reloadData()
             refreshControl.endRefreshing()
+            
         }
     }
     
@@ -246,7 +247,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         
         if let destination = segue.destination as? PresentImageVC{
             if let info = sender as? Dictionary<String, Any>{
-                destination.imageView.image = info["StoryImage"] as! UIImage?
+                destination.imageView.image = info["StoryImage"] as? UIImage
                 destination.visibleTime = info["visibleTime"] as! Int
             }
         }
