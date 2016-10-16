@@ -134,6 +134,19 @@ class SendVC: JSQMessagesViewController{
                     } catch {
                         print(error.localizedDescription)
                     }
+                } else if contentType == "VISIIMAGE"{
+                    do{
+                        let imageUrl = value["content"] as! String
+                        let url = URL(string: imageUrl)
+                        let data = try Data(contentsOf: url!)
+                        var picture = UIImage(data: data)
+                        picture = Util.rotateImage(image: picture!)
+                        let photo = JSQPhotoMediaItem(image: picture)
+                        photo?.accessibilityLabel  = "Tap me to watch it!"
+                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             }
             self.finishReceivingMessage()
@@ -158,6 +171,19 @@ class SendVC: JSQMessagesViewController{
                         let picture = UIImage(data: data)
                         let photo = JSQPhotoMediaItem(image: picture)
                         photo?.appliesMediaViewMaskAsOutgoing = false
+                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                } else if contentType == "VISIIMAGE"{
+                    do{
+                        let imageUrl = value["content"] as! String
+                        let url = URL(string: imageUrl)
+                        let data = try Data(contentsOf: url!)
+                        var picture = UIImage(data: data)
+                        picture = Util.rotateImage(image: picture!)
+                        let photo = JSQPhotoMediaItem(image: picture)
+                        photo?.accessibilityLabel  = "Tap me to watch it!"
                         self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                     } catch {
                         print(error.localizedDescription)

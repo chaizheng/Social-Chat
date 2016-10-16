@@ -72,6 +72,9 @@ class EditVC: UIViewController {
     }
     @IBAction func save(_ sender: AnyObject) {
         createNewItem()
+        let alert = UIAlertController(title: "Save Successfully", message: "You can check it in Memory view now", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Great", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func deleteItem(_ sender: AnyObject) {
@@ -145,10 +148,7 @@ class EditVC: UIViewController {
         
         let item = Item(entity: entityDescription!, insertInto: moc)
         
-        
-        //item.image = UIImagePNGRepresentation(editingImage.image!) as NSData?
-         item.image = UIImageJPEGRepresentation(Util.rotateImage(image: editingImage.image!), 1.0) as NSData?
-        
+        item.image = UIImageJPEGRepresentation(Util.rotateImage(image: editingImage.image!), 1.0) as NSData?
         
         do{
             try moc.save()

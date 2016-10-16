@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import SDWebImage
 
 var subscriptionSet = Set<String>()
 
@@ -36,8 +37,9 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         storyTableView.addSubview(refreshControl)
         
         storyTableView.tableFooterView = UIView()
+        
+        retrieveStories()
     }
-    
     
     func retrieveStories(){
         var downloadedStories = [Dictionary<String, Any>]()
@@ -53,27 +55,22 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func Refresh(){
-        let serialQueue = DispatchQueue(label: "queuename")
-        serialQueue.sync {
-            retrieveStories()
-            for story in receivedStories{
-                let storyUrl = story["storyUrl"] as! String
-                
-                if let url = URL(string: storyUrl) {
-                    do {
-                        let data = try Data(contentsOf: url)
-                        let storyimage = UIImage(data: data)
-                        storiesImage.append(storyimage!)
-                    }
-                    catch{
-                        print(error.localizedDescription)
-                    }
-                }
+        
+        let downloader = SDWebImageDownloader.shared()
+        
+        for story in receivedStories{
+            let storyUrl = story["storyUrl"] as! String
+            let url = URL(string: storyUrl)
+        
+        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                (image,data,error,finished) in
+            DispatchQueue.main.async {
+                self.storiesImage.append(image!)
             }
-            self.storyTableView.reloadData()
-            refreshControl.endRefreshing()
-            
+        })
         }
+        self.storyTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     
