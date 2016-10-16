@@ -19,15 +19,13 @@ class SubscriptionCell: UITableViewCell {
         // Initialization code
     }
 
-    
-    
     func updateCell(index: Int){
         
         var i = 0
         for channel in subscriptionSet{
             if i == index{
                 self.channelName.text = channel
-                
+                self.channelImage.image = UIImage(named: "\(channel).jpg")
                 break
             }
             else{

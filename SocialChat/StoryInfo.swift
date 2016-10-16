@@ -13,8 +13,8 @@ struct StoryInfo {
     private var _firstName: String
     private var _uid: String
     private var _sendTime: String
-    private var _profileUrl: String
     private var _storyUrl: String
+    private var _visibleTime: Int
     
     var uid: String{
         return _uid
@@ -28,19 +28,20 @@ struct StoryInfo {
         return _sendTime
     }
     
-    var profileUrl: String{
-        return _profileUrl
-    }
-    
     var storyUrl: String{
         return _storyUrl
     }
     
-    init(uid: String, fullName: String, sendTime: String, profileUrl: String, storyUrl: String){
+    var visibleTime: Int{
+        return _visibleTime
+    }
+    
+    
+    init(uid: String, firstName: String, sendTime: String, storyUrl: String, visibleTime: Int){
         _uid = uid
-        _firstName = fullName
+        _firstName = firstName
         _storyUrl = storyUrl
-        _profileUrl = profileUrl
         _sendTime = sendTime
+        _visibleTime = visibleTime
     }
 }

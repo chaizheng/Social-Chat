@@ -39,6 +39,8 @@
 		1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */; };
 		1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B371D898718004C688C /* UserInfoVC.swift */; };
 		1FBB3B3C1D898958004C688C /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB3B3B1D898958004C688C /* DiscoverVC.swift */; };
+		1FC45EA21DB24D7B00437180 /* channel.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1FC45EA11DB24D7B00437180 /* channel.csv */; };
+		1FC45EA41DB30B3700437180 /* PresentImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC45EA31DB30B3700437180 /* PresentImageVC.swift */; };
 		1FCA8B9D1D8E6EE2004E5F76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA8B9C1D8E6EE2004E5F76 /* User.swift */; };
 		1FCA8B9F1D8E794C004E5F76 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCA8B9E1D8E794C004E5F76 /* User.storyboard */; };
 		1FCA8BA31D8E8490004E5F76 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCA8BA21D8E8490004E5F76 /* Edit.storyboard */; };
@@ -103,6 +105,8 @@
 		1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableCell.swift; sourceTree = "<group>"; };
 		1FBB3B371D898718004C688C /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		1FBB3B3B1D898958004C688C /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
+		1FC45EA11DB24D7B00437180 /* channel.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = channel.csv; sourceTree = "<group>"; };
+		1FC45EA31DB30B3700437180 /* PresentImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentImageVC.swift; sourceTree = "<group>"; };
 		1FCA8B9C1D8E6EE2004E5F76 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1FCA8B9E1D8E794C004E5F76 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		1FCA8BA21D8E8490004E5F76 /* Edit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				1FCA8BAA1D8ED953004E5F76 /* util */,
 				1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */,
 				1FCA8BA61D8E9A91004E5F76 /* website.csv */,
+				1FC45EA11DB24D7B00437180 /* channel.csv */,
 				1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */,
 				1F6757C01D83A7CD00DA6701 /* Info.plist */,
 				C2006EAF1DB1ABB0008A5DD5 /* Assets.xcassets */,
@@ -267,6 +272,7 @@
 				1F6757B61D83A7CD00DA6701 /* CameraVC.swift */,
 				1F1722F71DA87634000F55F9 /* ChatVC.swift */,
 				1FBB3B3B1D898958004C688C /* DiscoverVC.swift */,
+				1FC45EA31DB30B3700437180 /* PresentImageVC.swift */,
 				1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1FD464501D9CA5CA00AF970A /* SendVC.swift */,
@@ -383,6 +389,7 @@
 			files = (
 				C222F20D1DA0C8A9008B019A /* Main.storyboard in Resources */,
 				1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */,
+				1FC45EA21DB24D7B00437180 /* channel.csv in Resources */,
 				1FCA8B9F1D8E794C004E5F76 /* User.storyboard in Resources */,
 				1F6757D41D83DC7E00DA6701 /* GoogleService-Info.plist in Resources */,
 				C2006EB01DB1ABB0008A5DD5 /* Assets.xcassets in Resources */,
@@ -474,6 +481,7 @@
 				1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */,
 				C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */,
 				C2006EB61DB1BEC8008A5DD5 /* CircleButton.swift in Sources */,
+				1FC45EA41DB30B3700437180 /* PresentImageVC.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
 				1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */,
 				1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */,

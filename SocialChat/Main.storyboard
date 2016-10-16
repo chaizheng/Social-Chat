@@ -118,6 +118,52 @@
             </objects>
             <point key="canvasLocation" x="-36" y="-708.39580209895053"/>
         </scene>
+        <!--Present ImageVC-->
+        <scene sceneID="mPC-wp-axj">
+            <objects>
+                <viewController id="FTt-c0-EwV" customClass="PresentImageVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZPt-rQ-9I0"/>
+                        <viewControllerLayoutGuide type="bottom" id="1yb-hu-t0e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q31-Z5-CkE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G15-WV-LNy"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="EGX-zP-KgQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Oni-bk-HEm"/>
+                                    <constraint firstAttribute="width" constant="40" id="lkd-KY-cN1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxC-GS-I30">
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EGX-zP-KgQ" secondAttribute="trailing" constant="14" id="1Nt-ch-inc"/>
+                            <constraint firstItem="G15-WV-LNy" firstAttribute="leading" secondItem="Q31-Z5-CkE" secondAttribute="leading" id="Bao-ng-ECm"/>
+                            <constraint firstItem="uxC-GS-I30" firstAttribute="centerY" secondItem="EGX-zP-KgQ" secondAttribute="centerY" id="EbZ-MZ-kWI"/>
+                            <constraint firstItem="G15-WV-LNy" firstAttribute="top" secondItem="Q31-Z5-CkE" secondAttribute="top" id="Ei7-97-RwW"/>
+                            <constraint firstItem="EGX-zP-KgQ" firstAttribute="top" secondItem="ZPt-rQ-9I0" secondAttribute="bottom" constant="14" id="dEn-SY-HYb"/>
+                            <constraint firstAttribute="trailing" secondItem="G15-WV-LNy" secondAttribute="trailing" id="gb8-8N-IW3"/>
+                            <constraint firstItem="1yb-hu-t0e" firstAttribute="top" secondItem="G15-WV-LNy" secondAttribute="bottom" id="kHL-bs-B0Z"/>
+                            <constraint firstItem="uxC-GS-I30" firstAttribute="centerX" secondItem="EGX-zP-KgQ" secondAttribute="centerX" id="rwH-YW-IYr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="G15-WV-LNy" id="YqR-Xs-P9J"/>
+                        <outlet property="timeLeftLabel" destination="uxC-GS-I30" id="HiC-ET-EdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9VL-hn-sge" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-562.39999999999998" y="89.505247376311857"/>
+        </scene>
         <!--MemoryVC-->
         <scene sceneID="fK5-1X-4Qf">
             <objects>
@@ -198,7 +244,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoryCollectionCell" id="gKJ-5x-QGs" customClass="StoryCollectionCell" customModule="SocialChat" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="144"/>
+                                                <rect key="frame" x="0.0" y="3" width="90" height="144"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="144"/>
@@ -307,28 +353,35 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubscriptionCell" rowHeight="60" id="YvJ-Su-T0t" customClass="SubscriptionCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubscriptionCell" rowHeight="60" id="YvJ-Su-T0t" customClass="SubscriptionCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YvJ-Su-T0t" id="fuT-P4-o83">
-                                            <frame key="frameInset" width="1000" height="59"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-6d-aLe"/>
+                                                <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STC-X1-EP9">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEb-jE-HBs">
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="STC-X1-EP9" firstAttribute="leading" secondItem="fuT-P4-o83" secondAttribute="leading" id="76z-LZ-1Rj"/>
                                                 <constraint firstItem="gEb-jE-HBs" firstAttribute="leading" secondItem="fuT-P4-o83" secondAttribute="leadingMargin" constant="8" id="VOC-GW-Q5B"/>
+                                                <constraint firstItem="STC-X1-EP9" firstAttribute="top" secondItem="fuT-P4-o83" secondAttribute="top" id="Y08-5v-hRq"/>
+                                                <constraint firstAttribute="bottom" secondItem="STC-X1-EP9" secondAttribute="bottom" id="Zdg-Kh-d08"/>
                                                 <constraint firstItem="ntf-6d-aLe" firstAttribute="leading" secondItem="fuT-P4-o83" secondAttribute="leading" id="b0g-DD-13D"/>
                                                 <constraint firstAttribute="trailing" secondItem="ntf-6d-aLe" secondAttribute="trailing" id="gcB-z1-cw5"/>
                                                 <constraint firstItem="gEb-jE-HBs" firstAttribute="centerY" secondItem="fuT-P4-o83" secondAttribute="centerY" id="nXl-Gc-Ara"/>
                                                 <constraint firstAttribute="bottom" secondItem="ntf-6d-aLe" secondAttribute="bottom" id="p8B-md-E2x"/>
                                                 <constraint firstItem="ntf-6d-aLe" firstAttribute="top" secondItem="fuT-P4-o83" secondAttribute="top" id="vBg-00-OuO"/>
+                                                <constraint firstAttribute="trailing" secondItem="STC-X1-EP9" secondAttribute="trailing" id="xUa-69-riN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -336,11 +389,11 @@
                                             <outlet property="channelName" destination="gEb-jE-HBs" id="NiO-4A-kRk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryTableCell" rowHeight="60" id="BUu-pZ-fea" customClass="StoryTableCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="1000" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StoryTableCell" rowHeight="60" id="BUu-pZ-fea" customClass="StoryTableCell" customModule="SocialChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUu-pZ-fea" id="uIX-b1-mqM">
-                                            <frame key="frameInset" width="1000" height="59"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="joC-4G-hiD">
@@ -353,11 +406,11 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="v2z-5v-jkC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tan-VP-3Cp">
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -365,7 +418,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="joC-4G-hiD" firstAttribute="centerY" secondItem="uIX-b1-mqM" secondAttribute="centerY" id="4Df-jj-DdH"/>
-                                                <constraint firstAttribute="bottom" secondItem="Tan-VP-3Cp" secondAttribute="bottom" id="QFW-Dw-7rZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tan-VP-3Cp" secondAttribute="bottom" constant="2" id="QFW-Dw-7rZ"/>
                                                 <constraint firstItem="nQd-hS-Np4" firstAttribute="top" secondItem="uIX-b1-mqM" secondAttribute="topMargin" constant="5" id="fG1-A4-6n8"/>
                                                 <constraint firstItem="nQd-hS-Np4" firstAttribute="leading" secondItem="joC-4G-hiD" secondAttribute="trailing" constant="22" id="gCF-lT-NbK"/>
                                                 <constraint firstItem="Tan-VP-3Cp" firstAttribute="leading" secondItem="joC-4G-hiD" secondAttribute="trailing" constant="22" id="jPN-r0-FdN"/>
@@ -379,10 +432,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nilValueCell" rowHeight="70" id="hW9-wm-5rq" customClass="nilValueCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="1000" height="70"/>
+                                        <rect key="frame" x="0.0" y="148" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW9-wm-5rq" id="LVV-Jw-dYw">
-                                            <frame key="frameInset" width="1000" height="69"/>
+                                            <frame key="frameInset" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpd-cT-px6">
@@ -409,6 +462,41 @@
                                             <outlet property="noticeLabel" destination="dpd-cT-px6" id="BDV-Sc-AoE"/>
                                             <outlet property="reloadLabel" destination="5MP-tx-G7s" id="heQ-Ec-gP1"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LiveCell" rowHeight="180" id="JyC-zc-oQO">
+                                        <rect key="frame" x="0.0" y="218" width="375" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JyC-zc-oQO" id="WS4-GH-0eQ">
+                                            <frame key="frameInset" width="375" height="179"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live" translatesAutoresizingMaskIntoConstraints="NO" id="7Cy-cQ-okq"/>
+                                                <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgR-s3-8dB">
+                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Guy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqS-Ms-Ump">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="153" id="RjS-nH-nE5"/>
+                                                        <constraint firstAttribute="height" constant="40" id="biq-li-YGF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Cy-cQ-okq" firstAttribute="top" secondItem="WS4-GH-0eQ" secondAttribute="top" id="0xZ-Rm-8Or"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZgR-s3-8dB" secondAttribute="trailing" id="F9K-6a-VVc"/>
+                                                <constraint firstItem="7Cy-cQ-okq" firstAttribute="leading" secondItem="WS4-GH-0eQ" secondAttribute="leading" id="FQB-fq-PEM"/>
+                                                <constraint firstItem="rqS-Ms-Ump" firstAttribute="leading" secondItem="WS4-GH-0eQ" secondAttribute="leadingMargin" constant="5" id="Gji-3l-uYq"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZgR-s3-8dB" secondAttribute="bottom" id="Pdh-85-0Uc"/>
+                                                <constraint firstItem="ZgR-s3-8dB" firstAttribute="top" secondItem="WS4-GH-0eQ" secondAttribute="top" id="Rg3-Z9-nVR"/>
+                                                <constraint firstItem="ZgR-s3-8dB" firstAttribute="leading" secondItem="WS4-GH-0eQ" secondAttribute="leading" id="buh-ZF-kDc"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Cy-cQ-okq" secondAttribute="bottom" id="tE3-as-lOA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rqS-Ms-Ump" secondAttribute="bottom" id="vXe-Be-QOi"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Cy-cQ-okq" secondAttribute="trailing" id="wG0-Hl-Efz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1337,10 +1425,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="k4z-qG-aGm" customClass="UserCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4z-qG-aGm" id="fX8-Fm-FQ8">
-                                            <frame key="frameInset" width="1000" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-01-VIN">
@@ -1395,10 +1483,12 @@
         <image name="cancel_Btn" width="24" height="24"/>
         <image name="changeCam_btn" width="52" height="52"/>
         <image name="chat_icon" width="32" height="28"/>
+        <image name="clock_icon" width="40" height="40"/>
         <image name="default_user" width="480" height="480"/>
         <image name="discover_Btn" width="26" height="26"/>
         <image name="flashoff_Btn" width="24" height="37"/>
         <image name="goMemory_Btn" width="24" height="24"/>
+        <image name="live" width="836" height="786"/>
         <image name="login_background" width="1732" height="1155"/>
         <image name="logo_Btn" width="24" height="26"/>
         <image name="microphone_item" width="30" height="30"/>

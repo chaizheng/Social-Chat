@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 var webdiscover = [Webdiscover]()
+var storyChannel = [Webdiscover]()
 
 open class Util{
     
@@ -34,9 +35,10 @@ open class Util{
     }
     
     class func parseWebsiteCSV(){
-        let path = Bundle.main.path(forResource: "website", ofType: "csv")!
+        //Discover VC
+        let path1 = Bundle.main.path(forResource: "website", ofType: "csv")!
         do{
-            let csv = try CSV.init(contentsOfURL: path)
+            let csv = try CSV.init(contentsOfURL: path1)
             let rows = csv.rows
             
             for row in rows{
@@ -51,6 +53,25 @@ open class Util{
         } catch let err as NSError{
             print(err.debugDescription)
         }
+        //StoryVC Channel
+        let path2 = Bundle.main.path(forResource: "channel", ofType: "csv")!
+        do{
+            let csv = try CSV.init(contentsOfURL: path2)
+            let rows = csv.rows
+            
+            for row in rows{
+                let channel = row["Channel"]
+                let url = row["Url"]
+                
+                let story = Webdiscover(url: url!, type: channel!)
+                storyChannel.append(story)
+            }
+            
+        } catch let err as NSError{
+            print(err.debugDescription)
+        }
+
+        
     }
     
     class func rotateImage(image:UIImage)->UIImage

@@ -24,7 +24,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
         storyTableView.delegate = self
@@ -50,20 +49,28 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             self.receivedStories = downloadedStories
             self.storyTableView.reloadData()
         }
-
     }
     
     
     func Refresh(){
         
         retrieveStories()
-//        reloadProfileImage()
         refreshControl.endRefreshing()
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.section == 0{
+            
+            let currentCell = tableView.cellForRow(at: indexPath) as! SubscriptionCell
+            performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
+            
+        }else if indexPath.section == 1{
+
+            
+        }else{
+            performSegue(withIdentifier: "showwebview", sender: "Live")
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,7 +87,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             
         }
         // Story part
-        else{
+        else if indexPath.section == 1{
             if receivedStories.count == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "nilValueCell") as! nilValueCell
                 cell.updateCell(from: "FriendStory")
@@ -91,14 +98,26 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 
                 var profileImage: UIImage!
                 
+                let senderId = story["senderId"] as! String
                 for friend in allFriendsInfo{
-                    if friend.uid == story["senderId"] as! String{
+                    if friend.uid == senderId {
                         profileImage = friend.image
                     }
                 }
-                cell.updateCell(firstName: story["senderName"] as! String , time: story["sendTime"] as! String, profileImage: profileImage)
+                
+                let senderName = story["senderName"] as! String
+                let sendTime = story["sendTime"] as! String
+                let visibleTime = story["visibleTime"] as! Int
+                let storyUrl = story["storyUrl"] as! String
+                
+                let storyInfo = StoryInfo(uid: senderId, firstName: senderName, sendTime: sendTime, storyUrl: storyUrl, visibleTime: visibleTime)
+                cell.updateCell(info: storyInfo, profileImage: profileImage)
                 return cell
             }
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LiveCell")
+            return cell!
         }
     }
     
@@ -106,8 +125,11 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     {
         if section == 0{
             return "Subsription"
-        } else{
+        } else if section == 1 {
             return "Friend Stories"
+        }
+        else{
+           return "Live"
         }
     }
     
@@ -122,12 +144,17 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 70.0
+        if indexPath.section != 2{
+           return 70.0
+        } else{
+            return 310.0
+        }
+        
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,11 +164,13 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             }
             return subscriptionSet.count
             
-        } else{
+        } else if section == 1{
             if receivedStories.count == 0{
                 return 1
             }
             return receivedStories.count
+        } else {
+            return 1
         }
     }
     
@@ -173,9 +202,27 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //For suggestion part
         if let destination = segue.destination as? WebVC{
             if let index = sender as? Int {
                 destination.selectedUrl = webdiscover[index].url
+            }
+            if let name = sender as? String{
+                // for live
+                if name == "live"{
+                    let liveUrl = "https://www.youtube.com/watch?v=wRx0S9NMl1Y"
+                    destination.selectedUrl = liveUrl
+                // for subscription
+                } else {
+                    var channelUrl: String!
+                    for channel in storyChannel{
+                        if channel.type == name{
+                            channelUrl = channel.url
+                            break
+                        }
+                    }
+                    destination.selectedUrl = channelUrl
+                }
             }
         }
     }

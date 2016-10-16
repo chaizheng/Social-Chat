@@ -15,6 +15,10 @@ class StoryTableCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    var visibleTime: Int!
+    var senderId: String!
+    var storyUrl: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,14 +29,17 @@ class StoryTableCell: UITableViewCell {
 
     }
     
-    func updateCell(firstName: String, time: String, profileImage: UIImage){
+    func updateCell(info: StoryInfo, profileImage: UIImage){
         
         self.profileImage.layer.cornerRadius = 25
         self.profileImage.clipsToBounds = true
         
         self.profileImage.image = profileImage
-        self.firstNameLabel.text = firstName
-        self.timeLabel.text = time
+        self.firstNameLabel.text = info.firstName
+        self.timeLabel.text = info.sendTime
+        self.visibleTime = info.visibleTime
+        self.senderId = info.uid
+        self.storyUrl = info.storyUrl
     }
 
 }
