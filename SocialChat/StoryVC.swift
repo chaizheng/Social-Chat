@@ -84,9 +84,20 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
             
         }else if indexPath.section == 1{
-            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
-            let info: Dictionary<String, Any> = ["visibleTime":currentCell.visibleTime,"StoryImage":storiesImage[indexPath.row]]
+            
+//            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
+            let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
+            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"storyImage":storiesImage[indexPath.row]]
             performSegue(withIdentifier: "PresentImageVC", sender: info)
+            
+            let sendTime = receivedStories[indexPath.row]["sendTime"] as! String
+            let senderId = receivedStories[indexPath.row]["senderId"] as! String
+            receivedStories.remove(at: indexPath.row)
+            
+            //Delete my received story in my database
+            let storyRef = "\(senderId)-\(sendTime)"
+            DataService.instance.usersRef.child(myId!).child("receivedStories").child(storyRef).setValue(nil)
+            tableView.reloadData()
             
         }else{
             performSegue(withIdentifier: "showwebview", sender: "Live")
@@ -127,7 +138,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 
                 let senderName = story["senderName"] as! String
                 let sendTime = story["sendTime"] as! String
-                let visibleTime = story["visibleTime"] as! Int
+                let visibleTime = story["visibleTime"] as! String
                 
                 let storyInfo = StoryInfo(uid: senderId, firstName: senderName, sendTime: sendTime, visibleTime: visibleTime)
                 cell.updateCell(info: storyInfo, profileImage: profileImage)
@@ -247,12 +258,11 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         
         if let destination = segue.destination as? PresentImageVC{
             if let info = sender as? Dictionary<String, Any>{
-                destination.imageView.image = info["StoryImage"] as? UIImage
-                destination.visibleTime = info["visibleTime"] as! Int
+                destination.items = info
             }
         }
-        
     }
+    
     
     
     override func didReceiveMemoryWarning() {

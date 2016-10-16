@@ -24,7 +24,7 @@ class EditVC: UIViewController {
     }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
-    private var visibleTime = 5
+    private var visibleTime:String! = "5"
     @IBOutlet weak var sendToBtn: UIButton!
     
     private var _selectedImage: UIImage!
@@ -39,13 +39,13 @@ class EditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if itemToEdit != nil{
-            var myImage = UIImage(data: (itemToEdit?.image) as! Data)
+            let myImage = UIImage(data: (itemToEdit?.image) as! Data)
             
            // myImage = Util.rotateImage(image: myImage!)
             editingImage.image =  myImage
             
         } else{
-            var img = Util.rotateImage(image: _selectedImage)
+            let img = Util.rotateImage(image: _selectedImage)
             editingImage.image = img
         }
         

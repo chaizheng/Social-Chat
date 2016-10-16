@@ -21,6 +21,7 @@
 		1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D01D8AC24100DA90B4 /* EditVC.swift */; };
 		1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */; };
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
+		1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98D91DB38BB300012995 /* NormalImageVC.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
@@ -85,6 +86,7 @@
 		1F2A87D01D8AC24100DA90B4 /* EditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		1F2A87D21D8CFDD600DA90B4 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
+		1F5A98D91DB38BB300012995 /* NormalImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalImageVC.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				1FA876C61DB1A45A009088EB /* nilValueCell.swift */,
 				1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */,
 				1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */,
+				1F5A98D91DB38BB300012995 /* NormalImageVC.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
 				1F690F511DA50C75002CA867 /* ChatCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
@@ -498,6 +501,7 @@
 				C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */,
 				1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */,
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
+				1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,
 				1F1514151DAB688D00F0CCF3 /* FriendCell.swift in Sources */,
 				1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */,

@@ -224,17 +224,24 @@ class SendVC: JSQMessagesViewController{
         return nil
     }
     
-  
     
-//    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
-//        let message = messages[indexPath.item]
-//        if message.isMediaMessage{
-//            if let mediaItem = message.media as? JSQPhotoMediaItem {
-//                
-//                
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination =  segue.destination as? NormalImageVC{
+            if let image = sender as? UIImage{
+                destination.image = image
+            }
+        }
+    }
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        let message = messages[indexPath.item]
+        if message.isMediaMessage{
+            if let mediaItem = message.media as? JSQPhotoMediaItem {
+                performSegue(withIdentifier: "NormalImageVC", sender: mediaItem.image)
+            }
+        }
+    }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
