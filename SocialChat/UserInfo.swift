@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class UserInfo: UITableViewController {
 
     @IBAction func exit(_ sender: AnyObject) {

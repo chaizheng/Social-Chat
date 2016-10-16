@@ -6,18 +6,23 @@
 	<dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>JSQSystemSoundPlayer.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-SocialChat.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -32,12 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86D26957D96673E43BBD7BEFE901487E</key>
+		<key>88D13FD9D5F48977CCCC5114CA3C04F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD61A7C8B066856769B69FC35462DDD3</key>
+		<key>DF8BE63756007FE171E47414314AF151</key>
 		<dict>
 			<key>primary</key>
 			<true/>

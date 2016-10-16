@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 let DEFAULT_BLUE: UIColor = UIColor(red: 35/255, green: 187/255, blue: 245/255, alpha: 1)
 
@@ -20,6 +21,8 @@ class UserInfoVC: UIViewController {
     @IBOutlet weak var newReminder: UIImageView!
     
     let userID = FIRAuth.auth()?.currentUser?.uid
+    //let downloader = SDWebImageDownloader.shared()
+    
 
     override func viewDidAppear(_ animated: Bool) {
         profileImage.layer.cornerRadius = 90
@@ -53,8 +56,12 @@ class UserInfoVC: UIViewController {
                     self.username.text = value["username"] as? String
                     if let url = URL(string: value["imageUrl"] as! String) {
                         do {
-                            let data = try Data(contentsOf: url)
-                            self.profileImage.image = UIImage(data: data)
+                            self.profileImage.image = nil
+                            //blocking the ui, heavy task
+                           let data = try Data(contentsOf: url)
+                            
+                           self.profileImage.image = UIImage(data: data)
+                            //self.asyn(url: url)
                         }
                         catch{
                             print(error.localizedDescription)
@@ -74,11 +81,28 @@ class UserInfoVC: UIViewController {
         self.newReminder.isHidden = true
     }
     
-    
+    func asyn(url: URL){
+        //let fileUrl = dict["fileUrl"] as String
+        let downloader = SDWebImageDownloader.shared()
+        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+            (image,data,error,finished) in
+            print(Thread.current)
+            DispatchQueue.main.async {
+                //let image = UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, 1.0)
+                self.profileImage.image = image
+                //reloaddota
+            }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        })
+//        downloader?.downloadImage(with: NSURL(string: fileUrl!), options: [], progress: nil, completed: {
+//            (image,data,error,finished) in
+//            print(Thread.current())
+//            DispatchQueue.main.async {
+//                
+//                photo.image = image
+//                //reloaddota
+//            }
+//        })
     }
 
 }

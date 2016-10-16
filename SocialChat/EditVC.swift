@@ -9,19 +9,83 @@
 import UIKit
 import CoreData
 import Firebase
+import Social
 
 class EditVC: UIViewController {
     
     var itemToEdit : Item?
+    var lockIsOn = false
 
+
+    @IBAction func socialShare(_ sender: AnyObject) {
+        let actionSheet = UIAlertController(title: "share", message: "please share your photo", preferredStyle: .actionSheet)
+        let error = UIAlertController(title: "", message: "you do not login", preferredStyle: .alert)
+        
+        let sinaAction = UIAlertAction(title: "share on SinaWeibo", style: UIAlertActionStyle.default){(action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeSinaWeibo){
+                if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeSinaWeibo){
+                    let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
+                    facebookComposeVC?.add(self.editingImage.image)
+                    //facebookComposeVC?.setInitialText("nmb")
+                    self.present(facebookComposeVC!, animated: false, completion: nil)
+                }
+                
+            }
+            else{
+                
+                self.present(error, animated: false, completion: nil)
+            }
+        }
+        let fbAction = UIAlertAction(title: "share on facebook", style: .default){(action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+                let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookComposeVC?.setInitialText("nmb")
+                self.present(facebookComposeVC!, animated: false, completion: nil)
+            }
+        }
+       
+        let dismissAction = UIAlertAction(title: "close", style: .cancel) {(action) -> Void in    }
+        
+        actionSheet.addAction(sinaAction)
+        actionSheet.addAction(fbAction)
+        
+        actionSheet.addAction(dismissAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+
+    }
     
+    @IBOutlet var lockButton: UIButton!
+    
+    @IBAction func tapLock(_ sender: AnyObject) {
+    
+        lockIsOn = !lockIsOn
+        lockState()
+    }
+    
+    func lockState(){
+        if lockIsOn{
+            lockButton.setImage(#imageLiteral(resourceName: "Lock Filled-50"), for: UIControlState(rawValue: UInt(0)))
+        } else{
+            lockButton.setImage(#imageLiteral(resourceName: "Unlock Filled-50"), for: UIControlState(rawValue: UInt(0)))
+        }
+    }
     @IBAction func save(_ sender: AnyObject) {
         createNewItem()
     }
     
     @IBAction func deleteItem(_ sender: AnyObject) {
-        deleteItem()
-    }
+        if lockIsOn == false{
+            deleteItem()
+            dismiss(animated: true, completion: nil)
+
+        } else{
+            let alert = UIAlertController(title: "warning", message: "sorry, the photo is locked, you can't delete or edit it", preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: "dismiss", style: .cancel) {(action) -> Void in    }
+            alert.addAction(dismissAction)
+            present(alert, animated: false, completion: nil)
+        }
+            }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
     private var visibleTime:String! = "5"
@@ -48,6 +112,7 @@ class EditVC: UIViewController {
             let img = Util.rotateImage(image: _selectedImage)
             editingImage.image = img
         }
+        lockState()
         
       
     }
@@ -104,7 +169,7 @@ class EditVC: UIViewController {
             print("Failed to save")
             return
         }
-        dismiss(animated: false, completion: nil)
+      //  dismiss(animated: false, completion: nil)
     }
     
     

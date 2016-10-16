@@ -11,6 +11,7 @@ import UIKit
 class ChatCell: UITableViewCell {
 
     
+    @IBOutlet var img: UIImageView!
     @IBOutlet var label: UILabel!
    // @IBOutlet var myImage: UIImageView!
     override func awakeFromNib() {
@@ -25,9 +26,14 @@ class ChatCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateUI(user: User){
+    func updateUI(user: FriendInfo){
        
         label.text = user.firstName as String
+        img.image = user.image
+        img.layer.cornerRadius = 25
+        img.clipsToBounds = true
+        img.layer.borderWidth = 1.0
+        img.layer.borderColor = DEFAULT_BLUE.cgColor
     }
 
 }
