@@ -134,7 +134,7 @@
         <scene sceneID="AEG-SJ-gNf">
             <objects>
                 <collectionViewController id="eTt-Av-csv" customClass="Memory" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="E39-M9-5NL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="E39-M9-5NL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,7 +188,6 @@
         <!--AddVC-->
         <scene sceneID="qlk-1D-VTY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="luC-Wx-C52" customClass="AddVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lk4-lC-Bmc"/>
@@ -207,7 +206,7 @@
                                     <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C05CA2AD-16EC-4355-8E2C-35C1562CCED2" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
                                     <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
@@ -240,6 +239,7 @@
                         <outlet property="imageView" destination="cFH-ZL-5BC" id="Wbh-Lu-HSE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="-1915.5922038980511"/>
         </scene>
@@ -498,7 +498,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" width="188" height="188">
+        <image name="C05CA2AD-16EC-4355-8E2C-35C1562CCED2" width="188" height="188">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

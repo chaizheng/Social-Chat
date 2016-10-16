@@ -11,10 +11,11 @@ import CoreData
 import Firebase
 import Social
 
-class EditVC: UIViewController {
+class EditVC: UIViewController,PictureVCDelegate {
     
     var itemToEdit : Item?
     var lockIsOn = false
+    var visibleTime: String = "5"
 
 
     @IBAction func socialShare(_ sender: AnyObject) {
@@ -91,10 +92,10 @@ class EditVC: UIViewController {
             }
     @IBOutlet weak var editingImage: UIImageView!
     @IBOutlet weak var cancelBtn: UIButton!
-    private var visibleTime:String! = "5"
     @IBOutlet weak var sendToBtn: UIButton!
     
     private var _selectedImage: UIImage!
+    
     var selectedImage: UIImage {
         get {
             return _selectedImage
@@ -105,10 +106,13 @@ class EditVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if itemToEdit != nil{
             let myImage = UIImage(data: (itemToEdit?.image) as! Data)
-            
-           // myImage = Util.rotateImage(image: myImage!)
             editingImage.image =  myImage
             
         } else{
@@ -116,8 +120,6 @@ class EditVC: UIViewController {
             editingImage.image = img
         }
         lockState()
-        
-      
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,11 +139,13 @@ class EditVC: UIViewController {
         if let destination = segue.destination as? UsersVC{
             if let image = sender as? UIImage{
                 destination.image = image
+                
             }
         }
         
         if let destination = segue.destination as? PictureViewController{
             if let image = sender as? UIImage{
+                destination.delegate = self
                 destination.newImage = image
             }
         }
@@ -215,7 +219,11 @@ class EditVC: UIViewController {
         }
     }
     
-    
+    func sendValue(visibleTime: String, image: UIImage) {
+        self.visibleTime = visibleTime
+        self.selectedImage = image
+        self.editingImage.image = image
+    }
     
     
 }

@@ -13,11 +13,17 @@
 //  Copyright © 2016 黄 康平. All rights reserved.
 //
 
+
+protocol PictureVCDelegate {
+    func sendValue(visibleTime: String, image: UIImage)
+}
+
 import UIKit
 import SpriteKit
 
 class PictureViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var delegate:PictureVCDelegate?
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     var newImage: UIImage?
@@ -397,6 +403,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
+       
         mergeDrawnImages(forgroundImage: newImage!, backgroundImage: commitedImageView.image!)
         if emojiImageView != nil {
             mergeEmojiImages(forgroundImage: newImage!, backgroundImage: emojiImageView!)
@@ -407,7 +414,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         
         let imageData = UIImageJPEGRepresentation(newImage!, 0.6)
         let compressedJPEGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil);
+        UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
+        
+//        let alert = UIAlertController(title: "Save Successfully", message: "Open your photo library to see it.", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+        
+        delegate?.sendValue(visibleTime: time, image: newImage!)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func mergeDrawnImages (forgroundImage : UIImage, backgroundImage : UIImage) {
@@ -507,6 +521,10 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         recognizer.view!.transform = recognizer.view!.transform.rotated(by: recognizer.rotation)
     }
     
+    @IBAction func cancelBtnPressed(_ sender: AnyObject) {
+        delegate?.sendValue(visibleTime: time, image: newImage!)
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
         
