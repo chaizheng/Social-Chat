@@ -12,17 +12,27 @@ import Firebase
 
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var refreshControl: UIRefreshControl!
+    
 
-    let defualtNum = "0000000000"
+    //let defualtNum = "0000000000"
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var backToCameraBtn: UIButton!
     
     private var senders = [FriendInfo]()
     private var uid = [String]()
-    //private var chatInfo = [(String, UIImage)]()
+    var searchController = UISearchController(searchResultsController: nil)
+    var filteredSenders = [FriendInfo]()
     
+    func filterContentForSearchText(searchText: String, scope: String = "All"){
+        print("QQQ")
+        filteredSenders = senders.filter{
+            friend in
+            return friend.firstName.contains(searchText.lowercased())
+            }
+        tableView.reloadData()
+    
+}
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,23 +42,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshControl.addTarget(self, action: #selector(Refresh), for: UIControlEvents.valueChanged)
-        refreshControl.backgroundColor = UIColor.black
-        tableView.addSubview(refreshControl)
-        tableView.tableFooterView = UIView()
+        
+        self.searchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
         self.tableView.reloadData()
 
     }
-    func Refresh(){
-       
-        if self.refreshControl.isRefreshing{
-            refreshControl.endRefreshing()
-             self.tableView.reloadData()
 
-        }
-            }
     func findFriendById(uid: String) -> FriendInfo{
         if allFriendsInfo != nil{
             for k in allFriendsInfo{
@@ -196,18 +204,35 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
-        return senders.count
-    }
+        if(self.searchController.isActive){
+            return self.filteredSenders.count
+        }else{
+            return senders.count
+
+        }
+            }
     //传头像需要改结构
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
       
          let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
-        let friend = senders[indexPath.row]
-                cell.updateUI(user: friend)
+        let friend: FriendInfo
+        if searchController.isActive && searchController.searchBar.text != nil{
+            print("woCaoNM")
+            print(filteredSenders.count)
+            friend = filteredSenders[indexPath.row]
+            print("woCao")
+            print(friend)
+            cell.updateUI(user: friend)
+            return cell
+        }else{
+            friend = senders[indexPath.row]
+            cell.updateUI(user: friend)
+            return cell
+        }
+        
 
-        return cell
+        //return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -229,4 +254,24 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
+//    public func updateSearchResults(for searchController: UISearchController){
+//        filteredSenders.removeAll(keepingCapacity: false)
+//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+//        let array = (uid as NSArray).filtered(using: searchPredicate)
+//        filteredTableData = array as! [String]
+//        
+//        self.tableView.reloadData()
+//
+//    }
+    
+    
+}
+
+
+extension ChatVC: UISearchResultsUpdating{
+     func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        print(searchController.searchBar.text)
+        print("hello")
+    }
 }
