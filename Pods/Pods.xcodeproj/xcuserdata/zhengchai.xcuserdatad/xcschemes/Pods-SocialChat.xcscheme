@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "86D26957D96673E43BBD7BEFE901487E"
+               BlueprintIdentifier = "DF8BE63756007FE171E47414314AF151"
                BuildableName = "Pods_SocialChat.framework"
                BlueprintName = "Pods-SocialChat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "86D26957D96673E43BBD7BEFE901487E"
+            BlueprintIdentifier = "DF8BE63756007FE171E47414314AF151"
             BuildableName = "Pods_SocialChat.framework"
             BlueprintName = "Pods-SocialChat"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "86D26957D96673E43BBD7BEFE901487E"
-            BuildableName = "Pods_SocialChat.framework"
-            BlueprintName = "Pods-SocialChat"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

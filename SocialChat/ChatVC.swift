@@ -12,41 +12,94 @@ import Firebase
 
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var refreshControl: UIRefreshControl!
+
+    let defualtNum = "0000000000"
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var backToCameraBtn: UIButton!
     
-    private var senders = [User]()
+    private var senders = [FriendInfo]()
     private var uid = [String]()
+    //private var chatInfo = [(String, UIImage)]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
+        refreshControl.addTarget(self, action: #selector(Refresh), for: UIControlEvents.valueChanged)
+        refreshControl.backgroundColor = UIColor.black
+        tableView.addSubview(refreshControl)
+        tableView.tableFooterView = UIView()
         self.tableView.reloadData()
-        
-//        for user in (self.senders){
-//            print("ss2"+user.firstName)
-//        }
-
 
     }
+    func Refresh(){
+       
+        if self.refreshControl.isRefreshing{
+            refreshControl.endRefreshing()
+             self.tableView.reloadData()
 
+        }
+            }
+    func findFriendById(uid: String) -> FriendInfo{
+        if allFriendsInfo != nil{
+            for k in allFriendsInfo{
+                if k.uid == uid{
+                    return k
+                }
+                
+            }
+
+        }
+                return allFriendsInfo[0]
+        
+    }
+
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
         var receivIndex = -1
         var sentIndex = -1
         
-        DispatchQueue.main.async{
+       
             let userId = FIRAuth.auth()!.currentUser?.uid
             DataService.instance.usersRef.child(userId!).child("receivedMessage").observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
                 if let receivedMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    
+                    print("chai")
                     let newUid = receivedMsg["senderId"] as! String
                    // print(newUid)
                     let name = receivedMsg["senderName"] as? String
                     print("receive"+name!)
-                    let newUser = User(uid: newUid, firstName: name!)
+//                    do{
+//                        let imageUrl = receivedMsg["sender"]
+//                        let url = URL(string: imageUrl)
+//                        let data = try Data(contentsOf: url!)
+//                        let picture = UIImage(data: data)
+//
+//                    }catch{
+//                        print(error.localizedDescription)
+//
+//                    }
+                                        print("fuck1")
+                    var newUser = FriendInfo(uid: newUid, fullName: name!, firstName: name!, image: #imageLiteral(resourceName: "default_user"))
+                    if allFriendsInfo.count != 0{
+                         newUser = self.findFriendById(uid: newUid)
+                    } else {
+                        
+                    }
+                    
+                    print("fuck2")
+                    print(self.senders)
                     
                     
                     if self.uid.contains(newUid){
@@ -57,6 +110,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid, at: 0)
+                        print("sb1")
+                        print(self.senders)
                        
                     } else{
                         //self.senders.append(newUser)
@@ -64,7 +119,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid, at: 0)
                         //receivIndex = self.uid.index(of: newUid)!
-                    
+                        print("sb2")
+                    print(self.senders)
                         
                         
                     }
@@ -77,16 +133,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             DataService.instance.usersRef.child(userId!).child("sentMessage").observe(.childAdded){ (snapshot: FIRDataSnapshot!) in
                 if let sentMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    //let newUid = sentMsg["senderId"] as? String
-                    //let name = sentMsg["senderName"] as? String
-
+                    
                     let name = sentMsg["receiverName"] as? String
                     let newUid = sentMsg["receiverId"] as? String
 
-                    print("chai")
+                    
                     print("sent"+name!)
                     
-                    let newUser = User(uid: newUid! , firstName: name!)
+                    //let newUser = self.findFriendById(uid: newUid!)
+                    var newUser = FriendInfo(uid: newUid!, fullName: name!, firstName: name!, image: #imageLiteral(resourceName: "default_user"))
+                    if allFriendsInfo.count != 0{
+                         newUser = self.findFriendById(uid: newUid!)
+                    } else {
+                        
+                    }
+                    
                     
                     if self.uid.contains(newUid!){
                         sentIndex = self.uid.index(of: newUid!)!
@@ -94,12 +155,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.uid.remove(at: sentIndex)
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid!, at: 0)
+                        print("sb3")
+                        print(self.senders)
                         
                     } else{
                         //self.senders.append(newUser)
                         self.senders.insert(newUser, at: 0)
                         //sentIndex = self.uid.index(of: newUid!)!
                         self.uid.insert(newUid!, at: 0)
+                        print("sb4")
+                        print(self.senders)
                         
                        
                         
@@ -112,7 +177,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                            }
 
-        }
+        
         
         
        
@@ -155,7 +220,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "SendVC" {
             let navigController = segue.destination as! UINavigationController
             let sendVC = navigController.topViewController as! SendVC
-            if let receiverInfo = sender as? User{
+            if let receiverInfo = sender as? FriendInfo{
                 sendVC.receiverId = receiverInfo.uid
                 sendVC.recieverName = receiverInfo.firstName
             }
