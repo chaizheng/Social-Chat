@@ -109,7 +109,7 @@ class DataService {
     
     
     // share story to all friends
-    func shareStories(storyUrl: String, senderId: String, senderName: String, senderImageUrl: String, visibleTime: Int){
+    func shareStories(storyUrl: String, senderId: String, senderName: String, senderImageUrl: String, visibleTime: String){
         
         let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(sendTime)"

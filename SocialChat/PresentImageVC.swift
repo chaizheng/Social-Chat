@@ -13,24 +13,21 @@ class PresentImageVC: UIViewController {
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    private var _visibleTime: Int!
     
-    var visibleTime: Int{
-        get{
-            return _visibleTime
-        }
-        set{
-            _visibleTime = newValue
-        }
-    }
+    var items:Dictionary<String, Any>!
+    var timeLeft: String!
     
     private var counter = 0
     var timer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLeftLabel.text = String(_visibleTime)
-
+        
+        timeLeft = items["visibleTime"] as? String
+        timeLeftLabel.text = timeLeft
+        var storyImage = items["storyImage"] as? UIImage
+        storyImage = Util.rotateImage(image: storyImage!)
+        imageView.image = storyImage
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,7 +36,8 @@ class PresentImageVC: UIViewController {
     
     func updateTimer(){
         counter += 1
-        timeLeftLabel.text = String(_visibleTime-counter)
+        let leftTime = Int(timeLeft)! - counter
+        timeLeftLabel.text = String(leftTime)
         
         if timeLeftLabel.text == String(0){
             dismiss(animated: true, completion: nil)
@@ -47,8 +45,6 @@ class PresentImageVC: UIViewController {
         
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

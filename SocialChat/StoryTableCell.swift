@@ -15,7 +15,6 @@ class StoryTableCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-    var visibleTime: Int!
     var senderId: String!
     
     override func awakeFromNib() {
@@ -36,7 +35,6 @@ class StoryTableCell: UITableViewCell {
         self.profileImage.image = profileImage
         self.firstNameLabel.text = info.firstName
         self.timeLabel.text = info.sendTime
-        self.visibleTime = info.visibleTime
         self.senderId = info.uid
         
     }
