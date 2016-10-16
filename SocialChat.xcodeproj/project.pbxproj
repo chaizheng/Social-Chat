@@ -23,6 +23,8 @@
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
 		1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98D91DB38BB300012995 /* NormalImageVC.swift */; };
 		1F5A98DC1DB3B3AD00012995 /* EditImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */; };
+		1F5A98E01DB3BB0F00012995 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */; };
+		1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
@@ -89,6 +91,8 @@
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		1F5A98D91DB38BB300012995 /* NormalImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalImageVC.swift; sourceTree = "<group>"; };
 		1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditImage.storyboard; sourceTree = "<group>"; };
+		1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		1F5A98DE1DB3B8E900012995 /* ImageEditControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */,
 			);
 			name = ImageEditControllers;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				1F1723051DA9566B000F55F9 /* AcceptRequestCell.swift */,
 				1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */,
 				1F1514141DAB688D00F0CCF3 /* FriendCell.swift */,
+				1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */,
 				1FA876C61DB1A45A009088EB /* nilValueCell.swift */,
 				1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */,
 				1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */,
@@ -477,6 +483,7 @@
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
+				1F5A98E01DB3BB0F00012995 /* PictureViewController.swift in Sources */,
 				1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
 				1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */,
@@ -504,6 +511,7 @@
 				1F1723041DA949C7000F55F9 /* Util.swift in Sources */,
 				1F6757FC1D840D6D00DA6701 /* RoundTextField.swift in Sources */,
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
+				1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */,
 				1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */,
 				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,

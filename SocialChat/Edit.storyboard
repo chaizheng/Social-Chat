@@ -66,6 +66,9 @@
                                             <constraint firstAttribute="height" constant="40" id="iFt-5D-Xm3"/>
                                         </constraints>
                                         <state key="normal" image="Pencil Filled-50"/>
+                                        <connections>
+                                            <action selector="EditBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="gDd-d2-nVP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -120,6 +123,7 @@
                         <outlet property="lockButton" destination="yLL-Fc-qNH" id="ThW-td-t1L"/>
                         <outlet property="sendToBtn" destination="iOX-W0-68U" id="0yj-cL-ACF"/>
                         <segue destination="qRx-qF-NPK" kind="show" identifier="toUsersVC" id="dCR-tA-sru"/>
+                        <segue destination="zNA-Oh-3pg" kind="presentation" identifier="PictureViewController" animates="NO" id="l5h-Qd-4Rl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,7 +163,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="img" destination="2y0-t5-nTQ" id="ZoA-uO-ADS"/>
-                                    <segue destination="vhJ-n9-H1k" kind="show" identifier="Edit" id="Yye-fN-pJ5"/>
+                                    <segue destination="vhJ-n9-H1k" kind="presentation" identifier="Edit" id="Yye-fN-pJ5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -203,7 +207,7 @@
                                     <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="419B33C4-77A4-496F-AF39-73C203CFF775" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
                                     <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
@@ -246,6 +250,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHY-vz-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-1675"/>
+        </scene>
+        <!--EditImage-->
+        <scene sceneID="xNs-rX-EYU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditImage" id="zNA-Oh-3pg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grk-hY-qcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-194" y="-1474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1sO-B3-tNF">
@@ -486,7 +498,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="419B33C4-77A4-496F-AF39-73C203CFF775" width="188" height="188">
+        <image name="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" width="188" height="188">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
