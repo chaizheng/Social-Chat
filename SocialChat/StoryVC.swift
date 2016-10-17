@@ -23,7 +23,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     var refreshControl: UIRefreshControl!
-    var refreshCollectControl: UIRefreshControl!
     var receivedStories = [Dictionary<String, Any>]()
     var storiesImage = [UIImage]()
 
@@ -44,12 +43,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         refreshControl.addTarget(self, action: #selector(StoryVC.Refresh), for: UIControlEvents.valueChanged)
         refreshControl.backgroundColor = UIColor.white
         storyTableView.addSubview(refreshControl)
-        
-        refreshCollectControl = UIRefreshControl()
-        refreshCollectControl.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshCollectControl.addTarget(self, action: #selector(StoryVC.Refresh2), for: UIControlEvents.valueChanged)
-        refreshCollectControl.backgroundColor = UIColor.white
-        storyCollectionView.addSubview(refreshCollectControl)
         
         storyTableView.tableFooterView = UIView()
         
@@ -87,14 +80,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         refreshControl.endRefreshing()
     }
     
-    func Refresh2(){
-        
-        self.storyCollectionView.reloadData()
-        refreshControl.endRefreshing()
-    }
-
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
             
@@ -119,7 +104,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             tableView.reloadData()
             
         }else{
-            performSegue(withIdentifier: "showwebview", sender: "Live")
+            performSegue(withIdentifier: "showwebview", sender: "live")
         }
     }
     
@@ -225,18 +210,18 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(typeClick[indexPath.row].1)
         typeClick[indexPath.row].1 += 1
-        print()
+        performSegue(withIdentifier: "showwebview", sender: typeClick[indexPath.row].0.url)
         sort()
-
-        performSegue(withIdentifier: "showwebview", sender: indexPath.row)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.storyCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCollectionCell", for: indexPath) as? StoryCollectionCell{
             
-//            cell.configureCell(web:webdiscover[indexPath.row], id: indexPath.row+1)
             cell.configureCell(web: typeClick[indexPath.row])
             
             return cell
@@ -253,21 +238,24 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(typeClick.count)
         return 10
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //For suggestion part
         if let destination = segue.destination as? WebVC{
-            if let index = sender as? Int {
-                destination.selectedUrl = webdiscover[index].url
+            if let url = sender as? String {
+                if url.contains("https"){
+                    destination.selectedUrl = url
+                    return
+                }
             }
             if let name = sender as? String{
                 // for live
                 if name == "live"{
                     let liveUrl = "https://www.youtube.com/watch?v=wRx0S9NMl1Y"
                     destination.selectedUrl = liveUrl
+                    return
                 // for subscription
                 } else {
                     var channelUrl: String!
@@ -290,7 +278,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func sort(){
-        typeClick.sort{ $0.1 < $1.1 }
+        typeClick.sort{ $0.1 > $1.1 }
     }
 
     

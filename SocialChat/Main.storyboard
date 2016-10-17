@@ -288,34 +288,25 @@
                                                             <color key="backgroundColor" red="0.99607843139999996" green="0.41960784309999999" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTT-u7-VWu" userLabel="Type Lbl">
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Yd-G4Y" userLabel="Title Lbl">
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="XkK-fv-Qcr" secondAttribute="trailing" id="0LX-xV-4hr"/>
-                                                    <constraint firstItem="YK9-Yd-G4Y" firstAttribute="leading" secondItem="gKJ-5x-QGs" secondAttribute="leading" id="3DF-fp-LJu"/>
                                                     <constraint firstItem="XkK-fv-Qcr" firstAttribute="top" secondItem="gKJ-5x-QGs" secondAttribute="top" id="A1F-mT-nIl"/>
                                                     <constraint firstAttribute="trailing" secondItem="7lH-u7-gdq" secondAttribute="trailing" id="Btm-Qo-F64"/>
                                                     <constraint firstItem="UTT-u7-VWu" firstAttribute="top" secondItem="gKJ-5x-QGs" secondAttribute="topMargin" id="MbY-FT-TkA"/>
                                                     <constraint firstItem="7lH-u7-gdq" firstAttribute="top" secondItem="gKJ-5x-QGs" secondAttribute="top" id="ODs-UT-sTz"/>
                                                     <constraint firstItem="UTT-u7-VWu" firstAttribute="centerX" secondItem="gKJ-5x-QGs" secondAttribute="centerX" id="OGt-LK-nMF"/>
                                                     <constraint firstItem="7lH-u7-gdq" firstAttribute="leading" secondItem="gKJ-5x-QGs" secondAttribute="leading" id="VB7-wX-5MN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YK9-Yd-G4Y" secondAttribute="trailing" id="cIR-d5-2ot"/>
                                                     <constraint firstAttribute="bottom" secondItem="7lH-u7-gdq" secondAttribute="bottom" id="oRI-XD-YEy"/>
                                                     <constraint firstItem="XkK-fv-Qcr" firstAttribute="leading" secondItem="gKJ-5x-QGs" secondAttribute="leading" id="omw-FI-ovx"/>
-                                                    <constraint firstAttribute="bottom" secondItem="YK9-Yd-G4Y" secondAttribute="bottom" id="qrr-HY-T35"/>
                                                     <constraint firstAttribute="bottom" secondItem="XkK-fv-Qcr" secondAttribute="bottom" id="zHy-v0-4qf"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="titleLbl" destination="YK9-Yd-G4Y" id="DIG-EX-N6Q"/>
                                                     <outlet property="typeLbl" destination="UTT-u7-VWu" id="ibi-93-xrP"/>
                                                     <outlet property="webImage" destination="7lH-u7-gdq" id="Tir-aK-vvK"/>
                                                 </connections>
@@ -1531,7 +1522,7 @@
         <image name="socialChatlogo" width="283" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rRw-GH-hVC"/>
         <segue reference="bX2-tF-z18"/>
+        <segue reference="Pw4-gu-lZs"/>
     </inferredMetricsTieBreakers>
 </document>

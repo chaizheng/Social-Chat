@@ -10,7 +10,6 @@ import UIKit
 
 class StoryCollectionCell: UICollectionViewCell {
     @IBOutlet weak var webImage: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
     
     required init?(coder aDecoder: NSCoder){
