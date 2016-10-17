@@ -157,7 +157,7 @@ class EditVC: UIViewController,PictureVCDelegate {
     }
 
     @IBAction func sendToBtnPressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "toUsersVC", sender: (selectedImage,visibleTime))
+        performSegue(withIdentifier: "toUsersVC", sender: (editingImage.image,visibleTime))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
