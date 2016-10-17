@@ -59,6 +59,7 @@
 		C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20A1DA0C87E008B019A /* SignupVC.swift */; };
 		C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20E1DA0CA87008B019A /* LoginVC.swift */; };
 		C23053F61DB4A48D006FD75B /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23053F51DB4A48D006FD75B /* PictureViewController.swift */; };
+		C23053FB1DB4B42D006FD75B /* JSQVisibleMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C23053FA1DB4B42D006FD75B /* JSQVisibleMediaItem.m */; };
 		C2707A711DAA3C1D007C53BA /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2707A701DAA3C1D007C53BA /* ContactCell.swift */; };
 		C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */; };
 		C2D038A21DB39D0900C2518F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D038A11DB39D0900C2518F /* Main.storyboard */; };
@@ -131,6 +132,9 @@
 		C222F20A1DA0C87E008B019A /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		C222F20E1DA0CA87008B019A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		C23053F51DB4A48D006FD75B /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureViewController.swift; path = "../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/94a94343e77addd33a6f0b1720f95c14/Message/MessageTemp/aaf3a8fc9b702e5b4994758d0e23e70d/File/PictureViewController.swift"; sourceTree = "<group>"; };
+		C23053F81DB4B419006FD75B /* JSQVisibleMediaItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSQVisibleMediaItem.h; sourceTree = "<group>"; };
+		C23053F91DB4B42C006FD75B /* SocialChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocialChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		C23053FA1DB4B42D006FD75B /* JSQVisibleMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQVisibleMediaItem.m; sourceTree = "<group>"; };
 		C2707A701DAA3C1D007C53BA /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByContactVC.swift; sourceTree = "<group>"; };
 		C2D038A11DB39D0900C2518F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		1F6757B31D83A7CD00DA6701 /* SocialChat */ = {
 			isa = PBXGroup;
 			children = (
+				C23053F71DB4B3EE006FD75B /* Objective-C */,
 				C2F03D9D1D9E7B44009CF578 /* Model */,
 				1F6758011D8433E000DA6701 /* Services */,
 				1F6757CE1D83A9A300DA6701 /* Controller */,
@@ -323,6 +328,16 @@
 				BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C23053F71DB4B3EE006FD75B /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				C23053F81DB4B419006FD75B /* JSQVisibleMediaItem.h */,
+				C23053FA1DB4B42D006FD75B /* JSQVisibleMediaItem.m */,
+				C23053F91DB4B42C006FD75B /* SocialChat-Bridging-Header.h */,
+			);
+			name = "Objective-C";
 			sourceTree = "<group>";
 		};
 		C2F03D9D1D9E7B44009CF578 /* Model */ = {
@@ -517,6 +532,7 @@
 				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
 				1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */,
+				C23053FB1DB4B42D006FD75B /* JSQVisibleMediaItem.m in Sources */,
 				C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */,
 				C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */,
 				1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */,
@@ -647,6 +663,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMC.SocialChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SocialChat/SocialChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -664,6 +681,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMC.SocialChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SocialChat/SocialChat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
