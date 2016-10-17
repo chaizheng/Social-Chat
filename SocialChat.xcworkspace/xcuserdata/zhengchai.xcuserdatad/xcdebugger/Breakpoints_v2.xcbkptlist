@@ -393,7 +393,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "collectionView(_:messageBubbleImageDataForItemAt:)"
+            landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -866,7 +866,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengchai/SocialChat/SocialChat/ChatVC.swift"
-                  timestampString = "498414089.673199"
+                  timestampString = "498415083.284855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -881,7 +881,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengchai/SocialChat/SocialChat/ChatVC.swift"
-                  timestampString = "498414089.674908"
+                  timestampString = "498415083.286225"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "31"
