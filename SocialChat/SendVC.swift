@@ -50,7 +50,6 @@ class SendVC: JSQMessagesViewController{
         
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        createOptionMenu()
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
         
@@ -121,33 +120,36 @@ class SendVC: JSQMessagesViewController{
                     let text = value["content"] as! String
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
                 } else if contentType == "PHOTO" {
-                    do{
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        let picture = UIImage(data: data)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                        let downloader = SDWebImageDownloader.shared()
+                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                        (image,data,error,finished) in
+                        DispatchQueue.main.async {
+                            let picture = image
+                            let photo = JSQPhotoMediaItem(image: picture)
+                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                        }
+                    })
+        
                 } else if contentType == "VISIIMAGE"{
-                    do{
+                    
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        var picture = UIImage(data: data)
-                        picture = Util.rotateImage(image: picture!)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        photo?.accessibilityLabel  = "Tap me to watch it!"
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
+                        
+                        let downloader = SDWebImageDownloader.shared()
+                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                var picture = image
+                                picture = Util.rotateImage(image: picture!)
+                                let photo = JSQPhotoMediaItem(image: picture)
+                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            }
+                        })
                     }
-                }
             }
-            self.finishReceivingMessage()
-        }
+            self.finishSendingMessage()        }
         
         let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId)
         
@@ -160,50 +162,38 @@ class SendVC: JSQMessagesViewController{
                 if contentType == "TEXT" {
                     let text = value["content"] as! String
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-                } else if contentType == "PHOTO" {
-                    do{
+                }
+                    else if contentType == "PHOTO" {
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        let picture = UIImage(data: data)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        photo?.appliesMediaViewMaskAsOutgoing = false
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                        let downloader = SDWebImageDownloader.shared()
+                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                let picture = image
+                                let photo = JSQPhotoMediaItem(image: picture)
+                                photo?.appliesMediaViewMaskAsOutgoing = false
+                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.finishReceivingMessage()
+                        }
+                    })
                 } else if contentType == "VISIIMAGE"{
-                    do{
-                        let imageUrl = value["content"] as! String
-                        let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        var picture = UIImage(data: data)
-                        picture = Util.rotateImage(image: picture!)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        photo?.accessibilityLabel  = "Tap me to watch it!"
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    let imageUrl = value["content"] as! String
+                    let url = URL(string: imageUrl)
+                    let downloader = SDWebImageDownloader.shared()
+                    downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                        DispatchQueue.main.async {
+                            var picture = image
+                            picture = Util.rotateImage(image: picture!)
+                            let photo = JSQPhotoMediaItem(image: picture)
+                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            self.finishReceivingMessage()
+                        }
+                    })
                 }
             }
-            self.finishReceivingMessage()
         }
-    }
-    
-    private func createOptionMenu() {
-        
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction) -> Void in
-            self.photoLibrary()
-        })
-        let memoryAction = UIAlertAction(title: "Memories", style: .default, handler: { (alert: UIAlertAction) -> Void in
-            self.memory()
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        optionMenu.addAction(photoLibraryAction)
-        optionMenu.addAction(memoryAction)
-        optionMenu.addAction(cancelAction)
-
     }
     
     
@@ -275,12 +265,9 @@ class SendVC: JSQMessagesViewController{
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
-        present(optionMenu, animated: true, completion: nil)
+        photoLibrary()
     }
     
-    func memory(){
-        
-    }
     
     func photoLibrary(){
         let myPickerController = UIImagePickerController()
