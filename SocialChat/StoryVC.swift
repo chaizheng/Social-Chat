@@ -81,27 +81,29 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             
-            let currentCell = tableView.cellForRow(at: indexPath) as! SubscriptionCell
-            
-            performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
+            if let currentCell = tableView.cellForRow(at: indexPath) as? SubscriptionCell{
+                performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
+            }
             
         }else if indexPath.section == 1{
             
-//            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
-            let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
-            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"storyImage":storiesImage[indexPath.row]]
-            performSegue(withIdentifier: "PresentImageVC", sender: info)
-            
-            let sendTime = receivedStories[indexPath.row]["sendTime"] as! String
-            let senderId = receivedStories[indexPath.row]["senderId"] as! String
-            receivedStories.remove(at: indexPath.row)
-            
-            //Delete my received story in my database
-            let storyRef = "\(senderId)-\(sendTime)"
-            DataService.instance.usersRef.child(myId!).child("receivedStories").child(storyRef).setValue(nil)
-            tableView.reloadData()
+            if let _ = tableView.cellForRow(at: indexPath) as? StoryTableCell{
+                let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
+                let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"storyImage":storiesImage[indexPath.row]]
+                performSegue(withIdentifier: "PresentImageVC", sender: info)
+                
+                let sendTime = receivedStories[indexPath.row]["sendTime"] as! String
+                let senderId = receivedStories[indexPath.row]["senderId"] as! String
+                receivedStories.remove(at: indexPath.row)
+                
+                //Delete my received story in my database
+                let storyRef = "\(senderId)-\(sendTime)"
+                DataService.instance.usersRef.child(myId!).child("receivedStories").child(storyRef).setValue(nil)
+                tableView.reloadData()
+
+            }
             
         }else{
             performSegue(withIdentifier: "showwebview", sender: "live")

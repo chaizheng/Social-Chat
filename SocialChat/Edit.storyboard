@@ -464,9 +464,11 @@
                                             <frame key="frameInset" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRn-o6-iNC">
-                                                    <frame key="frameInset" minX="167" minY="29" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRn-o6-iNC">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Y3Q-RR-H5r"/>
+                                                        <constraint firstAttribute="width" constant="186" id="xXL-cK-nNp"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -480,7 +482,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZMh-DF-ZLb" firstAttribute="top" secondItem="fP4-Xm-GLc" secondAttribute="top" constant="15" id="1Cu-8r-ydR"/>
+                                                <constraint firstItem="vRn-o6-iNC" firstAttribute="centerY" secondItem="fP4-Xm-GLc" secondAttribute="centerY" id="D8y-kY-HPG"/>
                                                 <constraint firstItem="ZMh-DF-ZLb" firstAttribute="leading" secondItem="fP4-Xm-GLc" secondAttribute="leading" constant="15" id="WzC-os-66n"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vRn-o6-iNC" secondAttribute="trailing" constant="67" id="vZB-Dp-Xq5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
