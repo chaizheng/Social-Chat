@@ -61,7 +61,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             let storyUrl = story["storyUrl"] as! String
             let url = URL(string: storyUrl)
             let downloader = SDWebImageDownloader.shared()
-            downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+            _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                 (image,data,error,finished) in
                 DispatchQueue.main.async {
                     self.storiesImage.append(image!)

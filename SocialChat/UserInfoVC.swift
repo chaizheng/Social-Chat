@@ -82,7 +82,7 @@ class UserInfoVC: UIViewController {
     
     func asyn(url: URL){
         let downloader = SDWebImageDownloader.shared()
-        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
             (image,data,error,finished) in
             print(Thread.current)
             DispatchQueue.main.async {

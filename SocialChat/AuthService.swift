@@ -77,7 +77,7 @@ class AuthService {
                             
                             if let url = URL(string: childValue["imageUrl"] as! String) {
                                 let downloader = SDWebImageDownloader.shared()
-                                downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                               _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                                     (image,data,error,finished) in
                                     DispatchQueue.main.async {
                                         let profileImage = image

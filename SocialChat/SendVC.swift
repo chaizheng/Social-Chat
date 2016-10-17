@@ -11,15 +11,13 @@ import Firebase
 import JSQMessagesViewController
 import SDWebImage
 
+
 class SendVC: JSQMessagesViewController{
     
     var messageRef: FIRDatabaseReference!
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
-    let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-    
-    
     
     private var _receiverId: String!
     private var _receiverName: String!
@@ -54,13 +52,13 @@ class SendVC: JSQMessagesViewController{
         self.senderId = currentUser?.uid
         
         self.title = recieverName
-        
         //set default value unless error
         self.senderDisplayName = ""
         observeUsers()
         setupBubbles()
         newobserveMessages()
     }
+    
     
     // get DisplayName
     private func observeUsers(){
@@ -108,6 +106,9 @@ class SendVC: JSQMessagesViewController{
     
     private func newobserveMessages(){
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY-MM-dd 'at' HH:mm:ss"
+        
         let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId)
         
         senderQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
@@ -116,19 +117,24 @@ class SendVC: JSQMessagesViewController{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
+                let sendTime = dateFormatter.date(from: value["sentTime"] as! String)
+                
                 if contentType == "TEXT" {
                     let text = value["content"] as! String
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                    self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime,text: text))
+                    self.finishReceivingMessage()
+                    
                 } else if contentType == "PHOTO" {
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
                         let downloader = SDWebImageDownloader.shared()
-                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                         (image,data,error,finished) in
                         DispatchQueue.main.async {
                             let picture = image
                             let photo = JSQPhotoMediaItem(image: picture)
-                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
+                            self.finishReceivingMessage()
                         }
                     })
         
@@ -138,18 +144,20 @@ class SendVC: JSQMessagesViewController{
                         let url = URL(string: imageUrl)
                         
                         let downloader = SDWebImageDownloader.shared()
-                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
                             DispatchQueue.main.async {
                                 var picture = image
                                 picture = Util.rotateImage(image: picture!)
                                 let photo = JSQPhotoMediaItem(image: picture)
-                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
+                                self.finishReceivingMessage()
                             }
                         })
                     }
             }
-            self.finishSendingMessage()        }
+            
+        }
         
         let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId)
         
@@ -159,21 +167,23 @@ class SendVC: JSQMessagesViewController{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
+                let receivedTime = dateFormatter.date(from: value["ReceivedTime"] as! String)
                 if contentType == "TEXT" {
                     let text = value["content"] as! String
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                    self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, text: text))
+                    self.finishReceivingMessage()
                 }
                     else if contentType == "PHOTO" {
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
                         let downloader = SDWebImageDownloader.shared()
-                        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
                             DispatchQueue.main.async {
                                 let picture = image
                                 let photo = JSQPhotoMediaItem(image: picture)
                                 photo?.appliesMediaViewMaskAsOutgoing = false
-                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                                 self.finishReceivingMessage()
                         }
                     })
@@ -181,13 +191,13 @@ class SendVC: JSQMessagesViewController{
                     let imageUrl = value["content"] as! String
                     let url = URL(string: imageUrl)
                     let downloader = SDWebImageDownloader.shared()
-                    downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                    _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
                         DispatchQueue.main.async {
                             var picture = image
                             picture = Util.rotateImage(image: picture!)
                             let photo = JSQPhotoMediaItem(image: picture)
-                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                             self.finishReceivingMessage()
                         }
                     })
@@ -203,12 +213,14 @@ class SendVC: JSQMessagesViewController{
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        
         return messages[indexPath.item]
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
+    
     
     private func setupBubbles(){
         let factory = JSQMessagesBubbleImageFactory()!
@@ -219,6 +231,7 @@ class SendVC: JSQMessagesViewController{
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
+        
         if message.senderId == senderId{
             return outgoingBubbleImageView
         } else {
