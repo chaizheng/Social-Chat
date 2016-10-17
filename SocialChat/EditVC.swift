@@ -106,11 +106,6 @@ class EditVC: UIViewController,PictureVCDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         if itemToEdit != nil{
             let myImage = UIImage(data: (itemToEdit?.image) as! Data)
             editingImage.image =  myImage
@@ -120,6 +115,12 @@ class EditVC: UIViewController,PictureVCDelegate {
             editingImage.image = img
         }
         lockState()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

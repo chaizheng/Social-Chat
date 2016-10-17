@@ -14,12 +14,14 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(allFriendsInfo[0].firstName)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

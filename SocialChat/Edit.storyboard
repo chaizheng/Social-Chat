@@ -206,7 +206,7 @@
                                     <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C05CA2AD-16EC-4355-8E2C-35C1562CCED2" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D42FF0F5-2141-43E4-9E07-020D23C4271D" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
                                     <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
@@ -498,7 +498,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C05CA2AD-16EC-4355-8E2C-35C1562CCED2" width="188" height="188">
+        <image name="D42FF0F5-2141-43E4-9E07-020D23C4271D" width="188" height="188">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

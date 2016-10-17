@@ -56,18 +56,11 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     func Refresh(){
         
-        let downloader = SDWebImageDownloader.shared()
-        
         for story in receivedStories{
             let storyUrl = story["storyUrl"] as! String
             let url = URL(string: storyUrl)
-        
-        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
-                (image,data,error,finished) in
-            DispatchQueue.main.async {
-                self.storiesImage.append(image!)
-            }
-        })
+            let downloadImage = Util.asyn(url: url!)
+            self.storiesImage.append(downloadImage!)
         }
         self.storyTableView.reloadData()
         refreshControl.endRefreshing()
