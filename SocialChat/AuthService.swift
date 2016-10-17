@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import UIKit
+import SDWebImage
 
 typealias Completion = (String?, AnyObject?) -> Void
 
@@ -33,7 +34,6 @@ class AuthService {
     func firstLoadSet(){
         DispatchQueue.main.async{
             
-        
         myId = FIRAuth.auth()?.currentUser?.uid
         DataService.instance.profileRef.observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let userValue = snapshot.value as? Dictionary<String, Any> {
@@ -56,44 +56,46 @@ class AuthService {
     }
     
     func updateLocalFriendsList(){
-        DispatchQueue.main.async{
         DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let value = snapshot.value as? Dictionary<String, Any> {
-                //friendsList = value
                 for item in value{
                     let friendId = item.key
-                  
+
+                    for friend in allFriendsInfo{
+                        if friendId == friend.uid{
+                            return
+                        }
+                    }
+                    
+
                     DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
                         if let childValue = childSnapshot.value as? Dictionary<String, Any> {
                             let firstName = childValue["firstName"] as? String
                             let lastName = childValue["lastName"] as? String
                             let fullName = firstName! + " " + lastName!
                             let phoneNumber = childValue["phoneNumber"] as? String
+                            
                             if let url = URL(string: childValue["imageUrl"] as! String) {
-                                do {
-                                    let data = try Data(contentsOf: url)
-                                    let profileImage = UIImage(data: data)
-                                    
-                                    //No phone number in some previous test accounts 
-                                    if let number = phoneNumber{
-                                        let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
-                                        allFriendsInfo.append(friend)
-                                    } else{
-                                        let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
-                                        allFriendsInfo.append(friend)
+                                let downloader = SDWebImageDownloader.shared()
+                                downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                                    (image,data,error,finished) in
+                                    DispatchQueue.main.async {
+                                        let profileImage = image
+                                        if let number = phoneNumber{
+                                            let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
+                                            allFriendsInfo.append(friend)
+                                        } else{
+                                            let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
+                                            allFriendsInfo.append(friend)
+                                        }
                                     }
-                                    
-                                }
-                                catch{
-                                    print(error.localizedDescription)
-                                }
+                                })
                             }
                         }
-            })
+                    })
                 }
             }
         })
-        }
     }
     
     func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){

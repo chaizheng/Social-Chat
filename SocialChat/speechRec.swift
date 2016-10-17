@@ -22,8 +22,10 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             button.isEnabled = false
+            button.backgroundColor = UIColor.red
         } else {
             startRecording()
+            button.backgroundColor = UIColor.green
         }
 
     }
@@ -63,10 +65,6 @@ class speechRec: UIViewController, SFSpeechRecognizerDelegate {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     func startRecording() {

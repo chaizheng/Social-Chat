@@ -42,11 +42,6 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let indexPath = self.discoverCollection.indexPathForItem(at: position)
             
             if let index = indexPath {
-//                let cell = self.discoverCollection.cellForItem(at: index) as! DiscoverCell
-//                
-//                UIView.animate(withDuration: 1, animations: { () -> Void in
-//                    cell.holdingView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//                    })
                 
                 
                 let channel = webdiscover[index.row].type
@@ -72,13 +67,6 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                     present(alert, animated: true, completion: nil)
                     return
                 }
-                
-                
-                //
-                //            UIView.animate(withDuration: 0.01, animations: { () -> Void in
-                //             cell.holdingView.transform = CGAffineTransform(scaleX: 1, y: 1)})
-                //            
-                //            
             } else {
                 print("Could not find index path")
             }
@@ -148,10 +136,5 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }

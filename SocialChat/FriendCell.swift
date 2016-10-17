@@ -25,6 +25,8 @@ class FriendCell: UITableViewCell {
         
         self.profileImage.layer.cornerRadius = 28
         self.profileImage.clipsToBounds = true
+        self.profileImage.layer.borderWidth = 1
+        self.profileImage.layer.borderColor = DEFAULT_BLUE.cgColor
         
         fullNameLabel.text = friend.fullName
         profileImage.image = friend.image

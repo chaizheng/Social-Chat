@@ -45,9 +45,6 @@ class SendVC: JSQMessagesViewController{
     }
     
     
-     //   var senderAvatar:JSQMessagesAvatarImage!
-//    var usersAvatars:Dictionary<String, JSQMessagesAvatarImage>
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
