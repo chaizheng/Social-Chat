@@ -12,7 +12,6 @@
 		1F1514131DAB5E6000F0CCF3 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514121DAB5E6000F0CCF3 /* FriendsVC.swift */; };
 		1F1514151DAB688D00F0CCF3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514141DAB688D00F0CCF3 /* FriendCell.swift */; };
 		1F1514171DAB820600F0CCF3 /* FriendInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514161DAB820600F0CCF3 /* FriendInfo.swift */; };
-		1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */; };
 		1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722F71DA87634000F55F9 /* ChatVC.swift */; };
 		1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */; };
 		1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */; };
@@ -24,11 +23,9 @@
 		1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98D91DB38BB300012995 /* NormalImageVC.swift */; };
 		1F5A98DC1DB3B3AD00012995 /* EditImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */; };
 		1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */; };
-		1F5AAE271DB4B6CE0066F3E3 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5AAE261DB4B6CE0066F3E3 /* PictureViewController.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
 		1F6114331D86808100504735 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114321D86808100504735 /* MainVC.swift */; };
-		1F61143A1D86836100504735 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114381D86836100504735 /* StoryVC.swift */; };
 		1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */; };
 		1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757B61D83A7CD00DA6701 /* CameraVC.swift */; };
 		1F6757BF1D83A7CD00DA6701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6757BD1D83A7CD00DA6701 /* LaunchScreen.storyboard */; };
@@ -37,6 +34,9 @@
 		1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6757FD1D84169000DA6701 /* RoundButton.swift */; };
 		1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F690F511DA50C75002CA867 /* ChatCell.swift */; };
 		1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4B3431D90252200089438 /* Webdiscover.swift */; };
+		1FA684151DB4FA6500DBAFDA /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684141DB4FA6500DBAFDA /* StoryVC.swift */; };
+		1FA684171DB4FA9A00DBAFDA /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684161DB4FA9A00DBAFDA /* StoryCollectionCell.swift */; };
+		1FA684191DB4FAB700DBAFDA /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684181DB4FAB700DBAFDA /* PictureViewController.swift */; };
 		1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C61DB1A45A009088EB /* nilValueCell.swift */; };
 		1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C81DB20A64009088EB /* StoryInfo.swift */; };
 		1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */; };
@@ -81,7 +81,6 @@
 		1F1514121DAB5E6000F0CCF3 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		1F1514141DAB688D00F0CCF3 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		1F1514161DAB820600F0CCF3 /* FriendInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
-		1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
 		1F1722F71DA87634000F55F9 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1F1722FB1DA89517000F55F9 /* AddByUsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByUsernameVC.swift; sourceTree = "<group>"; };
 		1F1722FD1DA8A83A000F55F9 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
@@ -93,11 +92,9 @@
 		1F5A98D91DB38BB300012995 /* NormalImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalImageVC.swift; sourceTree = "<group>"; };
 		1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditImage.storyboard; sourceTree = "<group>"; };
 		1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
-		1F5AAE261DB4B6CE0066F3E3 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1F6114321D86808100504735 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		1F6114381D86836100504735 /* StoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
 		1F6757B11D83A7CD00DA6701 /* SocialChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6757B41D83A7CD00DA6701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6757B61D83A7CD00DA6701 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
@@ -108,6 +105,9 @@
 		1F6757FD1D84169000DA6701 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		1F690F511DA50C75002CA867 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		1FA4B3431D90252200089438 /* Webdiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webdiscover.swift; sourceTree = "<group>"; };
+		1FA684141DB4FA6500DBAFDA /* StoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
+		1FA684161DB4FA9A00DBAFDA /* StoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
+		1FA684181DB4FAB700DBAFDA /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1FA876C61DB1A45A009088EB /* nilValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nilValueCell.swift; sourceTree = "<group>"; };
 		1FA876C81DB20A64009088EB /* StoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryInfo.swift; sourceTree = "<group>"; };
 		1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 		1F5A98DE1DB3B8E900012995 /* ImageEditControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1F5AAE261DB4B6CE0066F3E3 /* PictureViewController.swift */,
+				1FA684181DB4FAB700DBAFDA /* PictureViewController.swift */,
 			);
 			name = ImageEditControllers;
 			sourceTree = "<group>";
@@ -221,10 +221,10 @@
 				1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */,
 				1FA876C61DB1A45A009088EB /* nilValueCell.swift */,
 				1FAE03F11DAD0C6D00C94A6B /* StoryTableCell.swift */,
-				1F1514181DAC563300F0CCF3 /* StoryCollectionCell.swift */,
 				1F5A98D91DB38BB300012995 /* NormalImageVC.swift */,
 				1F6114301D86385D00504735 /* UserCell.swift */,
 				1F690F511DA50C75002CA867 /* ChatCell.swift */,
+				1FA684161DB4FA9A00DBAFDA /* StoryCollectionCell.swift */,
 				C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */,
 				C2707A701DAA3C1D007C53BA /* ContactCell.swift */,
 				C2006EB51DB1BEC8008A5DD5 /* CircleButton.swift */,
@@ -299,9 +299,9 @@
 				1FBB3B3B1D898958004C688C /* DiscoverVC.swift */,
 				1FC45EA31DB30B3700437180 /* PresentImageVC.swift */,
 				1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */,
+				1FA684141DB4FA6500DBAFDA /* StoryVC.swift */,
 				1F61142E1D86374800504735 /* UsersVC.swift */,
 				1FD464501D9CA5CA00AF970A /* SendVC.swift */,
-				1F6114381D86836100504735 /* StoryVC.swift */,
 				1F1514121DAB5E6000F0CCF3 /* FriendsVC.swift */,
 			);
 			name = MainControllers;
@@ -490,17 +490,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F15140F1DAA080000F0CCF3 /* SenderInfo.swift in Sources */,
+				1FA684171DB4FA9A00DBAFDA /* StoryCollectionCell.swift in Sources */,
 				C2006EB41DB1BDB1008A5DD5 /* speechRec.swift in Sources */,
 				C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */,
 				1F6114331D86808100504735 /* MainVC.swift in Sources */,
 				C2707A711DAA3C1D007C53BA /* ContactCell.swift in Sources */,
 				1F690F521DA50C75002CA867 /* ChatCell.swift in Sources */,
+				1FA684191DB4FAB700DBAFDA /* PictureViewController.swift in Sources */,
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
-				1F5AAE271DB4B6CE0066F3E3 /* PictureViewController.swift in Sources */,
 				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
 				1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
+				1FA684151DB4FA6500DBAFDA /* StoryVC.swift in Sources */,
 				1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */,
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
 				1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */,
@@ -528,14 +530,12 @@
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
 				1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */,
 				1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */,
-				1F61143A1D86836100504735 /* StoryVC.swift in Sources */,
 				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
 				1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */,
 				C23053FB1DB4B42D006FD75B /* JSQVisibleMediaItem.m in Sources */,
 				C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */,
 				C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */,
-				1F1514191DAC563300F0CCF3 /* StoryCollectionCell.swift in Sources */,
 				1FA4B3441D90252200089438 /* Webdiscover.swift in Sources */,
 				1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */,
 				1FBB3B381D898718004C688C /* UserInfoVC.swift in Sources */,

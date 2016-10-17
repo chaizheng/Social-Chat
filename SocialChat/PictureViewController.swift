@@ -405,16 +405,16 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
-        if commitedImageView.image != nil{
-        mergeDrawnImages(forgroundImage: newImage!, backgroundImage: commitedImageView.image!)
-        }
         if emojiImageView != nil {
             mergeEmojiImages(forgroundImage: newImage!, backgroundImage: emojiImageView!)
         }
+        if commitedImageView.image != nil{
+            mergeDrawnImages(forgroundImage: newImage!, backgroundImage: commitedImageView.image!)
+        }
         if UserInput.text != ""{
-        let myString = UserInput.text!
-        let NSUserInput = myString as NSString
-        newImage = textToImage(drawText: NSUserInput, inImage: newImage!, atPoint: UserInput.center)
+            let myString = UserInput.text!
+            let NSUserInput = myString as NSString
+            newImage = textToImage(drawText: NSUserInput, inImage: newImage!, atPoint: UserInput.center)
         }
         let imageData = UIImageJPEGRepresentation(newImage!, 0.6)
         let compressedJPEGImage = UIImage(data: imageData!)
@@ -449,14 +449,13 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         UIGraphicsBeginImageContext(size)
         
         let areaSize = CGRect(x: backgroundImage.frame.origin.x, y: backgroundImage.frame.origin.y, width: (backgroundImage.image?.size.width)!, height: (backgroundImage.image?.size.height)!)
-        bottomImage.draw(in: CGRect(x: 0, y:0, width: view.frame.width, height: view.frame.height))
+        bottomImage.draw(in: CGRect(x: 0, y:0, width: forgroundImage.size.width, height: forgroundImage.size.width))
         
         topImage?.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
         
         newImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
-        
     
     }
     
@@ -521,6 +520,22 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         delegate?.sendValue(visibleTime: time, image: newImage!)
         self.dismiss(animated: true, completion: nil)
     }
+
+    
+        
+        
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIS∫oryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+
 
 
 }

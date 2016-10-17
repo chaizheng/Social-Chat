@@ -19,11 +19,11 @@ class StoryCollectionCell: UICollectionViewCell {
     }
     
     
-    func configureCell(web:Webdiscover, id:Int){
+    func configureCell(web:(Webdiscover,Int)){
         
-        titleLbl.text = web.title
-        webImage.image = UIImage(named: "\(id).jpg")
-        typeLbl.text = web.type
+//     titleLbl.text = web.0.title
+        webImage.image = UIImage(named: "\(web.0.type).jpg")
+        typeLbl.text = web.0.type
         webImage.layer.cornerRadius = 4
         webImage.clipsToBounds = true
     }

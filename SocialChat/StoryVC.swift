@@ -11,6 +11,7 @@ import FirebaseDatabase
 import SDWebImage
 
 var subscriptionSet = Set<String>()
+var typeClick = [(Webdiscover, Int)]()
 
 class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource {
 
@@ -19,12 +20,20 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     @IBOutlet weak var storyCollectionView: UICollectionView!
     @IBOutlet weak var storyTableView: UITableView!
     
+    
+    
     var refreshControl: UIRefreshControl!
+    var refreshCollectControl: UIRefreshControl!
     var receivedStories = [Dictionary<String, Any>]()
     var storiesImage = [UIImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if typeClick.count == 0{
+            typeClick = [(storyChannel[0],0),(storyChannel[1],0),(storyChannel[2],0),(storyChannel[3],0),(storyChannel[4],0),(storyChannel[5],0),(storyChannel[6],0),(storyChannel[7],0),(storyChannel[8],0),(storyChannel[9],0)]
+        }
+
         
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
@@ -35,6 +44,12 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         refreshControl.addTarget(self, action: #selector(StoryVC.Refresh), for: UIControlEvents.valueChanged)
         refreshControl.backgroundColor = UIColor.white
         storyTableView.addSubview(refreshControl)
+        
+        refreshCollectControl = UIRefreshControl()
+        refreshCollectControl.attributedTitle = NSAttributedString(string: "Refreshing")
+        refreshCollectControl.addTarget(self, action: #selector(StoryVC.Refresh2), for: UIControlEvents.valueChanged)
+        refreshCollectControl.backgroundColor = UIColor.white
+        storyCollectionView.addSubview(refreshCollectControl)
         
         storyTableView.tableFooterView = UIView()
         
@@ -72,18 +87,26 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         refreshControl.endRefreshing()
     }
     
+    func Refresh2(){
+        
+        self.storyCollectionView.reloadData()
+        refreshControl.endRefreshing()
+    }
+
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
             
             let currentCell = tableView.cellForRow(at: indexPath) as! SubscriptionCell
+            
             performSegue(withIdentifier: "showwebview", sender: currentCell.channelName.text)
             
         }else if indexPath.section == 1{
             
 //            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
             let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
-            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"visibleImage":storiesImage[indexPath.row]]
+            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"storyImage":storiesImage[indexPath.row]]
             performSegue(withIdentifier: "PresentImageVC", sender: info)
             
             let sendTime = receivedStories[indexPath.row]["sendTime"] as! String
@@ -202,13 +225,20 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(typeClick[indexPath.row].1)
+        typeClick[indexPath.row].1 += 1
+        print()
+        sort()
+
         performSegue(withIdentifier: "showwebview", sender: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCollectionCell", for: indexPath) as? StoryCollectionCell{
             
-            cell.configureCell(web:webdiscover[indexPath.row], id: indexPath.row+1)
+//            cell.configureCell(web:webdiscover[indexPath.row], id: indexPath.row+1)
+            cell.configureCell(web: typeClick[indexPath.row])
+            
             return cell
             
         } else{
@@ -223,8 +253,8 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 50
+        print(typeClick.count)
+        return 10
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -259,7 +289,10 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         }
     }
     
-    
+    func sort(){
+        typeClick.sort{ $0.1 < $1.1 }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -274,5 +307,6 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goLeft"), object: nil)
     }
   
+    
 
 }
