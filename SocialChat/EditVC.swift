@@ -65,16 +65,40 @@ class EditVC: UIViewController {
     
     func lockState(){
         if lockIsOn{
-            lockButton.setImage(#imageLiteral(resourceName: "Lock Filled-50"), for: UIControlState(rawValue: UInt(0)))
+            lockButton.setImage(#imageLiteral(resourceName: "Lock Filled-52"), for: UIControlState(rawValue: UInt(0)))
         } else{
-            lockButton.setImage(#imageLiteral(resourceName: "Unlock Filled-50"), for: UIControlState(rawValue: UInt(0)))
+            lockButton.setImage(#imageLiteral(resourceName: "Unlock Filled-52"), for: UIControlState(rawValue: UInt(0)))
         }
     }
-    @IBAction func save(_ sender: AnyObject) {
+    
+    func saveToMemory(){
         createNewItem()
         let alert = UIAlertController(title: "Save Successfully", message: "You can check it in Memory view now", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Great", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+
+    @IBAction func save(_ sender: AnyObject) {
+        let actionSheet = UIAlertController(title: "Save Image", message: "Save your image in your memory or camera roll", preferredStyle: .actionSheet)
+        let memoryAction = UIAlertAction(title: "Memory", style: .default){
+            (action) -> Void in
+            self.saveToMemory()
+        }
+        
+        let cameraRollAction = UIAlertAction(title: "Camera roll", style: .default){
+            (action) -> Void in
+         
+            let imageData = UIImageJPEGRepresentation(self.editingImage.image!, 0.6)
+            let compressedJPEGImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil);
+        }
+        let dismissAction = UIAlertAction(title: "dismiss", style: .cancel, handler: nil)
+        actionSheet.addAction(memoryAction)
+        actionSheet.addAction(dismissAction)
+        actionSheet.addAction(cameraRollAction)
+        present(actionSheet, animated: false, completion: nil)
     }
     
     @IBAction func deleteItem(_ sender: AnyObject) {

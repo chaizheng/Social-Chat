@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhJ-n9-H1k">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -20,9 +20,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-d0-pGp"/>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
-                                <frame key="frameInset" minX="16" minY="28" width="43" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Zr-9r5">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="KFW-ZE-YZn"/>
+                                    <constraint firstAttribute="height" constant="42" id="kex-G3-D1F"/>
+                                </constraints>
                                 <state key="normal" image="cancel_Btn"/>
                                 <connections>
                                     <action selector="cancelBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="f2f-pm-rGw"/>
@@ -45,7 +47,7 @@
                                             <constraint firstAttribute="width" constant="40" id="cM5-pj-pJI"/>
                                             <constraint firstAttribute="height" constant="40" id="t39-7Z-Zb3"/>
                                         </constraints>
-                                        <state key="normal" image="Download-50"/>
+                                        <state key="normal" image="Download Filled-50"/>
                                         <connections>
                                             <action selector="save:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cXy-l3-aOY"/>
                                         </connections>
@@ -65,54 +67,58 @@
                                             <constraint firstAttribute="width" constant="40" id="amy-kS-Uc2"/>
                                             <constraint firstAttribute="height" constant="40" id="iFt-5D-Xm3"/>
                                         </constraints>
-                                        <state key="normal" image="Pencil Filled-50"/>
+                                        <state key="normal" image="Pencil Filled-52"/>
                                         <connections>
                                             <action selector="EditBtnPressed:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="gDd-d2-nVP"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Fc-qNH">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SHW-uq-Hbn">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gL-8K-zbG">
+                                        <state key="normal" image="Share Filled-50"/>
+                                        <connections>
+                                            <action selector="socialShare:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="wo9-tt-eYN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tep-ql-c05">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="3fA-HV-H8R"/>
+                                        </constraints>
+                                        <state key="normal" image="Delete Filled-52"/>
+                                        <connections>
+                                            <action selector="deleteItem:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cZz-ue-nPx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Fc-qNH">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="vWQ-Nr-oc1"/>
+                                        </constraints>
+                                        <state key="normal" image="Lock Filled-52"/>
+                                        <connections>
+                                            <action selector="tapLock:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="UJ8-jw-a63"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="dEj-fI-0rg"/>
-                                    <constraint firstAttribute="width" constant="40" id="vWQ-Nr-oc1"/>
+                                    <constraint firstAttribute="height" constant="40" id="BEb-JM-jQf"/>
+                                    <constraint firstAttribute="width" constant="180" id="S7j-T0-ax4"/>
                                 </constraints>
-                                <state key="normal" image="Lock Filled-50"/>
-                                <connections>
-                                    <action selector="tapLock:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="UJ8-jw-a63"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tep-ql-c05">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="3fA-HV-H8R"/>
-                                    <constraint firstAttribute="height" constant="40" id="ttp-v6-3gb"/>
-                                </constraints>
-                                <state key="normal" image="Delete Filled-50"/>
-                                <connections>
-                                    <action selector="deleteItem:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="cZz-ue-nPx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gL-8K-zbG">
-                                <frame key="frameInset" minX="164" minY="65" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="socialShare:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="wo9-tt-eYN"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="yLL-Fc-qNH" secondAttribute="trailing" constant="15" id="13E-ec-Jfo"/>
+                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leadingMargin" id="02e-e6-XMN"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" id="Bia-4z-8vc"/>
-                            <constraint firstItem="yLL-Fc-qNH" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="45" id="Brc-Wp-6Xo"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="BS3-d0-pGp" secondAttribute="bottom" id="H2N-uz-uok"/>
+                            <constraint firstItem="SHW-uq-Hbn" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="20" id="LxJ-S4-hGJ"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="IyK-Ye-nbT" secondAttribute="bottom" constant="20" id="RoE-Ed-lQl"/>
-                            <constraint firstItem="tep-ql-c05" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="48" id="SqZ-5h-Hyf"/>
                             <constraint firstItem="IyK-Ye-nbT" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" constant="15" id="eHz-Xk-TKA"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="iOX-W0-68U" secondAttribute="bottom" constant="15" id="eqU-YP-jmB"/>
-                            <constraint firstItem="yLL-Fc-qNH" firstAttribute="leading" secondItem="tep-ql-c05" secondAttribute="trailing" constant="32" id="iK4-uF-QuY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SHW-uq-Hbn" secondAttribute="trailing" constant="20" id="frj-xh-xBd"/>
                             <constraint firstAttribute="trailing" secondItem="BS3-d0-pGp" secondAttribute="trailing" id="rN3-It-0fu"/>
+                            <constraint firstItem="CG8-Zr-9r5" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="8" symbolic="YES" id="wcz-54-nFd"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="top" secondItem="mim-sF-g3r" secondAttribute="top" id="xIz-Ts-jQR"/>
                             <constraint firstItem="iOX-W0-68U" firstAttribute="trailing" secondItem="mim-sF-g3r" secondAttribute="trailingMargin" constant="5" id="yXt-jy-SKD"/>
                         </constraints>
@@ -184,64 +190,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE0-y3-5ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1735.2" y="-1936.2818590704649"/>
-        </scene>
-        <!--AddVC-->
-        <scene sceneID="qlk-1D-VTY">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2hM-6X-2JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="luC-Wx-C52" customClass="AddVC" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lk4-lC-Bmc"/>
-                        <viewControllerLayoutGuide type="bottom" id="ule-Iu-rXZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BfJ-F2-fl8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWo-eR-4gr">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="249" id="qU8-49-esI"/>
-                                </constraints>
-                                <state key="normal" title="From library"/>
-                                <connections>
-                                    <action selector="fromLib:" destination="luC-Wx-C52" eventType="touchUpInside" id="vQf-bJ-yXh"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-ZL-5BC">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="B58-6N-yqX"/>
-                                    <constraint firstAttribute="height" constant="171" id="pTY-Qm-G9z"/>
-                                </constraints>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6p-sU-9WY">
-                                <items>
-                                    <navigationItem title="Add" id="rw9-7N-IQw">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="p3T-pr-OyD">
-                                            <connections>
-                                                <segue destination="eTt-Av-csv" kind="show" id="Ycg-Tn-cGF"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="IWo-eR-4gr" firstAttribute="centerX" secondItem="cFH-ZL-5BC" secondAttribute="centerX" id="1Av-1j-rib"/>
-                            <constraint firstItem="IWo-eR-4gr" firstAttribute="centerX" secondItem="v6p-sU-9WY" secondAttribute="centerX" id="7w1-7X-7Ie"/>
-                            <constraint firstItem="v6p-sU-9WY" firstAttribute="top" secondItem="BfJ-F2-fl8" secondAttribute="top" id="UN7-qD-780"/>
-                            <constraint firstItem="ule-Iu-rXZ" firstAttribute="top" secondItem="cFH-ZL-5BC" secondAttribute="bottom" constant="124" id="dqb-45-xvc"/>
-                            <constraint firstItem="IWo-eR-4gr" firstAttribute="top" secondItem="lk4-lC-Bmc" secondAttribute="bottom" constant="85" id="j61-FL-jYd"/>
-                            <constraint firstItem="cFH-ZL-5BC" firstAttribute="centerX" secondItem="BfJ-F2-fl8" secondAttribute="centerX" id="tf1-Mf-jJZ"/>
-                            <constraint firstItem="v6p-sU-9WY" firstAttribute="leading" secondItem="BfJ-F2-fl8" secondAttribute="leading" id="vMQ-Bf-NWY"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="cFH-ZL-5BC" id="Wbh-Lu-HSE"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="2636" y="-1915.5922038980511"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="7zb-bM-k7x">
@@ -442,10 +390,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="79" id="sGU-gP-lQt" customClass="ChatCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sGU-gP-lQt" id="fP4-Xm-GLc">
-                                            <frame key="frameInset" width="375" height="78"/>
+                                            <frame key="frameInset" width="1000" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRn-o6-iNC">
@@ -498,26 +446,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1C93CCF1-C168-4784-A807-64EDE9A3B1F8" width="188" height="188">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
-GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
-V05TQ29sb3KAAoAMEiTAAACAA4AKWnsxODgsIDE4OH3SFQoWGFpOUy5vYmplY3RzoReABIAJ0hUKGhii
-GxyABYAGgAkQBdMgCiEiIyRXTlMuYmFzZVtOUy5yZWxhdGl2ZYAAgAiAB18QfGZpbGU6Ly8vQXBwbGlj
-YXRpb25zL1hjb2RlLmFwcC9Db250ZW50cy9QbHVnSW5zL0lERUludGVyZmFjZUJ1aWxkZXJLaXQuaWRl
-cGx1Z2luL0NvbnRlbnRzL1Jlc291cmNlcy9JQk1pc3NpbmdJbWFnZUdseXBoLnRpZmbSJygpKlokY2xh
-c3NuYW1lWCRjbGFzc2VzVU5TVVJMoikrWE5TT2JqZWN00icoLS5XTlNBcnJheaItK9MwMQoyMzRXTlNX
-aGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAvSJyg2N1dOU0NvbG9yojYr0icoOTpXTlNJbWFnZaI5K18Q
-D05TS2V5ZWRBcmNoaXZlctE9PlRyb290gAEACAARABoAIwAtADIANwBFAEsAVgBdAGQAcQB4AIAAggCE
-AIkAiwCNAJgAnQCoAKoArACuALMAtgC4ALoAvAC+AMUAzQDZANsA3QDfAV4BYwFuAXcBfQGAAYkBjgGW
-AZkBoAGoAbUBugG8Ab4BwwHLAc4B0wHbAd4B8AHzAfgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
-AAAB+g
-</mutableData>
-        </image>
-        <image name="Delete Filled-50" width="50" height="50"/>
-        <image name="Download-50" width="50" height="50"/>
-        <image name="Lock Filled-50" width="50" height="50"/>
-        <image name="Pencil Filled-50" width="50" height="50"/>
+        <image name="Delete Filled-52" width="50" height="50"/>
+        <image name="Download Filled-50" width="50" height="50"/>
+        <image name="Lock Filled-52" width="50" height="50"/>
+        <image name="Pencil Filled-52" width="50" height="50"/>
+        <image name="Share Filled-50" width="50" height="50"/>
         <image name="add_Btn" width="19" height="19"/>
         <image name="back_item" width="12" height="20"/>
         <image name="camera_Btn" width="30" height="25"/>
@@ -525,7 +458,4 @@ AAAB+g
         <image name="circle_send" width="59" height="59"/>
         <image name="shareStories_icon" width="27" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="wTI-9R-Mu5"/>
-    </inferredMetricsTieBreakers>
 </document>

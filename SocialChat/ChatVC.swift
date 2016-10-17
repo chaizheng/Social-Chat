@@ -25,7 +25,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var filteredSenders = [FriendInfo]()
     
     func filterContentForSearchText(searchText: String, scope: String = "All"){
-        print("QQQ")
+      
         filteredSenders = senders.filter{
             friend in
             return friend.firstName.contains(searchText.lowercased())
@@ -83,22 +83,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             DataService.instance.usersRef.child(userId!).child("receivedMessage").observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
                 if let receivedMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    print("chai")
+                    
                     let newUid = receivedMsg["senderId"] as! String
-                   // print(newUid)
+                   
                     let name = receivedMsg["senderName"] as? String
                     print("receive"+name!)
-//                    do{
-//                        let imageUrl = receivedMsg["sender"]
-//                        let url = URL(string: imageUrl)
-//                        let data = try Data(contentsOf: url!)
-//                        let picture = UIImage(data: data)
-//
-//                    }catch{
-//                        print(error.localizedDescription)
-//
-//                    }
-                                        print("fuck1")
+
+                    
                     var newUser = FriendInfo(uid: newUid, fullName: name!, firstName: name!, image: #imageLiteral(resourceName: "default_user"))
                     if allFriendsInfo.count != 0{
                          newUser = self.findFriendById(uid: newUid)
@@ -106,9 +97,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         
                     }
                     
-                    print("fuck2")
-                    print(self.senders)
-                    
+                                       
                     
                     if self.uid.contains(newUid){
                         receivIndex = self.uid.index(of: newUid)!

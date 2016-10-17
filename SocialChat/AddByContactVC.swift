@@ -42,9 +42,9 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     // if the array have the phone number
     func havePhoneNumber(phoneNum:String, friends: [FriendInfo])->Bool{
-        print("hh")
+        
         for v in friends{
-            print("hh2")
+            
             if phoneNum == v.phoneNumber{
                 return true
             }
@@ -63,7 +63,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         addedInDatabase(marrContactsNumber: marrContactsNumber)
         
         tableView.reloadData()
-        print(allFriendsInfo)
+        
 
            }
     
