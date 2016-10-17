@@ -463,7 +463,8 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         
         // Setup the font specific variables
         
-        let textColor = UIColor.white
+        //let textColor = UIColor.white
+        let textColor = UserInput.textColor
         let textFont = UIFont(name: "Helvetica Bold", size: (UserInput.font?.pointSize)!)!
         
         // Setup the image context using the passed image
@@ -474,14 +475,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         let textFontAttributes = [
             NSFontAttributeName: textFont,
             NSForegroundColorAttributeName: textColor,
-            ]
+            ] as [String : Any]
         
         // Put the image into a rectangle as large as the original image
         inImage.draw(in: CGRect(x:0, y:0, width:inImage.size.width, height:inImage.size.height))
         
         // Create a point within the space that is as bit as the image
         let rect = CGRect(x:atPoint.x, y:atPoint.y, width:inImage.size.width, height:inImage.size.height)
-        
+        print("ss")
         // Draw the text into an image
         drawText.draw(in: rect, withAttributes: textFontAttributes)
         

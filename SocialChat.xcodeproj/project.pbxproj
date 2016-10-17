@@ -23,7 +23,6 @@
 		1F2A87D71D8D6BDC00DA90B4 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */; };
 		1F5A98DA1DB38BB300012995 /* NormalImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98D91DB38BB300012995 /* NormalImageVC.swift */; };
 		1F5A98DC1DB3B3AD00012995 /* EditImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */; };
-		1F5A98E01DB3BB0F00012995 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */; };
 		1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */; };
 		1F61142F1D86374800504735 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61142E1D86374800504735 /* UsersVC.swift */; };
 		1F6114311D86385D00504735 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6114301D86385D00504735 /* UserCell.swift */; };
@@ -59,6 +58,7 @@
 		C222F2091DA0C86D008B019A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F2081DA0C86D008B019A /* DataService.swift */; };
 		C222F20B1DA0C87E008B019A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20A1DA0C87E008B019A /* SignupVC.swift */; };
 		C222F20F1DA0CA87008B019A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222F20E1DA0CA87008B019A /* LoginVC.swift */; };
+		C23053F61DB4A48D006FD75B /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23053F51DB4A48D006FD75B /* PictureViewController.swift */; };
 		C2707A711DAA3C1D007C53BA /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2707A701DAA3C1D007C53BA /* ContactCell.swift */; };
 		C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */; };
 		C2D038A21DB39D0900C2518F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D038A11DB39D0900C2518F /* Main.storyboard */; };
@@ -91,7 +91,6 @@
 		1F2A87D61D8D6BDC00DA90B4 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		1F5A98D91DB38BB300012995 /* NormalImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalImageVC.swift; sourceTree = "<group>"; };
 		1F5A98DB1DB3B3AD00012995 /* EditImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditImage.storyboard; sourceTree = "<group>"; };
-		1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1F5A98E11DB3BB1C00012995 /* EmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
 		1F61142E1D86374800504735 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		1F6114301D86385D00504735 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		C222F2081DA0C86D008B019A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C222F20A1DA0C87E008B019A /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		C222F20E1DA0CA87008B019A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		C23053F51DB4A48D006FD75B /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureViewController.swift; path = "../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/94a94343e77addd33a6f0b1720f95c14/Message/MessageTemp/aaf3a8fc9b702e5b4994758d0e23e70d/File/PictureViewController.swift"; sourceTree = "<group>"; };
 		C2707A701DAA3C1D007C53BA /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByContactVC.swift; sourceTree = "<group>"; };
 		C2D038A11DB39D0900C2518F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		1F5A98DE1DB3B8E900012995 /* ImageEditControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1F5A98DF1DB3BB0F00012995 /* PictureViewController.swift */,
+				C23053F51DB4A48D006FD75B /* PictureViewController.swift */,
 			);
 			name = ImageEditControllers;
 			sourceTree = "<group>";
@@ -483,9 +483,9 @@
 				1F6757FE1D84169000DA6701 /* RoundButton.swift in Sources */,
 				C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */,
 				1F6757B71D83A7CD00DA6701 /* CameraVC.swift in Sources */,
-				1F5A98E01DB3BB0F00012995 /* PictureViewController.swift in Sources */,
 				1F1722F81DA87634000F55F9 /* ChatVC.swift in Sources */,
 				1F2A87D31D8CFDD600DA90B4 /* DiscoverCell.swift in Sources */,
+				C23053F61DB4A48D006FD75B /* PictureViewController.swift in Sources */,
 				1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */,
 				1FD464511D9CA5CA00AF970A /* SendVC.swift in Sources */,
 				1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */,
