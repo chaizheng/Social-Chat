@@ -21,7 +21,7 @@ class FaceDetect: UIViewController {
 
         myImage.image = newImage
         label.layer.borderColor = UIColor.blue.cgColor
-        label.layer.borderWidth = 2.0
+        
         label.textColor = UIColor.white
         label.font = label.font.withSize(20)
 
