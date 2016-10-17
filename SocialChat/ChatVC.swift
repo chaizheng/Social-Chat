@@ -14,7 +14,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
 
-    //let defualtNum = "0000000000"
+    
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var backToCameraBtn: UIButton!
@@ -25,7 +25,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var filteredSenders = [FriendInfo]()
     
     func filterContentForSearchText(searchText: String, scope: String = "All"){
-        print("QQQ")
+      
         filteredSenders = senders.filter{
             friend in
             return friend.firstName.contains(searchText.lowercased())
@@ -83,22 +83,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             DataService.instance.usersRef.child(userId!).child("receivedMessage").observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
                 if let receivedMsg = snapshot.value as? Dictionary<String, Any>{
                     
-                    print("chai")
+                    
                     let newUid = receivedMsg["senderId"] as! String
-                   // print(newUid)
+                   
                     let name = receivedMsg["senderName"] as? String
-                    print("receive"+name!)
-//                    do{
-//                        let imageUrl = receivedMsg["sender"]
-//                        let url = URL(string: imageUrl)
-//                        let data = try Data(contentsOf: url!)
-//                        let picture = UIImage(data: data)
-//
-//                    }catch{
-//                        print(error.localizedDescription)
-//
-//                    }
-                                        print("fuck1")
+                    
+
+                    
                     var newUser = FriendInfo(uid: newUid, fullName: name!, firstName: name!, image: #imageLiteral(resourceName: "default_user"))
                     if allFriendsInfo.count != 0{
                          newUser = self.findFriendById(uid: newUid)
@@ -106,9 +97,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         
                     }
                     
-                    print("fuck2")
-                    print(self.senders)
-                    
+                                       
                     
                     if self.uid.contains(newUid){
                         receivIndex = self.uid.index(of: newUid)!
@@ -118,24 +107,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid, at: 0)
-                        print("sb1")
-                        print(self.senders)
+                       
                        
                     } else{
-                        //self.senders.append(newUser)
+                       
                         
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid, at: 0)
-                        //receivIndex = self.uid.index(of: newUid)!
-                        print("sb2")
-                    print(self.senders)
                         
                         
                     }
                     self.tableView.reloadData()
                     
                 }
-                //self.tableView.reloadData()
+              
                 
             }
             DataService.instance.usersRef.child(userId!).child("sentMessage").observe(.childAdded){ (snapshot: FIRDataSnapshot!) in
@@ -146,9 +131,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let newUid = sentMsg["receiverId"] as? String
 
                     
-                    print("sent"+name!)
                     
-                    //let newUser = self.findFriendById(uid: newUid!)
                     var newUser = FriendInfo(uid: newUid!, fullName: name!, firstName: name!, image: #imageLiteral(resourceName: "default_user"))
                     if allFriendsInfo.count != 0{
                          newUser = self.findFriendById(uid: newUid!)
@@ -163,16 +146,12 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.uid.remove(at: sentIndex)
                         self.senders.insert(newUser, at: 0)
                         self.uid.insert(newUid!, at: 0)
-                        print("sb3")
-                        print(self.senders)
                         
                     } else{
-                        //self.senders.append(newUser)
+                        
                         self.senders.insert(newUser, at: 0)
-                        //sentIndex = self.uid.index(of: newUid!)!
+                       
                         self.uid.insert(newUid!, at: 0)
-                        print("sb4")
-                        print(self.senders)
                         
                        
                         
@@ -194,10 +173,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     @IBAction func backToCameraBtnPressed(_ sender: AnyObject) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goRight"), object: nil)
@@ -218,11 +194,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
          let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
         let friend: FriendInfo
         if searchController.isActive && searchController.searchBar.text != nil{
-            print("woCaoNM")
-            print(filteredSenders.count)
+            
             friend = filteredSenders[indexPath.row]
-            print("woCao")
-            print(friend)
+            
             cell.updateUI(user: friend)
             return cell
         }else{
@@ -232,7 +206,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
 
-        //return cell
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -254,16 +228,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-//    public func updateSearchResults(for searchController: UISearchController){
-//        filteredSenders.removeAll(keepingCapacity: false)
-//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-//        let array = (uid as NSArray).filtered(using: searchPredicate)
-//        filteredTableData = array as! [String]
-//        
-//        self.tableView.reloadData()
-//
-//    }
-    
     
 }
 
@@ -271,7 +235,5 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 extension ChatVC: UISearchResultsUpdating{
      func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
-        print(searchController.searchBar.text)
-        print("hello")
-    }
+            }
 }

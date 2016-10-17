@@ -86,7 +86,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         UserInput.isUserInteractionEnabled = true
         pickerData = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
         
-        // Do any additional setup after loading the view.
+       
     }
     
     
@@ -206,7 +206,6 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         return CGSize(width: width, height: height)
     }
     
-    // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
@@ -245,15 +244,15 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     func adjustingHeight(show:Bool, notification:NSNotification) {
-        // 1
+       
         var userInfo = notification.userInfo!
-        // 2
+        
         let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        // 3
+        
         let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        // 4
+        
         let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
-        // 5
+        
         UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
             self.bottomConstraint.constant = changeInHeight + 40
         })
@@ -284,16 +283,16 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         
-        // 1
+        
         UIGraphicsBeginImageContext(view.frame.size)
         let context = UIGraphicsGetCurrentContext()
         drawImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         
-        // 2
+        
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        // 3
+        
         context?.setLineCap(CGLineCap.round)
         
         if red == 1 && green == 1 && blue == 1 {
@@ -306,10 +305,10 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
             context?.setBlendMode(CGBlendMode.normal)
         }
         
-        // 4
+       
         context?.strokePath()
         
-        // 5
+        
         drawImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         drawImageView.alpha = opacity
         UIGraphicsEndImageContext()
@@ -317,13 +316,13 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 6
+        
         swiped = true
         if let touch = touches.first as UITouch! {
             let currentPoint = touch.location(in: view)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
-            // 7
+            
             lastPoint = currentPoint
         }
     }
@@ -347,7 +346,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func timeAction(_ sender: AnyObject) {
@@ -416,9 +415,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         let compressedJPEGImage = UIImage(data: imageData!)
         UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
         
-//        let alert = UIAlertController(title: "Save Successfully", message: "Open your photo library to see it.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
+
         
         delegate?.sendValue(visibleTime: time, image: newImage!)
         self.dismiss(animated: true, completion: nil)
@@ -529,17 +526,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
         
         
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIS∫oryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+      
 
 
 

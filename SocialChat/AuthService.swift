@@ -60,12 +60,14 @@ class AuthService {
             if let value = snapshot.value as? Dictionary<String, Any> {
                 for item in value{
                     let friendId = item.key
+
                     for friend in allFriendsInfo{
                         if friendId == friend.uid{
                             return
                         }
                     }
                     
+
                     DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
                         if let childValue = childSnapshot.value as? Dictionary<String, Any> {
                             let firstName = childValue["firstName"] as? String

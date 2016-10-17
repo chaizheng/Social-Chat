@@ -11,11 +11,34 @@ import UIKit
 class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,FriendCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var searchController = UISearchController(searchResultsController: nil)
+    var filteredFriends = [FriendInfo]()
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All"){
+        
+        filteredFriends = allFriendsInfo.filter{
+            friend in
+            return friend.firstName.contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.searchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
+
         tableView.tableFooterView = UIView()
     }
     
@@ -26,10 +49,21 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell") as! FriendCell
-        let friend = allFriendsInfo[indexPath.row]
-        cell.updateCell(friend: friend)
         cell.delegate = self
-        return cell
+        let friend: FriendInfo
+        if searchController.isActive && searchController.searchBar.text != nil{
+            
+            friend = filteredFriends[indexPath.row]
+            cell.updateCell(friend: friend)
+            
+            return cell
+        }else{
+            friend = allFriendsInfo[indexPath.row]
+            cell.updateCell(friend: friend)
+            return cell
+        }
+
+       // return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -43,7 +77,14 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allFriendsInfo.count
+        if(self.searchController.isActive){
+            return self.filteredFriends.count
+        }else{
+            return allFriendsInfo.count
+
+            
+        }
+        
     }
     
     @IBAction func backBtnPressed(_ sender: AnyObject) {
@@ -74,4 +115,10 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension FriendsVC: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }
