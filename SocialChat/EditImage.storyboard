@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Krz-9U-b6G">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Krz-9U-b6G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -175,7 +175,7 @@
                                     <constraint firstAttribute="width" constant="30" id="cnl-60-3V0"/>
                                     <constraint firstAttribute="height" constant="30" id="mpr-bu-ZlY"/>
                                 </constraints>
-                                <state key="normal" title="Time" image="Timer Filled-100"/>
+                                <state key="normal" title="Time" image="Timer Filled-101"/>
                                 <connections>
                                     <action selector="timeAction:" destination="Krz-9U-b6G" eventType="touchUpInside" id="5ue-hC-cTg"/>
                                 </connections>
@@ -222,7 +222,7 @@
                                     <constraint firstAttribute="width" constant="30" id="4f1-Q4-Xia"/>
                                     <constraint firstAttribute="height" constant="30" id="qkK-Hg-BWJ"/>
                                 </constraints>
-                                <state key="normal" title="Filter" image="Xlarge Icons Filled-100"/>
+                                <state key="normal" title="Filter" image="Invert Selection Filled-100"/>
                                 <connections>
                                     <action selector="filterAction:" destination="Krz-9U-b6G" eventType="touchUpInside" id="5Oj-ga-U0F"/>
                                 </connections>
@@ -232,7 +232,7 @@
                                     <constraint firstAttribute="width" constant="30" id="4vn-gn-58J"/>
                                     <constraint firstAttribute="height" constant="30" id="qXw-Lq-XVn"/>
                                 </constraints>
-                                <state key="normal" title="Draw" image="Ball Point Pen Filled-100"/>
+                                <state key="normal" title="Draw" image="Pencil Filled-100"/>
                                 <connections>
                                     <action selector="drawAction:" destination="Krz-9U-b6G" eventType="touchUpInside" id="ryt-L1-jhC"/>
                                 </connections>
@@ -252,7 +252,7 @@
                                     <constraint firstAttribute="width" constant="30" id="Efx-AZ-Wmf"/>
                                     <constraint firstAttribute="height" constant="30" id="amW-xO-Npi"/>
                                 </constraints>
-                                <state key="normal" title="Emoji" image="emoji2"/>
+                                <state key="normal" title="Emoji" image="Cool Filled-100"/>
                                 <connections>
                                     <action selector="emojiAction:" destination="Krz-9U-b6G" eventType="touchUpInside" id="DFg-7j-SQO"/>
                                 </connections>
@@ -262,7 +262,7 @@
                                     <constraint firstAttribute="height" constant="30" id="f1P-Ko-OZJ"/>
                                     <constraint firstAttribute="width" constant="30" id="oBQ-Uu-2Mr"/>
                                 </constraints>
-                                <state key="normal" title="AddText" image="Type Filled-100"/>
+                                <state key="normal" title="AddText" image="Type Filled-100-2"/>
                                 <connections>
                                     <action selector="TextInputAction:" destination="Krz-9U-b6G" eventType="touchUpInside" id="uuM-Ka-UCg"/>
                                 </connections>
@@ -366,23 +366,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ball Point Pen Filled-100" width="100" height="100"/>
         <image name="Black" width="53" height="332"/>
         <image name="Blue" width="53" height="332"/>
         <image name="Brown" width="53" height="332"/>
+        <image name="Cool Filled-100" width="100" height="100"/>
         <image name="DarkGreen" width="53" height="332"/>
         <image name="DarkOrange" width="53" height="332"/>
         <image name="Download Filled-100" width="100" height="100"/>
         <image name="Eraser" width="55" height="167"/>
         <image name="Grey" width="53" height="332"/>
+        <image name="Invert Selection Filled-100" width="100" height="100"/>
         <image name="LightBlue" width="53" height="332"/>
         <image name="LightGreen" width="53" height="332"/>
+        <image name="Pencil Filled-100" width="100" height="100"/>
         <image name="Red" width="53" height="332"/>
-        <image name="Timer Filled-100" width="100" height="100"/>
-        <image name="Type Filled-100" width="100" height="100"/>
-        <image name="Xlarge Icons Filled-100" width="100" height="100"/>
+        <image name="Timer Filled-101" width="100" height="100"/>
+        <image name="Type Filled-100-2" width="100" height="100"/>
         <image name="Yellow" width="53" height="332"/>
         <image name="cancel_Btn" width="24" height="24"/>
-        <image name="emoji2" width="100" height="100"/>
     </resources>
 </document>
