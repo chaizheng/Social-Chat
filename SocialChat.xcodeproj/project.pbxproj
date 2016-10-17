@@ -63,6 +63,7 @@
 		C2707A711DAA3C1D007C53BA /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2707A701DAA3C1D007C53BA /* ContactCell.swift */; };
 		C27A22BC1DAA07A100B02938 /* AddByContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */; };
 		C2D038A21DB39D0900C2518F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D038A11DB39D0900C2518F /* Main.storyboard */; };
+		C2DEA14B1DB50000009D2CAB /* FaceDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEA14A1DB50000009D2CAB /* FaceDetect.swift */; };
 		C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */; };
 		C2EB3DEB1D9E293500BEE0BC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEA1D9E293500BEE0BC /* Memory.swift */; };
 		C2EB3DEE1D9E2ACE00BEE0BC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EB3DEC1D9E2ACE00BEE0BC /* Model.xcdatamodeld */; };
@@ -138,6 +139,7 @@
 		C2707A701DAA3C1D007C53BA /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		C27A22BB1DAA07A100B02938 /* AddByContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddByContactVC.swift; sourceTree = "<group>"; };
 		C2D038A11DB39D0900C2518F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C2DEA14A1DB50000009D2CAB /* FaceDetect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetect.swift; sourceTree = "<group>"; };
 		C2E3B22F1D97C5EF00570A6B /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C2EB3DEA1D9E293500BEE0BC /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		C2EB3DED1D9E2ACE00BEE0BC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				C2EB3DEA1D9E293500BEE0BC /* Memory.swift */,
 				C2F03DA41D9E89D1009CF578 /* AddVC.swift */,
 				C2006EB31DB1BDB1008A5DD5 /* speechRec.swift */,
+				C2DEA14A1DB50000009D2CAB /* FaceDetect.swift */,
 			);
 			name = EditController;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				1F1722FC1DA89517000F55F9 /* AddByUsernameVC.swift in Sources */,
 				C2E3B2301D97C5EF00570A6B /* UserInfo.swift in Sources */,
 				C222F2091DA0C86D008B019A /* DataService.swift in Sources */,
+				C2DEA14B1DB50000009D2CAB /* FaceDetect.swift in Sources */,
 				1F1723061DA9566B000F55F9 /* AcceptRequestCell.swift in Sources */,
 				1F1722FE1DA8A83A000F55F9 /* AddFriendsVC.swift in Sources */,
 				1F6757B51D83A7CD00DA6701 /* AppDelegate.swift in Sources */,
