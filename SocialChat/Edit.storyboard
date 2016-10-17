@@ -106,10 +106,13 @@
                                     <constraint firstAttribute="width" constant="180" id="S7j-T0-ax4"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-N8-0Lh">
-                                <frame key="frameInset" minX="78" minY="45" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-N8-0Lh">
+                                <frame key="frameInset" minX="67" minY="39" width="86" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4S7-9U-QoH"/>
+                                    <constraint firstAttribute="height" constant="40" id="q6w-kA-5Oy"/>
+                                </constraints>
+                                <state key="normal" image="Shaven Face-50 (1)"/>
                                 <connections>
                                     <action selector="faceDetect:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="DvN-Ti-SAr"/>
                                 </connections>
@@ -118,6 +121,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CG8-Zr-9r5" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leadingMargin" id="02e-e6-XMN"/>
+                            <constraint firstItem="lR8-N8-0Lh" firstAttribute="leading" secondItem="CG8-Zr-9r5" secondAttribute="trailing" constant="8" symbolic="YES" id="BbG-C4-MbL"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" id="Bia-4z-8vc"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="BS3-d0-pGp" secondAttribute="bottom" id="H2N-uz-uok"/>
                             <constraint firstItem="SHW-uq-Hbn" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="20" id="LxJ-S4-hGJ"/>
@@ -125,6 +129,7 @@
                             <constraint firstItem="IyK-Ye-nbT" firstAttribute="leading" secondItem="mim-sF-g3r" secondAttribute="leading" constant="15" id="eHz-Xk-TKA"/>
                             <constraint firstItem="3IO-gb-CUb" firstAttribute="top" secondItem="iOX-W0-68U" secondAttribute="bottom" constant="15" id="eqU-YP-jmB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHW-uq-Hbn" secondAttribute="trailing" constant="20" id="frj-xh-xBd"/>
+                            <constraint firstItem="SHW-uq-Hbn" firstAttribute="centerY" secondItem="lR8-N8-0Lh" secondAttribute="centerY" id="pDN-oc-7bN"/>
                             <constraint firstAttribute="trailing" secondItem="BS3-d0-pGp" secondAttribute="trailing" id="rN3-It-0fu"/>
                             <constraint firstItem="CG8-Zr-9r5" firstAttribute="top" secondItem="yIk-pp-J1X" secondAttribute="bottom" constant="8" symbolic="YES" id="wcz-54-nFd"/>
                             <constraint firstItem="BS3-d0-pGp" firstAttribute="top" secondItem="mim-sF-g3r" secondAttribute="top" id="xIz-Ts-jQR"/>
@@ -353,9 +358,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wv-VI-g9D">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="h6U-sc-ZnX"/>
+                                    <constraint firstAttribute="height" constant="24" id="uIU-pR-2k5"/>
+                                </constraints>
+                                <state key="normal" image="cancel_Btn"/>
+                                <connections>
+                                    <action selector="cancel:" destination="zgC-PM-3zx" eventType="touchUpInside" id="gdA-6x-mT1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Wv-VI-g9D" firstAttribute="leading" secondItem="Rpf-k1-sIM" secondAttribute="leading" constant="12" id="32p-5h-8s8"/>
+                            <constraint firstItem="2Wv-VI-g9D" firstAttribute="top" secondItem="rsq-Yf-FbF" secondAttribute="bottom" constant="11" id="Fml-Mr-UdR"/>
                             <constraint firstItem="cjO-1s-PId" firstAttribute="top" secondItem="Rpf-k1-sIM" secondAttribute="top" id="JWp-xI-O3i"/>
                             <constraint firstAttribute="trailing" secondItem="cjO-1s-PId" secondAttribute="trailing" id="Lzh-wl-nhP"/>
                             <constraint firstItem="cjO-1s-PId" firstAttribute="leading" secondItem="Rpf-k1-sIM" secondAttribute="leading" id="cA5-zj-IO4"/>
@@ -437,10 +454,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="79" id="sGU-gP-lQt" customClass="ChatCell" customModule="SocialChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="79"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sGU-gP-lQt" id="fP4-Xm-GLc">
-                                            <frame key="frameInset" width="1000" height="78.5"/>
+                                            <frame key="frameInset" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRn-o6-iNC">
@@ -498,6 +515,7 @@
         <image name="Lock Filled-52" width="50" height="50"/>
         <image name="Pencil Filled-52" width="50" height="50"/>
         <image name="Share Filled-50" width="50" height="50"/>
+        <image name="Shaven Face-50 (1)" width="50" height="50"/>
         <image name="add_Btn" width="19" height="19"/>
         <image name="back_item" width="12" height="20"/>
         <image name="camera_Btn" width="30" height="25"/>

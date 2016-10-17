@@ -20,17 +20,19 @@ class FaceDetect: UIViewController {
 
 
         myImage.image = newImage
-//        myImage.image = #imageLiteral(resourceName: "face")
+
        findFace()
     }
 
+    @IBAction func cancel(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
+    }
     func findFace(){
-//        guard let faceImage = CIImage(cgImage: newImage!.cgImage!) else{return}
         let faceImage = CIImage(cgImage: (newImage?.cgImage)!)
-        //let faceImage = CIImage(cgImage: #imageLiteral(resourceName: "face").cgImage!)
+        
         let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
         let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
-       // let faces = faceDetector?.features(in: faceImage)
+   
         let faces = faceDetector?.features(in: faceImage, options: [CIDetectorSmile: true, CIDetectorEyeBlink: true])
         for face in faces as! [CIFaceFeature]{
             if face.hasSmile{
