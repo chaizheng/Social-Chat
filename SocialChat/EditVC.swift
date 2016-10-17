@@ -174,6 +174,14 @@ class EditVC: UIViewController,PictureVCDelegate {
                 destination.newImage = image
             }
         }
+        
+        if let destination = segue.destination as? FaceDetect{
+            if let image = sender as? UIImage{
+               print(image)
+                destination.newImage = image
+            }
+        }
+       
 
     }
     
@@ -250,6 +258,10 @@ class EditVC: UIViewController,PictureVCDelegate {
         self.editingImage.image = image
     }
     
+    @IBAction func faceDetect(_ sender: AnyObject) {
+        performSegue(withIdentifier: "faceDetect", sender: editingImage.image)
+        
+    }
     
 }
 

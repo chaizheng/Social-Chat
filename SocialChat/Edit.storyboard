@@ -106,6 +106,14 @@
                                     <constraint firstAttribute="width" constant="180" id="S7j-T0-ax4"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-N8-0Lh">
+                                <frame key="frameInset" minX="78" minY="45" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="faceDetect:" destination="vhJ-n9-H1k" eventType="touchUpInside" id="DvN-Ti-SAr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -130,6 +138,7 @@
                         <outlet property="sendToBtn" destination="iOX-W0-68U" id="0yj-cL-ACF"/>
                         <segue destination="qRx-qF-NPK" kind="show" identifier="toUsersVC" id="dCR-tA-sru"/>
                         <segue destination="zNA-Oh-3pg" kind="presentation" identifier="PictureViewController" animates="NO" id="l5h-Qd-4Rl"/>
+                        <segue destination="zgC-PM-3zx" kind="show" identifier="faceDetect" id="1CS-Ra-OhI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HST-Yz-fc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,7 +200,6 @@
             </objects>
             <point key="canvasLocation" x="1735.2" y="-1936.2818590704649"/>
         </scene>
-
         <!--UsersVC-->
         <scene sceneID="7zb-bM-k7x">
             <objects>
@@ -325,6 +333,44 @@
             </objects>
             <point key="canvasLocation" x="-602.39999999999998" y="-2743.1784107946028"/>
         </scene>
+        <!--Face Detect-->
+        <scene sceneID="Z2P-yT-qhY">
+            <objects>
+                <viewController id="zgC-PM-3zx" customClass="FaceDetect" customModule="SocialChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rsq-Yf-FbF"/>
+                        <viewControllerLayoutGuide type="bottom" id="bJk-SX-m8m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rpf-k1-sIM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjO-1s-PId"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeY-0b-9rd">
+                                <frame key="frameInset" minX="90" minY="71" width="185" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cjO-1s-PId" firstAttribute="top" secondItem="Rpf-k1-sIM" secondAttribute="top" id="JWp-xI-O3i"/>
+                            <constraint firstAttribute="trailing" secondItem="cjO-1s-PId" secondAttribute="trailing" id="Lzh-wl-nhP"/>
+                            <constraint firstItem="cjO-1s-PId" firstAttribute="leading" secondItem="Rpf-k1-sIM" secondAttribute="leading" id="cA5-zj-IO4"/>
+                            <constraint firstItem="bJk-SX-m8m" firstAttribute="top" secondItem="cjO-1s-PId" secondAttribute="bottom" id="wRC-1e-fqU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="CeY-0b-9rd" id="jfJ-K5-MsY"/>
+                        <outlet property="myImage" destination="cjO-1s-PId" id="TJQ-qB-k7v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEA-yV-yuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="-2685.6071964017992"/>
+        </scene>
         <!--FriendsVC-->
         <scene sceneID="hJz-BE-p5V">
             <objects>
@@ -394,7 +440,7 @@
                                         <rect key="frame" x="0.0" y="28" width="1000" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sGU-gP-lQt" id="fP4-Xm-GLc">
-                                            <frame key="frameInset" width="1000" height="78"/>
+                                            <frame key="frameInset" width="1000" height="78.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRn-o6-iNC">
