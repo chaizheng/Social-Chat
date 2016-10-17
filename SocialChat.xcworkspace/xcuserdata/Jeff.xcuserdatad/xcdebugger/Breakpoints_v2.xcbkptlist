@@ -425,11 +425,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/DataService.swift"
-            timestampString = "498208050.722601"
+            timestampString = "498390963.021049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "shareStories(storyUrl:senderId:senderName:senderImageUrl:visibleTime:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -623,6 +623,22 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/DataService.swift"
+            timestampString = "498390963.021049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "sendMessage(messageType:content:senderId:senderName:receiverId:receiverName:senderImageUrl:visibleTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

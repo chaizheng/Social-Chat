@@ -65,10 +65,32 @@
     if (self.cachedImageView == nil) {
         CGSize size = [self mediaViewDisplaySize];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
+        
         imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
         [JSQMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:self.appliesMediaViewMaskAsOutgoing];
+        
+        if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+            imageView.backgroundColor = [UIColor clearColor];
+            
+            UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+            blurEffectView.frame = imageView.bounds;
+            blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            
+            [imageView addSubview:blurEffectView];
+            
+            UILabel  *alertlabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 70, 200, 20)];
+            alertlabel.text = @"Tap to watch it!";
+            alertlabel.font = [UIFont systemFontOfSize:20];
+            alertlabel.textColor = [UIColor whiteColor];
+            
+            [imageView addSubview:alertlabel];
+            
+        } else {
+            imageView.backgroundColor = [UIColor blackColor];
+        }
         self.cachedImageView = imageView;
     }
     

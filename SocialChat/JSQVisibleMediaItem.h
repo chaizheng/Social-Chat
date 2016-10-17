@@ -7,8 +7,9 @@
 
 
 @property (copy, nonatomic) UIImage *image;
-
+@property(nonatomic) NSString* visibleTime;
 
 - (instancetype)initWithImage:(UIImage *)image;
+
 
 @end

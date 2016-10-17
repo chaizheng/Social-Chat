@@ -140,9 +140,16 @@ class SendVC: JSQMessagesViewController{
         
                 } else if contentType == "VISIIMAGE"{
                     
-                        let imageUrl = value["content"] as! String
-                        let url = URL(string: imageUrl)
-                        
+                    let imageUrl = value["content"] as! String
+                    let url = URL(string: imageUrl)
+                    var visibleTime:String?
+                    //old value in Database is Int
+                    if let time = value["visibleTime"] as? Int{
+                        visibleTime = String(time)
+                    }
+                    if let time = value["visibleTime"] as? String{
+                        visibleTime = time
+                    }
                         let downloader = SDWebImageDownloader.shared()
                        _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
@@ -189,6 +196,14 @@ class SendVC: JSQMessagesViewController{
                     })
                 } else if contentType == "VISIIMAGE"{
                     
+                    var visibleTime:String?
+                    //old value in Database is Int
+                    if let time = value["visibleTime"] as? Int{
+                        visibleTime = String(time)
+                    }
+                    if let time = value["visibleTime"] as? String{
+                        visibleTime = time
+                    }
                     let imageUrl = value["content"] as! String
                     let url = URL(string: imageUrl)
                     let downloader = SDWebImageDownloader.shared()
@@ -197,7 +212,7 @@ class SendVC: JSQMessagesViewController{
                         DispatchQueue.main.async {
                             var picture = image
                             picture = Util.rotateImage(image: picture!)
-                            let photo = JSQVisibleMediaItem(image: picture)
+                            let photo = JSQVisibleMediaItem(image: image)
                             self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                             self.finishReceivingMessage()
                         }
@@ -260,7 +275,7 @@ class SendVC: JSQMessagesViewController{
         }
         if let destination = segue.destination as? PresentImageVC{
             if let image = sender as? UIImage{
-                let item:Dictionary<String, Any> = ["visibleTime":"7","visibleImage":image]
+                let item:Dictionary<String, Any> = ["visibleTime":"5","visibleImage":image]
                 destination.items = item
             }
         }

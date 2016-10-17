@@ -90,7 +90,11 @@ class DataService {
         let sendMessageItem:Dictionary<String, Any>!
         let receiveMessageItem:Dictionary<String, Any>!
         
-        sendMessageItem = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName]
+        if visibleTime == nil{
+            sendMessageItem = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName]
+        } else{
+            sendMessageItem = ["content": content, "senderId": senderId,"senderName": senderName, "contentType": messageType, "sentTime": sendTime, "receiverId": receiverId, "receiverName": receiverName, "visibleTime": visibleTime!]
+        }
         
         //Normal image or text
         if visibleTime == nil{
