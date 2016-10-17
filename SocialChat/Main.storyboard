@@ -57,7 +57,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="fM9-fF-dhE" kind="presentation" identifier="NormalImageVC" modalTransitionStyle="crossDissolve" id="1sK-ln-anT"/>
-                        <segue destination="FTt-c0-EwV" kind="presentation" identifier="PresentImageVC" id="rRw-GH-hVC"/>
+                        <segue destination="FTt-c0-EwV" kind="presentation" identifier="PresentImageVC" animates="NO" id="rRw-GH-hVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve6-nd-neS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1523,6 +1523,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bX2-tF-z18"/>
-        <segue reference="Pw4-gu-lZs"/>
+        <segue reference="rRw-GH-hVC"/>
     </inferredMetricsTieBreakers>
 </document>

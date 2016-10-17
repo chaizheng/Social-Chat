@@ -6,7 +6,7 @@
 //  Copyright © 2016 Social Media Coders. All rights reserved.
 //
 
-
+#import <Foundation/Foundation.h>
 #import "JSQVisibleMediaItem.h"
 
 #import "JSQMessagesMediaPlaceholderView.h"
@@ -24,11 +24,14 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithImage:(UIImage *)image
+- (instancetype)initWithImage:(UIImage *)image visibleTime:(NSString *)visibleTime replayedTime:(int)replayedTime messageKey:(NSString *)messageKey
 {
     self = [super init];
     if (self) {
         _image = [image copy];
+        self.visibleTime = visibleTime;
+        self.replayedTime = replayedTime;
+        self.messageKey = messageKey;
         _cachedImageView = nil;
     }
     return self;
@@ -39,6 +42,13 @@
     [super clearCachedMediaViews];
     _cachedImageView = nil;
 }
+
+
+- (void)addreplayedTime
+{
+    self.replayedTime += 1;
+}
+
 
 #pragma mark - Setters
 
@@ -82,6 +92,7 @@
             [imageView addSubview:blurEffectView];
             
             UILabel  *alertlabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 70, 200, 20)];
+            
             alertlabel.text = @"Tap to watch it!";
             alertlabel.font = [UIFont systemFontOfSize:20];
             alertlabel.textColor = [UIColor whiteColor];
@@ -136,7 +147,7 @@
 
 - (instancetype)copyWithZone:(NSZone *)zone
 {
-    JSQVisibleMediaItem *copy = [[JSQVisibleMediaItem allocWithZone:zone] initWithImage:self.image];
+    JSQVisibleMediaItem *copy = [[JSQVisibleMediaItem allocWithZone:zone] initWithImage:self.image visibleTime:self.visibleTime replayedTime:self.replayedTime messageKey:self.messageKey];
     copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing;
     return copy;
 }

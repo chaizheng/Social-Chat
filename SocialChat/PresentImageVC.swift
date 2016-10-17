@@ -40,7 +40,7 @@ class PresentImageVC: UIViewController {
         timeLeftLabel.text = String(leftTime)
         
         if timeLeftLabel.text == String(0){
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: false, completion: nil)
         }
         
     }
