@@ -157,18 +157,22 @@ class EditVC: UIViewController,PictureVCDelegate {
     }
 
     @IBAction func sendToBtnPressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "toUsersVC", sender: (editingImage.image,visibleTime))
+        let info:Dictionary<String, Any> = ["image":editingImage.image, "visibleTime":visibleTime]
+        performSegue(withIdentifier: "toUsersVC", sender: info)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UsersVC{
-            if let imageTime = sender as? (UIImage,Int){
-                destination.image = imageTime.0
-                destination.visibleTime = imageTime.1
-                
+            
+            if let imageTime = sender as? Dictionary<String, Any>{
+                destination.image = imageTime["image"] as! UIImage
+                destination.visibleTime = imageTime["visibleTime"] as! String
             }
+            
+            
         }
-        
+    
+    
         if let destination = segue.destination as? PictureViewController{
             if let image = sender as? UIImage{
                 destination.delegate = self

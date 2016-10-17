@@ -81,7 +81,7 @@ class DataService {
 
     
     // send message to sepecific receivers
-    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, receiverName: String, senderImageUrl: String, visibleTime: Int? = nil){
+    func sendMessage(messageType: String, content: String, senderId: String, senderName: String, receiverId: String, receiverName: String, senderImageUrl: String, visibleTime: String? = nil){
         
         let sendTime = Util.getCurrentTime()
         let refName = "\(senderId)-\(receiverId)-\(sendTime)"
