@@ -7,9 +7,13 @@
 
 
 @property (copy, nonatomic) UIImage *image;
-@property(nonatomic) NSString* visibleTime;
+@property NSString* visibleTime;
+@property int replayedTime;
+@property NSString* messageKey;
 
-- (instancetype)initWithImage:(UIImage *)image;
 
+- (instancetype)initWithImage:(UIImage *)image visibleTime:(NSString *)visibleTime replayedTime:(int)replayedTime messageKey:(NSString *)messageKey;
+
+- (void)addreplayedTime;
 
 @end

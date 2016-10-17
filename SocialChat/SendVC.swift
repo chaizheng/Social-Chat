@@ -117,6 +117,7 @@ class SendVC: JSQMessagesViewController{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
+                let messageKey = snapshot.key
                 let sendTime = dateFormatter.date(from: value["sentTime"] as! String)
                 
                 if contentType == "TEXT" {
@@ -156,7 +157,7 @@ class SendVC: JSQMessagesViewController{
                             DispatchQueue.main.async {
                                 var picture = image
                                 picture = Util.rotateImage(image: picture!)
-                                let photo = JSQVisibleMediaItem(image: picture)
+                                let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
                                 self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
                                 self.finishReceivingMessage()
                             }
@@ -173,6 +174,7 @@ class SendVC: JSQMessagesViewController{
             if let value = snapshot.value as? Dictionary<String, Any>{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
+                let messageKey = snapshot.key
                 let senderName = value["senderName"] as! String
                 let receivedTime = dateFormatter.date(from: value["ReceivedTime"] as! String)
                 if contentType == "TEXT" {
@@ -204,6 +206,7 @@ class SendVC: JSQMessagesViewController{
                     if let time = value["visibleTime"] as? String{
                         visibleTime = time
                     }
+                    
                     let imageUrl = value["content"] as! String
                     let url = URL(string: imageUrl)
                     let downloader = SDWebImageDownloader.shared()
@@ -212,7 +215,7 @@ class SendVC: JSQMessagesViewController{
                         DispatchQueue.main.async {
                             var picture = image
                             picture = Util.rotateImage(image: picture!)
-                            let photo = JSQVisibleMediaItem(image: image)
+                            let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
                             self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                             self.finishReceivingMessage()
                         }
@@ -274,8 +277,9 @@ class SendVC: JSQMessagesViewController{
             }
         }
         if let destination = segue.destination as? PresentImageVC{
-            if let image = sender as? UIImage{
-                let item:Dictionary<String, Any> = ["visibleTime":"5","visibleImage":image]
+            if let item = sender as? JSQVisibleMediaItem{
+                let visibleTime = item.visibleTime
+                let item:Dictionary<String, Any> = ["visibleTime":visibleTime!,"visibleImage":item.image]
                 destination.items = item
             }
         }
@@ -289,7 +293,17 @@ class SendVC: JSQMessagesViewController{
                 performSegue(withIdentifier: "NormalImageVC", sender: mediaItem.image)
             }
             if let mediaItem = message.media as? JSQVisibleMediaItem {
-                performSegue(withIdentifier: "PresentImageVC", sender: mediaItem.image)
+                performSegue(withIdentifier: "PresentImageVC", sender: mediaItem)
+                
+                // receiver can only watch twice
+                if message.senderId != myId!{
+                    mediaItem.addreplayedTime()
+                    if mediaItem.replayedTime == 2{
+                        messages.remove(at: indexPath.item)
+                        DataService.instance.selfRef.child("receivedMessage").child(mediaItem.messageKey).setValue(nil)
+                        collectionView.reloadData()
+                    }
+                }
             }
         }
     }
