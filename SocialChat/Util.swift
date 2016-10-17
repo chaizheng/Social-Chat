@@ -29,6 +29,7 @@ open class Util{
         return phoneTest.evaluate(with: testStr)
     }
     
+    
     class func getCurrentTime() -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY-MM-dd 'at' HH:mm:ss"
@@ -71,8 +72,6 @@ open class Util{
         } catch let err as NSError{
             print(err.debugDescription)
         }
-
-        
     }
     
     class func rotateImage(image:UIImage)->UIImage
@@ -93,15 +92,6 @@ open class Util{
             rotatedImage = UIImage(cgImage:image.cgImage!, scale: 1, orientation:UIImageOrientation.right);
         }
         return rotatedImage;
-    }
-    
-    class func applyBlurEffect(image: UIImage) -> UIImage{
-        let imageToBlur = CIImage(image: image)
-        let blurfilter = CIFilter(name: "CIGaussianBlur")
-        blurfilter?.setValue(imageToBlur, forKey: "inputImage")
-        let resultImage = blurfilter?.value(forKey: "outputImage") as! CIImage
-        let blurredImage = UIImage(ciImage: resultImage)
-        return  blurredImage
     }
     
 }
