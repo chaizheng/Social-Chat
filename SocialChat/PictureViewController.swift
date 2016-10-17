@@ -92,6 +92,8 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
     
     func oneTapDetected(sender: UITapGestureRecognizer) {
+        let originalOrientation: UIImageOrientation = (newImage?.imageOrientation)!
+        let originalScale: CGFloat = (newImage?.scale)!
         let ciContext = CIContext(options: nil)
         let coreImage = CIImage(image: newImage!)
         let filter = CIFilter(name: "CIPhotoEffectChrome" )
@@ -99,12 +101,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         filter!.setValue(coreImage, forKey: kCIInputImageKey)
         let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
         let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        newImageView.image = UIImage(cgImage: filteredImageRef!)
+        newImageView.image = UIImage(cgImage: filteredImageRef!, scale: originalScale, orientation: originalOrientation)
         let twoTap = UITapGestureRecognizer(target: self, action: #selector(twoTapDetected))
         filterAction.addGestureRecognizer(twoTap)
     }
     
     func twoTapDetected(sender: UITapGestureRecognizer) {
+        let originalOrientation: UIImageOrientation = (newImage?.imageOrientation)!
+        let originalScale: CGFloat = (newImage?.scale)!
         let ciContext = CIContext(options: nil)
         let coreImage = CIImage(image: newImage!)
         let filter = CIFilter(name: "CIPhotoEffectTransfer" )
@@ -112,12 +116,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         filter!.setValue(coreImage, forKey: kCIInputImageKey)
         let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
         let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        newImageView.image = UIImage(cgImage: filteredImageRef!)
+        newImageView.image = UIImage(cgImage: filteredImageRef!, scale: originalScale, orientation: originalOrientation)
         let threeTap = UITapGestureRecognizer(target: self, action: #selector(threeTapDetected))
         filterAction.addGestureRecognizer(threeTap)
     }
     
     func threeTapDetected(sender: UITapGestureRecognizer) {
+        let originalOrientation: UIImageOrientation = (newImage?.imageOrientation)!
+        let originalScale: CGFloat = (newImage?.scale)!
         let ciContext = CIContext(options: nil)
         let coreImage = CIImage(image: newImage!)
         let filter = CIFilter(name: "CIPhotoEffectInstant" )
@@ -125,12 +131,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         filter!.setValue(coreImage, forKey: kCIInputImageKey)
         let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
         let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        newImageView.image = UIImage(cgImage: filteredImageRef!)
+        newImageView.image = UIImage(cgImage: filteredImageRef!, scale: originalScale, orientation: originalOrientation)
         let fourTap = UITapGestureRecognizer(target: self, action: #selector(fourTapDetected))
         filterAction.addGestureRecognizer(fourTap)
     }
     
     func fourTapDetected(sender: UITapGestureRecognizer) {
+        let originalOrientation: UIImageOrientation = (newImage?.imageOrientation)!
+        let originalScale: CGFloat = (newImage?.scale)!
         let ciContext = CIContext(options: nil)
         let coreImage = CIImage(image: newImage!)
         let filter = CIFilter(name: "CIPhotoEffectTonal" )
@@ -138,12 +146,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         filter!.setValue(coreImage, forKey: kCIInputImageKey)
         let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
         let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        newImageView.image = UIImage(cgImage: filteredImageRef!)
+        newImageView.image = UIImage(cgImage: filteredImageRef!, scale: originalScale, orientation: originalOrientation)
         let fiveTap = UITapGestureRecognizer(target: self, action: #selector(fiveTapDetected))
         filterAction.addGestureRecognizer(fiveTap)
     }
     
     func fiveTapDetected(sender: UITapGestureRecognizer) {
+        let originalOrientation: UIImageOrientation = (newImage?.imageOrientation)!
+        let originalScale: CGFloat = (newImage?.scale)!
         let ciContext = CIContext(options: nil)
         let coreImage = CIImage(image: newImage!)
         let filter = CIFilter(name: "CIPhotoEffectProcess" )
@@ -151,7 +161,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         filter!.setValue(coreImage, forKey: kCIInputImageKey)
         let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
         let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        newImageView.image = UIImage(cgImage: filteredImageRef!)
+        newImageView.image = UIImage(cgImage: filteredImageRef!, scale: originalScale, orientation: originalOrientation)
         let sixTap = UITapGestureRecognizer(target: self, action: #selector(sixTapDetected))
         filterAction.addGestureRecognizer(sixTap)
     }
@@ -161,7 +171,6 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         let oneTap = UITapGestureRecognizer(target: self, action: #selector(oneTapDetected))
         filterAction.addGestureRecognizer(oneTap)
     }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -178,7 +187,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         time = pickerData[row]
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {        
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
@@ -197,7 +206,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         } else{
             return UICollectionViewCell()
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
@@ -276,7 +285,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         self.bottomConstraint.constant = newImageView.frame.size.height/2
         swiped = false
         if let touch = touches.first as UITouch! {
-            lastPoint = touch.location(in: self.view)            
+            lastPoint = touch.location(in: self.view)
             if red == 1 && green == 1 && blue == 1 {
                 self.drawImageView.image = self.commitedImageView.image
                 self.commitedImageView.image = nil
@@ -302,7 +311,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
             context?.setLineWidth(10)
             context?.setBlendMode(CGBlendMode.clear)
         }
-        else{            
+        else{
             context?.setLineWidth(brushWidth)
             context?.setStrokeColor(red: red, green: green, blue: blue, alpha: 1.0)
             context?.setBlendMode(CGBlendMode.normal)
@@ -316,7 +325,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         drawImageView.alpha = opacity
         UIGraphicsEndImageContext()
         
-    }    
+    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 6
@@ -405,12 +414,14 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
+        newImage = newImageView.image
         if emojiImageView != nil {
             mergeEmojiImages(forgroundImage: newImage!, backgroundImage: emojiImageView!)
         }
         if commitedImageView.image != nil{
             mergeDrawnImages(forgroundImage: newImage!, backgroundImage: commitedImageView.image!)
         }
+        
         if UserInput.text != ""{
             let myString = UserInput.text!
             let NSUserInput = myString as NSString
@@ -423,7 +434,6 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     func mergeDrawnImages (forgroundImage : UIImage, backgroundImage : UIImage) {
-
         let bottomImage = forgroundImage
         let topImage = backgroundImage
         
@@ -448,15 +458,16 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         let size = bottomImage.size
         UIGraphicsBeginImageContext(size)
         
-        let areaSize = CGRect(x: backgroundImage.frame.origin.x, y: backgroundImage.frame.origin.y, width: (backgroundImage.image?.size.width)!, height: (backgroundImage.image?.size.height)!)
-        bottomImage.draw(in: CGRect(x: 0, y:0, width: forgroundImage.size.width, height: forgroundImage.size.width))
+        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        bottomImage.draw(in: areaSize)
         
-        topImage?.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
+        topImage?.draw(in: CGRect(x: size.width * backgroundImage.frame.origin.x / view.frame.width, y: size.height * backgroundImage.frame.origin.y / view.frame.height, width: size.width * 60 / view.frame.width, height: size.width * 60 / view.frame.width), blendMode: .normal, alpha: 1.0)
         
         newImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
-    
+        
+        
     }
     
     func textToImage(drawText: NSString, inImage: UIImage, atPoint: CGPoint) -> UIImage{
@@ -520,10 +531,10 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         delegate?.sendValue(visibleTime: time, image: newImage!)
         self.dismiss(animated: true, completion: nil)
     }
-
     
-        
-        
+    
+    
+    
     
     /*
      // MARK: - Navigation
@@ -535,7 +546,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
      }
      */
     
-
-
-
+    
+    
+    
 }
