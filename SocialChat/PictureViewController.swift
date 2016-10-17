@@ -13,19 +13,18 @@
 //  Copyright © 2016 黄 康平. All rights reserved.
 //
 
+import UIKit
+import SpriteKit
 
 protocol PictureVCDelegate {
     func sendValue(visibleTime: String, image: UIImage)
 }
 
-import UIKit
-import SpriteKit
-
 class PictureViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var delegate:PictureVCDelegate?
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
     var newImage: UIImage?
     var emojiImage: UIImage?
     var emojiImageView: UIImageView?
@@ -73,6 +72,8 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         UserInput.isHidden = true
         emojiCollection.dataSource = self
         emojiCollection.delegate = self
+        emojiCollection.layer.borderWidth = 3
+        emojiCollection.layer.borderColor = UIColor.init(red: 102.0 / 255.0, green: 102.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0).cgColor
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -86,7 +87,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         UserInput.isUserInteractionEnabled = true
         pickerData = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
         
-       
+        // Do any additional setup after loading the view.
     }
     
     
@@ -206,12 +207,13 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         return CGSize(width: width, height: height)
     }
     
+    // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         emojiImage = UIImage(named: "emoji\(indexPath.row+1).jpg")
         emojiImageView = UIImageView(image: emojiImage)
-        emojiImageView?.frame = CGRect (x: self.view.frame.width/2, y: self.view.frame.height/2, width: 30, height: 30)
+        emojiImageView?.frame = CGRect (x: self.view.frame.width/2, y: self.view.frame.height/2, width: 60, height: 60)
         self.view.addSubview(emojiImageView!)
         collectionView.isHidden = true
         emojiImageView?.isUserInteractionEnabled = true
@@ -244,15 +246,15 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     func adjustingHeight(show:Bool, notification:NSNotification) {
-       
+        // 1
         var userInfo = notification.userInfo!
-        
+        // 2
         let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        
+        // 3
         let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        
+        // 4
         let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
-        
+        // 5
         UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
             self.bottomConstraint.constant = changeInHeight + 40
         })
@@ -267,6 +269,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.timePicker.isHidden = true
         self.view.endEditing(true)
+        self.emojiCollection.isHidden = true
         if UserInput.text == "" {
             UserInput.isHidden = true
         }
@@ -283,16 +286,16 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         
-        
+        // 1
         UIGraphicsBeginImageContext(view.frame.size)
         let context = UIGraphicsGetCurrentContext()
         drawImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         
-        
+        // 2
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        
+        // 3
         context?.setLineCap(CGLineCap.round)
         
         if red == 1 && green == 1 && blue == 1 {
@@ -305,10 +308,10 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
             context?.setBlendMode(CGBlendMode.normal)
         }
         
-       
+        // 4
         context?.strokePath()
         
-        
+        // 5
         drawImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         drawImageView.alpha = opacity
         UIGraphicsEndImageContext()
@@ -316,13 +319,13 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        // 6
         swiped = true
         if let touch = touches.first as UITouch! {
             let currentPoint = touch.location(in: view)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
-            
+            // 7
             lastPoint = currentPoint
         }
     }
@@ -346,7 +349,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func timeAction(_ sender: AnyObject) {
@@ -402,23 +405,21 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
-       
+        if commitedImageView.image != nil{
         mergeDrawnImages(forgroundImage: newImage!, backgroundImage: commitedImageView.image!)
+        }
         if emojiImageView != nil {
             mergeEmojiImages(forgroundImage: newImage!, backgroundImage: emojiImageView!)
         }
+        if UserInput.text != ""{
         let myString = UserInput.text!
         let NSUserInput = myString as NSString
         newImage = textToImage(drawText: NSUserInput, inImage: newImage!, atPoint: UserInput.center)
-        
+        }
         let imageData = UIImageJPEGRepresentation(newImage!, 0.6)
         let compressedJPEGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
-        
-
-        
-        delegate?.sendValue(visibleTime: time, image: newImage!)
-        self.dismiss(animated: true, completion: nil)
+        UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil);
+        dismiss(animated: false, completion: nil)
     }
     
     func mergeDrawnImages (forgroundImage : UIImage, backgroundImage : UIImage) {
@@ -463,26 +464,23 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         
         // Setup the font specific variables
         
-        //let textColor = UIColor.white
-        let textColor = UserInput.textColor
+        let textColor = UserInput.textColor!
         let textFont = UIFont(name: "Helvetica Bold", size: (UserInput.font?.pointSize)!)!
-        
         // Setup the image context using the passed image
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(inImage.size, false, scale)
-        
+        print ("123")
         // Setup the font attributes that will be later used to dictate how the text should be drawn
         let textFontAttributes = [
             NSFontAttributeName: textFont,
             NSForegroundColorAttributeName: textColor,
             ] as [String : Any]
-        
         // Put the image into a rectangle as large as the original image
         inImage.draw(in: CGRect(x:0, y:0, width:inImage.size.width, height:inImage.size.height))
         
         // Create a point within the space that is as bit as the image
         let rect = CGRect(x:atPoint.x, y:atPoint.y, width:inImage.size.width, height:inImage.size.height)
-        print("ss")
+        
         // Draw the text into an image
         drawText.draw(in: rect, withAttributes: textFontAttributes)
         
@@ -523,12 +521,6 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         delegate?.sendValue(visibleTime: time, image: newImage!)
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-        
-        
-      
-
 
 
 }

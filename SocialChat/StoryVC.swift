@@ -83,7 +83,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             
 //            let currentCell = tableView.cellForRow(at: indexPath) as! StoryTableCell
             let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
-            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"storyImage":storiesImage[indexPath.row]]
+            let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"visibleImage":storiesImage[indexPath.row]]
             performSegue(withIdentifier: "PresentImageVC", sender: info)
             
             let sendTime = receivedStories[indexPath.row]["sendTime"] as! String

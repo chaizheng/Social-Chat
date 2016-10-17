@@ -25,7 +25,7 @@ class PresentImageVC: UIViewController {
         
         timeLeft = items["visibleTime"] as? String
         timeLeftLabel.text = timeLeft
-        var storyImage = items["storyImage"] as? UIImage
+        var storyImage = items["visibleImage"] as? UIImage
         storyImage = Util.rotateImage(image: storyImage!)
         imageView.image = storyImage
     }

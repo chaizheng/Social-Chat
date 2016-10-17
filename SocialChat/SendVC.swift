@@ -149,7 +149,7 @@ class SendVC: JSQMessagesViewController{
                             DispatchQueue.main.async {
                                 var picture = image
                                 picture = Util.rotateImage(image: picture!)
-                                let photo = JSQPhotoMediaItem(image: picture)
+                                let photo = JSQVisibleMediaItem(image: picture)
                                 self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
                                 self.finishReceivingMessage()
                             }
@@ -188,6 +188,7 @@ class SendVC: JSQMessagesViewController{
                         }
                     })
                 } else if contentType == "VISIIMAGE"{
+                    
                     let imageUrl = value["content"] as! String
                     let url = URL(string: imageUrl)
                     let downloader = SDWebImageDownloader.shared()
@@ -196,7 +197,7 @@ class SendVC: JSQMessagesViewController{
                         DispatchQueue.main.async {
                             var picture = image
                             picture = Util.rotateImage(image: picture!)
-                            let photo = JSQPhotoMediaItem(image: picture)
+                            let photo = JSQVisibleMediaItem(image: picture)
                             self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                             self.finishReceivingMessage()
                         }
@@ -252,9 +253,15 @@ class SendVC: JSQMessagesViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination =  segue.destination as? NormalImageVC{
+        if let destination = segue.destination as? NormalImageVC{
             if let image = sender as? UIImage{
                 destination.image = image
+            }
+        }
+        if let destination = segue.destination as? PresentImageVC{
+            if let image = sender as? UIImage{
+                let item:Dictionary<String, Any> = ["visibleTime":"7","visibleImage":image]
+                destination.items = item
             }
         }
     }
@@ -265,6 +272,9 @@ class SendVC: JSQMessagesViewController{
         if message.isMediaMessage{
             if let mediaItem = message.media as? JSQPhotoMediaItem {
                 performSegue(withIdentifier: "NormalImageVC", sender: mediaItem.image)
+            }
+            if let mediaItem = message.media as? JSQVisibleMediaItem {
+                performSegue(withIdentifier: "PresentImageVC", sender: mediaItem.image)
             }
         }
     }
