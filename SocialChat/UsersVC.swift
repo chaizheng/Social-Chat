@@ -20,10 +20,10 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var selectedFriends = Dictionary<String, FriendInfo>()
     
     private var _image: UIImage!
-    private var _visibleTime = 5
+    private var _visibleTime: String = "5"
     
     
-    var visibleTime:Int{
+    var visibleTime:String{
         get{
             return _visibleTime
         } set{

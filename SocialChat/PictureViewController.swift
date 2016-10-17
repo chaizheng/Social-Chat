@@ -430,6 +430,8 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
         let imageData = UIImageJPEGRepresentation(newImage!, 0.6)
         let compressedJPEGImage = UIImage(data: imageData!)
         UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil);
+        delegate?.sendValue(visibleTime: time, image: newImage!)
+        
         dismiss(animated: false, completion: nil)
     }
     
@@ -528,8 +530,7 @@ class PictureViewController: UIViewController, UITextViewDelegate, UICollectionV
     }
     
     @IBAction func cancelBtnPressed(_ sender: AnyObject) {
-        delegate?.sendValue(visibleTime: time, image: newImage!)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     
