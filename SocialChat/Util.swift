@@ -95,16 +95,4 @@ open class Util{
         return rotatedImage;
     }
     
-    class func asyn(url: URL) -> UIImage?{
-        let downloader = SDWebImageDownloader.shared()
-        downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
-            (image,data,error,finished) in
-            print(Thread.current)
-            DispatchQueue.main.async {
-                return image
-            }
-        })
-        return nil
-    }
-    
 }
