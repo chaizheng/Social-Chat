@@ -155,8 +155,8 @@ class SendVC: JSQMessagesViewController{
                        _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
                             DispatchQueue.main.async {
-                                var picture = image
-                                picture = Util.rotateImage(image: picture!)
+                                let picture = image
+//                                picture = Util.rotateImage(image: picture!)
                                 let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
                                 self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
                                 self.finishReceivingMessage()
@@ -213,8 +213,8 @@ class SendVC: JSQMessagesViewController{
                     _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
                             (image,data,error,finished) in
                         DispatchQueue.main.async {
-                            var picture = image
-                            picture = Util.rotateImage(image: picture!)
+                            let picture = image
+//                            picture = Util.rotateImage(image: picture!)
                             let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
                             self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
                             self.finishReceivingMessage()

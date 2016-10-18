@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 protocol CustomCellCallsDelegate{
@@ -34,14 +35,14 @@ class AcceptRequestCell: UITableViewCell{
         timeLabel.text = sender.sendTime
         self.senderId = sender.uid
         self.senderFullName = sender.fullName
-        if let url = URL(string: sender.imageUrl) {
-            do {
-                let data = try Data(contentsOf: url)
-                self.profileImage.image = UIImage(data: data)
-            }
-            catch{
-                print(error.localizedDescription)
-            }
+        if let url = URL(string: sender.imageUrl){
+            let downloader = SDWebImageDownloader.shared()
+            _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+            (image,data,error,finished) in
+                DispatchQueue.main.async {
+                    self.profileImage.image = image
+                }
+            })
         }
     }
 

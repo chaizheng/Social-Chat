@@ -63,19 +63,35 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func Refresh(){
-        
-        for story in receivedStories{
-            
-            let storyUrl = story["storyUrl"] as! String
-            let url = URL(string: storyUrl)
-            let downloader = SDWebImageDownloader.shared()
-            _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
-                (image,data,error,finished) in
-                DispatchQueue.main.async {
-                    self.storiesImage.append(image!)
-                }
-            })
+        retrieveStories()
+        if receivedStories.count != 0{
+            for i in 0...receivedStories.count-1{
+                let storyUrl = receivedStories[i]["storyUrl"] as! String
+                let url = URL(string: storyUrl)
+                let downloader = SDWebImageDownloader.shared()
+                _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                    (image,data,error,finished) in
+                    DispatchQueue.main.async {
+                        self.receivedStories[i]["storyImage"] = image
+                        //self.storiesImage.append(image!)
+                    }
+                })
+            }
         }
+        
+//        for story in receivedStories{
+//            
+//            let storyUrl = story["storyUrl"] as! String
+//            let url = URL(string: storyUrl)
+//            let downloader = SDWebImageDownloader.shared()
+//            _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+//                (image,data,error,finished) in
+//                DispatchQueue.main.async {
+//                    story["storyImage"] = image
+////                    self.storiesImage.append(image!)
+//                }
+//            })
+//        }
         self.storyTableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -92,7 +108,7 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
             if let _ = tableView.cellForRow(at: indexPath) as? StoryTableCell{
                 
                 let visibleTime = receivedStories[indexPath.row]["visibleTime"] as! String
-                let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"visibleImage":storiesImage[indexPath.row]]
+                let info:Dictionary<String, Any> = ["visibleTime":visibleTime,"visibleImage":receivedStories[indexPath.row]["storyImage"]]
                 performSegue(withIdentifier: "PresentImageVC", sender: info)
                 
                 let sendTime = receivedStories[indexPath.row]["sendTime"] as! String
@@ -102,6 +118,8 @@ class StoryVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSou
                 //Delete my received story in my database
                 let storyRef = "\(senderId)-\(sendTime)"
                 DataService.instance.usersRef.child(myId!).child("receivedStories").child(storyRef).setValue(nil)
+                
+//                storiesImage.remove(at: indexPath.row)
                 tableView.reloadData()
 
             }
