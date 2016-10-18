@@ -71,7 +71,6 @@ class UserInfoVC: UIViewController {
         let downloader = SDWebImageDownloader.shared()
        _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
             (image,data,error,finished) in
-            print(Thread.current)
             DispatchQueue.main.async {
                 self.profileImage.image = image
             }

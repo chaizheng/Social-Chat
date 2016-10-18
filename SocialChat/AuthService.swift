@@ -58,13 +58,14 @@ class AuthService {
     func updateLocalFriendsList(){
         DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
             if let value = snapshot.value as? Dictionary<String, Any> {
+                var allFriendsIds = [String]()
+                for friend in allFriendsInfo{
+                    allFriendsIds.append(friend.uid)
+                }
                 for item in value{
                     let friendId = item.key
-
-                    for friend in allFriendsInfo{
-                        if friendId == friend.uid{
-                            return
-                        }
+                    if allFriendsIds.contains(friendId){
+                        continue
                     }
                     DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
                         if let childValue = childSnapshot.value as? Dictionary<String, Any> {
@@ -79,6 +80,7 @@ class AuthService {
                                     (image,data,error,finished) in
                                     DispatchQueue.main.async {
                                         let profileImage = image
+                                        //old users dont have phone number
                                         if let number = phoneNumber{
                                             let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
                                             allFriendsInfo.append(friend)
