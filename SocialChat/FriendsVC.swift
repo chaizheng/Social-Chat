@@ -33,20 +33,15 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
-            
             self.tableView.tableHeaderView = controller.searchBar
             
             return controller
         })()
         
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         AuthService.instance.updateLocalFriendsList()
         tableView.reloadData()
+        tableView.tableFooterView = UIView()
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
