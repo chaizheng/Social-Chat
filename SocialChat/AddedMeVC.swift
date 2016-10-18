@@ -36,9 +36,6 @@ class AddedMeVC: UIViewController,UITableViewDataSource, UITableViewDelegate, Cu
         }
             self.tableView.reloadData()
         }
-//        if senders.count == 0{
-//            tableView.isHidden = true
-//        }
     }
     
     

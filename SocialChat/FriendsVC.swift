@@ -38,13 +38,11 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
             
             return controller
         })()
-
+        
         tableView.tableFooterView = UIView()
+        AuthService.instance.updateLocalFriendsList()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

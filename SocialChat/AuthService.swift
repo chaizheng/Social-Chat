@@ -66,8 +66,6 @@ class AuthService {
                             return
                         }
                     }
-                    
-
                     DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
                         if let childValue = childSnapshot.value as? Dictionary<String, Any> {
                             let firstName = childValue["firstName"] as? String

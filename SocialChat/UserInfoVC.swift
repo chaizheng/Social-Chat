@@ -21,7 +21,6 @@ class UserInfoVC: UIViewController {
     @IBOutlet weak var newReminder: UIImageView!
     
     let userID = FIRAuth.auth()?.currentUser?.uid
-    //let downloader = SDWebImageDownloader.shared()
     
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,22 +53,10 @@ class UserInfoVC: UIViewController {
                     let lastname = value["lastName"] as! String
                     self.fullname.text = firstname + " " + lastname
                     self.username.text = value["username"] as? String
-                    if let url = URL(string: value["imageUrl"] as! String) {
-                        do {
-                            self.profileImage.image = nil
-                            //blocking the ui, heavy task
-                           let data = try Data(contentsOf: url)
-                            
-                           self.profileImage.image = UIImage(data: data)
-                            //self.asyn(url: url)
-                        }
-                        catch{
-                            print(error.localizedDescription)
-                        }
-                    }
-                }}) { (error) in
-                    print(error.localizedDescription)
-            }
+                    let url = URL(string: value["imageUrl"] as! String)
+                    self.asyn(url: url!)
+                }
+            })
             DataService.instance.selfRef.child("receivedFriendRequest").observe(.childAdded, with: {(snapshot) in
                 self.newReminder.isHidden = false
             })

@@ -226,7 +226,7 @@ class EditVC: UIViewController,PictureVCDelegate {
         let filePath = "\(myId!)/\(Date.timeIntervalSinceReferenceDate)"
         let ref = DataService.instance.imageStorageRef.child(filePath)
         
-        let data = UIImageJPEGRepresentation(selectedImage, 0.5)
+        let data = UIImageJPEGRepresentation(editingImage.image!, 0.5)
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpg"
         
@@ -252,7 +252,8 @@ class EditVC: UIViewController,PictureVCDelegate {
             self.present(alert, animated: true, completion: nil)
         }
         else{
-            let sendImage = Util.rotateImage(image: selectedImage)
+            let sendImage = editingImage.image!
+            //let sendImage = Util.rotateImage(image: editingImage.image!)
             performSegue(withIdentifier: "PictureViewController", sender: sendImage)
         }
     }
