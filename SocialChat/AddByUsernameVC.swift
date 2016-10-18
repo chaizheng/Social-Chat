@@ -8,11 +8,13 @@
 
 import UIKit
 import FirebaseAuth
+import SDWebImage
 
 class AddByUsernameVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameField: RoundTextField!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var foundView: UIView!
     @IBOutlet weak var notFoundView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -61,6 +63,7 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
                 return
             }
             
+            self.loadingIndicator.isHidden = false
             DataService.instance.mainRef.child("Username").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
                     if let value = snapshot.value as? Dictionary<String, Any> {
                         var findItem = false
@@ -74,30 +77,24 @@ class AddByUsernameVC: UIViewController, UITextFieldDelegate {
                                         self.fullNameLabel.text = firstName! + " " + lastName!
                                         self.usernameLabel.text = item.value as? String
                                         self.friendId = item.key
-                                        if let url = URL(string: userValue["imageUrl"] as! String) {
-                                            do {
-                                                let data = try Data(contentsOf: url)
-                                                self.profileImage.image = UIImage(data: data)
+                                        let url = URL(string: userValue["imageUrl"] as! String)
+                                        let downloader = SDWebImageDownloader.shared()
+                                        _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                                            (image,data,error,finished) in
+                                            DispatchQueue.main.async {
+                                                self.profileImage.image = image
+                                                self.foundView.isHidden = false
+                                                self.loadingIndicator.isHidden = true
                                             }
-                                            catch{
-                                                print(error.localizedDescription)
-                                            }
-                                        }
+                                        })
                                     }
                                 })
-                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                                    self.foundView.isHidden = false
-                                })
-                                break
-                            }
-                        }
+                            }}
                         if !findItem {
                             self.notFoundView.isHidden = false
                         }
-                        
                     }
-            })
-
+                })
         } else{
             let alert = UIAlertController(title: "Invalid Username", message: "You must enter username", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

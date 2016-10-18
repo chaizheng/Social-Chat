@@ -80,6 +80,7 @@ class AuthService {
                                     (image,data,error,finished) in
                                     DispatchQueue.main.async {
                                         let profileImage = image
+                                        //old users dont have phone number
                                         if let number = phoneNumber{
                                             let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
                                             allFriendsInfo.append(friend)
