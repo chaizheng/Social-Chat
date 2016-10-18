@@ -37,6 +37,7 @@
 		1FA684151DB4FA6500DBAFDA /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684141DB4FA6500DBAFDA /* StoryVC.swift */; };
 		1FA684171DB4FA9A00DBAFDA /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684161DB4FA9A00DBAFDA /* StoryCollectionCell.swift */; };
 		1FA684191DB4FAB700DBAFDA /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA684181DB4FAB700DBAFDA /* PictureViewController.swift */; };
+		1FA6842F1DB6E69400DBAFDA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6842E1DB6E69400DBAFDA /* NetworkService.swift */; };
 		1FA876C71DB1A45A009088EB /* nilValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C61DB1A45A009088EB /* nilValueCell.swift */; };
 		1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876C81DB20A64009088EB /* StoryInfo.swift */; };
 		1FAE03F01DAD0C5000C94A6B /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */; };
@@ -109,6 +110,7 @@
 		1FA684141DB4FA6500DBAFDA /* StoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
 		1FA684161DB4FA9A00DBAFDA /* StoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
 		1FA684181DB4FAB700DBAFDA /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		1FA6842E1DB6E69400DBAFDA /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1FA876C61DB1A45A009088EB /* nilValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nilValueCell.swift; sourceTree = "<group>"; };
 		1FA876C81DB20A64009088EB /* StoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryInfo.swift; sourceTree = "<group>"; };
 		1FAE03EF1DAD0C5000C94A6B /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C222F2061DA0C867008B019A /* AuthService.swift */,
+				1FA6842E1DB6E69400DBAFDA /* NetworkService.swift */,
 				C222F2081DA0C86D008B019A /* DataService.swift */,
 			);
 			name = Services;
@@ -526,6 +529,7 @@
 				C2006EB61DB1BEC8008A5DD5 /* CircleButton.swift in Sources */,
 				1FC45EA41DB30B3700437180 /* PresentImageVC.swift in Sources */,
 				1FF928E91D892C0600DDD55D /* VerticalVC.swift in Sources */,
+				1FA6842F1DB6E69400DBAFDA /* NetworkService.swift in Sources */,
 				1FA876C91DB20A64009088EB /* StoryInfo.swift in Sources */,
 				1FAE03F21DAD0C6D00C94A6B /* StoryTableCell.swift in Sources */,
 				C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */,
