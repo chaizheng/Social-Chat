@@ -46,6 +46,12 @@ class SendVC: JSQMessagesViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if NetworkService.isInternetAvailable() == false{
+            let alert = UIAlertController(title: "Network Error", message: "Please check your network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         let currentUser = FIRAuth.auth()?.currentUser

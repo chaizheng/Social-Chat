@@ -159,6 +159,8 @@ class AuthService {
             case .errorCodeEmailAlreadyInUse, .errorCodeAccountExistsWithDifferentCredential:
                 onComplete?("Could not create account. Email already in use.", nil)
                 break
+            case .errorCodeNetworkError:
+                onComplete?("Could not connect to network, Try again.", nil)
             default:
                 onComplete?("There was a problem authenticating. Try again", nil)
                 
