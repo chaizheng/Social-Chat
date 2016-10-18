@@ -21,6 +21,8 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var num = [Bool]()
     //compare whether the user have already in the database
     var added = [Bool]()
+    //whether the user is already a friend
+    var friend = [Bool]()
     
     var friendId: String?
     var selectIndex :Int?
@@ -40,6 +42,8 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return added
     }
+    
+    
     // if the array have the phone number
     func havePhoneNumber(phoneNum:String, friends: [FriendInfo])->Bool{
         
@@ -92,11 +96,13 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if num[indexPath.row] == true {
             if added[indexPath.row] == true{
-                //cell.addFriend.isEnabled = false
-                cell.addFriend.setTitle("added", for: .disabled)
+                cell.addFriend.isEnabled = false
+                cell.addFriend.setTitle("Added", for: .normal)
+                print("chai")
             }
             else{
                  cell.addFriend.isHidden = false
+                cell.addFriend.setTitle("Add", for: .normal)
             }
            
             
