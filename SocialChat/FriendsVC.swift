@@ -40,7 +40,11 @@ class FriendsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Frie
         })()
         
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         AuthService.instance.updateLocalFriendsList()
+        tableView.reloadData()
     }
     
     
