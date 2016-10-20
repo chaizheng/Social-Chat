@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/SignupVC.swift"
-            timestampString = "497614382.519694"
+            timestampString = "498698363.7363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "signupBtnPressed(_:)"
             landmarkType = "7">
             <Locations>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/SignupVC.swift"
-            timestampString = "497614751.479941"
+            timestampString = "498698363.7363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "signupBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -831,6 +831,22 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "updateLocalFriendsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/SignupVC.swift"
+            timestampString = "498698098.173051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "setPass(pass:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
