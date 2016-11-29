@@ -834,7 +834,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengchai/SocialChat/SocialChat/ChatVC.swift"
-                  timestampString = "498494641.064649"
+                  timestampString = "498530599.087411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -849,7 +849,7 @@
                   moduleName = "SocialChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengchai/SocialChat/SocialChat/ChatVC.swift"
-                  timestampString = "498494641.065797"
+                  timestampString = "498530599.0886"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "31"
@@ -990,7 +990,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SocialChat/AddByContactVC.swift"
@@ -1000,6 +1000,38 @@
             startingLineNumber = "100"
             endingLineNumber = "100"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/ContactCell.swift"
+            timestampString = "498530585.711285"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "addFriend(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialChat/ContactCell.swift"
+            timestampString = "498530599.94528"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "addFriend(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
