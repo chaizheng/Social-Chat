@@ -11,12 +11,17 @@ import Foundation
 struct Webdiscover {
     private let _url:String
     private let _type:String
-    private let _title:String
+    private var _title:String? = nil
     
     init(url:String, type:String, title:String) {
         _url = url
         _type = type
         _title = title
+    }
+    
+    init(url:String, type:String) {
+        _url = url
+        _type = type
     }
     
     var url:String {
@@ -25,7 +30,8 @@ struct Webdiscover {
     var type:String {
         return _type
     }
-    var title:String{
+    var title:String? {
         return _title
     }
 }
+

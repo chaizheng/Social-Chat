@@ -9,6 +9,7 @@
 import UIKit
 
 class DiscoverCell: UICollectionViewCell {
+    @IBOutlet weak var holdingView: UIView!
     @IBOutlet weak var webImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!

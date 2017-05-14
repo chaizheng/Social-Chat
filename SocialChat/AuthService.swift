@@ -8,19 +8,97 @@
 
 import Foundation
 import FirebaseAuth
+import UIKit
+import SDWebImage
 
 typealias Completion = (String?, AnyObject?) -> Void
 
 
+var myusername: String?
+var myfirstName: String?
+var mylastName: String?
+var myphoneNumber: String?
+var myimageUrl: String?
+var myId: String?
+var allPhoneList: Dictionary<String, Any>?
+var allFriendsInfo = [FriendInfo]()
+var sentFriendRequest: Dictionary<String, Bool>?
+
 class AuthService {
-    private static let _instance = AuthService()
     
+    private static let _instance = AuthService()
     static var instance: AuthService{
         return _instance
     }
     
+    func firstLoadSet(){
+        DispatchQueue.main.async{
+            
+        myId = FIRAuth.auth()?.currentUser?.uid
+        DataService.instance.profileRef.observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let userValue = snapshot.value as? Dictionary<String, Any> {
+                myfirstName = userValue["firstName"] as? String
+                mylastName = userValue["lastName"] as? String
+                myphoneNumber = userValue["phoneNumber"] as? String
+                myimageUrl = userValue["imageUrl"] as? String
+                myusername = userValue["username"] as? String
+            }
+        })
+        self.updateLocalFriendsList()
+        
+        DataService.instance.mainRef.child("PhoneNumber").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                allPhoneList = value
+               
+            }
+        })
+        }
+    }
     
-    func signup(email: String, password: String, firstName: String, lastName: String, username: String, data: Data, onCompelte: Completion?){
+    func updateLocalFriendsList(){
+        DataService.instance.selfRef.child("friends").observeSingleEvent(of: .value, with: {(snapshot) -> Void in
+            if let value = snapshot.value as? Dictionary<String, Any> {
+                var allFriendsIds = [String]()
+                for friend in allFriendsInfo{
+                    allFriendsIds.append(friend.uid)
+                }
+                for item in value{
+                    let friendId = item.key
+                    if allFriendsIds.contains(friendId){
+                        continue
+                    }
+                    DataService.instance.usersRef.child(friendId).child("profile").observeSingleEvent(of: .value, with: {(childSnapshot) -> Void in
+                        if let childValue = childSnapshot.value as? Dictionary<String, Any> {
+                            let firstName = childValue["firstName"] as? String
+                            let lastName = childValue["lastName"] as? String
+                            let fullName = firstName! + " " + lastName!
+                            let phoneNumber = childValue["phoneNumber"] as? String
+                            
+                            if let url = URL(string: childValue["imageUrl"] as! String) {
+                                let downloader = SDWebImageDownloader.shared()
+                               _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                                    (image,data,error,finished) in
+                                    DispatchQueue.main.async {
+                                        let profileImage = image
+                                        //old users dont have phone number
+                                        if let number = phoneNumber{
+                                            let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!, phoneNumber: number)
+                                            allFriendsInfo.append(friend)
+                                        } else{
+                                            let friend = FriendInfo(uid: friendId, fullName: fullName, firstName: firstName!, image: profileImage!)
+                                            allFriendsInfo.append(friend)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    }
+    
+    func signup(email: String, password: String, firstName: String, lastName: String, username: String, phoneNumber: String, data: Data, onCompelte: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil{
                 if let errorCode = FIRAuthErrorCode(rawValue: error!._code) {
@@ -31,7 +109,7 @@ class AuthService {
                             } else {
                                 if user?.uid != nil {
                                     //Sign in
-                                    DataService.instance.saveUser(uid: user!.uid, username: username, firstName: firstName, lastName: lastName, data: data)
+                                    DataService.instance.saveUser(uid: user!.uid, username: username, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, data: data)
                                     FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                                         if error != nil{
                                             //Show error to user
@@ -81,6 +159,8 @@ class AuthService {
             case .errorCodeEmailAlreadyInUse, .errorCodeAccountExistsWithDifferentCredential:
                 onComplete?("Could not create account. Email already in use.", nil)
                 break
+            case .errorCodeNetworkError:
+                onComplete?("Could not connect to network, Try again.", nil)
             default:
                 onComplete?("There was a problem authenticating. Try again", nil)
                 

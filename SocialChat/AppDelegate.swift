@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         login()
+        Util.parseWebsiteCSV()
         return true
     }
     
@@ -43,9 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func login() {
         if FIRAuth.auth()?.currentUser != nil{
+            AuthService.instance.firstLoadSet()
             window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
         }
     }
+    
+    func logout() {
+        try! FIRAuth.auth()!.signOut()
+        firstLoad = true
+        firstTimeMainVCAppear = true
+        firstTimeVerticalVCAppear = true
+        window?.rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC")
+    }
+    
     
     
     @available(iOS 10.0, *)

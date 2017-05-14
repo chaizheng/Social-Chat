@@ -9,13 +9,12 @@
 import UIKit
 
 
-class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var backToStory: UIButton!
   
     @IBOutlet weak var discoverCollection: UICollectionView!
     
-    var webdiscover = [Webdiscover]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +26,55 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         discoverCollection.collectionViewLayout = layout
-        parseWebsiteCSV()
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        self.discoverCollection.addGestureRecognizer(lpgr)
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(discoverCollection.contentOffset)
-//    }
-//    //useless when animated is false
-//    override func viewDidAppear(_ animated: Bool) {
-//        discoverCollection.setContentOffset(CGPoint(x:0,y:800), animated: false)
-//    }
-    
-    func parseWebsiteCSV(){
-        let path = Bundle.main.path(forResource: "website", ofType: "csv")!
-        do{
-            let csv = try CSV.init(contentsOfURL: path)
-            let rows = csv.rows
+    //Subscription part
+    func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        
+        if gestureReconizer.state == .began{
+            let position = gestureReconizer.location(in: self.discoverCollection)
+            let indexPath = self.discoverCollection.indexPathForItem(at: position)
             
-            for row in rows{
-                let type = row["Type"]
-                let title = row["Title"]
-                let url = row["Url"]
+            if let index = indexPath {
                 
-                let web = Webdiscover(url: url!, type: type!, title: title!)
-                webdiscover.append(web)
+                
+                let channel = webdiscover[index.row].type
+                
+                if subscriptionSet.contains(channel){
+                    let alert = UIAlertController(title: "\(channel) Channel Subscribed", message: "Do you want to unsubscrible this channel?", preferredStyle: .alert)
+                    let yesAction = UIAlertAction(title: "Yes", style: .default) {
+                        UIAlertAction in
+                        subscriptionSet.remove(channel)
+                    }
+                    alert.addAction(yesAction)
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                    return
+                } else{
+                    let alert = UIAlertController(title: "\(channel) Channel", message: "Do you want to subscribe this channel?", preferredStyle: .alert)
+                    let yesAction = UIAlertAction(title: "Yes", style: .default) {
+                        UIAlertAction in
+                        subscriptionSet.insert(channel)
+                    }
+                    alert.addAction(yesAction)
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                    return
+                }
+            } else {
+                print("Could not find index path")
             }
-            
-        } catch let err as NSError{
-            print(err.debugDescription)
         }
+        
     }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,10 +136,5 @@ class DiscoverVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }

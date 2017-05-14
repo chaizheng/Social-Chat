@@ -8,6 +8,7 @@
 
 import UIKit
 
+var firstTimeVerticalVCAppear = true
 class VerticalVC: UIViewController,MainScrollVCDelegate{
 
     @IBOutlet weak var scrollViewVer: UIScrollView!
@@ -31,6 +32,10 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        if !firstTimeVerticalVCAppear{
+            return
+        }
         self.scrollViewVer.translatesAutoresizingMaskIntoConstraints = true
         
         let userInfoView = userStoryboard.instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
@@ -59,6 +64,8 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
         scrollViewVer.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 3)
         scrollViewVer.contentOffset = CGPoint(x: 0, y: self.view.frame.size.height)
         
+        firstTimeVerticalVCAppear = false
+        
     }
 
     func verScrollEnable() -> Bool{
@@ -69,10 +76,5 @@ class VerticalVC: UIViewController,MainScrollVCDelegate{
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
 }

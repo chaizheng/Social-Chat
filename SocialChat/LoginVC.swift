@@ -38,11 +38,10 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     
-    
-    
     @IBAction func signupBtnPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pass = passwordField.text, (self.isValidEmail(testStr: email) && pass.characters.count > 0) {
+        if let email = emailField.text, let pass = passwordField.text, (Util.isValidEmail(testStr: email) && pass.characters.count > 0) {
             if pass.characters.count >= 6 {
+                
                 let emailAndPass = [email,pass]
                 performSegue(withIdentifier: "SignupVC", sender: emailAndPass)
             } else{
@@ -58,7 +57,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func loginBtnPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pass = passwordField.text, (self.isValidEmail(testStr: email) && pass.characters.count > 0) {
+        if let email = emailField.text, let pass = passwordField.text, (Util.isValidEmail(testStr: email) && pass.characters.count > 0) {
             
             //Call the login service
             AuthService.instance.login(email: email, password: pass, onCompelte: { (errMsg, data) in
@@ -70,8 +69,9 @@ class LoginVC: UIViewController,UITextFieldDelegate {
                 }
                 
                 let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.login()
                 self.dismiss(animated: false, completion: nil)
+                appDelegate.login()
+                
             })
             
         } else {
@@ -81,13 +81,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
         }
     }
     
-    func isValidEmail(testStr:String) -> Bool {
-        
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
-    }
+    
     
    
 }

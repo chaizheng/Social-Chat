@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+import SDWebImage
+
 
 class SendVC: JSQMessagesViewController{
     
@@ -16,12 +18,22 @@ class SendVC: JSQMessagesViewController{
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
-    let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
     
-    private var _receiverId: String?
-    private var _receiverName: String?
+    private var _receiverId: String!
+    private var _receiverName: String!
+    private var imageUrl: String?
+
+    var receiverId: String{
+        get{
+            return _receiverId
+        }
+        
+        set{
+            _receiverId = newValue
+        }
+    }
     
-    var receiverName: String? {
+    var recieverName: String{
         get{
             return _receiverName
         }
@@ -30,35 +42,22 @@ class SendVC: JSQMessagesViewController{
         }
     }
     
-    var receiverId: String? {
-        get{
-            return _receiverId
-        }
-        set{
-            _receiverId = newValue
-        }
-    }
-    
- //   var senderAvatar:JSQMessagesAvatarImage!
-//    var usersAvatars:Dictionary<String, JSQMessagesAvatarImage>
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if NetworkService.isInternetAvailable() == false{
+            let alert = UIAlertController(title: "Network Error", message: "Please check your network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        createOptionMenu()
         let currentUser = FIRAuth.auth()?.currentUser
         self.senderId = currentUser?.uid
         
-        //testttttttt
-        self.receiverId = "qmZ3KIxXzzULsCYV9lwc50t8Iju2"
-        self.receiverName = "test2"
-        if let name = receiverName{
-           title = name
-        } else{
-            title = "ERROR RECEIVER"
-        }
+        self.title = recieverName
         //set default value unless error
         self.senderDisplayName = ""
         observeUsers()
@@ -66,11 +65,14 @@ class SendVC: JSQMessagesViewController{
         newobserveMessages()
     }
     
+    
     // get DisplayName
     private func observeUsers(){
         DataService.instance.usersRef.child(self.senderId).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
             if let value = snapshot.value as? Dictionary<String, Any>{
                 let username = value["username"]
+                let senderImageUrl = value["imageUrl"]
+                self.imageUrl = senderImageUrl as? String
                 self.senderDisplayName = username as? String
             } else{
                 print("error displayname")
@@ -110,7 +112,10 @@ class SendVC: JSQMessagesViewController{
     
     private func newobserveMessages(){
         
-        let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY-MM-dd 'at' HH:mm:ss"
+        
+        let senderQuery = DataService.instance.usersRef.child(senderId).child("sentMessage").queryOrdered(byChild: "receiverId").queryEqual(toValue: self.receiverId)
         
         senderQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
             
@@ -118,67 +123,112 @@ class SendVC: JSQMessagesViewController{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
                 let senderName = value["senderName"] as! String
+                let messageKey = snapshot.key
+                let sendTime = dateFormatter.date(from: value["sentTime"] as! String)
+                
                 if contentType == "TEXT" {
                     let text = value["content"] as! String
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                    self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime,text: text))
+                    self.finishReceivingMessage()
+                    
                 } else if contentType == "PHOTO" {
-                    do{
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        let picture = UIImage(data: data)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
+                        let downloader = SDWebImageDownloader.shared()
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                        (image,data,error,finished) in
+                        DispatchQueue.main.async {
+                            let picture = image
+                            let photo = JSQPhotoMediaItem(image: picture)
+                            self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
+                            self.finishReceivingMessage()
+                        }
+                    })
+        
+                } else if contentType == "VISIIMAGE"{
+                    
+                    let imageUrl = value["content"] as! String
+                    let url = URL(string: imageUrl)
+                    var visibleTime:String?
+                    //old value in Database is Int
+                    if let time = value["visibleTime"] as? Int{
+                        visibleTime = String(time)
                     }
-                }
+                    if let time = value["visibleTime"] as? String{
+                        visibleTime = time
+                    }
+                        let downloader = SDWebImageDownloader.shared()
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                let picture = image
+//                                picture = Util.rotateImage(image: picture!)
+                                let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
+                                self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: sendTime, media: photo))
+                                self.finishReceivingMessage()
+                            }
+                        })
+                    }
             }
-            self.finishReceivingMessage()
+            
         }
         
-        let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId!)
+        let receiverQuery = DataService.instance.usersRef.child(senderId).child("receivedMessage").queryOrdered(byChild: "senderId").queryEqual(toValue: self.receiverId)
         
         receiverQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
             
             if let value = snapshot.value as? Dictionary<String, Any>{
                 let contentType = value["contentType"] as! String
                 let senderId = value["senderId"] as! String
+                let messageKey = snapshot.key
                 let senderName = value["senderName"] as! String
+                let receivedTime = dateFormatter.date(from: value["ReceivedTime"] as! String)
                 if contentType == "TEXT" {
                     let text = value["content"] as! String
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-                } else if contentType == "PHOTO" {
-                    do{
+                    self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, text: text))
+                    self.finishReceivingMessage()
+                }
+                    else if contentType == "PHOTO" {
                         let imageUrl = value["content"] as! String
                         let url = URL(string: imageUrl)
-                        let data = try Data(contentsOf: url!)
-                        let picture = UIImage(data: data)
-                        let photo = JSQPhotoMediaItem(image: picture)
-                        photo?.appliesMediaViewMaskAsOutgoing = false
-                        self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    } catch {
-                        print(error.localizedDescription)
+                        let downloader = SDWebImageDownloader.shared()
+                       _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                let picture = image
+                                let photo = JSQPhotoMediaItem(image: picture)
+                                photo?.appliesMediaViewMaskAsOutgoing = false
+                                self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
+                                self.finishReceivingMessage()
+                        }
+                    })
+                } else if contentType == "VISIIMAGE"{
+                    
+                    var visibleTime:String?
+                    //old value in Database is Int
+                    if let time = value["visibleTime"] as? Int{
+                        visibleTime = String(time)
                     }
+                    if let time = value["visibleTime"] as? String{
+                        visibleTime = time
+                    }
+                    
+                    let imageUrl = value["content"] as! String
+                    let url = URL(string: imageUrl)
+                    let downloader = SDWebImageDownloader.shared()
+                    _ = downloader?.downloadImage(with: url, options: [], progress: nil, completed: {
+                            (image,data,error,finished) in
+                        DispatchQueue.main.async {
+                            let picture = image
+//                            picture = Util.rotateImage(image: picture!)
+                            let photo = JSQVisibleMediaItem(image: picture, visibleTime: visibleTime, replayedTime: 0, messageKey: messageKey)
+                            self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: receivedTime, media: photo))
+                            self.finishReceivingMessage()
+                        }
+                    })
                 }
             }
-            self.finishReceivingMessage()
         }
-    }
-    
-    private func createOptionMenu() {
-        
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction) -> Void in
-            self.photoLibrary()
-        })
-        let memoryAction = UIAlertAction(title: "Memories", style: .default, handler: { (alert: UIAlertAction) -> Void in
-            self.memory()
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        optionMenu.addAction(photoLibraryAction)
-        optionMenu.addAction(memoryAction)
-        optionMenu.addAction(cancelAction)
-
     }
     
     
@@ -188,12 +238,14 @@ class SendVC: JSQMessagesViewController{
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        
         return messages[indexPath.item]
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
+    
     
     private func setupBubbles(){
         let factory = JSQMessagesBubbleImageFactory()!
@@ -204,6 +256,7 @@ class SendVC: JSQMessagesViewController{
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
+        
         if message.senderId == senderId{
             return outgoingBubbleImageView
         } else {
@@ -222,32 +275,57 @@ class SendVC: JSQMessagesViewController{
         return nil
     }
     
-  
     
-//    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
-//        let message = messages[indexPath.item]
-//        if message.isMediaMessage{
-//            if let mediaItem = message.media as? JSQPhotoMediaItem {
-//                
-//                
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? NormalImageVC{
+            if let image = sender as? UIImage{
+                destination.image = image
+            }
+        }
+        if let destination = segue.destination as? PresentImageVC{
+            if let item = sender as? JSQVisibleMediaItem{
+                let visibleTime = item.visibleTime
+                let item:Dictionary<String, Any> = ["visibleTime":visibleTime!,"visibleImage":item.image]
+                destination.items = item
+            }
+        }
+    }
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        let message = messages[indexPath.item]
+        if message.isMediaMessage{
+            if let mediaItem = message.media as? JSQPhotoMediaItem {
+                performSegue(withIdentifier: "NormalImageVC", sender: mediaItem.image)
+            }
+            if let mediaItem = message.media as? JSQVisibleMediaItem {
+                performSegue(withIdentifier: "PresentImageVC", sender: mediaItem)
+                
+                // receiver can only watch twice
+                if message.senderId != myId!{
+                    mediaItem.addreplayedTime()
+                    if mediaItem.replayedTime == 2{
+                        messages.remove(at: indexPath.item)
+                        DataService.instance.selfRef.child("receivedMessage").child(mediaItem.messageKey).setValue(nil)
+                        collectionView.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId!)
+        DataService.instance.sendMessage(messageType: "TEXT", content: text, senderId: senderId, senderName: senderDisplayName, receiverId: self.receiverId, receiverName: self.recieverName, senderImageUrl: self.imageUrl!)
+
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
-        present(optionMenu, animated: true, completion: nil)
+        photoLibrary()
     }
     
-    func memory(){
-        
-    }
     
     func photoLibrary(){
         let myPickerController = UIImagePickerController()
@@ -269,10 +347,16 @@ class SendVC: JSQMessagesViewController{
                     return
                 }
                 let imageUrl = metadata!.downloadURLs![0].absoluteString
-                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId!)
+                DataService.instance.sendMessage(messageType: "PHOTO", content: imageUrl, senderId: self.senderId, senderName: self.senderDisplayName, receiverId: self.receiverId,receiverName: self.recieverName,senderImageUrl: self.imageUrl!)
+                
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }
+    }
+    
+    
+    @IBAction func backButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false, completion: nil)
     }
     
 }
