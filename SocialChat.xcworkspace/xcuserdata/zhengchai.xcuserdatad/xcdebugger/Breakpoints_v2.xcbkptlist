@@ -423,9 +423,15 @@
             timestampString = "498372535.229654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "didReceiveMemoryWarning()"
+=======
             startingLineNumber = "127"
             endingLineNumber = "127"
             landmarkName = "viewDidAppear(_:)"
+>>>>>>> origin/chatappJeff
             landmarkType = "7">
             <Locations>
                <Location
@@ -471,10 +477,17 @@
             timestampString = "498372535.229654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "ChatVC"
+            landmarkType = "3">
+=======
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
+>>>>>>> origin/chatappJeff
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -487,10 +500,17 @@
             timestampString = "498378667.664227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "ChatVC"
+            landmarkType = "3">
+=======
             startingLineNumber = "224"
             endingLineNumber = "224"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
+>>>>>>> origin/chatappJeff
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -503,9 +523,15 @@
             timestampString = "498372535.229654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "backToCameraBtnPressed(_:)"
+=======
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "viewDidAppear(_:)"
+>>>>>>> origin/chatappJeff
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
