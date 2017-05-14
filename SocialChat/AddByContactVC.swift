@@ -154,7 +154,7 @@ class AddByContactVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             try store.enumerateContacts(with: fetchRequest, usingBlock: {( contact, stop) -> Void in contacts.append(contact)
                 //self.marrContactsNumber.append(contact.phoneNumbers)
-                var phonenum = (contact.phoneNumbers[0].value as CNPhoneNumber).value(forKey: "digits") as! String
+                let phonenum = (contact.phoneNumbers[0].value as CNPhoneNumber).value(forKey: "digits") as! String
                 self.marrContactsNumber.append(phonenum)
                 self.marrContactsName.append(contact.givenName + "" + contact.familyName)
             })

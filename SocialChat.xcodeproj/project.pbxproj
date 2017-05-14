@@ -72,7 +72,6 @@
 		C2F03DA01D9E7B57009CF578 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03D9E1D9E7B57009CF578 /* Item+CoreDataClass.swift */; };
 		C2F03DA11D9E7B57009CF578 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03D9F1D9E7B57009CF578 /* Item+CoreDataProperties.swift */; };
 		C2F03DA31D9E7C11009CF578 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */; };
-		C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F03DA41D9E89D1009CF578 /* AddVC.swift */; };
 		D514B09D01917B7C4BE282B2 /* Pods_SocialChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1189C56003754A9EC580E7 /* Pods_SocialChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +148,6 @@
 		C2F03D9E1D9E7B57009CF578 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C2F03D9F1D9E7B57009CF578 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2F03DA21D9E7C11009CF578 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		C2F03DA41D9E89D1009CF578 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,7 +273,6 @@
 			children = (
 				1F2A87D01D8AC24100DA90B4 /* EditVC.swift */,
 				C2EB3DEA1D9E293500BEE0BC /* Memory.swift */,
-				C2F03DA41D9E89D1009CF578 /* AddVC.swift */,
 				C2006EB31DB1BDB1008A5DD5 /* speechRec.swift */,
 				C2DEA14A1DB50000009D2CAB /* FaceDetect.swift */,
 			);
@@ -538,7 +535,6 @@
 				1F2A87D11D8AC24100DA90B4 /* EditVC.swift in Sources */,
 				1F5A98E21DB3BB1C00012995 /* EmojiCell.swift in Sources */,
 				1FCA8BA91D8ED4DE004E5F76 /* csv.swift in Sources */,
-				C2F03DA51D9E89D1009CF578 /* AddVC.swift in Sources */,
 				1F6114311D86385D00504735 /* UserCell.swift in Sources */,
 				1F15140D1DA9E5F700F0CCF3 /* AddedMeVC.swift in Sources */,
 				C23053FB1DB4B42D006FD75B /* JSQVisibleMediaItem.m in Sources */,
@@ -586,6 +582,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -635,6 +632,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

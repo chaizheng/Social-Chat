@@ -11,7 +11,10 @@ import FirebaseStorage
 
 class SignupVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var indicatorPadView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     var didchangeimage = false
     @IBOutlet weak var lastnameField: UITextField!
     @IBOutlet weak var firstnameField: UITextField!
@@ -19,6 +22,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var phoneField: UITextField!
     
+    @IBOutlet weak var loadingView: UIView!
     private var _email:String!
     private var _password:String!
     
@@ -39,6 +43,9 @@ class SignupVC: UIViewController, UITextFieldDelegate {
         firstnameField.delegate = self
         usernameField.delegate = self
         phoneField.delegate = self
+        
+        indicatorPadView.layer.cornerRadius = 10
+        indicatorPadView.clipsToBounds = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SignupVC.selectPhoto(tap:)))
         tap.numberOfTapsRequired = 1
@@ -99,11 +106,16 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                 
             } else{
                 
+                self.loadingView.isHidden = false
+                self.loadingIndicator.startAnimating()
+                
                 var data = Data()
                 data = UIImageJPEGRepresentation(profileImage.image!, 0.1)!
                 
                 AuthService.instance.signup(email: _email, password: _password, firstName: firstName, lastName: lastName, username: username, phoneNumber: phoneNumber, data: data, onCompelte: { (errMsg, data) in
                     guard errMsg == nil else {
+                        self.loadingView.isHidden = true
+                        self.loadingIndicator.stopAnimating()
                         let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                         self.present(alert, animated: true, completion: nil)
